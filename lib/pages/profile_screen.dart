@@ -65,7 +65,7 @@ final userProfileProvider = Provider<ValueNotifier<UserProfile>>((ref) {
     UserProfile(
       name: 'أحمد علي',
       bio:
-          'مهندس برمجيات شغوف ببناء تطبيقات موبايل جميلة. يحب Dart والتصميم النظيف.',
+          '  مستكشف/ة فضولي/ة ',
       email: 'ahmed.ali@example.com',
       phone: '+966 5 5555 5555',
       location: 'الرياض، المملكة العربية السعودية',
