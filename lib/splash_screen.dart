@@ -31,7 +31,7 @@ class _SplashScreenState extends State<SplashScreen>
 
     // One-shot entrance/exit controller
     _mainController = AnimationController(
-      duration: const Duration(seconds: 4),
+      duration: const Duration(seconds: 5),
       vsync: this,
     );
 
