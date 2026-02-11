@@ -35,7 +35,9 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
   @override
   void initState() {
     super.initState();
-    final userProfileNotifier = ref.watch(userProfileProvider);
+    // Use ref.read here because ref.watch depends on inherited widgets and
+    // shouldn't be called during initState.
+    final userProfileNotifier = ref.read(userProfileProvider);
     final userProfile = userProfileNotifier.value;
     _nameController = TextEditingController(text: userProfile.name);
     _bioController = TextEditingController(text: userProfile.bio);
