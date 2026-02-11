@@ -93,7 +93,9 @@ class ProfileScreen extends ConsumerWidget {
         return Directionality(
           textDirection: localizationsAr.textDirection,
           child: Scaffold(
-            backgroundColor: kOyster,
+            backgroundColor: Theme.of(context).brightness == Brightness.dark
+                ? const Color(0xFF1D1B20)
+                : kOyster,
             body: CustomScrollView(
               physics: const BouncingScrollPhysics(),
               slivers: [
@@ -253,7 +255,7 @@ class _ProfileSliverAppBar extends StatelessWidget {
                   style: GoogleFonts.poppins(
                     fontSize: 28,
                     fontWeight: FontWeight.bold,
-                    color: colorScheme.onSurface,
+                    color: isDark ? Colors.white : kTruffle,
                   ),
                 ),
                 // Text(
@@ -281,7 +283,7 @@ class _ProfileSliverAppBar extends StatelessWidget {
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 12,
-                      color: kTruffle.withAlpha(230),
+                      color: isDark ? Colors.white70 : kTruffle.withAlpha(230),
                     ),
                   ),
                 ),
@@ -300,13 +302,14 @@ class _SectionHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Text(
       title,
       style: TextStyle(
         fontSize: 12,
         fontWeight: FontWeight.bold,
         letterSpacing: 1.5,
-        color: kSage,
+        color: isDark ? Colors.grey[400] : kSage,
       ),
     );
   }
@@ -371,12 +374,12 @@ class _SettingsSection extends ConsumerWidget {
                 leading: Container(
                   padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
-                    color: kSand,
+                    color: isDark ? const Color(0xFF2A2831) : kSand,
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Icon(
                     isDark ? FontAwesomeIcons.moon : FontAwesomeIcons.sun,
-                    color: kTruffle,
+                    color: isDark ? Colors.white : kTruffle,
                     size: 18,
                   ),
                 ),
@@ -447,10 +450,18 @@ class _SettingsTileState extends State<_SettingsTile> {
         leading: Container(
           padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
-            color: kOyster,
+            color: Theme.of(context).brightness == Brightness.dark
+                ? const Color(0xFF2A2831)
+                : kOyster,
             borderRadius: BorderRadius.circular(10),
           ),
-          child: Icon(widget.icon, color: kTruffle, size: 18),
+          child: Icon(
+            widget.icon,
+            color: Theme.of(context).brightness == Brightness.dark
+                ? Colors.white
+                : kTruffle,
+            size: 18,
+          ),
         ),
         title: Text(
           widget.title,
