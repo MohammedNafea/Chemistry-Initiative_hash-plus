@@ -56,12 +56,12 @@ class UserProfile {
 final userProfileProvider = Provider<ValueNotifier<UserProfile>>((ref) {
   return ValueNotifier<UserProfile>(
     UserProfile(
-      name: 'Alex Johnson',
+      name: 'أحمد علي',
       bio:
-          'Passionate about building beautiful mobile experiences. Loves Dart, clean architecture, and modern UI design.',
-      email: 'alex.dev@example.com',
-      phone: '+1 (415) 555-0199',
-      location: 'San Francisco, CA',
+          'مهندس برمجيات شغوف ببناء تطبيقات موبايل جميلة. يحب Dart والتصميم النظيف.',
+      email: 'ahmed.ali@example.com',
+      phone: '+966 5 5555 5555',
+      location: 'الرياض، المملكة العربية السعودية',
       imageUrl: 'https://i.pravatar.cc/300',
     ),
   );
