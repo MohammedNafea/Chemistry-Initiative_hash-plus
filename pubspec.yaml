@@ -35,6 +35,14 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
 
+  flutter_riverpod: any
+  google_fonts: any
+  font_awesome_flutter: any
+  image_picker: any
+  intl_phone_number_input: any
+  country_picker: any
+  state_notifier: any
+  riverpod: any
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:chemistry_initiative/pages/second_page.dart';
+import 'package:chemistry_initiative/pages/profile_screen.dart';
 
 class HomePage extends StatefulWidget {
   final bool showWelcome;
@@ -22,9 +23,60 @@ class _HomePageState extends State<HomePage> {
       });
     }
   }
+  const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  int _currentIndex = 0; // Home tab is default
+
+  Widget _getPage(int index) {
+    switch (index) {
+      case 0:
+        return _buildHomeContent();
+      case 1:
+        return const Center(child: Text('Search'));
+      case 2:
+        return const Center(child: Text('Bookmark'));
+      case 3:
+        return const ProfileScreen();
+      default:
+        return _buildHomeContent();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: _getPage(_currentIndex),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentIndex,
+        type: BottomNavigationBarType.fixed,
+        backgroundColor: const Color(0xFFF9F4EA), // OYSTER
+        selectedItemColor: const Color(0xFFC47457), // TERRACOTTA
+        unselectedItemColor: const Color(0xFF9C9E80), // SAGE
+        onTap: (index) {
+          setState(() {
+            _currentIndex = index;
+          });
+        },
+        items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.bookmark),
+            label: 'Bookmark',
+          ),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildHomeContent() {
     final double progressValue = 0.6;
 
     final List<Map<String, String>> natureCards = [
@@ -95,137 +147,158 @@ class _HomePageState extends State<HomePage> {
                       fontWeight: FontWeight.w600,
                       color: darkBrown,
                     ),
+    return SafeArea(
+      child: SingleChildScrollView(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // أيقونة البروفايل + الاسم + أيقونة الإشعارات
+            Row(
+              children: [
+                CircleAvatar(
+                  radius: 20,
+                  backgroundColor: softBrown,
+                  child: const Icon(Icons.person, color: Colors.white),
+                ),
+                const SizedBox(width: 12),
+                const Text(
+                  'مرحبا ريوف',
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.w600,
+                    color: darkBrown,
                   ),
-                  const Spacer(),
-                  IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.notifications,
-                      color: softBrown,
-                      size: 28,
-                    ),
+                ),
+                const Spacer(),
+                IconButton(
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.notifications,
+                    color: softBrown,
+                    size: 28,
                   ),
-                ],
-              ),
+                ),
+              ],
+            ),
 
-              const SizedBox(height: 35), // زيادة المسافة بين الابار والصورة
-              // الصورة الكبيرة مع العنوان وزر استكشف
-              Stack(
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(12),
-                    child: Image.asset(
-                      'assets/images/Aurora Boreal Aesthetic _ Travel Inspo & Dream Destinations.jpg',
-                      height: 180,
-                      width: double.infinity,
-                      fit: BoxFit.cover,
-                    ),
+            const SizedBox(height: 35), // زيادة المسافة بين الابار والصورة
+            // الصورة الكبيرة مع العنوان وزر استكشف
+            Stack(
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(12),
+                  child: Image.asset(
+                    'assets/images/Aurora Boreal Aesthetic _ Travel Inspo & Dream Destinations.jpg',
+                    height: 180,
+                    width: double.infinity,
+                    fit: BoxFit.cover,
                   ),
-                  Positioned(
-                    left: 16,
-                    bottom: 16,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text(
-                          'ظاهرة الشفق القطبي',
+                ),
+                Positioned(
+                  left: 16,
+                  bottom: 16,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        'ظاهرة الشفق القطبي',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                          shadows: [
+                            Shadow(
+                              blurRadius: 4,
+                              color: Colors.black54,
+                              offset: Offset(1, 1),
+                            ),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(height: 6),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const QuestionPage(),
+                            ),
+                          );
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: softBrown,
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 18,
+                            vertical: 10,
+                          ),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                        ),
+                        child: const Text(
+                          'استكشف أكثر',
                           style: TextStyle(
                             color: Colors.white,
-                            fontSize: 30,
+                            fontSize: 14,
                             fontWeight: FontWeight.bold,
-                            shadows: [
-                              Shadow(
-                                blurRadius: 4,
-                                color: Colors.black54,
-                                offset: Offset(1, 1),
-                              ),
-                            ],
                           ),
                         ),
-                        const SizedBox(height: 6),
-                        ElevatedButton(
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const QuestionPage(),
-                              ),
-                            );
-                          },
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: softBrown,
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 18,
-                              vertical: 10,
-                            ),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                          ),
-                          child: const Text(
-                            'استكشف أكثر',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
-              const SizedBox(height: 25),
-
-              // شريط التقدم + النسبة
-              const Text(
-                'مستوى تقدمك',
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: darkBrown,
                 ),
+              ],
+            ),
+            const SizedBox(height: 25),
+
+            // شريط التقدم + النسبة
+            const Text(
+              'مستوى تقدمك',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: darkBrown,
               ),
-              const SizedBox(height: 8),
-              Stack(
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(12),
-                    child: LinearProgressIndicator(
-                      value: progressValue,
-                      minHeight: 20,
-                      backgroundColor: lightBackground,
-                      color: darkBrown,
-                    ),
+            ),
+            const SizedBox(height: 8),
+            Stack(
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(12),
+                  child: LinearProgressIndicator(
+                    value: progressValue,
+                    minHeight: 20,
+                    backgroundColor: lightBackground,
+                    color: darkBrown,
                   ),
-                  Positioned.fill(
-                    child: Center(
-                      child: Text(
-                        '${(progressValue * 100).toInt()}%',
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                        ),
+                ),
+                Positioned.fill(
+                  child: Center(
+                    child: Text(
+                      '${(progressValue * 100).toInt()}%',
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
-                ],
-              ),
-              const SizedBox(height: 30),
+                ),
+              ],
+            ),
+            const SizedBox(height: 30),
 
-              sectionTitle('الطبيعة', darkBrown),
-              horizontalList(natureCards, darkBrown),
+            sectionTitle('الطبيعة', darkBrown),
+            horizontalList(natureCards, darkBrown),
 
-              const SizedBox(height: 16),
-              sectionTitle('الماء والهواء', darkBrown),
-              horizontalList(waterCards, darkBrown),
+            const SizedBox(height: 16),
+            sectionTitle('الماء والهواء', darkBrown),
+            horizontalList(waterCards, darkBrown),
 
-              const SizedBox(height: 16),
-              sectionTitle('الحياة اليومية', darkBrown),
-              horizontalList(dailyCards, darkBrown),
-            ],
-          ),
+            const SizedBox(height: 16),
+            sectionTitle('الحياة اليومية', darkBrown),
+            horizontalList(dailyCards, darkBrown),
+          ],
         ),
         // Welcome overlay
             if (_showWelcome)
