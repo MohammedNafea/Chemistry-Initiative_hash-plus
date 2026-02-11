@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -8,6 +7,14 @@ import '../main.dart';
 import 'edit_profile_screen.dart';
 import 'l10n/locale_provider.dart';
 import 'l10n/app_localizations.dart';
+
+// Color system (Design tokens)
+const Color kTruffle = Color(0xFF605F4B); // Primary
+const Color kOyster = Color(0xFFF9F4EA); // Background
+const Color kSand = Color(0xFFCDAD85); // Cards / highlights
+const Color kSage = Color(0xFF9C9E80); // Borders / muted
+const Color kTerracotta = Color(0xFFC47457); // Accent / CTA
+const Color kCopper = Color(0xFFB68036); // Accent / progress
 
 // -----------------------------------------------------------------------------
 // MODELS & STATE MANAGEMENT
@@ -75,7 +82,6 @@ class ProfileScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final colorScheme = Theme.of(context).colorScheme;
     final userProfileNotifier = ref.watch(userProfileProvider);
     final userProfile = userProfileNotifier.value;
     final localizationAsync = ref.watch(localizationProvider);
@@ -87,7 +93,7 @@ class ProfileScreen extends ConsumerWidget {
         return Directionality(
           textDirection: localizationsAr.textDirection,
           child: Scaffold(
-            backgroundColor: colorScheme.surface,
+            backgroundColor: kOyster,
             body: CustomScrollView(
               physics: const BouncingScrollPhysics(),
               slivers: [
@@ -222,12 +228,12 @@ class _ProfileSliverAppBar extends StatelessWidget {
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     border: Border.all(
-                      color: colorScheme.primary.withValues(alpha: 0.5),
+                      color: kTruffle.withAlpha(128),
                       width: 2,
                     ),
                     boxShadow: [
                       BoxShadow(
-                        color: colorScheme.primary.withValues(alpha: 0.2),
+                        color: kTruffle.withAlpha(51),
                         blurRadius: 20,
                         spreadRadius: 5,
                       ),
@@ -238,7 +244,7 @@ class _ProfileSliverAppBar extends StatelessWidget {
                     backgroundImage: NetworkImage(
                       userProfile.imageUrl,
                     ), // Replace with asset if needed
-                    backgroundColor: colorScheme.surfaceContainerHighest,
+                    backgroundColor: Colors.white,
                   ),
                 ),
                 const SizedBox(height: 16),
@@ -265,9 +271,7 @@ class _ProfileSliverAppBar extends StatelessWidget {
                     vertical: 6,
                   ),
                   decoration: BoxDecoration(
-                    color: colorScheme.secondaryContainer.withValues(
-                      alpha: 0.5,
-                    ),
+                    color: kSand.withAlpha(128),
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: Text(
@@ -277,7 +281,7 @@ class _ProfileSliverAppBar extends StatelessWidget {
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 12,
-                      color: colorScheme.onSecondaryContainer,
+                      color: kTruffle.withAlpha(230),
                     ),
                   ),
                 ),
@@ -302,7 +306,7 @@ class _SectionHeader extends StatelessWidget {
         fontSize: 12,
         fontWeight: FontWeight.bold,
         letterSpacing: 1.5,
-        color: Theme.of(context).colorScheme.outline,
+        color: kSage,
       ),
     );
   }
@@ -367,12 +371,12 @@ class _SettingsSection extends ConsumerWidget {
                 leading: Container(
                   padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.primaryContainer,
+                    color: kSand,
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Icon(
                     isDark ? FontAwesomeIcons.moon : FontAwesomeIcons.sun,
-                    color: Theme.of(context).colorScheme.onPrimaryContainer,
+                    color: kTruffle,
                     size: 18,
                   ),
                 ),
@@ -443,14 +447,10 @@ class _SettingsTileState extends State<_SettingsTile> {
         leading: Container(
           padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
-            color: colorScheme.surfaceContainerHighest,
+            color: kOyster,
             borderRadius: BorderRadius.circular(10),
           ),
-          child: Icon(
-            widget.icon,
-            color: colorScheme.onSurfaceVariant,
-            size: 18,
-          ),
+          child: Icon(widget.icon, color: kTruffle, size: 18),
         ),
         title: Text(
           widget.title,
@@ -496,8 +496,8 @@ class _ActionButtons extends StatelessWidget {
           child: ElevatedButton.icon(
             onPressed: () {},
             style: ElevatedButton.styleFrom(
-              backgroundColor: Theme.of(context).colorScheme.errorContainer,
-              foregroundColor: Theme.of(context).colorScheme.onErrorContainer,
+              backgroundColor: kTerracotta,
+              foregroundColor: Colors.white,
               padding: const EdgeInsets.symmetric(vertical: 16),
               elevation: 0,
             ),
