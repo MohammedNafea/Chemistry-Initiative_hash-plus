@@ -9,18 +9,18 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFFDF7F5), // خلفية هادئة نفس الصورة
+      backgroundColor: const Color(0xFFF9F4EA), // خلفية هادئة نفس الصورة
       body: Center(
         child: SingleChildScrollView(
           child: Column(
             children: [
               // 1. الشعار والعنوان العلوي
               const CircleAvatar(
-                radius: 30,
-                backgroundColor: Colors.purpleAccent,
-                child: Icon(Icons.star_border, color: Colors.white, size: 40),
+                radius: 40,
+                backgroundColor: Color(0xFFF9F4EA),
+                child: Icon(Icons.biotech, color: Color(0xFF605F4B), size: 30),
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 4),
               const Text(
                 "عجائب",
                 style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
@@ -36,8 +36,8 @@ class LoginScreen extends StatelessWidget {
                 margin: const EdgeInsets.symmetric(horizontal: 20),
                 padding: const EdgeInsets.all(25),
                 decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(30),
+                  color: Color.fromARGB(255, 230, 218, 203),
+                  borderRadius: BorderRadius.circular(25),
                   boxShadow: [
                     BoxShadow(
                       color: Colors.black12,
