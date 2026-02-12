@@ -1,13 +1,15 @@
 import 'package:chemistry_initiative/splash_screen1.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+import 'package:chemistry_initiative/core/database/app_database.dart';
+import 'package:chemistry_initiative/core/theme/theme_controller.dart';
+import 'package:chemistry_initiative/features/auth/presentation/widgets/auth_guard.dart';
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await AppDatabase.instance.init();
 
   @override
   Widget build(BuildContext context) {
@@ -28,18 +30,12 @@ class MyApp extends StatelessWidget {
       home: const SplashScreen(),
     );
   }
+  runApp(const ProviderScope(child: MyApp()));
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
@@ -92,6 +88,20 @@ class _MyHomePageState extends State<MyHomePage> {
           BottomNavigationBarItem(icon: Icon(Icons.person), label: "حسابي"),
         ],
       ),
+    return ValueListenableBuilder<ThemeMode>(
+      valueListenable: themeNotifier,
+      builder: (context, mode, child) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'Chemistry Initiative',
+          theme: ThemeData(
+            colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          ),
+          darkTheme: ThemeData.dark(),
+          themeMode: mode,
+          home: const AuthGuard(),
+        );
+      },
     );
   }
 }

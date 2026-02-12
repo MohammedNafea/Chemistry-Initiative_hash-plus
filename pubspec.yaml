@@ -36,6 +36,15 @@ dependencies:
   cupertino_icons: ^1.0.8
   google_fonts: ^8.0.1
 
+  hive_flutter: ^1.1.0
+  hive: ^2.2.3
+  flutter_riverpod: any
+  font_awesome_flutter: any
+  image_picker: any
+  intl_phone_number_input: any
+  country_picker: any
+  state_notifier: any
+  riverpod: any
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -52,6 +61,10 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
+  assets:
+    - assets/images/
+
+
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
