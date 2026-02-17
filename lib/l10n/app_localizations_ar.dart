@@ -191,4 +191,55 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get auroraDescription =>
       'الشفق القطبي يحدث عندما تصطدم جسيمات مشحونة من الشمس بالغازات في الغلاف الجوي للأرض، مثل الأكسجين والنيتروجين. هذه الاصطدامات تثير الذرات والجزيئات وتمنحها طاقة إضافية.\n• الأكسجين على ارتفاع منخفض يعطي ضوءاً أخضر\n• الأكسجين على ارتفاع مرتفع يعطي ضوءاً أحمر\n• النيتروجين يعطي ألوان زرقاء وبنفسجية\n\nعندما تعود هذه الذرات إلى حالتها الطبيعية، تطلق الطاقة على شكل ضوء مرئي. هذه العملية هي سبب الألوان المذهلة للشفق، وهي مثال حي على تفاعل كيميائي وفيزيائي طبيعي يمكن ملاحظته في حياتنا اليومية.';
+
+  @override
+  String get wonders => 'عجائب';
+
+  @override
+  String get discoveryWorld => 'عالم من الاكتشافات في انتظارك';
+
+  @override
+  String get newAccount => 'حساب جديد';
+
+  @override
+  String get login => 'تسجيل الدخول';
+
+  @override
+  String get fullName => 'الاسم الكامل';
+
+  @override
+  String get password => 'كلمة المرور';
+
+  @override
+  String get confirmPassword => 'إعادة كلمة المرور';
+
+  @override
+  String get createAccount => 'إنشاء حساب';
+
+  @override
+  String get fillAllFields => 'يرجى ملء جميع الحقول';
+
+  @override
+  String get passwordsDoNotMatch => 'كلمة المرور غير متطابقة';
+
+  @override
+  String get accountCreated => 'تم إنشاء الحساب';
+
+  @override
+  String get enterEmailPassword => 'يرجى إدخال البريد وكلمة المرور';
+
+  @override
+  String get verifying => 'جاري التحقق...';
+
+  @override
+  String get invalidCredentials => 'بيانات الدخول غير صحيحة';
+
+  @override
+  String get or => 'أو';
+
+  @override
+  String get continueGoogle => 'متابعة مع جوجل';
+
+  @override
+  String get continueFacebook => 'متابعة مع فيسبوك';
 }

@@ -6,7 +6,7 @@ final localeProvider = NotifierProvider<LocaleNotifier, Locale>(LocaleNotifier.n
 class LocaleNotifier extends Notifier<Locale> {
   @override
   Locale build() {
-    return const Locale('en');
+    return const Locale('ar');
   }
 
   void setLocale(Locale locale) {

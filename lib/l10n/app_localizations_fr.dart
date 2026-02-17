@@ -9,45 +9,45 @@ class AppLocalizationsFr extends AppLocalizations {
   AppLocalizationsFr([String locale = 'fr']) : super(locale);
 
   @override
-  String get appTitle => 'Initiative Chimie';
+  String get appTitle => 'Chemistry Initiative';
 
   @override
-  String get home => 'Accueil';
+  String get home => 'Home';
 
   @override
-  String get search => 'Chercher';
+  String get search => 'Search';
 
   @override
-  String get bookmark => 'Marque-page';
+  String get bookmark => 'Bookmark';
 
   @override
-  String get profile => 'Profil';
+  String get profile => 'Profile';
 
   @override
   String welcomeUser(String name) {
-    return 'Bienvenue $name';
+    return 'Welcome $name';
   }
 
   @override
-  String get auroraTitle => 'Aurore Boréale';
+  String get auroraTitle => 'Aurora Borealis';
 
   @override
-  String get exploreMore => 'Explorer plus';
+  String get exploreMore => 'Explore More';
 
   @override
-  String get yourProgress => 'Votre Progrès';
+  String get yourProgress => 'Your Progress';
 
   @override
   String get natureSection => 'Nature';
 
   @override
-  String get waterAirSection => 'Eau et Air';
+  String get waterAirSection => 'Water & Air';
 
   @override
-  String get dailyLifeSection => 'Vie Quotidienne';
+  String get dailyLifeSection => 'Daily Life';
 
   @override
-  String get welcomeMessage => 'Bienvenue aux Merveilles de la Chimie';
+  String get welcomeMessage => 'Welcome to Chemistry Wonders';
 
   @override
   String get contactInfo => 'Contact Info';
@@ -191,4 +191,55 @@ class AppLocalizationsFr extends AppLocalizations {
   @override
   String get auroraDescription =>
       'The Aurora Borealis occurs when charged particles from the sun collide with gases in the Earth\'s atmosphere, such as oxygen and nitrogen. These collisions excite atoms and molecules, giving them extra energy.\n• Oxygen at low altitude gives off green light\n• Oxygen at high altitude gives off red light\n• Nitrogen gives off blue and purple colors\n\nWhen these atoms return to their normal state, they release energy in the form of visible light. This process is the cause of the stunning colors of the aurora, a vivid example of a natural chemical and physical reaction observable in our daily lives.';
+
+  @override
+  String get wonders => 'Wonders';
+
+  @override
+  String get discoveryWorld => 'A world of discoveries awaits you';
+
+  @override
+  String get newAccount => 'New Account';
+
+  @override
+  String get login => 'Login';
+
+  @override
+  String get fullName => 'Full Name';
+
+  @override
+  String get password => 'Password';
+
+  @override
+  String get confirmPassword => 'Confirm Password';
+
+  @override
+  String get createAccount => 'Create Account';
+
+  @override
+  String get fillAllFields => 'Please fill all fields';
+
+  @override
+  String get passwordsDoNotMatch => 'Passwords do not match';
+
+  @override
+  String get accountCreated => 'Account Created';
+
+  @override
+  String get enterEmailPassword => 'Enter email and password';
+
+  @override
+  String get verifying => 'Verifying...';
+
+  @override
+  String get invalidCredentials => 'Invalid credentials';
+
+  @override
+  String get or => 'Or';
+
+  @override
+  String get continueGoogle => 'Continue with Google';
+
+  @override
+  String get continueFacebook => 'Continue with Facebook';
 }

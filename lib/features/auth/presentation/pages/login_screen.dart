@@ -5,6 +5,8 @@ import 'package:chemistry_initiative/shared/widgets/custom_button.dart';
 import 'package:chemistry_initiative/shared/widgets/custom_textfield.dart';
 import 'package:chemistry_initiative/features/auth/data/auth_repository.dart';
 import 'package:chemistry_initiative/features/auth/data/current_user_provider.dart';
+import 'package:chemistry_initiative/core/localization/language_switcher.dart';
+import 'package:chemistry_initiative/l10n/app_localizations.dart';
 
 class LoginScreen extends ConsumerStatefulWidget {
   const LoginScreen({super.key});
@@ -35,6 +37,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     final isLight = Theme.of(context).brightness == Brightness.light;
+    final localizations = AppLocalizations.of(context)!;
+
     return Scaffold(
       backgroundColor: isLight ? const Color(0xFFFDF7F5) : Theme.of(context).scaffoldBackgroundColor,
       body: Center(
@@ -42,18 +46,22 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
           child: Column(
             children: [
               const SizedBox(height: 12),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  IconButton(
-                    icon: Icon(Icons.brightness_6, color: Theme.of(context).iconTheme.color),
-                    onPressed: () {
-                      themeNotifier.value = themeNotifier.value == ThemeMode.light
-                          ? ThemeMode.dark
-                          : ThemeMode.light;
-                    },
-                  ),
-                ],
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const LanguageSwitcher(),
+                    IconButton(
+                      icon: Icon(Icons.brightness_6, color: Theme.of(context).iconTheme.color),
+                      onPressed: () {
+                        themeNotifier.value = themeNotifier.value == ThemeMode.light
+                            ? ThemeMode.dark
+                            : ThemeMode.light;
+                      },
+                    ),
+                  ],
+                ),
               ),
               const CircleAvatar(
                 radius: 30,
@@ -61,13 +69,13 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                 child: Icon(Icons.star_border, color: Colors.white, size: 40),
               ),
               const SizedBox(height: 10),
-              const Text(
-                "عجائب",
-                style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+              Text(
+                localizations.wonders,
+                style: const TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
               ),
-              const Text(
-                "عالم من الاكتشافات في انتظارك",
-                style: TextStyle(color: Colors.grey),
+              Text(
+                localizations.discoveryWorld,
+                style: const TextStyle(color: Colors.grey),
               ),
               const SizedBox(height: 30),
 
@@ -77,7 +85,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                 decoration: BoxDecoration(
                   color: isLight ? Colors.white : Theme.of(context).cardColor,
                   borderRadius: BorderRadius.circular(30),
-                  boxShadow: [
+                  boxShadow: const [
                     BoxShadow(
                       color: Colors.black12,
                       blurRadius: 15,
@@ -107,7 +115,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                                   child: Padding(
                                     padding: const EdgeInsets.all(6),
                                     child: Text(
-                                      "حساب جديد",
+                                      localizations.newAccount,
                                       style: TextStyle(
                                         color: _isSignup ? Theme.of(context).textTheme.bodyLarge?.color : Colors.grey,
                                         fontWeight: _isSignup ? FontWeight.bold : FontWeight.normal,
@@ -131,7 +139,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                                   child: Padding(
                                     padding: const EdgeInsets.all(6),
                                     child: Text(
-                                      "تسجيل الدخول",
+                                      localizations.login,
                                       style: TextStyle(
                                         color: !_isSignup ? Theme.of(context).textTheme.bodyLarge?.color : Colors.grey,
                                         fontWeight: !_isSignup ? FontWeight.bold : FontWeight.normal,
@@ -153,20 +161,20 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
                           if (_isSignup) ...[
-                            const Align(
+                            Align(
                               alignment: Alignment.centerRight,
-                              child: Text('الاسم الكامل', style: TextStyle(fontWeight: FontWeight.bold)),
+                              child: Text(localizations.fullName, style: const TextStyle(fontWeight: FontWeight.bold)),
                             ),
                             const SizedBox(height: 8),
-                            CustomTextfield(hintText: 'الاسم الكامل', controller: _nameCtrl),
+                            CustomTextfield(hintText: localizations.fullName, controller: _nameCtrl),
                             const SizedBox(height: 12),
                           ],
 
-                          const Align(
+                          Align(
                             alignment: Alignment.centerRight,
                             child: Text(
-                              "البريد الإلكتروني",
-                              style: TextStyle(fontWeight: FontWeight.bold),
+                              localizations.email,
+                              style: const TextStyle(fontWeight: FontWeight.bold),
                             ),
                           ),
                           const SizedBox(height: 8),
@@ -174,11 +182,11 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
 
                           const SizedBox(height: 12),
 
-                          const Align(
+                          Align(
                             alignment: Alignment.centerRight,
                             child: Text(
-                              "كلمة المرور",
-                              style: TextStyle(fontWeight: FontWeight.bold),
+                              localizations.password,
+                              style: const TextStyle(fontWeight: FontWeight.bold),
                             ),
                           ),
                           const SizedBox(height: 8),
@@ -190,9 +198,9 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
 
                           if (_isSignup) ...[
                             const SizedBox(height: 12),
-                            const Align(
+                            Align(
                               alignment: Alignment.centerRight,
-                              child: Text('إعادة كلمة المرور', style: TextStyle(fontWeight: FontWeight.bold)),
+                              child: Text(localizations.confirmPassword, style: const TextStyle(fontWeight: FontWeight.bold)),
                             ),
                             const SizedBox(height: 8),
                             CustomTextfield(hintText: '********', isPassword: true, controller: _confirmCtrl),
@@ -201,7 +209,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                           const SizedBox(height: 18),
 
                           CustomButton(
-                            text: _isSignup ? 'إنشاء حساب' : 'تسجيل الدخول',
+                            text: _isSignup ? localizations.createAccount : localizations.login,
                             onTap: () async {
                               final email = _emailCtrl.text.trim();
                               final pass = _passCtrl.text;
@@ -211,11 +219,11 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                                 final name = _nameCtrl.text.trim();
                                 final confirm = _confirmCtrl.text;
                                 if (name.isEmpty || email.isEmpty || pass.isEmpty || confirm.isEmpty) {
-                                  messenger.showSnackBar(const SnackBar(content: Text('يرجى ملء جميع الحقول')));
+                                  messenger.showSnackBar(SnackBar(content: Text(localizations.fillAllFields)));
                                   return;
                                 }
                                 if (pass != confirm) {
-                                  messenger.showSnackBar(const SnackBar(content: Text('كلمة المرور غير متطابقة')));
+                                  messenger.showSnackBar(SnackBar(content: Text(localizations.passwordsDoNotMatch)));
                                   return;
                                 }
                                 final err = await _authRepo.registerUser(name, email, pass);
@@ -224,20 +232,20 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                                   messenger.showSnackBar(SnackBar(content: Text(err)));
                                   return;
                                 }
-                                messenger.showSnackBar(const SnackBar(content: Text('تم إنشاء الحساب')));
+                                messenger.showSnackBar(SnackBar(content: Text(localizations.accountCreated)));
                                 setState(() => _isSignup = false);
                                 return;
                               }
 
                               if (email.isEmpty || pass.isEmpty) {
-                                messenger.showSnackBar(const SnackBar(content: Text('يرجى إدخال البريد وكلمة المرور')));
+                                messenger.showSnackBar(SnackBar(content: Text(localizations.enterEmailPassword)));
                                 return;
                               }
-                              messenger.showSnackBar(const SnackBar(content: Text('جاري التحقق...')));
+                              messenger.showSnackBar(SnackBar(content: Text(localizations.verifying)));
                               final ok = await _authRepo.loginUser(email, pass);
                               if (!mounted) return;
                               if (!ok) {
-                                messenger.showSnackBar(const SnackBar(content: Text('بيانات الدخول غير صحيحة')));
+                                messenger.showSnackBar(SnackBar(content: Text(localizations.invalidCredentials)));
                                 return;
                               }
                               ref.read(currentUserNotifierProvider.notifier).refresh();
@@ -252,12 +260,12 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
               ),
 
               const SizedBox(height: 20),
-              const Center(child: Text('أو', style: TextStyle(color: Colors.grey))),
+              Center(child: Text(localizations.or, style: const TextStyle(color: Colors.grey))),
               const SizedBox(height: 12),
 
-              socialButton("متابعة مع جوجل", Icons.g_mobiledata, Colors.red),
+              socialButton(localizations.continueGoogle, Icons.g_mobiledata, Colors.red),
               const SizedBox(height: 10),
-              socialButton("متابعة مع فيسبوك", Icons.facebook, Colors.blue),
+              socialButton(localizations.continueFacebook, Icons.facebook, Colors.blue),
             ],
           ),
         ),

@@ -12,6 +12,7 @@ import 'package:chemistry_initiative/features/auth/data/auth_repository.dart';
 import 'package:chemistry_initiative/features/auth/data/current_user_provider.dart';
 import 'package:chemistry_initiative/features/profile/data/profile_repository.dart';
 import 'package:chemistry_initiative/features/profile/presentation/pages/edit_profile_screen.dart';
+import 'package:chemistry_initiative/core/localization/language_switcher.dart';
 
 class ProfileScreen extends ConsumerWidget {
   const ProfileScreen({super.key});
@@ -428,6 +429,30 @@ class _SettingsSection extends ConsumerWidget {
               ),
             );
           },
+        ),
+        const SizedBox(height: 12),
+        Card(
+          margin: EdgeInsets.zero,
+          child: ListTile(
+            leading: Container(
+              padding: const EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                color: Theme.of(context).brightness == Brightness.dark
+                    ? const Color(0xFF2A2831)
+                    : AppColors.oyster,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Icon(
+                Icons.language,
+                color: Theme.of(context).brightness == Brightness.dark
+                    ? Colors.white
+                    : AppColors.truffle,
+                size: 18,
+              ),
+            ),
+            title: Text(localizations.language),
+            trailing: const LanguageSwitcher(),
+          ),
         ),
         const SizedBox(height: 12),
         _SettingsTile(

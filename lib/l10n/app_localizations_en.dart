@@ -191,4 +191,55 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get auroraDescription =>
       'The Aurora Borealis occurs when charged particles from the sun collide with gases in the Earth\'s atmosphere, such as oxygen and nitrogen. These collisions excite atoms and molecules, giving them extra energy.\n• Oxygen at low altitude gives off green light\n• Oxygen at high altitude gives off red light\n• Nitrogen gives off blue and purple colors\n\nWhen these atoms return to their normal state, they release energy in the form of visible light. This process is the cause of the stunning colors of the aurora, a vivid example of a natural chemical and physical reaction observable in our daily lives.';
+
+  @override
+  String get wonders => 'Wonders';
+
+  @override
+  String get discoveryWorld => 'A world of discoveries awaits you';
+
+  @override
+  String get newAccount => 'New Account';
+
+  @override
+  String get login => 'Login';
+
+  @override
+  String get fullName => 'Full Name';
+
+  @override
+  String get password => 'Password';
+
+  @override
+  String get confirmPassword => 'Confirm Password';
+
+  @override
+  String get createAccount => 'Create Account';
+
+  @override
+  String get fillAllFields => 'Please fill all fields';
+
+  @override
+  String get passwordsDoNotMatch => 'Passwords do not match';
+
+  @override
+  String get accountCreated => 'Account Created';
+
+  @override
+  String get enterEmailPassword => 'Enter email and password';
+
+  @override
+  String get verifying => 'Verifying...';
+
+  @override
+  String get invalidCredentials => 'Invalid credentials';
+
+  @override
+  String get or => 'Or';
+
+  @override
+  String get continueGoogle => 'Continue with Google';
+
+  @override
+  String get continueFacebook => 'Continue with Facebook';
 }
