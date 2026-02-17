@@ -9,237 +9,237 @@ class AppLocalizationsFa extends AppLocalizations {
   AppLocalizationsFa([String locale = 'fa']) : super(locale);
 
   @override
-  String get appTitle => 'Chemistry Initiative';
+  String get appTitle => 'ابتکار شیمی';
 
   @override
-  String get home => 'Home';
+  String get home => 'خانه';
 
   @override
-  String get search => 'Search';
+  String get search => 'جستجو';
 
   @override
-  String get bookmark => 'Bookmark';
+  String get bookmark => 'نشان‌گذاری';
 
   @override
-  String get profile => 'Profile';
+  String get profile => 'پروفایل';
 
   @override
   String welcomeUser(String name) {
-    return 'Welcome $name';
+    return 'خوش آمدید $name';
   }
 
   @override
-  String get auroraTitle => 'Aurora Borealis';
+  String get auroraTitle => 'شفق قطبی';
 
   @override
-  String get exploreMore => 'Explore More';
+  String get exploreMore => 'کاوش بیشتر';
 
   @override
-  String get yourProgress => 'Your Progress';
+  String get yourProgress => 'پیشرفت شما';
 
   @override
-  String get natureSection => 'Nature';
+  String get natureSection => 'طبیعت';
 
   @override
-  String get waterAirSection => 'Water & Air';
+  String get waterAirSection => 'آب و هوا';
 
   @override
-  String get dailyLifeSection => 'Daily Life';
+  String get dailyLifeSection => 'زندگی روزمره';
 
   @override
-  String get welcomeMessage => 'Welcome to Chemistry Wonders';
+  String get welcomeMessage => 'به شگفتی‌های شیمی خوش آمدید';
 
   @override
-  String get contactInfo => 'Contact Info';
+  String get contactInfo => 'اطلاعات تماس';
 
   @override
-  String get settings => 'Settings';
+  String get settings => 'تنظیمات';
 
   @override
-  String get editProfile => 'Edit Profile';
+  String get editProfile => 'ویرایش پروفایل';
 
   @override
-  String get save => 'Save';
+  String get save => 'ذخیره';
 
   @override
-  String get email => 'Email';
+  String get email => 'ایمیل';
 
   @override
-  String get phone => 'Phone';
+  String get phone => 'تلفن';
 
   @override
-  String get location => 'Location';
+  String get location => 'مکان';
 
   @override
-  String get theme => 'Theme';
+  String get theme => 'تم';
 
   @override
-  String get language => 'Language';
+  String get language => 'زبان';
 
   @override
-  String get notifications => 'Notifications';
+  String get notifications => 'اعلان‌ها';
 
   @override
-  String get privacySecurity => 'Privacy & Security';
+  String get privacySecurity => 'حریم خصوصی و امنیت';
 
   @override
-  String get helpSupport => 'Help & Support';
+  String get helpSupport => 'کمک و پشتیبانی';
 
   @override
-  String get logout => 'Logout';
+  String get logout => 'خروج';
 
   @override
-  String get burningGas => 'Burning Gas';
+  String get burningGas => 'سوختن گاز';
 
   @override
-  String get forests => 'Forests';
+  String get forests => 'جنگل‌ها';
 
   @override
-  String get coalBurning => 'Coal Burning';
+  String get coalBurning => 'سوختن زغال‌سنگ';
 
   @override
-  String get rocks => 'Rocks';
+  String get rocks => 'سنگ‌ها';
 
   @override
-  String get solutionAbsorption => 'Solution Absorption';
+  String get solutionAbsorption => 'جذب محلول';
 
   @override
-  String get rainDrops => 'Rain Drops';
+  String get rainDrops => 'قطرات باران';
 
   @override
-  String get factorySmoke => 'Factory Smoke';
+  String get factorySmoke => 'دود کارخانه';
 
   @override
-  String get crystal => 'Crystal';
+  String get crystal => 'کریستال';
 
   @override
-  String get breadFermentation => 'Bread Fermentation';
+  String get breadFermentation => 'تخمیر نان';
 
   @override
-  String get medicalLabs => 'Medical Labs';
+  String get medicalLabs => 'آزمایشگاه‌های پزشکی';
 
   @override
-  String get medicines => 'Medicines';
+  String get medicines => 'داروها';
 
   @override
-  String get combustion => 'Combustion';
+  String get combustion => 'احتراق';
 
   @override
-  String get welcome => 'Welcome';
+  String get welcome => 'خوش آمدید';
 
   @override
-  String get user => 'User';
+  String get user => 'کاربر';
 
   @override
-  String get auroraBorealis => 'Aurora Borealis';
+  String get auroraBorealis => 'شفق قطبی';
 
   @override
-  String get nature => 'Nature';
+  String get nature => 'طبیعت';
 
   @override
-  String get waterAndAir => 'Water & Air';
+  String get waterAndAir => 'آب و هوا';
 
   @override
-  String get dailyLife => 'Daily Life';
+  String get dailyLife => 'زندگی روزمره';
 
   @override
-  String get searchPlaceholder => 'Search for a topic...';
+  String get searchPlaceholder => 'جستجوی موضوع...';
 
   @override
-  String get noResults => 'No results found';
+  String get noResults => 'نتیجه‌ای یافت نشد';
 
   @override
-  String get noSavedTopics => 'No saved topics';
+  String get noSavedTopics => 'موضوع ذخیره شده‌ای نیست';
 
   @override
-  String get saveYourFavorites => 'Save your favorite topics';
+  String get saveYourFavorites => 'موضوعات مورد علاقه خود را ذخیره کنید';
 
   @override
-  String get savedTopics => 'Saved Topics';
+  String get savedTopics => 'موضوعات ذخیره شده';
 
   @override
-  String get saved => 'Saved';
+  String get saved => 'ذخیره شد';
 
   @override
-  String get bookmarks => 'Bookmarks';
+  String get bookmarks => 'نشان‌ها';
 
   @override
-  String get topicDeleted => 'Topic deleted';
+  String get topicDeleted => 'موضوع حذف شد';
 
   @override
-  String get backToHome => 'Back to Home';
+  String get backToHome => 'بازگشت به خانه';
 
   @override
-  String get addToBookmarks => 'Add to Bookmarks';
+  String get addToBookmarks => 'افزودن به نشان‌ها';
 
   @override
-  String get addedToBookmarks => 'Added to Bookmarks';
+  String get addedToBookmarks => 'به نشان‌ها اضافه شد';
 
   @override
-  String get name => 'Name';
+  String get name => 'نام';
 
   @override
-  String get bio => 'Bio';
+  String get bio => 'بیوگرافی';
 
   @override
-  String get profileUpdated => 'Profile Updated Successfully';
+  String get profileUpdated => 'پروفایل با موفقیت بروز شد';
 
   @override
   String get auroraQuestion =>
-      'Have you ever wondered why the sky sparkles with the colors of the Aurora Borealis?';
+      'آیا تا به حال فکر کرده‌اید چرا آسمان با رنگ‌های شفق قطبی می‌درخشد؟';
 
   @override
   String get auroraDescription =>
-      'The Aurora Borealis occurs when charged particles from the sun collide with gases in the Earth\'s atmosphere, such as oxygen and nitrogen. These collisions excite atoms and molecules, giving them extra energy.\n• Oxygen at low altitude gives off green light\n• Oxygen at high altitude gives off red light\n• Nitrogen gives off blue and purple colors\n\nWhen these atoms return to their normal state, they release energy in the form of visible light. This process is the cause of the stunning colors of the aurora, a vivid example of a natural chemical and physical reaction observable in our daily lives.';
+      'شفق قطبی زمانی رخ می‌دهد که ذرات باردار خورشید با گازهای جو زمین مانند اکسیژن و نیتروژن برخورد می‌کنند. این برخوردها اتم‌ها و مولکول‌ها را برانگیخته و به آنها انرژی اضافی می‌دهند.\n• اکسیژن در ارتفاع پایین نور سبز ساطع می‌کند\n• اکسیژن در ارتفاع بالا نور قرمز ساطع می‌کند\n• نیتروژن رنگ‌های آبی و بنفش ساطع می‌کند\n\nوقتی این اتم‌ها به حالت عادی خود بازمی‌گردند، انرژی را به صورت نور مرئی آزاد می‌کنند. این فرآیند علت رنگ‌های خیره‌کننده شفق است، نمونه‌ای زنده از یک واکنش شیمیایی و فیزیکی طبیعی که در زندگی روزمره ما قابل مشاهده است.';
 
   @override
-  String get wonders => 'Wonders';
+  String get wonders => 'شگفتی‌ها';
 
   @override
-  String get discoveryWorld => 'A world of discoveries awaits you';
+  String get discoveryWorld => 'دنیایی از اکتشافات در انتظار شماست';
 
   @override
-  String get newAccount => 'New Account';
+  String get newAccount => 'حساب جدید';
 
   @override
-  String get login => 'Login';
+  String get login => 'ورود';
 
   @override
-  String get fullName => 'Full Name';
+  String get fullName => 'نام کامل';
 
   @override
-  String get password => 'Password';
+  String get password => 'رمز عبور';
 
   @override
-  String get confirmPassword => 'Confirm Password';
+  String get confirmPassword => 'تایید رمز عبور';
 
   @override
-  String get createAccount => 'Create Account';
+  String get createAccount => 'ایجاد حساب';
 
   @override
-  String get fillAllFields => 'Please fill all fields';
+  String get fillAllFields => 'لطفا تمام فیلدها را پر کنید';
 
   @override
-  String get passwordsDoNotMatch => 'Passwords do not match';
+  String get passwordsDoNotMatch => 'رمزهای عبور مطابقت ندارند';
 
   @override
-  String get accountCreated => 'Account Created';
+  String get accountCreated => 'حساب ایجاد شد';
 
   @override
-  String get enterEmailPassword => 'Enter email and password';
+  String get enterEmailPassword => 'ایمیل و رمز عبور را وارد کنید';
 
   @override
-  String get verifying => 'Verifying...';
+  String get verifying => 'در حال بررسی...';
 
   @override
-  String get invalidCredentials => 'Invalid credentials';
+  String get invalidCredentials => 'اطلاعات نامعتبر است';
 
   @override
-  String get or => 'Or';
+  String get or => 'یا';
 
   @override
-  String get continueGoogle => 'Continue with Google';
+  String get continueGoogle => 'ادامه با گوگل';
 
   @override
-  String get continueFacebook => 'Continue with Facebook';
+  String get continueFacebook => 'ادامه با فیسبوک';
 }

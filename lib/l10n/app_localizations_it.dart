@@ -9,237 +9,237 @@ class AppLocalizationsIt extends AppLocalizations {
   AppLocalizationsIt([String locale = 'it']) : super(locale);
 
   @override
-  String get appTitle => 'Chemistry Initiative';
+  String get appTitle => 'Iniziativa Chimica';
 
   @override
   String get home => 'Home';
 
   @override
-  String get search => 'Search';
+  String get search => 'Cerca';
 
   @override
-  String get bookmark => 'Bookmark';
+  String get bookmark => 'Segnalibro';
 
   @override
-  String get profile => 'Profile';
+  String get profile => 'Profilo';
 
   @override
   String welcomeUser(String name) {
-    return 'Welcome $name';
+    return 'Benvenuto $name';
   }
 
   @override
-  String get auroraTitle => 'Aurora Borealis';
+  String get auroraTitle => 'Aurora Boreale';
 
   @override
-  String get exploreMore => 'Explore More';
+  String get exploreMore => 'Esplora di Più';
 
   @override
-  String get yourProgress => 'Your Progress';
+  String get yourProgress => 'Tuoi Progressi';
 
   @override
-  String get natureSection => 'Nature';
+  String get natureSection => 'Natura';
 
   @override
-  String get waterAirSection => 'Water & Air';
+  String get waterAirSection => 'Acqua e Aria';
 
   @override
-  String get dailyLifeSection => 'Daily Life';
+  String get dailyLifeSection => 'Vita Quotidiana';
 
   @override
-  String get welcomeMessage => 'Welcome to Chemistry Wonders';
+  String get welcomeMessage => 'Benvenuto alle Meraviglie della Chimica';
 
   @override
-  String get contactInfo => 'Contact Info';
+  String get contactInfo => 'Info Contatto';
 
   @override
-  String get settings => 'Settings';
+  String get settings => 'Impostazioni';
 
   @override
-  String get editProfile => 'Edit Profile';
+  String get editProfile => 'Modifica Profilo';
 
   @override
-  String get save => 'Save';
+  String get save => 'Salva';
 
   @override
   String get email => 'Email';
 
   @override
-  String get phone => 'Phone';
+  String get phone => 'Telefono';
 
   @override
-  String get location => 'Location';
+  String get location => 'Posizione';
 
   @override
-  String get theme => 'Theme';
+  String get theme => 'Tema';
 
   @override
-  String get language => 'Language';
+  String get language => 'Lingua';
 
   @override
-  String get notifications => 'Notifications';
+  String get notifications => 'Notifiche';
 
   @override
-  String get privacySecurity => 'Privacy & Security';
+  String get privacySecurity => 'Privacy e Sicurezza';
 
   @override
-  String get helpSupport => 'Help & Support';
+  String get helpSupport => 'Aiuto e Supporto';
 
   @override
-  String get logout => 'Logout';
+  String get logout => 'Disconnetti';
 
   @override
-  String get burningGas => 'Burning Gas';
+  String get burningGas => 'Gas Bruciato';
 
   @override
-  String get forests => 'Forests';
+  String get forests => 'Foreste';
 
   @override
-  String get coalBurning => 'Coal Burning';
+  String get coalBurning => 'Carbone Bruciato';
 
   @override
-  String get rocks => 'Rocks';
+  String get rocks => 'Rocce';
 
   @override
-  String get solutionAbsorption => 'Solution Absorption';
+  String get solutionAbsorption => 'Assorbimento Soluzione';
 
   @override
-  String get rainDrops => 'Rain Drops';
+  String get rainDrops => 'Gocce di Pioggia';
 
   @override
-  String get factorySmoke => 'Factory Smoke';
+  String get factorySmoke => 'Fumo di Fabbrica';
 
   @override
-  String get crystal => 'Crystal';
+  String get crystal => 'Cristallo';
 
   @override
-  String get breadFermentation => 'Bread Fermentation';
+  String get breadFermentation => 'Fermentazione del Pane';
 
   @override
-  String get medicalLabs => 'Medical Labs';
+  String get medicalLabs => 'Laboratori Medici';
 
   @override
-  String get medicines => 'Medicines';
+  String get medicines => 'Farmaci';
 
   @override
-  String get combustion => 'Combustion';
+  String get combustion => 'Combustione';
 
   @override
-  String get welcome => 'Welcome';
+  String get welcome => 'Benvenuto';
 
   @override
-  String get user => 'User';
+  String get user => 'Utente';
 
   @override
-  String get auroraBorealis => 'Aurora Borealis';
+  String get auroraBorealis => 'Aurora Boreale';
 
   @override
-  String get nature => 'Nature';
+  String get nature => 'Natura';
 
   @override
-  String get waterAndAir => 'Water & Air';
+  String get waterAndAir => 'Acqua e Aria';
 
   @override
-  String get dailyLife => 'Daily Life';
+  String get dailyLife => 'Vita Quotidiana';
 
   @override
-  String get searchPlaceholder => 'Search for a topic...';
+  String get searchPlaceholder => 'Cerca un argomento...';
 
   @override
-  String get noResults => 'No results found';
+  String get noResults => 'Nessun risultato trovato';
 
   @override
-  String get noSavedTopics => 'No saved topics';
+  String get noSavedTopics => 'Nessun argomento salvato';
 
   @override
-  String get saveYourFavorites => 'Save your favorite topics';
+  String get saveYourFavorites => 'Salva i tuoi argomenti preferiti';
 
   @override
-  String get savedTopics => 'Saved Topics';
+  String get savedTopics => 'Argomenti Salvati';
 
   @override
-  String get saved => 'Saved';
+  String get saved => 'Salvato';
 
   @override
-  String get bookmarks => 'Bookmarks';
+  String get bookmarks => 'Segnalibri';
 
   @override
-  String get topicDeleted => 'Topic deleted';
+  String get topicDeleted => 'Argomento eliminato';
 
   @override
-  String get backToHome => 'Back to Home';
+  String get backToHome => 'Torna alla Home';
 
   @override
-  String get addToBookmarks => 'Add to Bookmarks';
+  String get addToBookmarks => 'Aggiungi ai Segnalibri';
 
   @override
-  String get addedToBookmarks => 'Added to Bookmarks';
+  String get addedToBookmarks => 'Aggiunto ai Segnalibri';
 
   @override
-  String get name => 'Name';
+  String get name => 'Nome';
 
   @override
-  String get bio => 'Bio';
+  String get bio => 'Biografia';
 
   @override
-  String get profileUpdated => 'Profile Updated Successfully';
+  String get profileUpdated => 'Profilo Aggiornato con Successo';
 
   @override
   String get auroraQuestion =>
-      'Have you ever wondered why the sky sparkles with the colors of the Aurora Borealis?';
+      'Ti sei mai chiesto perché il cielo brilla con i colori dell\'Aurora Boreale?';
 
   @override
   String get auroraDescription =>
-      'The Aurora Borealis occurs when charged particles from the sun collide with gases in the Earth\'s atmosphere, such as oxygen and nitrogen. These collisions excite atoms and molecules, giving them extra energy.\n• Oxygen at low altitude gives off green light\n• Oxygen at high altitude gives off red light\n• Nitrogen gives off blue and purple colors\n\nWhen these atoms return to their normal state, they release energy in the form of visible light. This process is the cause of the stunning colors of the aurora, a vivid example of a natural chemical and physical reaction observable in our daily lives.';
+      'L\'Aurora Boreale si verifica quando le particelle cariche dal sole collidono con i gas nell\'atmosfera terrestre, come ossigeno e azoto. Queste collisioni eccitano atomi e molecole, dando loro energia extra.\n• L\'ossigeno a bassa quota emette luce verde\n• L\'ossigeno ad alta quota emette luce rossa\n• L\'azoto emette colori blu e viola\n\nQuando questi atomi tornano al loro stato normale, rilasciano energia sotto forma di luce visibile. Questo processo è la causa dei colori sbalorditivi dell\'aurora, un vivido esempio di una reazione chimica e fisica naturale osservabile nella nostra vita quotidiana.';
 
   @override
-  String get wonders => 'Wonders';
+  String get wonders => 'Meraviglie';
 
   @override
-  String get discoveryWorld => 'A world of discoveries awaits you';
+  String get discoveryWorld => 'Un mondo di scoperte ti attende';
 
   @override
-  String get newAccount => 'New Account';
+  String get newAccount => 'Nuovo Account';
 
   @override
-  String get login => 'Login';
+  String get login => 'Accedi';
 
   @override
-  String get fullName => 'Full Name';
+  String get fullName => 'Nome Completo';
 
   @override
   String get password => 'Password';
 
   @override
-  String get confirmPassword => 'Confirm Password';
+  String get confirmPassword => 'Conferma Password';
 
   @override
-  String get createAccount => 'Create Account';
+  String get createAccount => 'Crea Account';
 
   @override
-  String get fillAllFields => 'Please fill all fields';
+  String get fillAllFields => 'Per favore compila tutti i campi';
 
   @override
-  String get passwordsDoNotMatch => 'Passwords do not match';
+  String get passwordsDoNotMatch => 'Le password non corrispondono';
 
   @override
-  String get accountCreated => 'Account Created';
+  String get accountCreated => 'Account Creato';
 
   @override
-  String get enterEmailPassword => 'Enter email and password';
+  String get enterEmailPassword => 'Inserisci email e password';
 
   @override
-  String get verifying => 'Verifying...';
+  String get verifying => 'Verifica in corso...';
 
   @override
-  String get invalidCredentials => 'Invalid credentials';
+  String get invalidCredentials => 'Credenziali non valide';
 
   @override
-  String get or => 'Or';
+  String get or => 'O';
 
   @override
-  String get continueGoogle => 'Continue with Google';
+  String get continueGoogle => 'Continua con Google';
 
   @override
-  String get continueFacebook => 'Continue with Facebook';
+  String get continueFacebook => 'Continua con Facebook';
 }

@@ -9,237 +9,236 @@ class AppLocalizationsJa extends AppLocalizations {
   AppLocalizationsJa([String locale = 'ja']) : super(locale);
 
   @override
-  String get appTitle => 'Chemistry Initiative';
+  String get appTitle => '化学イニシアティブ';
 
   @override
-  String get home => 'Home';
+  String get home => 'ホーム';
 
   @override
-  String get search => 'Search';
+  String get search => '検索';
 
   @override
-  String get bookmark => 'Bookmark';
+  String get bookmark => 'ブックマーク';
 
   @override
-  String get profile => 'Profile';
+  String get profile => 'プロフィール';
 
   @override
   String welcomeUser(String name) {
-    return 'Welcome $name';
+    return 'ようこそ $name';
   }
 
   @override
-  String get auroraTitle => 'Aurora Borealis';
+  String get auroraTitle => 'オーロラ';
 
   @override
-  String get exploreMore => 'Explore More';
+  String get exploreMore => 'もっと見る';
 
   @override
-  String get yourProgress => 'Your Progress';
+  String get yourProgress => 'あなたの進捗';
 
   @override
-  String get natureSection => 'Nature';
+  String get natureSection => '自然';
 
   @override
-  String get waterAirSection => 'Water & Air';
+  String get waterAirSection => '水と空気';
 
   @override
-  String get dailyLifeSection => 'Daily Life';
+  String get dailyLifeSection => '日常生活';
 
   @override
-  String get welcomeMessage => 'Welcome to Chemistry Wonders';
+  String get welcomeMessage => '化学の驚異へようこそ';
 
   @override
-  String get contactInfo => 'Contact Info';
+  String get contactInfo => '連絡先情報';
 
   @override
-  String get settings => 'Settings';
+  String get settings => '設定';
 
   @override
-  String get editProfile => 'Edit Profile';
+  String get editProfile => 'プロフィール編集';
 
   @override
-  String get save => 'Save';
+  String get save => '保存';
 
   @override
-  String get email => 'Email';
+  String get email => 'メール';
 
   @override
-  String get phone => 'Phone';
+  String get phone => '電話番号';
 
   @override
-  String get location => 'Location';
+  String get location => '場所';
 
   @override
-  String get theme => 'Theme';
+  String get theme => 'テーマ';
 
   @override
-  String get language => 'Language';
+  String get language => '言語';
 
   @override
-  String get notifications => 'Notifications';
+  String get notifications => '通知';
 
   @override
-  String get privacySecurity => 'Privacy & Security';
+  String get privacySecurity => 'プライバシーとセキュリティ';
 
   @override
-  String get helpSupport => 'Help & Support';
+  String get helpSupport => 'ヘルプとサポート';
 
   @override
-  String get logout => 'Logout';
+  String get logout => 'ログアウト';
 
   @override
-  String get burningGas => 'Burning Gas';
+  String get burningGas => 'ガスの燃焼';
 
   @override
-  String get forests => 'Forests';
+  String get forests => '森林';
 
   @override
-  String get coalBurning => 'Coal Burning';
+  String get coalBurning => '石炭の燃焼';
 
   @override
-  String get rocks => 'Rocks';
+  String get rocks => '岩石';
 
   @override
-  String get solutionAbsorption => 'Solution Absorption';
+  String get solutionAbsorption => '溶液吸収';
 
   @override
-  String get rainDrops => 'Rain Drops';
+  String get rainDrops => '雨滴';
 
   @override
-  String get factorySmoke => 'Factory Smoke';
+  String get factorySmoke => '工場の煙';
 
   @override
-  String get crystal => 'Crystal';
+  String get crystal => '結晶';
 
   @override
-  String get breadFermentation => 'Bread Fermentation';
+  String get breadFermentation => 'パンの発酵';
 
   @override
-  String get medicalLabs => 'Medical Labs';
+  String get medicalLabs => '医療研究所';
 
   @override
-  String get medicines => 'Medicines';
+  String get medicines => '薬';
 
   @override
-  String get combustion => 'Combustion';
+  String get combustion => '燃焼';
 
   @override
-  String get welcome => 'Welcome';
+  String get welcome => 'ようこそ';
 
   @override
-  String get user => 'User';
+  String get user => 'ユーザー';
 
   @override
-  String get auroraBorealis => 'Aurora Borealis';
+  String get auroraBorealis => 'オーロラ';
 
   @override
-  String get nature => 'Nature';
+  String get nature => '自然';
 
   @override
-  String get waterAndAir => 'Water & Air';
+  String get waterAndAir => '水と空気';
 
   @override
-  String get dailyLife => 'Daily Life';
+  String get dailyLife => '日常生活';
 
   @override
-  String get searchPlaceholder => 'Search for a topic...';
+  String get searchPlaceholder => 'トピックを検索...';
 
   @override
-  String get noResults => 'No results found';
+  String get noResults => '結果が見つかりません';
 
   @override
-  String get noSavedTopics => 'No saved topics';
+  String get noSavedTopics => '保存されたトピックはありません';
 
   @override
-  String get saveYourFavorites => 'Save your favorite topics';
+  String get saveYourFavorites => 'お気に入りのトピックを保存';
 
   @override
-  String get savedTopics => 'Saved Topics';
+  String get savedTopics => '保存されたトピック';
 
   @override
-  String get saved => 'Saved';
+  String get saved => '保存済み';
 
   @override
-  String get bookmarks => 'Bookmarks';
+  String get bookmarks => 'ブックマーク';
 
   @override
-  String get topicDeleted => 'Topic deleted';
+  String get topicDeleted => 'トピックが削除されました';
 
   @override
-  String get backToHome => 'Back to Home';
+  String get backToHome => 'ホームに戻る';
 
   @override
-  String get addToBookmarks => 'Add to Bookmarks';
+  String get addToBookmarks => 'ブックマークに追加';
 
   @override
-  String get addedToBookmarks => 'Added to Bookmarks';
+  String get addedToBookmarks => 'ブックマークに追加されました';
 
   @override
-  String get name => 'Name';
+  String get name => '名前';
 
   @override
-  String get bio => 'Bio';
+  String get bio => '自己紹介';
 
   @override
-  String get profileUpdated => 'Profile Updated Successfully';
+  String get profileUpdated => 'プロフィールが更新されました';
 
   @override
-  String get auroraQuestion =>
-      'Have you ever wondered why the sky sparkles with the colors of the Aurora Borealis?';
+  String get auroraQuestion => 'なぜ空がオーロラの色で輝くのか疑問に思ったことはありますか？';
 
   @override
   String get auroraDescription =>
-      'The Aurora Borealis occurs when charged particles from the sun collide with gases in the Earth\'s atmosphere, such as oxygen and nitrogen. These collisions excite atoms and molecules, giving them extra energy.\n• Oxygen at low altitude gives off green light\n• Oxygen at high altitude gives off red light\n• Nitrogen gives off blue and purple colors\n\nWhen these atoms return to their normal state, they release energy in the form of visible light. This process is the cause of the stunning colors of the aurora, a vivid example of a natural chemical and physical reaction observable in our daily lives.';
+      'オーロラは、太陽からの荷電粒子が地球の大気中の酸素や窒素などのガスと衝突するときに発生します。これらの衝突は原子や分子を励起し、余分なエネルギーを与えます。\n• 低高度の酸素は緑色の光を放出します\n• 高高度の酸素は赤色の光を放出します\n• 窒素は青と紫の色を放出します\n\nこれらの原子が通常の状態に戻るとき、可視光の形でエネルギーを放出します。このプロセスは、私たちの日常生活で観察できる自然の化学的および物理的反応の鮮やかな例であるオーロラの素晴らしい色の原因です。';
 
   @override
-  String get wonders => 'Wonders';
+  String get wonders => '不思議';
 
   @override
-  String get discoveryWorld => 'A world of discoveries awaits you';
+  String get discoveryWorld => '発見の世界があなたを待っています';
 
   @override
-  String get newAccount => 'New Account';
+  String get newAccount => '新しいアカウント';
 
   @override
-  String get login => 'Login';
+  String get login => 'ログイン';
 
   @override
-  String get fullName => 'Full Name';
+  String get fullName => '氏名';
 
   @override
-  String get password => 'Password';
+  String get password => 'パスワード';
 
   @override
-  String get confirmPassword => 'Confirm Password';
+  String get confirmPassword => 'パスワードの確認';
 
   @override
-  String get createAccount => 'Create Account';
+  String get createAccount => 'アカウント作成';
 
   @override
-  String get fillAllFields => 'Please fill all fields';
+  String get fillAllFields => 'すべてのフィールドに入力してください';
 
   @override
-  String get passwordsDoNotMatch => 'Passwords do not match';
+  String get passwordsDoNotMatch => 'パスワードが一致しません';
 
   @override
-  String get accountCreated => 'Account Created';
+  String get accountCreated => 'アカウントが作成されました';
 
   @override
-  String get enterEmailPassword => 'Enter email and password';
+  String get enterEmailPassword => 'メールとパスワードを入力';
 
   @override
-  String get verifying => 'Verifying...';
+  String get verifying => '確認中...';
 
   @override
-  String get invalidCredentials => 'Invalid credentials';
+  String get invalidCredentials => '無効な資格情報';
 
   @override
-  String get or => 'Or';
+  String get or => 'または';
 
   @override
-  String get continueGoogle => 'Continue with Google';
+  String get continueGoogle => 'Googleで続行';
 
   @override
-  String get continueFacebook => 'Continue with Facebook';
+  String get continueFacebook => 'Facebookで続行';
 }
