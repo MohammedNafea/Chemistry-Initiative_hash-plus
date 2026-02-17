@@ -4,20 +4,20 @@ import 'package:chemistry_initiative/core/theme/app_colors.dart';
 class AppTheme {
   static final ThemeData light = ThemeData(
     useMaterial3: true,
-    fontFamily: 'Cairo', // Assuming Cairo font from QuestionPage
+    fontFamily: 'Cairo',
     colorScheme: ColorScheme.fromSeed(
-      seedColor: AppColors.darkBrown,
-      primary: AppColors.darkBrown,
-      secondary: AppColors.softBrown,
-      surface: AppColors.lightBackground,
-      onSurface: AppColors.darkBrown,
-
+      seedColor: AppColors.scienceIndigo,
+      primary: AppColors.scienceIndigo,
+      secondary: AppColors.cyanLabs,
+      tertiary: AppColors.reactiveGreen,
+      surface: const Color(0xFFF8F9FF),
+      onSurface: AppColors.scienceIndigo,
     ),
-    scaffoldBackgroundColor: Colors.white,
+    scaffoldBackgroundColor: const Color(0xFFF8F9FF),
     appBarTheme: const AppBarTheme(
       backgroundColor: Colors.transparent,
       elevation: 0,
-      iconTheme: IconThemeData(color: AppColors.darkBrown),
+      iconTheme: IconThemeData(color: AppColors.scienceIndigo),
     ),
   );
 
@@ -26,16 +26,15 @@ class AppTheme {
     fontFamily: 'Cairo',
     brightness: Brightness.dark,
     colorScheme: ColorScheme.fromSeed(
-      seedColor: AppColors.darkBrown,
+      seedColor: AppColors.scienceIndigo,
       brightness: Brightness.dark,
-      primary: AppColors.softBrown,
-      secondary: AppColors.darkBrown,
-      surface: AppColors.darkSurface,
+      primary: AppColors.cyanLabs,
+      secondary: AppColors.reactiveGreen,
+      surface: AppColors.labSurface,
       onSurface: Colors.white,
-
     ),
-    scaffoldBackgroundColor: const Color(0xFF121212),
-     appBarTheme: const AppBarTheme(
+    scaffoldBackgroundColor: AppColors.deepSpace,
+    appBarTheme: const AppBarTheme(
       backgroundColor: Colors.transparent,
       elevation: 0,
       iconTheme: IconThemeData(color: Colors.white),

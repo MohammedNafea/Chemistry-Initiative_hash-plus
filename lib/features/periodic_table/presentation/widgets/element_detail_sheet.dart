@@ -1,0 +1,219 @@
+import 'package:flutter/material.dart';
+import 'package:chemistry_initiative/features/periodic_table/data/models/element_model.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:chemistry_initiative/l10n/app_localizations.dart';
+import 'package:chemistry_initiative/features/periodic_table/presentation/widgets/bohr_model_painter.dart';
+
+class ElementDetailSheet extends StatelessWidget {
+  final ElementModel element;
+
+  const ElementDetailSheet({super.key, required this.element});
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
+    final localizations = AppLocalizations.of(context)!;
+
+    return Container(
+      decoration: BoxDecoration(
+        color: isDark ? const Color(0xFF1E1E1E) : Colors.white,
+        borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
+      ),
+      padding: const EdgeInsets.all(24),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // Handle bar
+          Center(
+            child: Container(
+              width: 40,
+              height: 4,
+              decoration: BoxDecoration(
+                color: Colors.grey[400],
+                borderRadius: BorderRadius.circular(2),
+              ),
+            ),
+          ),
+          const SizedBox(height: 20),
+
+          // Header
+          Row(
+            children: [
+              Container(
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: isDark ? Colors.grey[800] : Colors.grey[100],
+                  borderRadius: BorderRadius.circular(16),
+                  border: Border.all(color: theme.primaryColor.withValues(alpha: 0.3)),
+                ),
+                child: Text(
+                  element.symbol,
+                  style: TextStyle(
+                    fontSize: 32,
+                    fontWeight: FontWeight.bold,
+                    color: theme.primaryColor,
+                  ),
+                ),
+              ),
+              const SizedBox(width: 16),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      element.name,
+                      style: const TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text(
+                      '${localizations.atomicNumberLabel}: ${element.atomicNumber}',
+                      style: TextStyle(
+                        color: isDark ? Colors.grey[400] : Colors.grey[600],
+                        fontSize: 14,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              // Bohr Model Visualization
+              BohrModelWidget(atomicNumber: element.atomicNumber),
+            ],
+          ),
+          const SizedBox(height: 24),
+
+          // Daily Life Section
+          Container(
+            padding: const EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              color: theme.primaryColor.withValues(alpha: 0.1),
+              borderRadius: BorderRadius.circular(12),
+              border: Border.all(color: theme.primaryColor.withValues(alpha: 0.2)),
+            ),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Icon(
+                  FontAwesomeIcons.lightbulb,
+                  color: theme.primaryColor,
+                  size: 20,
+                ),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        localizations.dailyLifeUseLabel,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: theme.primaryColor,
+                          fontSize: 16,
+                        ),
+                      ),
+                      const SizedBox(height: 4),
+                      Text(
+                        element.dailyLifeUse,
+                        style: TextStyle(
+                          fontSize: 15,
+                          color: isDark ? Colors.white70 : Colors.black87,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 24),
+
+          // Summary
+          Text(
+            localizations.scientificSummaryLabel,
+            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+          ),
+          const SizedBox(height: 8),
+          Text(
+            element.summary,
+            style: TextStyle(
+              fontSize: 14,
+              color: isDark ? Colors.grey[400] : Colors.grey[700],
+              height: 1.5,
+            ),
+          ),
+          const SizedBox(height: 16),
+          
+          // Stats Row
+          Row(
+            children: [
+              _StatBadge(
+                label: localizations.massLabel,
+                value: element.atomicMass,
+                isDark: isDark,
+              ),
+              const SizedBox(width: 12),
+              _StatBadge(
+                label: localizations.categoryLabel,
+                value: element.category,
+                isDark: isDark,
+              ),
+            ],
+          ),
+          
+          const SizedBox(height: 20),
+        ],
+      ),
+    );
+  }
+}
+
+class _StatBadge extends StatelessWidget {
+  final String label;
+  final String value;
+  final bool isDark;
+
+  const _StatBadge({
+    required this.label,
+    required this.value,
+    required this.isDark,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+        decoration: BoxDecoration(
+          color: isDark ? Colors.grey[800] : Colors.grey[100],
+          borderRadius: BorderRadius.circular(8),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              label.toUpperCase(),
+              style: TextStyle(
+                fontSize: 10,
+                fontWeight: FontWeight.bold,
+                color: isDark ? Colors.grey[500] : Colors.grey[500],
+              ),
+            ),
+            const SizedBox(height: 4),
+            Text(
+              value,
+              style: const TextStyle(
+                fontSize: 13,
+                fontWeight: FontWeight.w600,
+              ),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

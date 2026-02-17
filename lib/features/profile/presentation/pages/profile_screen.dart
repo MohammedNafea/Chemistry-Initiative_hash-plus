@@ -11,14 +11,32 @@ import 'package:chemistry_initiative/features/auth/data/auth_repository.dart';
 import 'package:chemistry_initiative/features/auth/data/current_user_provider.dart';
 import 'package:chemistry_initiative/features/profile/data/profile_repository.dart';
 import 'package:chemistry_initiative/features/profile/presentation/pages/edit_profile_screen.dart';
+import 'package:chemistry_initiative/features/auth/presentation/pages/login_screen.dart';
 import 'package:chemistry_initiative/core/localization/language_switcher.dart';
 import 'package:chemistry_initiative/core/utils/image_helper.dart';
 
-class ProfileScreen extends ConsumerWidget {
+import 'package:chemistry_initiative/features/gamification/data/repositories/achievement_repository.dart';
+import 'package:chemistry_initiative/features/gamification/data/providers/achievement_provider.dart';
+
+class ProfileScreen extends ConsumerStatefulWidget {
   const ProfileScreen({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<ProfileScreen> createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends ConsumerState<ProfileScreen> {
+  @override
+  void initState() {
+    super.initState();
+    // Check for 'New Scientist' badge on profile load
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      ref.read(achievementProvider).checkAndUnlock('login_1');
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final user = ref.watch(currentUserNotifierProvider);
     final localizations = AppLocalizations.of(context)!;
 
@@ -43,7 +61,11 @@ class ProfileScreen extends ConsumerWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SizedBox(height: 20),
+                   const SizedBox(height: 20),
+                   _SectionHeader(title: localizations.achievements),
+                   const SizedBox(height: 10),
+                   _BadgesSection(userBadges: user.badges, localizations: localizations),
+                  const SizedBox(height: 30),
                   _SectionHeader(title: localizations.contactInfo),
                   const SizedBox(height: 10),
                   _ContactInfoSection(
@@ -62,6 +84,83 @@ class ProfileScreen extends ConsumerWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class _BadgesSection extends StatelessWidget {
+  final List<String> userBadges;
+  final AppLocalizations localizations;
+
+  const _BadgesSection({required this.userBadges, required this.localizations});
+
+  String _getLocalizedText(String key) {
+     switch (key) {
+      case 'badgeNewScientist': return localizations.badgeNewScientist;
+      case 'badgeQuizMaster': return localizations.badgeQuizMaster;
+      case 'badgeSafetyExpert': return localizations.badgeSafetyExpert;
+      case 'badgeNewScientistDesc': return localizations.badgeNewScientistDesc;
+      case 'badgeQuizMasterDesc': return localizations.badgeQuizMasterDesc;
+      case 'badgeSafetyExpertDesc': return localizations.badgeSafetyExpertDesc;
+      default: return key;
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final allBadges = AchievementRepository.getBadges();
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
+
+    return SizedBox(
+      height: 110,
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: allBadges.length,
+        itemBuilder: (context, index) {
+          final badge = allBadges[index];
+          final isUnlocked = userBadges.contains(badge.id);
+
+          return Container(
+            width: 80,
+            margin: const EdgeInsets.only(right: 12),
+            child: Column(
+              children: [
+                Opacity(
+                  opacity: isUnlocked ? 1.0 : 0.4,
+                  child: Container(
+                    padding: const EdgeInsets.all(12),
+                    decoration: BoxDecoration(
+                      color: isUnlocked
+                          ? (isDark ? Colors.amber.withValues(alpha: 0.2) : Colors.amber.withValues(alpha: 0.2))
+                          : (isDark ? Colors.grey[800] : Colors.grey[300]),
+                      shape: BoxShape.circle,
+                      border: isUnlocked ? Border.all(color: Colors.amber, width: 2) : null,
+                    ),
+                    child: Icon(
+                      Icons.star_rounded, // Placeholder for badge icon
+                      size: 32,
+                      color: isUnlocked ? Colors.amber : Colors.grey,
+                    ), 
+                  ),
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  _getLocalizedText(badge.name),
+                  textAlign: TextAlign.center,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: theme.textTheme.bodySmall?.copyWith(
+                    fontWeight: isUnlocked ? FontWeight.bold : FontWeight.normal,
+                    color: isUnlocked ? (isDark ? Colors.white : Colors.black) : Colors.grey,
+                    fontSize: 10,
+                  ),
+                ),
+              ],
+            ),
+          );
+        },
       ),
     );
   }
@@ -562,6 +661,15 @@ class _ActionButtons extends ConsumerWidget {
             onPressed: () async {
               await AuthRepository.instance.logout();
               ref.read(currentUserNotifierProvider.notifier).refresh();
+              
+              if (context.mounted) {
+                Navigator.of(context).pushAndRemoveUntil(
+                  MaterialPageRoute(
+                    builder: (context) => const LoginScreen(),
+                  ),
+                  (route) => false,
+                );
+              }
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColors.terracotta,

@@ -8,6 +8,7 @@ class UserModel {
   final String phone;
   final String location;
   final String imageUrl;
+  final List<String> badges;
 
   UserModel({
     required this.id,
@@ -18,6 +19,7 @@ class UserModel {
     this.phone = '',
     this.location = '',
     this.imageUrl = 'assets/images/avatar.jpg',
+    this.badges = const [],
   });
 
   UserModel copyWith({
@@ -29,6 +31,7 @@ class UserModel {
     String? phone,
     String? location,
     String? imageUrl,
+    List<String>? badges,
   }) {
     return UserModel(
       id: id ?? this.id,
@@ -39,6 +42,7 @@ class UserModel {
       phone: phone ?? this.phone,
       location: location ?? this.location,
       imageUrl: imageUrl ?? this.imageUrl,
+      badges: badges ?? this.badges,
     );
   }
 
@@ -51,6 +55,7 @@ class UserModel {
         'phone': phone,
         'location': location,
         'imageUrl': imageUrl,
+        'badges': badges,
       };
 
   factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
@@ -62,5 +67,6 @@ class UserModel {
         phone: json['phone'] as String? ?? '',
         location: json['location'] as String? ?? '',
         imageUrl: json['imageUrl'] as String? ?? 'assets/images/avatar.jpg',
+        badges: (json['badges'] as List<dynamic>?)?.map((e) => e as String).toList() ?? [],
       );
 }

@@ -12,6 +12,309 @@ class AppLocalizationsFr extends AppLocalizations {
   String get appTitle => 'Initiative Chimie';
 
   @override
+  String get periodicTable => 'Tableau Périodique Interactif';
+
+  @override
+  String get dailyQuiz => 'Quiz Quotidien';
+
+  @override
+  String get whatsInThis => 'Qu\'est-ce qu\'il y a là-dedans ?';
+
+  @override
+  String get safetyGuide => 'Guide de Sécurité';
+
+  @override
+  String get flammable => 'Inflammable';
+
+  @override
+  String get flammableDesc =>
+      'S\'enflamme facilement. Tenir à l\'écart de la chaleur et des flammes.';
+
+  @override
+  String get oxidizer => 'Comburant';
+
+  @override
+  String get oxidizerDesc => 'Peut provoquer ou intensifier un incendie.';
+
+  @override
+  String get toxic => 'Toxique';
+
+  @override
+  String get toxicDesc =>
+      'Peut causer la mort ou des maladies graves en cas d\'ingestion.';
+
+  @override
+  String get corrosive => 'Corrosif';
+
+  @override
+  String get corrosiveDesc =>
+      'Peut causer des brûlures de la peau et des dommages aux yeux.';
+
+  @override
+  String get explosive => 'Explosif';
+
+  @override
+  String get explosiveDesc =>
+      'Peut exploser sous l\'effet de la chaleur ou d\'un choc.';
+
+  @override
+  String get irritant => 'Irritant';
+
+  @override
+  String get irritantDesc =>
+      'Peut causer une irritation de la peau ou des yeux.';
+
+  @override
+  String get healthHazard => 'Danger pour la santé';
+
+  @override
+  String get healthHazardDesc =>
+      'Peut causer des effets graves sur la santé à long terme.';
+
+  @override
+  String get environment => 'Danger pour l\'environnement';
+
+  @override
+  String get environmentDesc => 'Nocif pour la vie aquatique.';
+
+  @override
+  String get virtualLab => 'Laboratoire Virtuel';
+
+  @override
+  String get volcanoExp => 'Volcan au Bicarbonate';
+
+  @override
+  String get volcanoDesc =>
+      'Créez une éruption volcanique classique avec des ingrédients de cuisine.';
+
+  @override
+  String get volcanoExplanation =>
+      'La réaction entre le bicarbonate et le vinaigre produit du gaz carbonique.';
+
+  @override
+  String get cabbageExp => 'Red Cabbage Indicator';
+
+  @override
+  String get cabbageDesc =>
+      'Test acidity of household liquids with a natural pH indicator.';
+
+  @override
+  String get cabbageExplanation =>
+      'Red cabbage contains anthocyanin, a pigment that changes color depending on pH. Acide turn it red/pink, bases turn it blue/green.';
+
+  @override
+  String get invisibleInkExp => 'Invisible Ink';
+
+  @override
+  String get invisibleInkDesc => 'Write secret messages revealed by heat.';
+
+  @override
+  String get inkExplanation =>
+      'Lemon juice is organic. When heated, it oxidizes and turns brown faster than the paper, revealing the message.';
+
+  @override
+  String get easy => 'Facile';
+
+  @override
+  String get medium => 'Moyen';
+
+  @override
+  String get hard => 'Difficile';
+
+  @override
+  String get ingredients => 'Ingrédients';
+
+  @override
+  String get steps => 'Étapes';
+
+  @override
+  String get scientificExplanation => 'Explication Scientifique';
+
+  @override
+  String get generalSafety =>
+      'Toujours effectuer sous la surveillance d\'un adulte.';
+
+  @override
+  String get hotWaterSafety => 'Be careful with hot water.';
+
+  @override
+  String get heatSafety => 'Be careful when using heat sources.';
+
+  @override
+  String get bakingSoda => 'Baking Soda';
+
+  @override
+  String get vinegar => 'Vinegar';
+
+  @override
+  String get foodColoring => 'Food Coloring';
+
+  @override
+  String get dishSoap => 'Dish Soap';
+
+  @override
+  String get container => 'Container/Bottle';
+
+  @override
+  String get redCabbage => 'Red Cabbage';
+
+  @override
+  String get water => 'Water';
+
+  @override
+  String get lemonJuice => 'Lemon Juice';
+
+  @override
+  String get cups => 'Clear Cups';
+
+  @override
+  String get cottonSwab => 'Cotton Swab';
+
+  @override
+  String get whitePaper => 'White Paper';
+
+  @override
+  String get heatSource => 'Heat Source (Lamp/Iron)';
+
+  @override
+  String get volcanoStep1 => 'Place the container on a tray.';
+
+  @override
+  String get volcanoStep2 =>
+      'Add 2 spoons of baking soda and a few drops of food coloring.';
+
+  @override
+  String get volcanoStep3 => 'Add a squirt of dish soap.';
+
+  @override
+  String get volcanoStep4 => 'Pour in vinegar and watch it erupt!';
+
+  @override
+  String get cabbageStep1 =>
+      'Chop cabbage and boil in water to extract purple liquid.';
+
+  @override
+  String get cabbageStep2 => 'Pour purple liquid into cups.';
+
+  @override
+  String get cabbageStep3 =>
+      'Add different household liquids (lemon, soap, etc.) to each cup.';
+
+  @override
+  String get cabbageStep4 => 'Observe the color changes!';
+
+  @override
+  String get inkStep1 => 'Dip swab in lemon juice and write on paper.';
+
+  @override
+  String get inkStep2 => 'Let it dry completely.';
+
+  @override
+  String get inkStep3 => 'Heat the paper gently to reveal the message.';
+
+  @override
+  String get achievements => 'Succès';
+
+  @override
+  String get badgeNewScientist => 'Nouveau Scientifique';
+
+  @override
+  String get badgeNewScientistDesc => 'Connecté pour la première fois.';
+
+  @override
+  String get badgeQuizMaster => 'Maître des Quiz';
+
+  @override
+  String get badgeQuizMasterDesc => 'A complété 5 Quiz.';
+
+  @override
+  String get badgeSafetyExpert => 'Expert en Sécurité';
+
+  @override
+  String get badgeSafetyExpertDesc => 'A lu le Guide de Sécurité.';
+
+  @override
+  String get moleculeViewer => 'Visualiseur de Molécules 3D';
+
+  @override
+  String get molWater => 'Eau';
+
+  @override
+  String get factWater =>
+      'La vie telle que nous la connaissons n\'existerait pas sans ce composé !';
+
+  @override
+  String get molCo2 => 'Dioxyde de Carbone';
+
+  @override
+  String get factCo2 =>
+      'Un gaz incolore vital pour la vie sur Terre. Les plantes le respirent pour produire de l\'oxygène.';
+
+  @override
+  String get molMethane => 'Méthane';
+
+  @override
+  String get factMethane =>
+      'Un puissant gaz à effet de serre et le principal composant du gaz naturel.';
+
+  @override
+  String get molSalt => 'Chlorure de Sodium (Sel)';
+
+  @override
+  String get factSalt =>
+      'Sel de table commun. Essentiel pour de nombreux processus biologiques.';
+
+  @override
+  String get molAmmonia => 'Ammoniaque';
+
+  @override
+  String get factAmmonia =>
+      'Largement utilisé dans les engrais et les produits de nettoyage.';
+
+  @override
+  String get molHcl => 'Acide Chlorhydrique';
+
+  @override
+  String get factHcl =>
+      'Un acide fort présent dans votre estomac qui aide à digérer les aliments.';
+
+  @override
+  String get molH2so4 => 'Acide Sulfurique';
+
+  @override
+  String get factH2so4 =>
+      'Un acide hautement corrosif utilisé dans les batteries et le traitement des minerais.';
+
+  @override
+  String get chemicalOfTheDay => 'Chimie du Jour';
+
+  @override
+  String get didYouKnow => 'Le saviez-vous ?';
+
+  @override
+  String get dailyUse => 'Usage Quotidien :';
+
+  @override
+  String get chemOxygen => 'Oxygène';
+
+  @override
+  String get chemOxygenUse =>
+      'Essentiel pour la respiration et la production d\'acier.';
+
+  @override
+  String get chemGold => 'Or';
+
+  @override
+  String get chemGoldUse =>
+      'Utilisé en électronique et bijoux pour sa conductivité.';
+
+  @override
+  String get chemCarbon => 'Carbone';
+
+  @override
+  String get chemCarbonUse => 'La base de toutes les formes de vie connues.';
+
+  @override
   String get home => 'Accueil';
 
   @override
@@ -242,4 +545,370 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get continueFacebook => 'Continuer avec Facebook';
+
+  @override
+  String get atomicNumberLabel => 'Numéro Atomique';
+
+  @override
+  String get dailyLifeUseLabel => 'Usage Quotidien';
+
+  @override
+  String get scientificSummaryLabel => 'Résumé Scientifique';
+
+  @override
+  String get massLabel => 'Masse';
+
+  @override
+  String get categoryLabel => 'Catégorie';
+
+  @override
+  String get catNonmetal => 'Nonmetal';
+
+  @override
+  String get compoundPlayground => 'Terrain de Jeux des Composés';
+
+  @override
+  String get selectElementsMix => 'Sélectionnez des éléments à mélanger';
+
+  @override
+  String get elementsRepository => 'Répertoire des Éléments';
+
+  @override
+  String get mixElements => 'Mélanger les Éléments';
+
+  @override
+  String get catNobleGas => 'Noble Gas';
+
+  @override
+  String get catAlkaliMetal => 'Alkali Metal';
+
+  @override
+  String get catAlkalineEarth => 'Alkaline Earth Metal';
+
+  @override
+  String get catMetalloid => 'Metalloid';
+
+  @override
+  String get catHalogen => 'Halogen';
+
+  @override
+  String get catPostTransition => 'Post-transition Metal';
+
+  @override
+  String get catTransition => 'Transition Metal';
+
+  @override
+  String get catLanthanide => 'Lanthanide';
+
+  @override
+  String get catActinide => 'Actinide';
+
+  @override
+  String get elemHName => 'Hydrogen';
+
+  @override
+  String get elemHSummary =>
+      'Hydrogen is the lightest element and the most abundant chemical substance in the universe.';
+
+  @override
+  String get elemHUse => 'Found in Water (H2O), rocket fuel, and stars.';
+
+  @override
+  String get elemHeName => 'Helium';
+
+  @override
+  String get elemHeSummary =>
+      'Helium is a colorless, odorless, tasteless, non-toxic, inert, monatomic gas.';
+
+  @override
+  String get elemHeUse =>
+      'Used in party balloons, MRI machines, and deep-sea diving.';
+
+  @override
+  String get elemLiName => 'Lithium';
+
+  @override
+  String get elemLiSummary =>
+      'Lithium is a soft, silvery-white alkali metal. It is the lightest metal.';
+
+  @override
+  String get elemLiUse =>
+      'Essential for rechargeable batteries in phones and laptops.';
+
+  @override
+  String get elemBeName => 'Beryllium';
+
+  @override
+  String get elemBeSummary =>
+      'Beryllium is a steel-gray, strong, lightweight and brittle alkaline earth metal.';
+
+  @override
+  String get elemBeUse => 'Used in aerospace material and X-ray windows.';
+
+  @override
+  String get elemBName => 'Boron';
+
+  @override
+  String get elemBSummary =>
+      'Boron is a metalloid found in Earth\'s crust. It is essential for plant cell walls.';
+
+  @override
+  String get elemBUse => 'Used in fiberglass, pyrotechnics, and eye drops.';
+
+  @override
+  String get elemCName => 'Carbon';
+
+  @override
+  String get elemCSummary =>
+      'Carbon is the basis of all known life and can exist as diamond or graphite.';
+
+  @override
+  String get elemCUse =>
+      'Found in pencils, diamonds, and all living organisms.';
+
+  @override
+  String get elemNName => 'Nitrogen';
+
+  @override
+  String get elemNSummary =>
+      'Nitrogen makes up 78% of Earth\'s atmosphere. It is essential for life.';
+
+  @override
+  String get elemNUse =>
+      'Used in fertilizers, food packaging, and liquid nitrogen.';
+
+  @override
+  String get elemOName => 'Oxygen';
+
+  @override
+  String get elemOSummary =>
+      'Oxygen is a highly reactive nonmetal and essential for respiration.';
+
+  @override
+  String get elemOUse => 'Essential for breathing, combustion, and water.';
+
+  @override
+  String get elemFName => 'Fluorine';
+
+  @override
+  String get elemFSummary =>
+      'Fluorine is the most electronegative element and extremely reactive.';
+
+  @override
+  String get elemFUse => 'Used in toothpaste and refrigeration (Freon).';
+
+  @override
+  String get elemNeName => 'Neon';
+
+  @override
+  String get elemNeSummary =>
+      'Neon is a noble gas that gives off a bright orange-red glow in lamps.';
+
+  @override
+  String get elemNeUse => 'Used in advertising signs and laser technology.';
+
+  @override
+  String get elemNaName => 'Sodium';
+
+  @override
+  String get elemNaSummary =>
+      'Sodium is a soft, silvery-white, highly reactive alkali metal.';
+
+  @override
+  String get elemNaUse =>
+      'Main component of table salt (NaCl) and street lights.';
+
+  @override
+  String get elemMgName => 'Magnesium';
+
+  @override
+  String get elemMgSummary =>
+      'Magnesium is a shiny gray solid alkaline earth metal.';
+
+  @override
+  String get elemMgUse => 'Used in flares, laptops, and human muscle function.';
+
+  @override
+  String get elemAlName => 'Aluminum';
+
+  @override
+  String get elemAlSummary =>
+      'Aluminum is a lightweight, silvery-white, non-magnetic metal.';
+
+  @override
+  String get elemAlUse =>
+      'Used in soda cans, foil, airplanes, and window frames.';
+
+  @override
+  String get elemSiName => 'Silicon';
+
+  @override
+  String get elemSiSummary =>
+      'Silicon is a hard, brittle crystalline metalloid widely used in electronics.';
+
+  @override
+  String get elemSiUse => 'The heart of computer chips and glass production.';
+
+  @override
+  String get elemPName => 'Phosphorus';
+
+  @override
+  String get elemPSummary =>
+      'Phosphorus is a reactive nonmetal. It is vital for DNA and cell energy.';
+
+  @override
+  String get elemPUse =>
+      'Used in fertilizers, match heads, and cleaning agents.';
+
+  @override
+  String get elemSName => 'Sulfur';
+
+  @override
+  String get elemSSummary =>
+      'Sulfur is a bright yellow, brittle nonmetal at room temperature.';
+
+  @override
+  String get elemSUse =>
+      'Used in gunpowder, batteries, and vulcanizing rubber.';
+
+  @override
+  String get elemClName => 'Chlorine';
+
+  @override
+  String get elemClSummary =>
+      'Chlorine is a yellow-green gas with a strong, bleaching odor.';
+
+  @override
+  String get elemClUse => 'Used to disinfect swimming pools and in bleach.';
+
+  @override
+  String get elemArName => 'Argon';
+
+  @override
+  String get elemArSummary =>
+      'Argon is the most common noble gas in Earth\'s atmosphere.';
+
+  @override
+  String get elemArUse => 'Used in light bulbs and high-temperature welding.';
+
+  @override
+  String get elemKName => 'Potassium';
+
+  @override
+  String get elemKSummary =>
+      'Potassium is a soft, silvery alkali metal that reacts violently with water.';
+
+  @override
+  String get elemKUse => 'Found in bananas and essential for heart function.';
+
+  @override
+  String get elemCaName => 'Calcium';
+
+  @override
+  String get elemCaSummary =>
+      'Calcium is a grey alkaline earth metal, the most abundant metal in humans.';
+
+  @override
+  String get elemCaUse => 'Found in milk, bones, teeth, and cement.';
+
+  @override
+  String get elemFeName => 'Iron';
+
+  @override
+  String get elemFeSummary =>
+      'Iron is the most common element on Earth by mass, forming much of the core.';
+
+  @override
+  String get elemFeUse =>
+      'Used in steel construction and found in red blood cells.';
+
+  @override
+  String get elemCuName => 'Copper';
+
+  @override
+  String get elemCuSummary =>
+      'Copper is a soft, malleable, and ductile metal with very high conductivity.';
+
+  @override
+  String get elemCuUse => 'Used in electrical wiring and plumbing pipes.';
+
+  @override
+  String get elemZnName => 'Zinc';
+
+  @override
+  String get elemZnSummary =>
+      'Zinc is a slightly brittle metal at room temperature.';
+
+  @override
+  String get elemZnUse => 'Used to galvanize steel and in sunscreen.';
+
+  @override
+  String get elemAgName => 'Silver';
+
+  @override
+  String get elemAgSummary =>
+      'Silver has the highest electrical and thermal conductivity of any metal.';
+
+  @override
+  String get elemAgUse => 'Used in jewelry, coins, and high-end electronics.';
+
+  @override
+  String get elemSnName => 'Tin';
+
+  @override
+  String get elemSnSummary =>
+      'Tin is a silvery, malleable post-transition metal.';
+
+  @override
+  String get elemSnUse => 'Used to coat other metals and in solder.';
+
+  @override
+  String get elemIName => 'Iodine';
+
+  @override
+  String get elemISummary =>
+      'Iodine is a nonmetal that appears as a bluish-black solid.';
+
+  @override
+  String get elemIUse => 'Used as an antiseptic and vital for thyroid health.';
+
+  @override
+  String get elemAuName => 'Gold';
+
+  @override
+  String get elemAuSummary =>
+      'Gold is a noble metal that does not tarnish and is highly valuable.';
+
+  @override
+  String get elemAuUse => 'Used in jewelry, investment, and space tech.';
+
+  @override
+  String get elemHgName => 'Mercury';
+
+  @override
+  String get elemHgSummary =>
+      'Mercury is the only metal that is liquid at standard temperature.';
+
+  @override
+  String get elemHgUse => 'Used in thermometers and fluorescent lights.';
+
+  @override
+  String get elemPbName => 'Lead';
+
+  @override
+  String get elemPbSummary =>
+      'Lead is a heavy, dense metal that is toxic if ingested.';
+
+  @override
+  String get elemPbUse => 'Used in car batteries and radiation shielding.';
+
+  @override
+  String get elemUName => 'Uranium';
+
+  @override
+  String get elemUSummary =>
+      'Uranium is a heavy, silvery-white, radioactive metal.';
+
+  @override
+  String get elemUUse => 'Used as fuel in nuclear power plants.';
 }

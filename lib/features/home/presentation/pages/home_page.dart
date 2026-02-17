@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:ui';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:chemistry_initiative/features/auth/data/current_user_provider.dart';
 import 'package:chemistry_initiative/features/discovery/presentation/pages/question_page.dart';
@@ -8,6 +9,14 @@ import 'package:chemistry_initiative/features/profile/presentation/pages/profile
 import 'package:chemistry_initiative/features/home/data/models/home_card_model.dart';
 import 'package:chemistry_initiative/features/home/data/providers/home_provider.dart';
 import 'package:chemistry_initiative/l10n/app_localizations.dart';
+import 'package:chemistry_initiative/features/guide/presentation/pages/household_items_screen.dart';
+import 'package:chemistry_initiative/features/periodic_table/presentation/pages/periodic_table_screen.dart';
+import 'package:chemistry_initiative/features/quiz/presentation/pages/quiz_screen.dart';
+import 'package:chemistry_initiative/features/safety/presentation/pages/safety_guide_screen.dart';
+import 'package:chemistry_initiative/features/experiments/presentation/pages/experiments_list_screen.dart';
+import 'package:chemistry_initiative/features/molecules/presentation/pages/molecule_viewer_screen.dart';
+import 'package:chemistry_initiative/features/home/presentation/widgets/chemical_of_the_day_card.dart';
+import 'package:chemistry_initiative/features/home/presentation/widgets/chemistry_particle_background.dart';
 
 class HomePage extends ConsumerStatefulWidget {
   final bool showWelcome;
@@ -58,13 +67,18 @@ class _HomePageState extends ConsumerState<HomePage> {
 
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
-      body: _getPage(_currentIndex),
+      body: Stack(
+        children: [
+          const ChemistryParticleBackground(),
+          _getPage(_currentIndex),
+        ],
+      ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         type: BottomNavigationBarType.fixed,
-        backgroundColor: isDark ? const Color(0xFF1E1E1E) : const Color(0xFFF9F4EA), // Or use colorScheme.surface
-        selectedItemColor: isDark ? colorScheme.primary : const Color(0xFFC47457),
-        unselectedItemColor: isDark ? Colors.grey : const Color(0xFF9C9E80),
+        backgroundColor: isDark ? theme.cardColor : Colors.white,
+        selectedItemColor: colorScheme.primary,
+        unselectedItemColor: theme.unselectedWidgetColor,
         onTap: (index) {
           setState(() {
             _currentIndex = index;
@@ -98,9 +112,9 @@ class _HomePageState extends ConsumerState<HomePage> {
     final isDark = theme.brightness == Brightness.dark;
 
     // Use theme colors instead of hardcoded ones
-    final textColor = isDark ? Colors.white : const Color(0xFF5A3E2B);
-    final progressColor = isDark ? colorScheme.primary : const Color(0xFF5A3E2B);
-    final progressBgColor = isDark ? Colors.grey[800]! : const Color(0xFFEDE6D9);
+    final textColor = isDark ? Colors.white : theme.colorScheme.primary;
+    final progressColor = theme.colorScheme.secondary;
+    final progressBgColor = isDark ? Colors.grey[800]! : Colors.grey[200]!;
 
     return SafeArea(
       child: Stack(
@@ -117,7 +131,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                       children: [
                         CircleAvatar(
                           radius: 20,
-                          backgroundColor: isDark ? colorScheme.secondary : const Color(0xFF8C6B4F),
+                          backgroundColor: colorScheme.primary,
                           child: const Icon(Icons.person, color: Colors.white),
                         ),
                         const SizedBox(width: 12),
@@ -183,7 +197,8 @@ class _HomePageState extends ConsumerState<HomePage> {
                                   );
                                 },
                                 style: ElevatedButton.styleFrom(
-                                  backgroundColor: isDark ? colorScheme.primary : const Color(0xFF8C6B4F),
+                                  backgroundColor: theme.colorScheme.secondary,
+                                  foregroundColor: Colors.white,
                                   padding: const EdgeInsets.symmetric(
                                     horizontal: 18,
                                     vertical: 10,
@@ -195,7 +210,6 @@ class _HomePageState extends ConsumerState<HomePage> {
                                 child: Text(
                                   localizations.exploreMore,
                                   style: const TextStyle(
-                                    color: Colors.white,
                                     fontSize: 14,
                                     fontWeight: FontWeight.bold,
                                   ),
@@ -253,6 +267,204 @@ class _HomePageState extends ConsumerState<HomePage> {
                     const SizedBox(height: 16),
                     sectionTitle(localizations.dailyLifeSection, textColor),
                     horizontalList(dailyCards, textColor),
+
+                    const SizedBox(height: 30),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 0),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: ElevatedButton.icon(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const PeriodicTableScreen(),
+                                  ),
+                                );
+                              },
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: theme.colorScheme.primary.withValues(alpha: 0.1),
+                                foregroundColor: theme.colorScheme.primary,
+                                padding: const EdgeInsets.symmetric(vertical: 16),
+                                elevation: 0,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(12),
+                                  side: BorderSide(color: theme.colorScheme.primary.withValues(alpha: 0.2)),
+                                ),
+                              ),
+                              icon: const Icon(Icons.grid_view_rounded),
+                              label: Text(
+                                localizations.periodicTable,
+                                style: const TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
+                                textAlign: TextAlign.center,
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(width: 12),
+                          Expanded(
+                            child: ElevatedButton.icon(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const QuizScreen(),
+                                  ),
+                                );
+                              },
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: theme.colorScheme.secondary.withValues(alpha: 0.1),
+                                foregroundColor: theme.colorScheme.secondary,
+                                padding: const EdgeInsets.symmetric(vertical: 16),
+                                elevation: 0,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(12),
+                                  side: BorderSide(color: theme.colorScheme.secondary.withValues(alpha: 0.2)),
+                                ),
+                              ),
+                              icon: const Icon(Icons.school_rounded),
+                              label: Text(
+                                localizations.dailyQuiz,
+                                style: const TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
+                                textAlign: TextAlign.center,
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 16),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 0),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: ElevatedButton.icon(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const HouseholdItemsScreen(),
+                                  ),
+                                );
+                              },
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: theme.colorScheme.tertiary.withValues(alpha: 0.1),
+                                foregroundColor: theme.colorScheme.tertiary,
+                                padding: const EdgeInsets.symmetric(vertical: 16),
+                                elevation: 0,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(12),
+                                  side: BorderSide(color: theme.colorScheme.tertiary.withValues(alpha: 0.2)),
+                                ),
+                              ),
+                              icon: const Icon(Icons.search_rounded),
+                              label: Text(
+                                localizations.whatsInThis,
+                                style: const TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
+                                textAlign: TextAlign.center,
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(width: 12),
+                          Expanded(
+                            child: ElevatedButton.icon(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const SafetyGuideScreen(),
+                                  ),
+                                );
+                              },
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: theme.colorScheme.error.withValues(alpha: 0.1),
+                                foregroundColor: theme.colorScheme.error,
+                                padding: const EdgeInsets.symmetric(vertical: 16),
+                                elevation: 0,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(12),
+                                  side: BorderSide(color: theme.colorScheme.error.withValues(alpha: 0.2)),
+                                ),
+                              ),
+                              icon: const Icon(Icons.health_and_safety_rounded),
+                              label: Text(
+                                localizations.safetyGuide,
+                                style: const TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
+                                textAlign: TextAlign.center,
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 16),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: ElevatedButton.icon(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const ExperimentsListScreen(),
+                                ),
+                              );
+                            },
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: theme.colorScheme.primary,
+                              foregroundColor: Colors.white,
+                              padding: const EdgeInsets.symmetric(vertical: 16),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                            ),
+                            icon: const Icon(Icons.science_rounded),
+                            label: Text(
+                              localizations.virtualLab,
+                              style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 12),
+                        Expanded(
+                          child: ElevatedButton.icon(
+                            onPressed: () {
+                               Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const MoleculeViewerScreen(),
+                                ),
+                              );
+                            },
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: theme.colorScheme.secondary,
+                              foregroundColor: Colors.white,
+                              padding: const EdgeInsets.symmetric(vertical: 16),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                            ),
+                            icon: const Icon(Icons.hub_rounded),
+                            label: Text(
+                              localizations.moleculeViewer,
+                              style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 30),
+                    ChemicalOfTheDayCard(localizations: localizations),
+                    const SizedBox(height: 30),
                   ],
                 ),
               ),
@@ -304,6 +516,7 @@ class _HomePageState extends ConsumerState<HomePage> {
       height: 180,
       child: LayoutBuilder(
         builder: (context, constraints) {
+          final theme = Theme.of(context);
           // Responsive item width: 40% of screen width on small screens, fixed max on large
           final screenWidth = MediaQuery.of(context).size.width;
           final itemWidth = screenWidth > 600 ? 160.0 : screenWidth * 0.38;
@@ -327,44 +540,57 @@ class _HomePageState extends ConsumerState<HomePage> {
                 },
                 child: Container(
                   width: itemWidth,
-                  margin: const EdgeInsets.only(right: 12),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Expanded(
-                        child: Hero(
-                          tag: card.image,
-                          child: Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(16),
-                              image: DecorationImage(
-                                image: AssetImage(card.image),
-                                fit: BoxFit.cover,
-                              ),
-                              boxShadow: const [
-                                BoxShadow(
-                                  color: Color.fromARGB(80, 0, 0, 0),
-                                  blurRadius: 4,
-                                  offset: Offset(2, 2),
+                  margin: const EdgeInsets.only(right: 16),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    border: Border.all(color: Colors.white.withValues(alpha: 0.1)),
+                  ),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(20),
+                    child: BackdropFilter(
+                      filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: theme.brightness == Brightness.dark 
+                              ? Colors.white.withValues(alpha: 0.03) 
+                              : Colors.black.withValues(alpha: 0.02),
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Expanded(
+                              child: Hero(
+                                tag: card.image,
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
+                                    image: DecorationImage(
+                                      image: AssetImage(card.image),
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
                                 ),
-                              ],
+                              ),
                             ),
-                          ),
+                            Container(
+                              padding: const EdgeInsets.all(12),
+                              child: Text(
+                                card.title,
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: 13,
+                                  fontWeight: FontWeight.w600,
+                                  color: textColor.withValues(alpha: 0.9),
+                                ),
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
-                      const SizedBox(height: 6),
-                      Text(
-                        card.title,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.normal,
-                          color: textColor,
-                        ),
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ],
+                    ),
                   ),
                 ),
               );
