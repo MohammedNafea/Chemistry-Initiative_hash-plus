@@ -39,7 +39,7 @@ class ProfileScreen extends ConsumerWidget {
               slivers: [
                 _ProfileSliverAppBar(
                   user: user,
-                  localizations: localizationsAr,
+                  localizations: localizations,
                 ),
                 SliverToBoxAdapter(
                   child: Padding(
@@ -48,18 +48,18 @@ class ProfileScreen extends ConsumerWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         const SizedBox(height: 20),
-                        _SectionHeader(title: localizationsAr.contactInfo),
+                        _SectionHeader(title: localizations.contactInfo),
                         const SizedBox(height: 10),
                         _ContactInfoSection(
                           user: user,
-                          localizations: localizationsAr,
+                          localizations: localizations,
                         ),
                         const SizedBox(height: 30),
-                        _SectionHeader(title: localizationsAr.settings),
+                        _SectionHeader(title: localizations.settings),
                         const SizedBox(height: 10),
-                        _SettingsSection(localizations: localizationsAr),
+                        _SettingsSection(localizations: localizations),
                         const SizedBox(height: 40),
-                        _ActionButtons(localizations: localizationsAr, user: user),
+                        _ActionButtons(localizations: localizations, user: user),
                         const SizedBox(height: 50),
                       ],
                     ),

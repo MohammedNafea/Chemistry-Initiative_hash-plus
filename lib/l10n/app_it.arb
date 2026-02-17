@@ -1,0 +1,16 @@
+{
+  "@@locale": "it",
+  "appTitle": "Iniziativa Chimica",
+  "home": "Home",
+  "search": "Cerca",
+  "bookmark": "Segnalibro",
+  "profile": "Profilo",
+  "welcomeUser": "Benvenuto {name}",
+  "auroraTitle": "Aurora Boreale",
+  "exploreMore": "Esplora di più",
+  "yourProgress": "Il tuo progresso",
+  "natureSection": "Natura",
+  "waterAirSection": "Acqua e Aria",
+  "dailyLifeSection": "Vita Quotidiana",
+  "welcomeMessage": "Benvenuti alle Meraviglie della Chimica"
+}

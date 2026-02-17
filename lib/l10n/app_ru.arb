@@ -1,0 +1,16 @@
+{
+  "@@locale": "ru",
+  "appTitle": "Химическая Инициатива",
+  "home": "Главная",
+  "search": "Поиск",
+  "bookmark": "Закладка",
+  "profile": "Профиль",
+  "welcomeUser": "Добро пожаловать, {name}",
+  "auroraTitle": "Северное сияние",
+  "exploreMore": "Узнать больше",
+  "yourProgress": "Ваш прогресс",
+  "natureSection": "Природа",
+  "waterAirSection": "Вода и Воздух",
+  "dailyLifeSection": "Повседневная жизнь",
+  "welcomeMessage": "Добро пожаловать в Чудеса Химии"
+}

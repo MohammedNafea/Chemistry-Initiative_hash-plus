@@ -1,0 +1,16 @@
+{
+  "@@locale": "zh",
+  "appTitle": "化学倡议",
+  "home": "首页",
+  "search": "搜索",
+  "bookmark": "书签",
+  "profile": "个人资料",
+  "welcomeUser": "欢迎 {name}",
+  "auroraTitle": "北极光",
+  "exploreMore": "探索更多",
+  "yourProgress": "您的进度",
+  "natureSection": "自然",
+  "waterAirSection": "水与空气",
+  "dailyLifeSection": "日常生活",
+  "welcomeMessage": "欢迎来到化学奇迹"
+}

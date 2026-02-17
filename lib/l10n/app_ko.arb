@@ -1,0 +1,16 @@
+{
+  "@@locale": "ko",
+  "appTitle": "화학 이니셔티브",
+  "home": "홈",
+  "search": "검색",
+  "bookmark": "북마크",
+  "profile": "프로필",
+  "welcomeUser": "환영합니다 {name}",
+  "auroraTitle": "오로라",
+  "exploreMore": "더 알아보기",
+  "yourProgress": "진행 상황",
+  "natureSection": "자연",
+  "waterAirSection": "물과 공기",
+  "dailyLifeSection": "일상 생활",
+  "welcomeMessage": "화학의 경이로움에 오신 것을 환영합니다"
+}

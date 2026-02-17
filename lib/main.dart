@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:chemistry_initiative/core/database/app_database.dart';
 import 'package:chemistry_initiative/core/theme/theme_controller.dart';
+import 'package:chemistry_initiative/core/theme/app_theme.dart';
 import 'package:chemistry_initiative/splash_screen1.dart';
 
 void main() async {
@@ -23,10 +24,8 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Chemistry Initiative',
-          theme: ThemeData(
-            colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          ),
-          darkTheme: ThemeData.dark(),
+          theme: AppTheme.light,
+          darkTheme: AppTheme.dark,
           themeMode: mode,
           home: const SplashScreen(),
         );

@@ -1,0 +1,16 @@
+{
+  "@@locale": "es",
+  "appTitle": "Iniciativa Química",
+  "home": "Inicio",
+  "search": "Buscar",
+  "bookmark": "Marcador",
+  "profile": "Perfil",
+  "welcomeUser": "Bienvenido {name}",
+  "auroraTitle": "Aurora Boreal",
+  "exploreMore": "Explorar más",
+  "yourProgress": "Tu Progreso",
+  "natureSection": "Naturaleza",
+  "waterAirSection": "Agua y Aire",
+  "dailyLifeSection": "Vida Diaria",
+  "welcomeMessage": "Bienvenido a Maravillas Químicas"
+}

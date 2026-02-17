@@ -1,0 +1,16 @@
+{
+  "@@locale": "ja",
+  "appTitle": "化学イニシアチブ",
+  "home": "ホーム",
+  "search": "検索",
+  "bookmark": "ブックマーク",
+  "profile": "プロフィール",
+  "welcomeUser": "ようこそ {name}",
+  "auroraTitle": "オーロラ",
+  "exploreMore": "もっと見る",
+  "yourProgress": "進捗状況",
+  "natureSection": "自然",
+  "waterAirSection": "水と空気",
+  "dailyLifeSection": "日常生活",
+  "welcomeMessage": "化学の不思議へようこそ"
+}

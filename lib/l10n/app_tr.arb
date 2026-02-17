@@ -1,0 +1,16 @@
+{
+  "@@locale": "tr",
+  "appTitle": "Kimya Girişimi",
+  "home": "Ana Sayfa",
+  "search": "Ara",
+  "bookmark": "Yer İşaretleri",
+  "profile": "Profil",
+  "welcomeUser": "Hoşgeldin {name}",
+  "auroraTitle": "Kuzey Işıkları",
+  "exploreMore": "Daha Fazla Keşfet",
+  "yourProgress": "İlerleme Durumunuz",
+  "natureSection": "Doğa",
+  "waterAirSection": "Su ve Hava",
+  "dailyLifeSection": "Günlük Yaşam",
+  "welcomeMessage": "Kimya Harikalarına Hoş Geldiniz"
+}

@@ -1,0 +1,16 @@
+{
+  "@@locale": "hi",
+  "appTitle": "रसायन पहल",
+  "home": "मुखपृष्ठ",
+  "search": "खोजें",
+  "bookmark": "बुकमार्क",
+  "profile": "प्रोफ़ाइल",
+  "welcomeUser": "स्वागत है {name}",
+  "auroraTitle": "उत्तरी ध्रुवीय ज्योति",
+  "exploreMore": "और देखें",
+  "yourProgress": "आपकी प्रगति",
+  "natureSection": "प्रकृति",
+  "waterAirSection": "जल और वायु",
+  "dailyLifeSection": "दैनिक जीवन",
+  "welcomeMessage": "रसायन विज्ञान के चमत्कारों में आपका स्वागत है"
+}

@@ -1,0 +1,16 @@
+{
+  "@@locale": "de",
+  "appTitle": "Chemie Initiative",
+  "home": "Startseite",
+  "search": "Suchen",
+  "bookmark": "Lesezeichen",
+  "profile": "Profil",
+  "welcomeUser": "Willkommen {name}",
+  "auroraTitle": "Nordlicht",
+  "exploreMore": "Mehr entdecken",
+  "yourProgress": "Ihr Fortschritt",
+  "natureSection": "Natur",
+  "waterAirSection": "Wasser und Luft",
+  "dailyLifeSection": "Alltag",
+  "welcomeMessage": "Willkommen bei Chemie Wunder"
+}

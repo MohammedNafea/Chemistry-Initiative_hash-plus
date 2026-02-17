@@ -1,0 +1,16 @@
+{
+  "@@locale": "id",
+  "appTitle": "Inisiatif Kimia",
+  "home": "Beranda",
+  "search": "Cari",
+  "bookmark": "Penanda",
+  "profile": "Profil",
+  "welcomeUser": "Selamat datang {name}",
+  "auroraTitle": "Aurora Borealis",
+  "exploreMore": "Jelajahi Lebih Lanjut",
+  "yourProgress": "Kemajuan Anda",
+  "natureSection": "Alam",
+  "waterAirSection": "Air dan Udara",
+  "dailyLifeSection": "Kehidupan Sehari-hari",
+  "welcomeMessage": "Selamat Datang di Keajaiban Kimia"
+}

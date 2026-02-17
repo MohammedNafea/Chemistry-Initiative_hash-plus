@@ -1,0 +1,16 @@
+{
+  "@@locale": "fa",
+  "appTitle": "ابتکار شیمی",
+  "home": "خانه",
+  "search": "جستجو",
+  "bookmark": "نشانک",
+  "profile": "پروفایل",
+  "welcomeUser": "خوش آمدید {name}",
+  "auroraTitle": "شفق قطبی",
+  "exploreMore": "بیشتر کاوش کنید",
+  "yourProgress": "پیشرفت شما",
+  "natureSection": "طبیعت",
+  "waterAirSection": "آب و هوا",
+  "dailyLifeSection": "زندگی روزمره",
+  "welcomeMessage": "به شگفتی‌های شیمی خوش آمدید"
+}
