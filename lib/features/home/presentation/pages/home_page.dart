@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:chemistry_initiative/features/auth/data/current_user_provider.dart';
 import 'package:chemistry_initiative/features/discovery/presentation/pages/question_page.dart';
+import 'package:chemistry_initiative/features/discovery/presentation/pages/discovery_hub_screen.dart';
 import 'package:chemistry_initiative/features/search/presentation/pages/search_screen.dart';
 import 'package:chemistry_initiative/features/bookmark/presentation/pages/bookmark_screen.dart';
 import 'package:chemistry_initiative/features/profile/presentation/pages/profile_screen.dart';
@@ -17,6 +18,8 @@ import 'package:chemistry_initiative/features/experiments/presentation/pages/exp
 import 'package:chemistry_initiative/features/molecules/presentation/pages/molecule_viewer_screen.dart';
 import 'package:chemistry_initiative/features/home/presentation/widgets/chemical_of_the_day_card.dart';
 import 'package:chemistry_initiative/features/home/presentation/widgets/chemistry_particle_background.dart';
+import 'package:chemistry_initiative/core/widgets/lab_widgets.dart';
+import 'package:chemistry_initiative/features/gamification/data/providers/scientist_rank_provider.dart';
 
 class HomePage extends ConsumerStatefulWidget {
   final bool showWelcome;
@@ -44,6 +47,21 @@ class _HomePageState extends ConsumerState<HomePage> {
     }
   }
 
+  String _getRankLabel(ScientistRank rank, AppLocalizations localizations) {
+    switch (rank) {
+      case ScientistRank.novice:
+        return localizations.novice.toUpperCase();
+      case ScientistRank.labAssistant:
+        return localizations.labAssistant.toUpperCase();
+      case ScientistRank.researcher:
+        return localizations.researcherRank.toUpperCase();
+      case ScientistRank.seniorChemist:
+        return localizations.seniorChemist.toUpperCase();
+      case ScientistRank.alchemist:
+        return localizations.alchemist.toUpperCase();
+    }
+  }
+
   Widget _getPage(int index) {
     switch (index) {
       case 0:
@@ -51,8 +69,10 @@ class _HomePageState extends ConsumerState<HomePage> {
       case 1:
         return const SearchScreen();
       case 2:
-        return const BookmarkScreen();
+        return const DiscoveryHubScreen();
       case 3:
+        return const BookmarkScreen();
+      case 4:
         return const ProfileScreen();
       default:
         return _buildHomeContent();
@@ -65,6 +85,7 @@ class _HomePageState extends ConsumerState<HomePage> {
     final colorScheme = theme.colorScheme;
     final isDark = theme.brightness == Brightness.dark;
     final isWide = MediaQuery.of(context).size.width >= 1200;
+    final localizations = AppLocalizations.of(context)!;
 
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
@@ -81,11 +102,12 @@ class _HomePageState extends ConsumerState<HomePage> {
               selectedIconTheme: IconThemeData(color: colorScheme.primary),
               unselectedIconTheme: IconThemeData(color: theme.unselectedWidgetColor),
               selectedLabelTextStyle: TextStyle(color: colorScheme.primary, fontWeight: FontWeight.bold),
-              destinations: const [
-                NavigationRailDestination(icon: Icon(Icons.home_rounded), label: Text('Home')),
-                NavigationRailDestination(icon: Icon(Icons.search_rounded), label: Text('Search')),
-                NavigationRailDestination(icon: Icon(Icons.bookmark_rounded), label: Text('Bookmark')),
-                NavigationRailDestination(icon: Icon(Icons.person_rounded), label: Text('Profile')),
+              destinations: [
+                NavigationRailDestination(icon: const Icon(Icons.home_rounded), label: Text(localizations.home)),
+                NavigationRailDestination(icon: const Icon(Icons.search_rounded), label: Text(localizations.search)),
+                NavigationRailDestination(icon: const Icon(Icons.hub_rounded), label: Text(localizations.discoveryLabel)),
+                NavigationRailDestination(icon: const Icon(Icons.bookmark_rounded), label: Text(localizations.bookmark)),
+                NavigationRailDestination(icon: const Icon(Icons.person_rounded), label: Text(localizations.profile)),
               ],
             ),
           Expanded(
@@ -109,11 +131,12 @@ class _HomePageState extends ConsumerState<HomePage> {
             _currentIndex = index;
           });
         },
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home_rounded), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.search_rounded), label: 'Search'),
-          BottomNavigationBarItem(icon: Icon(Icons.bookmark_rounded), label: 'Bookmark'),
-          BottomNavigationBarItem(icon: Icon(Icons.person_rounded), label: 'Profile'),
+        items: [
+          BottomNavigationBarItem(icon: const Icon(Icons.home_rounded), label: localizations.home),
+          BottomNavigationBarItem(icon: const Icon(Icons.search_rounded), label: localizations.search),
+          BottomNavigationBarItem(icon: const Icon(Icons.hub_rounded), label: localizations.discoveryLabel),
+          BottomNavigationBarItem(icon: const Icon(Icons.bookmark_rounded), label: localizations.bookmark),
+          BottomNavigationBarItem(icon: const Icon(Icons.person_rounded), label: localizations.profile),
         ],
       ),
     );
@@ -135,8 +158,6 @@ class _HomePageState extends ConsumerState<HomePage> {
 
     // Use theme colors instead of hardcoded ones
     final textColor = isDark ? Colors.white : theme.colorScheme.primary;
-    final progressColor = theme.colorScheme.secondary;
-    final progressBgColor = isDark ? Colors.grey[800]! : Colors.grey[200]!;
 
     return SafeArea(
       child: Stack(
@@ -252,27 +273,53 @@ class _HomePageState extends ConsumerState<HomePage> {
                         color: textColor,
                       ),
                     ),
-                    const SizedBox(height: 8),
-                    Stack(
+                    const SizedBox(height: 12),
+                    Row(
                       children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(12),
-                          child: LinearProgressIndicator(
-                            value: progressValue,
-                            minHeight: 20,
-                            backgroundColor: progressBgColor,
-                            color: progressColor,
-                          ),
+                        const BeakerProgressIndicator(
+                          value: progressValue,
+                          height: 80,
+                          width: 50,
                         ),
-                        Positioned.fill(
-                          child: Center(
-                            child: Text(
-                              '${(progressValue * 100).toInt()}%',
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
+                        const SizedBox(width: 16),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                '${(progressValue * 100).toInt()}% ${localizations.complete}', // Add "Complete" or similar if available
+                                style: TextStyle(
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.bold,
+                                  color: colorScheme.secondary,
+                                ),
                               ),
-                            ),
+                              const SizedBox(height: 4),
+                              Container(
+                                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                                decoration: BoxDecoration(
+                                  color: colorScheme.primary.withValues(alpha: 0.1),
+                                  borderRadius: BorderRadius.circular(20),
+                                  border: Border.all(color: colorScheme.primary.withValues(alpha: 0.2)),
+                                ),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Icon(Icons.terminal_rounded, size: 14, color: colorScheme.primary),
+                                    const SizedBox(width: 6),
+                                    Text(
+                                      _getRankLabel(ref.watch(scientistRankProvider), localizations),
+                                      style: TextStyle(
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.bold,
+                                        color: colorScheme.primary,
+                                        letterSpacing: 1.2,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ],

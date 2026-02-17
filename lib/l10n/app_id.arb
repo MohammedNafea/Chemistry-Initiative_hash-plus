@@ -147,5 +147,14 @@
   "molHcl": "Asam Klorida",
   "factHcl": "Asam kuat yang ditemukan di perut Anda yang membantu mencerna makanan.",
   "molH2so4": "Asam Sulfat",
-  "factH2so4": "Asam yang sangat korosif yang digunakan dalam baterai dan pemrosesan mineral."
+  "factH2so4": "Asam yang sangat korosif yang digunakan dalam baterai dan pemrosesan mineral.",
+  "complete": "Selesai",
+  "labAssistant": "Asisten Laboratorium",
+  "researcherRank": "Peneliti",
+  "researchJournal": "Jurnal Penelitian",
+  "discoveries": "Penemuan",
+  "novice": "Pemula",
+  "seniorChemist": "Ahli Kimia Senior",
+  "alchemist": "Alkemis",
+  "discoveryLabel": "Penemuan"
 }

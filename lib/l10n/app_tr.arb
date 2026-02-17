@@ -151,5 +151,14 @@
   "molHcl": "Hidroklorik Asit",
   "factHcl": "Midenizde bulunan ve yiyeceklerin sindirilmesine yardımcı olan güçlü bir asit.",
   "molH2so4": "Sülfürik Asit",
-  "factH2so4": "Pillerde ve maden işlemede kullanılan yüksek derecede aşındırıcı bir asit."
+  "factH2so4": "Pillerde ve maden işlemede kullanılan yüksek derecede aşındırıcı bir asit.",
+  "complete": "Tamamlandı",
+  "labAssistant": "Laboratuvar Asistanı",
+  "researcherRank": "Araştırmacı Rütbesi",
+  "researchJournal": "Araştırma Günlüğü",
+  "discoveries": "Keşifler",
+  "novice": "Acemi",
+  "seniorChemist": "Kıdemli Kimyager",
+  "alchemist": "Simyacı",
+  "discoveryLabel": "Keşif"
 }

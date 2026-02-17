@@ -151,5 +151,14 @@
   "molHcl": "Acide Chlorhydrique",
   "factHcl": "Un acide fort présent dans votre estomac qui aide à digérer les aliments.",
   "molH2so4": "Acide Sulfurique",
-  "factH2so4": "Un acide hautement corrosif utilisé dans les batteries et le traitement des minerais."
+  "factH2so4": "Un acide hautement corrosif utilisé dans les batteries et le traitement des minerais.",
+  "complete": "Terminé",
+  "labAssistant": "Assistant de laboratoire",
+  "researcherRank": "Rang de chercheur",
+  "researchJournal": "Journal de recherche",
+  "discoveries": "Découvertes",
+  "novice": "Novice",
+  "seniorChemist": "Chimiste principal",
+  "alchemist": "Alchimiste",
+  "discoveryLabel": "Découverte"
 }

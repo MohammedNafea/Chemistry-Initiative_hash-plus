@@ -18,14 +18,17 @@ class _ChemistryParticleBackgroundState extends State<ChemistryParticleBackgroun
     super.initState();
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 10),
+      duration: const Duration(seconds: 20),
     )..repeat();
 
-    for (int i = 0; i < 20; i++) {
+    for (int i = 0; i < 30; i++) {
       _particles.add(Particle(
         offset: Offset(_random.nextDouble(), _random.nextDouble()),
-        size: _random.nextDouble() * 30 + 10,
-        speed: _random.nextDouble() * 0.05 + 0.01,
+        size: _random.nextDouble() * 20 + 5,
+        velocity: Offset(
+          (_random.nextDouble() - 0.5) * 0.001,
+          (_random.nextDouble() - 0.5) * 0.001,
+        ),
         type: _random.nextInt(3),
       ));
     }
@@ -40,17 +43,25 @@ class _ChemistryParticleBackgroundState extends State<ChemistryParticleBackgroun
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final color = theme.colorScheme.primary.withValues(alpha: 0.05);
-
+    final isDark = theme.brightness == Brightness.dark;
+    
     return AnimatedBuilder(
       animation: _controller,
       builder: (context, child) {
+        // Update positions
+        for (var p in _particles) {
+          p.offset = Offset(
+            (p.offset.dx + p.velocity.dx) % 1.0,
+            (p.offset.dy + p.velocity.dy) % 1.0,
+          );
+        }
+
         return CustomPaint(
           size: Size.infinite,
           painter: ParticlePainter(
             particles: _particles,
-            animationValue: _controller.value,
-            color: color,
+            primaryColor: theme.colorScheme.primary.withValues(alpha: isDark ? 0.15 : 0.1),
+            accentColor: theme.colorScheme.secondary.withValues(alpha: isDark ? 0.1 : 0.05),
           ),
         );
       },
@@ -61,47 +72,62 @@ class _ChemistryParticleBackgroundState extends State<ChemistryParticleBackgroun
 class Particle {
   Offset offset;
   double size;
-  double speed;
-  int type; // 0: atom, 1: bond, 2: hexagon
+  Offset velocity;
+  int type; // 0: atom, 1: complex, 2: hexagon
 
-  Particle({required this.offset, required this.size, required this.speed, required this.type});
+  Particle({required this.offset, required this.size, required this.velocity, required this.type});
 }
 
 class ParticlePainter extends CustomPainter {
   final List<Particle> particles;
-  final double animationValue;
-  final Color color;
+  final Color primaryColor;
+  final Color accentColor;
 
-  ParticlePainter({required this.particles, required this.animationValue, required this.color});
+  ParticlePainter({required this.particles, required this.primaryColor, required this.accentColor});
 
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
-      ..color = color
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = 1.0;
+      ..strokeWidth = 1.0
+      ..style = PaintingStyle.stroke;
 
+    const maxDistance = 150.0;
+
+    // Draw Bonds first
+    for (int i = 0; i < particles.length; i++) {
+      final p1 = particles[i];
+      final pos1 = Offset(p1.offset.dx * size.width, p1.offset.dy * size.height);
+
+      for (int j = i + 1; j < particles.length; j++) {
+        final p2 = particles[j];
+        final pos2 = Offset(p2.offset.dx * size.width, p2.offset.dy * size.height);
+
+        final distance = (pos1 - pos2).distance;
+        if (distance < maxDistance) {
+          final opacity = (1.0 - (distance / maxDistance)) * 0.3;
+          paint.color = primaryColor.withValues(alpha: opacity);
+          canvas.drawLine(pos1, pos2, paint);
+        }
+      }
+    }
+
+    // Draw Nodes
     for (var particle in particles) {
-      final yPos = ((particle.offset.dy + animationValue * particle.speed) % 1.0) * size.height;
-      final xPos = particle.offset.dx * size.width;
-      final center = Offset(xPos, yPos);
+      final center = Offset(particle.offset.dx * size.width, particle.offset.dy * size.height);
+      paint.color = primaryColor;
 
       switch (particle.type) {
-        case 0: // Atom
+        case 0: // Atomic Node
           canvas.drawCircle(center, particle.size / 2, paint);
-          canvas.drawCircle(center, particle.size / 4, paint);
-          break;
-        case 1: // Bond
-          canvas.drawLine(
-            center.translate(-particle.size / 2, -particle.size / 2),
-            center.translate(particle.size / 2, particle.size / 2),
-            paint,
-          );
-          canvas.drawCircle(center.translate(-particle.size / 2, -particle.size / 2), 3, paint..style = PaintingStyle.fill);
-          canvas.drawCircle(center.translate(particle.size / 2, particle.size / 2), 3, paint);
+          canvas.drawCircle(center, 2, paint..style = PaintingStyle.fill);
           paint.style = PaintingStyle.stroke;
           break;
-        case 2: // Hexagon (Benzene ring feel)
+        case 1: // Electron Shell feel
+          canvas.drawCircle(center, particle.size / 2, paint);
+          canvas.drawCircle(center, particle.size / 4, paint..color = accentColor);
+          paint.style = PaintingStyle.stroke;
+          break;
+        case 2: // Benzene fragment
           final path = Path();
           for (int i = 0; i < 6; i++) {
             final angle = (pi / 3) * i;

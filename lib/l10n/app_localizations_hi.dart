@@ -241,6 +241,32 @@ class AppLocalizationsHi extends AppLocalizations {
       'जैसा कि हम जानते हैं, इस यौगिक के बिना जीवन का अस्तित्व नहीं होता!';
 
   @override
+  String get molH2 => 'Hydrogen Gas';
+
+  @override
+  String get factH2 =>
+      'The simplest and most abundant element in the universe.';
+
+  @override
+  String get molO2 => 'Oxygen Gas';
+
+  @override
+  String get factO2 => 'Essential for human respiration and combustion.';
+
+  @override
+  String get molN2 => 'Nitrogen Gas';
+
+  @override
+  String get factN2 => 'Makes up about 78% of Earth\'s atmosphere.';
+
+  @override
+  String get molCl2 => 'Chlorine Gas';
+
+  @override
+  String get factCl2 =>
+      'A yellowish-green gas used as a disinfectant and bleach.';
+
+  @override
   String get molCo2 => 'कार्बन डाइऑक्साइड';
 
   @override
@@ -280,6 +306,99 @@ class AppLocalizationsHi extends AppLocalizations {
   @override
   String get factH2so4 =>
       'बैटरी और खनिज प्रसंस्करण में उपयोग किया जाने वाला एसिड।';
+
+  @override
+  String get molNaoh => 'Sodium Hydroxide (Lye)';
+
+  @override
+  String get factNaoh =>
+      'A strong base used in soap making and drain cleaning.';
+
+  @override
+  String get molTio2 => 'Titanium Dioxide';
+
+  @override
+  String get factTio2 =>
+      'A white pigment used in paints, sunscreens, and food coloring.';
+
+  @override
+  String get molPto2 => 'Platinum Dioxide';
+
+  @override
+  String get factPto2 =>
+      'Also known as Adams\' catalyst; used in organic chemistry reactions.';
+
+  @override
+  String get molCro3 => 'Chromium Trioxide';
+
+  @override
+  String get factCro3 => 'A powerful oxidizing agent used in metal plating.';
+
+  @override
+  String get molH2o2 => 'Hydrogen Peroxide';
+
+  @override
+  String get factH2o2 =>
+      'A common antiseptic and oxidizing agent used in bleaching.';
+
+  @override
+  String get molFe2o3 => 'Iron(III) Oxide (Rust)';
+
+  @override
+  String get factFe2o3 =>
+      'Formed when iron reacts with oxygen in the presence of water.';
+
+  @override
+  String get molEthanol => 'Ethanol';
+
+  @override
+  String get factEthanol =>
+      'A clear, colorless liquid; the principal type of alcohol in beverages.';
+
+  @override
+  String get molGlucose => 'Glucose';
+
+  @override
+  String get factGlucose =>
+      'A simple sugar that is an important energy source in living organisms.';
+
+  @override
+  String get molSio2 => 'Silicon Dioxide (Sand)';
+
+  @override
+  String get factSio2 => 'The major constituent of sand and glass.';
+
+  @override
+  String get molCaco3 => 'Calcium Carbonate (Chalk)';
+
+  @override
+  String get factCaco3 => 'Main component of pearls, shells, and chalk.';
+
+  @override
+  String get molAl2o3 => 'Aluminum Oxide (Sapphire)';
+
+  @override
+  String get factAl2o3 =>
+      'A hard mineral used as an abrasive and in gemstones.';
+
+  @override
+  String get molAucl3 => 'Gold(III) Chloride';
+
+  @override
+  String get factAucl3 =>
+      'A red crystalline solid formed by dissolving gold in aqua regia.';
+
+  @override
+  String get labManual => 'Lab Manual';
+
+  @override
+  String get recipes => 'Recipes';
+
+  @override
+  String get discovered => 'Discovered';
+
+  @override
+  String get undiscovered => 'Undiscovered';
 
   @override
   String get chemicalOfTheDay => 'आज का रसायन';
@@ -718,31 +837,29 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get elemMgSummary =>
-      'Magnesium is a shiny gray solid alkaline earth metal.';
+      'Magnesium is a shiny gray metal which burns with a brilliant white light.';
 
   @override
-  String get elemMgUse => 'Used in flares, laptops, and human muscle function.';
+  String get elemMgUse => 'Used in flares, fireworks, and lightweight alloys.';
 
   @override
   String get elemAlName => 'Aluminum';
 
   @override
-  String get elemAlSummary =>
-      'Aluminum is a lightweight, silvery-white, non-magnetic metal.';
+  String get elemAlSummary => 'Aluminum is a silvery-white, lightweight metal.';
 
   @override
-  String get elemAlUse =>
-      'Used in soda cans, foil, airplanes, and window frames.';
+  String get elemAlUse => 'Used in aircraft, cans, and foils.';
 
   @override
   String get elemSiName => 'Silicon';
 
   @override
   String get elemSiSummary =>
-      'Silicon is a hard, brittle crystalline metalloid widely used in electronics.';
+      'Silicon is a hard, brittle crystalline solid with a blue-grey metallic lustre.';
 
   @override
-  String get elemSiUse => 'The heart of computer chips and glass production.';
+  String get elemSiUse => 'The basis of modern electronics and computer chips.';
 
   @override
   String get elemPName => 'Phosphorus';
@@ -800,32 +917,32 @@ class AppLocalizationsHi extends AppLocalizations {
   String get elemCaName => 'Calcium';
 
   @override
-  String get elemCaSummary =>
-      'Calcium is a grey alkaline earth metal, the most abundant metal in humans.';
+  String get elemCaSummary => 'Calcium is a soft gray alkaline earth metal.';
 
   @override
-  String get elemCaUse => 'Found in milk, bones, teeth, and cement.';
+  String get elemCaUse =>
+      'Essential for living organisms, particularly in cell physiology.';
 
   @override
   String get elemFeName => 'Iron';
 
   @override
   String get elemFeSummary =>
-      'Iron is the most common element on Earth by mass, forming much of the core.';
+      'Iron is a strong, ductile, and lustrous transition metal.';
 
   @override
   String get elemFeUse =>
-      'Used in steel construction and found in red blood cells.';
+      'The most used metal, essential for construction and machinery.';
 
   @override
   String get elemCuName => 'Copper';
 
   @override
   String get elemCuSummary =>
-      'Copper is a soft, malleable, and ductile metal with very high conductivity.';
+      'Copper is a ductile, malleable metal with high thermal and electrical conductivity.';
 
   @override
-  String get elemCuUse => 'Used in electrical wiring and plumbing pipes.';
+  String get elemCuUse => 'Used in electrical wiring, plumbing, and coins.';
 
   @override
   String get elemZnName => 'Zinc';
@@ -842,10 +959,10 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get elemAgSummary =>
-      'Silver has the highest electrical and thermal conductivity of any metal.';
+      'Silver is a lustrous transition metal with the highest electrical conductivity of any element.';
 
   @override
-  String get elemAgUse => 'Used in jewelry, coins, and high-end electronics.';
+  String get elemAgUse => 'Used in jewelry, silverware, and electronics.';
 
   @override
   String get elemSnName => 'Tin';
@@ -872,10 +989,10 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get elemAuSummary =>
-      'Gold is a noble metal that does not tarnish and is highly valuable.';
+      'Gold is a bright, slightly reddish yellow, dense, soft, malleable, and ductile metal.';
 
   @override
-  String get elemAuUse => 'Used in jewelry, investment, and space tech.';
+  String get elemAuUse => 'Used in jewelry, electronics, and finance.';
 
   @override
   String get elemHgName => 'Mercury';
@@ -906,4 +1023,66 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get elemUUse => 'Used as fuel in nuclear power plants.';
+
+  @override
+  String get elemTiName => 'Titanium';
+
+  @override
+  String get elemTiSummary =>
+      'Titanium is a strong, lightweight metal with a high melting point and excellent corrosion resistance.';
+
+  @override
+  String get elemTiUse =>
+      'Used in aircraft, dental implants, and high-end watches.';
+
+  @override
+  String get elemCrName => 'Chromium';
+
+  @override
+  String get elemCrSummary =>
+      'Chromium is a hard, shiny metal that is highly resistant to tarnishing.';
+
+  @override
+  String get elemCrUse => 'Used in stainless steel and chrome plating.';
+
+  @override
+  String get elemPtName => 'Platinum';
+
+  @override
+  String get elemPtSummary =>
+      'Platinum is a dense, stable, and rare precious metal used in jewelry and catalytic converters.';
+
+  @override
+  String get elemPtUse => 'Used in vehicle catalysts and high-end electronics.';
+
+  @override
+  String get complete => 'Complete';
+
+  @override
+  String get labAssistant => 'Lab Assistant';
+
+  @override
+  String get researcherRank => 'Researcher Rank';
+
+  @override
+  String get researchJournal => 'Research Journal';
+
+  @override
+  String get discoveries => 'Discoveries';
+
+  @override
+  String get novice => 'Novice';
+
+  @override
+  String get seniorChemist => 'Senior Chemist';
+
+  @override
+  String get alchemist => 'Alchemist';
+
+  @override
+  String get discoveryLabel => 'Discovery';
+
+  @override
+  String get increaseHeatCatalyst =>
+      'Discovery requires more heat! Use the Bunsen burner.';
 }

@@ -238,6 +238,30 @@ class AppLocalizationsAr extends AppLocalizations {
   String get factWater => 'الحياة كما نعرفها لن توجد بدون هذا المركب!';
 
   @override
+  String get molH2 => 'غاز الهيدروجين';
+
+  @override
+  String get factH2 => 'العنصر الأبسط والأكثر وفرة في الكون.';
+
+  @override
+  String get molO2 => 'غاز الأكسجين';
+
+  @override
+  String get factO2 => 'ضروري لتنفس الإنسان والاحتراق.';
+
+  @override
+  String get molN2 => 'غاز النيتروجين';
+
+  @override
+  String get factN2 => 'يشكل حوالي 78٪ من الغلاف الجوي للأرض.';
+
+  @override
+  String get molCl2 => 'غاز الكلور';
+
+  @override
+  String get factCl2 => 'غاز أخضر مصفر يستخدم كمطهر ومبيض.';
+
+  @override
   String get molCo2 => 'ثاني أكسيد الكربون';
 
   @override
@@ -275,6 +299,96 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get factH2so4 =>
       'حمض تآكلي للغاية يستخدم في البطاريات ومعالجة المعادن.';
+
+  @override
+  String get molNaoh => 'هيدروكسيد الصوديوم (البوتاس)';
+
+  @override
+  String get factNaoh => 'قاعدة قوية تستخدم في صناعة الصابون وتسليك المجاري.';
+
+  @override
+  String get molTio2 => 'ثاني أكسيد التيتانيوم';
+
+  @override
+  String get factTio2 =>
+      'صبغة بيضاء تستخدم في الدهانات والواقيات الشمسية وتلوين الطعام.';
+
+  @override
+  String get molPto2 => 'ثاني أكسيد البلاتين';
+
+  @override
+  String get factPto2 =>
+      'يُعرف أيضاً بمحفز آدامز؛ يستخدم في تفاعلات الكيمياء العضوية.';
+
+  @override
+  String get molCro3 => 'ثالث أكسيد الكروم';
+
+  @override
+  String get factCro3 => 'عامل مؤكسد قوي يستخدم في طلاء المعادن.';
+
+  @override
+  String get molH2o2 => 'بيروكسيد الهيدروجين';
+
+  @override
+  String get factH2o2 => 'مطهر شائع وعامل مؤكسد يستخدم في التبييض.';
+
+  @override
+  String get molFe2o3 => 'أكسيد الحديد (الصدأ)';
+
+  @override
+  String get factFe2o3 =>
+      'يتكون عندما يتفاعل الحديد مع الأكسجين في وجود الماء.';
+
+  @override
+  String get molEthanol => 'الإيثانول';
+
+  @override
+  String get factEthanol =>
+      'سائل شفاف عديم اللون؛ النوع الرئيسي للكحول في المشروبات.';
+
+  @override
+  String get molGlucose => 'الجلوكوز';
+
+  @override
+  String get factGlucose =>
+      'سكر بسيط يعتبر مصدراً هاماً للطاقة في الكائنات الحية.';
+
+  @override
+  String get molSio2 => 'ثاني أكسيد السيليكون (الرمل)';
+
+  @override
+  String get factSio2 => 'المكون الرئيسي للرمل والزجاج.';
+
+  @override
+  String get molCaco3 => 'كربونات الكالسيوم (الطباشير)';
+
+  @override
+  String get factCaco3 => 'المكون الرئيسي لاللؤلؤ والأصداف والطباشير.';
+
+  @override
+  String get molAl2o3 => 'أكسيد الألمنيوم (الياقوت)';
+
+  @override
+  String get factAl2o3 => 'معدن صلب يستخدم كمادة كاشطة وفي الأحجار الكريمة.';
+
+  @override
+  String get molAucl3 => 'كلوريد الذهب الثلاثي';
+
+  @override
+  String get factAucl3 =>
+      'مادة صلبة بلورية حمراء تتشكل عن طريق إذابة الذهب في الماء الملكي.';
+
+  @override
+  String get labManual => 'دليل المختبر';
+
+  @override
+  String get recipes => 'الوصفات';
+
+  @override
+  String get discovered => 'مكتشف';
+
+  @override
+  String get undiscovered => 'غير مكتشف';
 
   @override
   String get chemicalOfTheDay => 'عنوان اليوم المميز';
@@ -710,32 +824,31 @@ class AppLocalizationsAr extends AppLocalizations {
   String get elemMgName => 'المغنيسيوم';
 
   @override
-  String get elemMgSummary => 'المغنيسيوم فلز قلوي ترابي صلب رمادي لامع.';
+  String get elemMgSummary =>
+      'المغنيسيوم معدن رمادي لامع يحترق بضوء أبيض ساطع.';
 
   @override
   String get elemMgUse =>
-      'يستخدم في كشافات الإضاءة والمحمول ووظائف العضلات عند الإنسان.';
+      'يستخدم في المشاعل والألعاب النارية والسبائك خفيفة الوزن.';
 
   @override
   String get elemAlName => 'الألومنيوم';
 
   @override
-  String get elemAlSummary =>
-      'الألومنيوم فلز خفيف الوزن أبيض فضي وغير مغناطيسي.';
+  String get elemAlSummary => 'الألومنيوم معدن فضي أبيض خفيف الوزن.';
 
   @override
-  String get elemAlUse =>
-      'يستخدم في علب الصودا والرقائق والطائرات وإطارات النوافذ.';
+  String get elemAlUse => 'يستخدم في الطائرات والعلب والرقائق.';
 
   @override
   String get elemSiName => 'السيليكون';
 
   @override
   String get elemSiSummary =>
-      'السيليكون شبه فلز بلوري صلب وقصف يستخدم على نطاق واسع في الإلكترونيات.';
+      'السيليكون مادة صلبة بلورية هشة ذات لمعان معدني أزرق رمادي.';
 
   @override
-  String get elemSiUse => 'قلب رقائق الكمبيوتر وإنتاج الزجاج.';
+  String get elemSiUse => 'أساس الإلكترونيات الحديثة ورقائق الكمبيوتر.';
 
   @override
   String get elemPName => 'الفوسفور';
@@ -791,32 +904,30 @@ class AppLocalizationsAr extends AppLocalizations {
   String get elemCaName => 'الكالسيوم';
 
   @override
-  String get elemCaSummary =>
-      'الكالسيوم فلز قلوي ترابي رمادي، وهو أكثر الفلزات وفرة في جسم الإنسان.';
+  String get elemCaSummary => 'الكالسيوم معدن أرضي قلوي رمادي ناعم.';
 
   @override
-  String get elemCaUse => 'يوجد في الحليب والعظام والأسنان والأسمنت.';
+  String get elemCaUse => 'ضروري للكائنات الحية، وخاصة في فسيولوجيا الخلية.';
 
   @override
   String get elemFeName => 'الحديد';
 
   @override
-  String get elemFeSummary =>
-      'الحديد هو العنصر الأكثر شيوعاً على الأرض من حيث الكتلة، ويكوّن معظم اللب.';
+  String get elemFeSummary => 'الحديد معدن انتقالي قوي وطيع ولامع.';
 
   @override
-  String get elemFeUse =>
-      'يستخدم في بناء الفولاذ والمركبات ويوجد في خلايا الدم الحمراء.';
+  String get elemFeUse => 'المعدن الأكثر استخداماً، ضروري للبناء والآلات.';
 
   @override
   String get elemCuName => 'النحاس';
 
   @override
   String get elemCuSummary =>
-      'النحاس فلز ناعم وقابل للطرق والسحب مع موصلية عالية جداً للكهرباء.';
+      'النحاس معدن طيع وقابل للطرق ذو موصلية حرارية وكهربائية عالية.';
 
   @override
-  String get elemCuUse => 'يستخدم في الأسلاك الكهربائية وأنابيب السباكة.';
+  String get elemCuUse =>
+      'يستخدم في الأسلاك الكهربائية والسباكة والعملات المعدنية.';
 
   @override
   String get elemZnName => 'الزنك';
@@ -832,11 +943,10 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get elemAgSummary =>
-      'تتميز الفضة بأعلى موصلية كهربائية وحرارية بين جميع الفلزات.';
+      'الفضة معدن انتقالي لامع يتمتع بأعلى موصلية كهربائية لأي عنصر.';
 
   @override
-  String get elemAgUse =>
-      'تستخدم في المجوهرات والعملات المعدنية والإلكترونيات عالية الجودة.';
+  String get elemAgUse => 'تستخدم في المجوهرات والأواني الفضية والإلكترونيات.';
 
   @override
   String get elemSnName => 'القصدير';
@@ -860,10 +970,11 @@ class AppLocalizationsAr extends AppLocalizations {
   String get elemAuName => 'الذهب';
 
   @override
-  String get elemAuSummary => 'الذهب فلز نبيل لا يصدأ وذو قيمة عالية جداً.';
+  String get elemAuSummary =>
+      'الذهب معدن أصفر محمر قليلاً، كثيف، ناعم، مرن، وطيع.';
 
   @override
-  String get elemAuUse => 'يستخدم في المجوهرات والاستثمار وتكنولوجيا الفضاء.';
+  String get elemAuUse => 'يستخدم في المجوهرات والإلكترونيات والتمويل.';
 
   @override
   String get elemHgName => 'الزئبق';
@@ -893,4 +1004,67 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get elemUUse => 'يستخدم كوقود في محطات الطاقة النووية.';
+
+  @override
+  String get elemTiName => 'التيتانيوم';
+
+  @override
+  String get elemTiSummary =>
+      'التيتانيوم معدن قوي وخفيف الوزن ذو درجة انصهار عالية ومقاومة ممتازة للتآكل.';
+
+  @override
+  String get elemTiUse =>
+      'يستخدم في الطائرات والغرسات السنية والساعات الفاخرة.';
+
+  @override
+  String get elemCrName => 'الكروم';
+
+  @override
+  String get elemCrSummary =>
+      'الكروم معدن صلب ولامع شديد المقاومة لفقدان البريق.';
+
+  @override
+  String get elemCrUse => 'يستخدم في الفولاذ المقاوم للصدأ وطلاء الكروم.';
+
+  @override
+  String get elemPtName => 'البلاتين';
+
+  @override
+  String get elemPtSummary =>
+      'البلاتين معدن ثمين كثيف ومستقر ونادر يستخدم في المجوهرات والمحولات الحفازة.';
+
+  @override
+  String get elemPtUse =>
+      'يستخدم في محفزات السيارات والإلكترونيات عالية الجودة.';
+
+  @override
+  String get complete => 'تم الإكمال';
+
+  @override
+  String get labAssistant => 'مساعد مختبر';
+
+  @override
+  String get researcherRank => 'رتبة الباحث';
+
+  @override
+  String get researchJournal => 'سجل الأبحاث';
+
+  @override
+  String get discoveries => 'الاكتشافات';
+
+  @override
+  String get novice => 'مبتدئ كيميائي';
+
+  @override
+  String get seniorChemist => 'كبير الكيميائيين';
+
+  @override
+  String get alchemist => 'خيميائي';
+
+  @override
+  String get discoveryLabel => 'اكتشافات';
+
+  @override
+  String get increaseHeatCatalyst =>
+      'الاكتشاف يتطلب حرارة أعلى! استخدم موقد بنزن.';
 }

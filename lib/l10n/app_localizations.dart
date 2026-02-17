@@ -562,6 +562,54 @@ abstract class AppLocalizations {
   /// **'Life as we know it would not exist without this compound!'**
   String get factWater;
 
+  /// No description provided for @molH2.
+  ///
+  /// In en, this message translates to:
+  /// **'Hydrogen Gas'**
+  String get molH2;
+
+  /// No description provided for @factH2.
+  ///
+  /// In en, this message translates to:
+  /// **'The simplest and most abundant element in the universe.'**
+  String get factH2;
+
+  /// No description provided for @molO2.
+  ///
+  /// In en, this message translates to:
+  /// **'Oxygen Gas'**
+  String get molO2;
+
+  /// No description provided for @factO2.
+  ///
+  /// In en, this message translates to:
+  /// **'Essential for human respiration and combustion.'**
+  String get factO2;
+
+  /// No description provided for @molN2.
+  ///
+  /// In en, this message translates to:
+  /// **'Nitrogen Gas'**
+  String get molN2;
+
+  /// No description provided for @factN2.
+  ///
+  /// In en, this message translates to:
+  /// **'Makes up about 78% of Earth\'s atmosphere.'**
+  String get factN2;
+
+  /// No description provided for @molCl2.
+  ///
+  /// In en, this message translates to:
+  /// **'Chlorine Gas'**
+  String get molCl2;
+
+  /// No description provided for @factCl2.
+  ///
+  /// In en, this message translates to:
+  /// **'A yellowish-green gas used as a disinfectant and bleach.'**
+  String get factCl2;
+
   /// No description provided for @molCo2.
   ///
   /// In en, this message translates to:
@@ -633,6 +681,174 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'A highly corrosive acid used in batteries and mineral processing.'**
   String get factH2so4;
+
+  /// No description provided for @molNaoh.
+  ///
+  /// In en, this message translates to:
+  /// **'Sodium Hydroxide (Lye)'**
+  String get molNaoh;
+
+  /// No description provided for @factNaoh.
+  ///
+  /// In en, this message translates to:
+  /// **'A strong base used in soap making and drain cleaning.'**
+  String get factNaoh;
+
+  /// No description provided for @molTio2.
+  ///
+  /// In en, this message translates to:
+  /// **'Titanium Dioxide'**
+  String get molTio2;
+
+  /// No description provided for @factTio2.
+  ///
+  /// In en, this message translates to:
+  /// **'A white pigment used in paints, sunscreens, and food coloring.'**
+  String get factTio2;
+
+  /// No description provided for @molPto2.
+  ///
+  /// In en, this message translates to:
+  /// **'Platinum Dioxide'**
+  String get molPto2;
+
+  /// No description provided for @factPto2.
+  ///
+  /// In en, this message translates to:
+  /// **'Also known as Adams\' catalyst; used in organic chemistry reactions.'**
+  String get factPto2;
+
+  /// No description provided for @molCro3.
+  ///
+  /// In en, this message translates to:
+  /// **'Chromium Trioxide'**
+  String get molCro3;
+
+  /// No description provided for @factCro3.
+  ///
+  /// In en, this message translates to:
+  /// **'A powerful oxidizing agent used in metal plating.'**
+  String get factCro3;
+
+  /// No description provided for @molH2o2.
+  ///
+  /// In en, this message translates to:
+  /// **'Hydrogen Peroxide'**
+  String get molH2o2;
+
+  /// No description provided for @factH2o2.
+  ///
+  /// In en, this message translates to:
+  /// **'A common antiseptic and oxidizing agent used in bleaching.'**
+  String get factH2o2;
+
+  /// No description provided for @molFe2o3.
+  ///
+  /// In en, this message translates to:
+  /// **'Iron(III) Oxide (Rust)'**
+  String get molFe2o3;
+
+  /// No description provided for @factFe2o3.
+  ///
+  /// In en, this message translates to:
+  /// **'Formed when iron reacts with oxygen in the presence of water.'**
+  String get factFe2o3;
+
+  /// No description provided for @molEthanol.
+  ///
+  /// In en, this message translates to:
+  /// **'Ethanol'**
+  String get molEthanol;
+
+  /// No description provided for @factEthanol.
+  ///
+  /// In en, this message translates to:
+  /// **'A clear, colorless liquid; the principal type of alcohol in beverages.'**
+  String get factEthanol;
+
+  /// No description provided for @molGlucose.
+  ///
+  /// In en, this message translates to:
+  /// **'Glucose'**
+  String get molGlucose;
+
+  /// No description provided for @factGlucose.
+  ///
+  /// In en, this message translates to:
+  /// **'A simple sugar that is an important energy source in living organisms.'**
+  String get factGlucose;
+
+  /// No description provided for @molSio2.
+  ///
+  /// In en, this message translates to:
+  /// **'Silicon Dioxide (Sand)'**
+  String get molSio2;
+
+  /// No description provided for @factSio2.
+  ///
+  /// In en, this message translates to:
+  /// **'The major constituent of sand and glass.'**
+  String get factSio2;
+
+  /// No description provided for @molCaco3.
+  ///
+  /// In en, this message translates to:
+  /// **'Calcium Carbonate (Chalk)'**
+  String get molCaco3;
+
+  /// No description provided for @factCaco3.
+  ///
+  /// In en, this message translates to:
+  /// **'Main component of pearls, shells, and chalk.'**
+  String get factCaco3;
+
+  /// No description provided for @molAl2o3.
+  ///
+  /// In en, this message translates to:
+  /// **'Aluminum Oxide (Sapphire)'**
+  String get molAl2o3;
+
+  /// No description provided for @factAl2o3.
+  ///
+  /// In en, this message translates to:
+  /// **'A hard mineral used as an abrasive and in gemstones.'**
+  String get factAl2o3;
+
+  /// No description provided for @molAucl3.
+  ///
+  /// In en, this message translates to:
+  /// **'Gold(III) Chloride'**
+  String get molAucl3;
+
+  /// No description provided for @factAucl3.
+  ///
+  /// In en, this message translates to:
+  /// **'A red crystalline solid formed by dissolving gold in aqua regia.'**
+  String get factAucl3;
+
+  /// No description provided for @labManual.
+  ///
+  /// In en, this message translates to:
+  /// **'Lab Manual'**
+  String get labManual;
+
+  /// No description provided for @recipes.
+  ///
+  /// In en, this message translates to:
+  /// **'Recipes'**
+  String get recipes;
+
+  /// No description provided for @discovered.
+  ///
+  /// In en, this message translates to:
+  /// **'Discovered'**
+  String get discovered;
+
+  /// No description provided for @undiscovered.
+  ///
+  /// In en, this message translates to:
+  /// **'Undiscovered'**
+  String get undiscovered;
 
   /// No description provided for @chemicalOfTheDay.
   ///
@@ -1465,13 +1681,13 @@ abstract class AppLocalizations {
   /// No description provided for @elemMgSummary.
   ///
   /// In en, this message translates to:
-  /// **'Magnesium is a shiny gray solid alkaline earth metal.'**
+  /// **'Magnesium is a shiny gray metal which burns with a brilliant white light.'**
   String get elemMgSummary;
 
   /// No description provided for @elemMgUse.
   ///
   /// In en, this message translates to:
-  /// **'Used in flares, laptops, and human muscle function.'**
+  /// **'Used in flares, fireworks, and lightweight alloys.'**
   String get elemMgUse;
 
   /// No description provided for @elemAlName.
@@ -1483,13 +1699,13 @@ abstract class AppLocalizations {
   /// No description provided for @elemAlSummary.
   ///
   /// In en, this message translates to:
-  /// **'Aluminum is a lightweight, silvery-white, non-magnetic metal.'**
+  /// **'Aluminum is a silvery-white, lightweight metal.'**
   String get elemAlSummary;
 
   /// No description provided for @elemAlUse.
   ///
   /// In en, this message translates to:
-  /// **'Used in soda cans, foil, airplanes, and window frames.'**
+  /// **'Used in aircraft, cans, and foils.'**
   String get elemAlUse;
 
   /// No description provided for @elemSiName.
@@ -1501,13 +1717,13 @@ abstract class AppLocalizations {
   /// No description provided for @elemSiSummary.
   ///
   /// In en, this message translates to:
-  /// **'Silicon is a hard, brittle crystalline metalloid widely used in electronics.'**
+  /// **'Silicon is a hard, brittle crystalline solid with a blue-grey metallic lustre.'**
   String get elemSiSummary;
 
   /// No description provided for @elemSiUse.
   ///
   /// In en, this message translates to:
-  /// **'The heart of computer chips and glass production.'**
+  /// **'The basis of modern electronics and computer chips.'**
   String get elemSiUse;
 
   /// No description provided for @elemPName.
@@ -1609,13 +1825,13 @@ abstract class AppLocalizations {
   /// No description provided for @elemCaSummary.
   ///
   /// In en, this message translates to:
-  /// **'Calcium is a grey alkaline earth metal, the most abundant metal in humans.'**
+  /// **'Calcium is a soft gray alkaline earth metal.'**
   String get elemCaSummary;
 
   /// No description provided for @elemCaUse.
   ///
   /// In en, this message translates to:
-  /// **'Found in milk, bones, teeth, and cement.'**
+  /// **'Essential for living organisms, particularly in cell physiology.'**
   String get elemCaUse;
 
   /// No description provided for @elemFeName.
@@ -1627,13 +1843,13 @@ abstract class AppLocalizations {
   /// No description provided for @elemFeSummary.
   ///
   /// In en, this message translates to:
-  /// **'Iron is the most common element on Earth by mass, forming much of the core.'**
+  /// **'Iron is a strong, ductile, and lustrous transition metal.'**
   String get elemFeSummary;
 
   /// No description provided for @elemFeUse.
   ///
   /// In en, this message translates to:
-  /// **'Used in steel construction and found in red blood cells.'**
+  /// **'The most used metal, essential for construction and machinery.'**
   String get elemFeUse;
 
   /// No description provided for @elemCuName.
@@ -1645,13 +1861,13 @@ abstract class AppLocalizations {
   /// No description provided for @elemCuSummary.
   ///
   /// In en, this message translates to:
-  /// **'Copper is a soft, malleable, and ductile metal with very high conductivity.'**
+  /// **'Copper is a ductile, malleable metal with high thermal and electrical conductivity.'**
   String get elemCuSummary;
 
   /// No description provided for @elemCuUse.
   ///
   /// In en, this message translates to:
-  /// **'Used in electrical wiring and plumbing pipes.'**
+  /// **'Used in electrical wiring, plumbing, and coins.'**
   String get elemCuUse;
 
   /// No description provided for @elemZnName.
@@ -1681,13 +1897,13 @@ abstract class AppLocalizations {
   /// No description provided for @elemAgSummary.
   ///
   /// In en, this message translates to:
-  /// **'Silver has the highest electrical and thermal conductivity of any metal.'**
+  /// **'Silver is a lustrous transition metal with the highest electrical conductivity of any element.'**
   String get elemAgSummary;
 
   /// No description provided for @elemAgUse.
   ///
   /// In en, this message translates to:
-  /// **'Used in jewelry, coins, and high-end electronics.'**
+  /// **'Used in jewelry, silverware, and electronics.'**
   String get elemAgUse;
 
   /// No description provided for @elemSnName.
@@ -1735,13 +1951,13 @@ abstract class AppLocalizations {
   /// No description provided for @elemAuSummary.
   ///
   /// In en, this message translates to:
-  /// **'Gold is a noble metal that does not tarnish and is highly valuable.'**
+  /// **'Gold is a bright, slightly reddish yellow, dense, soft, malleable, and ductile metal.'**
   String get elemAuSummary;
 
   /// No description provided for @elemAuUse.
   ///
   /// In en, this message translates to:
-  /// **'Used in jewelry, investment, and space tech.'**
+  /// **'Used in jewelry, electronics, and finance.'**
   String get elemAuUse;
 
   /// No description provided for @elemHgName.
@@ -1797,6 +2013,120 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Used as fuel in nuclear power plants.'**
   String get elemUUse;
+
+  /// No description provided for @elemTiName.
+  ///
+  /// In en, this message translates to:
+  /// **'Titanium'**
+  String get elemTiName;
+
+  /// No description provided for @elemTiSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Titanium is a strong, lightweight metal with a high melting point and excellent corrosion resistance.'**
+  String get elemTiSummary;
+
+  /// No description provided for @elemTiUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used in aircraft, dental implants, and high-end watches.'**
+  String get elemTiUse;
+
+  /// No description provided for @elemCrName.
+  ///
+  /// In en, this message translates to:
+  /// **'Chromium'**
+  String get elemCrName;
+
+  /// No description provided for @elemCrSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Chromium is a hard, shiny metal that is highly resistant to tarnishing.'**
+  String get elemCrSummary;
+
+  /// No description provided for @elemCrUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used in stainless steel and chrome plating.'**
+  String get elemCrUse;
+
+  /// No description provided for @elemPtName.
+  ///
+  /// In en, this message translates to:
+  /// **'Platinum'**
+  String get elemPtName;
+
+  /// No description provided for @elemPtSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Platinum is a dense, stable, and rare precious metal used in jewelry and catalytic converters.'**
+  String get elemPtSummary;
+
+  /// No description provided for @elemPtUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used in vehicle catalysts and high-end electronics.'**
+  String get elemPtUse;
+
+  /// No description provided for @complete.
+  ///
+  /// In en, this message translates to:
+  /// **'Complete'**
+  String get complete;
+
+  /// No description provided for @labAssistant.
+  ///
+  /// In en, this message translates to:
+  /// **'Lab Assistant'**
+  String get labAssistant;
+
+  /// No description provided for @researcherRank.
+  ///
+  /// In en, this message translates to:
+  /// **'Researcher Rank'**
+  String get researcherRank;
+
+  /// No description provided for @researchJournal.
+  ///
+  /// In en, this message translates to:
+  /// **'Research Journal'**
+  String get researchJournal;
+
+  /// No description provided for @discoveries.
+  ///
+  /// In en, this message translates to:
+  /// **'Discoveries'**
+  String get discoveries;
+
+  /// No description provided for @novice.
+  ///
+  /// In en, this message translates to:
+  /// **'Novice'**
+  String get novice;
+
+  /// No description provided for @seniorChemist.
+  ///
+  /// In en, this message translates to:
+  /// **'Senior Chemist'**
+  String get seniorChemist;
+
+  /// No description provided for @alchemist.
+  ///
+  /// In en, this message translates to:
+  /// **'Alchemist'**
+  String get alchemist;
+
+  /// No description provided for @discoveryLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Discovery'**
+  String get discoveryLabel;
+
+  /// No description provided for @increaseHeatCatalyst.
+  ///
+  /// In en, this message translates to:
+  /// **'Discovery requires more heat! Use the Bunsen burner.'**
+  String get increaseHeatCatalyst;
 }
 
 class _AppLocalizationsDelegate

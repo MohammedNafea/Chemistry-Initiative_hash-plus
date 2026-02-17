@@ -9,6 +9,9 @@ class UserModel {
   final String location;
   final String imageUrl;
   final List<String> badges;
+  final int quizzesCompleted;
+  final int experimentsViewed;
+  final Map<String, String> researchJournal; // Compound ID -> Discovery Date/Notes
 
   UserModel({
     required this.id,
@@ -20,6 +23,9 @@ class UserModel {
     this.location = '',
     this.imageUrl = 'assets/images/avatar.jpg',
     this.badges = const [],
+    this.quizzesCompleted = 0,
+    this.experimentsViewed = 0,
+    this.researchJournal = const {},
   });
 
   UserModel copyWith({
@@ -32,6 +38,9 @@ class UserModel {
     String? location,
     String? imageUrl,
     List<String>? badges,
+    int? quizzesCompleted,
+    int? experimentsViewed,
+    Map<String, String>? researchJournal,
   }) {
     return UserModel(
       id: id ?? this.id,
@@ -43,6 +52,9 @@ class UserModel {
       location: location ?? this.location,
       imageUrl: imageUrl ?? this.imageUrl,
       badges: badges ?? this.badges,
+      quizzesCompleted: quizzesCompleted ?? this.quizzesCompleted,
+      experimentsViewed: experimentsViewed ?? this.experimentsViewed,
+      researchJournal: researchJournal ?? this.researchJournal,
     );
   }
 
@@ -56,6 +68,9 @@ class UserModel {
         'location': location,
         'imageUrl': imageUrl,
         'badges': badges,
+        'quizzesCompleted': quizzesCompleted,
+        'experimentsViewed': experimentsViewed,
+        'researchJournal': researchJournal,
       };
 
   factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
@@ -68,5 +83,8 @@ class UserModel {
         location: json['location'] as String? ?? '',
         imageUrl: json['imageUrl'] as String? ?? 'assets/images/avatar.jpg',
         badges: (json['badges'] as List<dynamic>?)?.map((e) => e as String).toList() ?? [],
+        quizzesCompleted: json['quizzesCompleted'] as int? ?? 0,
+        experimentsViewed: json['experimentsViewed'] as int? ?? 0,
+        researchJournal: Map<String, String>.from(json['researchJournal'] ?? {}),
       );
 }
