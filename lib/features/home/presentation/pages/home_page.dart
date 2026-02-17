@@ -52,15 +52,19 @@ class _HomePageState extends ConsumerState<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+    final isDark = theme.brightness == Brightness.dark;
+
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: theme.scaffoldBackgroundColor,
       body: _getPage(_currentIndex),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         type: BottomNavigationBarType.fixed,
-        backgroundColor: const Color(0xFFF9F4EA),
-        selectedItemColor: const Color(0xFFC47457),
-        unselectedItemColor: const Color(0xFF9C9E80),
+        backgroundColor: isDark ? const Color(0xFF1E1E1E) : const Color(0xFFF9F4EA), // Or use colorScheme.surface
+        selectedItemColor: isDark ? colorScheme.primary : const Color(0xFFC47457),
+        unselectedItemColor: isDark ? Colors.grey : const Color(0xFF9C9E80),
         onTap: (index) {
           setState(() {
             _currentIndex = index;
@@ -89,9 +93,14 @@ class _HomePageState extends ConsumerState<HomePage> {
     final waterCards = homeRepository.getWaterCards(localizations);
     final dailyCards = homeRepository.getDailyCards(localizations);
 
-    const darkBrown = Color(0xFF5A3E2B);
-    const softBrown = Color(0xFF8C6B4F);
-    const lightBackground = Color(0xFFEDE6D9);
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+    final isDark = theme.brightness == Brightness.dark;
+
+    // Use theme colors instead of hardcoded ones
+    final textColor = isDark ? Colors.white : const Color(0xFF5A3E2B);
+    final progressColor = isDark ? colorScheme.primary : const Color(0xFF5A3E2B);
+    final progressBgColor = isDark ? Colors.grey[800]! : const Color(0xFFEDE6D9);
 
     return SafeArea(
       child: Stack(
@@ -108,16 +117,16 @@ class _HomePageState extends ConsumerState<HomePage> {
                       children: [
                         CircleAvatar(
                           radius: 20,
-                          backgroundColor: softBrown,
+                          backgroundColor: isDark ? colorScheme.secondary : const Color(0xFF8C6B4F),
                           child: const Icon(Icons.person, color: Colors.white),
                         ),
                         const SizedBox(width: 12),
                         Text(
                           localizations.welcomeUser(user?.name ?? localizations.user),
-                          style: const TextStyle(
+                          style: TextStyle(
                             fontSize: 22,
                             fontWeight: FontWeight.w600,
-                            color: darkBrown,
+                            color: textColor,
                           ),
                         ),
                         const Spacer(),
@@ -174,7 +183,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                                   );
                                 },
                                 style: ElevatedButton.styleFrom(
-                                  backgroundColor: softBrown,
+                                  backgroundColor: isDark ? colorScheme.primary : const Color(0xFF8C6B4F),
                                   padding: const EdgeInsets.symmetric(
                                     horizontal: 18,
                                     vertical: 10,
@@ -201,10 +210,10 @@ class _HomePageState extends ConsumerState<HomePage> {
 
                     Text(
                       localizations.yourProgress,
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
-                        color: darkBrown,
+                        color: textColor,
                       ),
                     ),
                     const SizedBox(height: 8),
@@ -215,8 +224,8 @@ class _HomePageState extends ConsumerState<HomePage> {
                           child: LinearProgressIndicator(
                             value: progressValue,
                             minHeight: 20,
-                            backgroundColor: lightBackground,
-                            color: darkBrown,
+                            backgroundColor: progressBgColor,
+                            color: progressColor,
                           ),
                         ),
                         Positioned.fill(
@@ -234,16 +243,16 @@ class _HomePageState extends ConsumerState<HomePage> {
                     ),
                     const SizedBox(height: 30),
 
-                    sectionTitle(localizations.natureSection, darkBrown),
-                    horizontalList(natureCards, darkBrown),
+                    sectionTitle(localizations.natureSection, textColor),
+                    horizontalList(natureCards, textColor),
 
                     const SizedBox(height: 16),
-                    sectionTitle(localizations.waterAirSection, darkBrown),
-                    horizontalList(waterCards, darkBrown),
+                    sectionTitle(localizations.waterAirSection, textColor),
+                    horizontalList(waterCards, textColor),
 
                     const SizedBox(height: 16),
-                    sectionTitle(localizations.dailyLifeSection, darkBrown),
-                    horizontalList(dailyCards, darkBrown),
+                    sectionTitle(localizations.dailyLifeSection, textColor),
+                    horizontalList(dailyCards, textColor),
                   ],
                 ),
               ),
@@ -258,14 +267,14 @@ class _HomePageState extends ConsumerState<HomePage> {
                     padding: const EdgeInsets.symmetric(
                         horizontal: 24, vertical: 16),
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: theme.cardColor,
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Text(
                       localizations.welcomeMessage,
                       textAlign: TextAlign.center,
-                      style: const TextStyle(
-                          fontSize: 20, fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                          fontSize: 20, fontWeight: FontWeight.bold, color: theme.textTheme.bodyLarge?.color),
                     ),
                   ),
                 ),
@@ -293,65 +302,75 @@ class _HomePageState extends ConsumerState<HomePage> {
   Widget horizontalList(List<HomeCardModel> cards, Color textColor) {
     return SizedBox(
       height: 180,
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemCount: cards.length,
-        itemBuilder: (context, index) {
-          final card = cards[index];
-          return GestureDetector(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => QuestionPage(
-                    image: card.image,
-                    title: card.title,
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          // Responsive item width: 40% of screen width on small screens, fixed max on large
+          final screenWidth = MediaQuery.of(context).size.width;
+          final itemWidth = screenWidth > 600 ? 160.0 : screenWidth * 0.38;
+          
+          return ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: cards.length,
+            itemBuilder: (context, index) {
+              final card = cards[index];
+              return GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => QuestionPage(
+                        image: card.image,
+                        title: card.title,
+                      ),
+                    ),
+                  );
+                },
+                child: Container(
+                  width: itemWidth,
+                  margin: const EdgeInsets.only(right: 12),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Expanded(
+                        child: Hero(
+                          tag: card.image,
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(16),
+                              image: DecorationImage(
+                                image: AssetImage(card.image),
+                                fit: BoxFit.cover,
+                              ),
+                              boxShadow: const [
+                                BoxShadow(
+                                  color: Color.fromARGB(80, 0, 0, 0),
+                                  blurRadius: 4,
+                                  offset: Offset(2, 2),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 6),
+                      Text(
+                        card.title,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.normal,
+                          color: textColor,
+                        ),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ],
                   ),
                 ),
               );
             },
-            child: Container(
-              width: 140,
-              margin: const EdgeInsets.only(right: 12),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Expanded(
-                    child: Hero(
-                      tag: card.image,
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(16),
-                          image: DecorationImage(
-                            image: AssetImage(card.image),
-                            fit: BoxFit.cover,
-                          ),
-                          boxShadow: const [
-                            BoxShadow(
-                              color: Color.fromARGB(80, 0, 0, 0),
-                              blurRadius: 4,
-                              offset: Offset(2, 2),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 6),
-                  Text(
-                    card.title,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.normal,
-                      color: textColor,
-                    ),
-                  ),
-                ],
-              ),
-            ),
           );
-        },
+        }
       ),
     );
   }

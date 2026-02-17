@@ -16,12 +16,20 @@ class QuestionPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    const Color darkBrown = Color(0xFF5C4033);
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
+    
+    // Instead of hardcoded darkBrown, use primary color from theme or a specific dark shade if needed
+    final primaryColor = isDark ? theme.colorScheme.primary : const Color(0xFF5C4033);
+    final backgroundColor = theme.scaffoldBackgroundColor;
+    final textColor = isDark ? Colors.white : const Color(0xFF5C4033);
+    final descriptionColor = isDark ? Colors.grey[300] : Colors.black87;
+
     final topic = {'image': image, 'title': title};
     final localizations = AppLocalizations.of(context)!;
 
     return Scaffold(
-      backgroundColor: const Color(0xffF5F5F5),
+      backgroundColor: backgroundColor,
       body: SafeArea(
         child: Column(
           children: [
@@ -56,10 +64,10 @@ class QuestionPage extends ConsumerWidget {
                     Text(
                       localizations.auroraQuestion,
                       textAlign: TextAlign.start,
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 22,
                         fontWeight: FontWeight.bold,
-                        color: darkBrown,
+                        color: textColor,
                         fontFamily: 'Cairo',
                       ),
                     ),
@@ -69,10 +77,10 @@ class QuestionPage extends ConsumerWidget {
                     Text(
                       localizations.auroraDescription,
                       textAlign: TextAlign.start,
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 16,
                         height: 1.6,
-                        color: Colors.black87,
+                        color: descriptionColor,
                       ),
                     ),
 
@@ -85,13 +93,14 @@ class QuestionPage extends ConsumerWidget {
                           Expanded(
                             child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.white,
+                                backgroundColor: isDark ? Colors.grey[800] : Colors.white,
+                                foregroundColor: isDark ? Colors.white : primaryColor,
                                 padding: const EdgeInsets.symmetric(
                                   vertical: 14,
                                 ),
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(12),
-                                  side: const BorderSide(color: darkBrown),
+                                  side: BorderSide(color: primaryColor),
                                 ),
                               ),
                               onPressed: () {
@@ -108,13 +117,13 @@ class QuestionPage extends ConsumerWidget {
                                 children: [
                                   Text(
                                     localizations.backToHome,
-                                    style: const TextStyle(
+                                    style: TextStyle(
                                       fontSize: 16,
-                                      color: darkBrown,
+                                      color: isDark ? Colors.white : primaryColor,
                                     ),
                                   ),
                                   const SizedBox(width: 6),
-                                  const Icon(Icons.home, size: 20, color: darkBrown),
+                                  Icon(Icons.home, size: 20, color: isDark ? Colors.white : primaryColor),
                                 ],
                               ),
                             ),
@@ -125,7 +134,7 @@ class QuestionPage extends ConsumerWidget {
                           Expanded(
                             child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: darkBrown,
+                                backgroundColor: primaryColor,
                                 padding: const EdgeInsets.symmetric(
                                   vertical: 14,
                                 ),
@@ -146,16 +155,16 @@ class QuestionPage extends ConsumerWidget {
                                 children: [
                                   Text(
                                     localizations.addToBookmarks,
-                                    style: const TextStyle(
+                                    style: TextStyle(
                                       fontSize: 16,
-                                      color: Colors.white,
+                                      color: isDark ? Colors.black : Colors.white,
                                     ),
                                   ),
                                   const SizedBox(width: 6),
-                                  const Icon(
+                                  Icon(
                                     Icons.bookmark,
                                     size: 20,
-                                    color: Colors.white,
+                                    color: isDark ? Colors.black : Colors.white,
                                   ),
                                 ],
                               ),
