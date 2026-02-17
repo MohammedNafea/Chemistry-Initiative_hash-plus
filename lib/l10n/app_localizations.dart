@@ -435,6 +435,54 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Topic deleted'**
   String get topicDeleted;
+
+  /// No description provided for @backToHome.
+  ///
+  /// In en, this message translates to:
+  /// **'Back to Home'**
+  String get backToHome;
+
+  /// No description provided for @addToBookmarks.
+  ///
+  /// In en, this message translates to:
+  /// **'Add to Bookmarks'**
+  String get addToBookmarks;
+
+  /// No description provided for @addedToBookmarks.
+  ///
+  /// In en, this message translates to:
+  /// **'Added to Bookmarks'**
+  String get addedToBookmarks;
+
+  /// No description provided for @name.
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get name;
+
+  /// No description provided for @bio.
+  ///
+  /// In en, this message translates to:
+  /// **'Bio'**
+  String get bio;
+
+  /// No description provided for @profileUpdated.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile Updated Successfully'**
+  String get profileUpdated;
+
+  /// No description provided for @auroraQuestion.
+  ///
+  /// In en, this message translates to:
+  /// **'Have you ever wondered why the sky sparkles with the colors of the Aurora Borealis?'**
+  String get auroraQuestion;
+
+  /// No description provided for @auroraDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'The Aurora Borealis occurs when charged particles from the sun collide with gases in the Earth\'s atmosphere, such as oxygen and nitrogen. These collisions excite atoms and molecules, giving them extra energy.\n• Oxygen at low altitude gives off green light\n• Oxygen at high altitude gives off red light\n• Nitrogen gives off blue and purple colors\n\nWhen these atoms return to their normal state, they release energy in the form of visible light. This process is the cause of the stunning colors of the aurora, a vivid example of a natural chemical and physical reaction observable in our daily lives.'**
+  String get auroraDescription;
 }
 
 class _AppLocalizationsDelegate

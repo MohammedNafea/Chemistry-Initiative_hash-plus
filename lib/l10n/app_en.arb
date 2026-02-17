@@ -61,5 +61,13 @@
   "savedTopics": "Saved Topics",
   "saved": "Saved",
   "bookmarks": "Bookmarks",
-  "topicDeleted": "Topic deleted"
+  "topicDeleted": "Topic deleted",
+  "backToHome": "Back to Home",
+  "addToBookmarks": "Add to Bookmarks",
+  "addedToBookmarks": "Added to Bookmarks",
+  "name": "Name",
+  "bio": "Bio",
+  "profileUpdated": "Profile Updated Successfully",
+  "auroraQuestion": "Have you ever wondered why the sky sparkles with the colors of the Aurora Borealis?",
+  "auroraDescription": "The Aurora Borealis occurs when charged particles from the sun collide with gases in the Earth's atmosphere, such as oxygen and nitrogen. These collisions excite atoms and molecules, giving them extra energy.\n• Oxygen at low altitude gives off green light\n• Oxygen at high altitude gives off red light\n• Nitrogen gives off blue and purple colors\n\nWhen these atoms return to their normal state, they release energy in the form of visible light. This process is the cause of the stunning colors of the aurora, a vivid example of a natural chemical and physical reaction observable in our daily lives."
 }

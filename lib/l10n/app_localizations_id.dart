@@ -165,4 +165,30 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get topicDeleted => 'Topic deleted';
+
+  @override
+  String get backToHome => 'Back to Home';
+
+  @override
+  String get addToBookmarks => 'Add to Bookmarks';
+
+  @override
+  String get addedToBookmarks => 'Added to Bookmarks';
+
+  @override
+  String get name => 'Name';
+
+  @override
+  String get bio => 'Bio';
+
+  @override
+  String get profileUpdated => 'Profile Updated Successfully';
+
+  @override
+  String get auroraQuestion =>
+      'Have you ever wondered why the sky sparkles with the colors of the Aurora Borealis?';
+
+  @override
+  String get auroraDescription =>
+      'The Aurora Borealis occurs when charged particles from the sun collide with gases in the Earth\'s atmosphere, such as oxygen and nitrogen. These collisions excite atoms and molecules, giving them extra energy.\n• Oxygen at low altitude gives off green light\n• Oxygen at high altitude gives off red light\n• Nitrogen gives off blue and purple colors\n\nWhen these atoms return to their normal state, they release energy in the form of visible light. This process is the cause of the stunning colors of the aurora, a vivid example of a natural chemical and physical reaction observable in our daily lives.';
 }

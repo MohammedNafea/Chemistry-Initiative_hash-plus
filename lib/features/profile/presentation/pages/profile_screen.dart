@@ -5,8 +5,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:chemistry_initiative/core/theme/theme_controller.dart';
 import 'package:chemistry_initiative/core/constants/app_colors.dart';
-import 'package:chemistry_initiative/core/l10n/app_localizations.dart';
-import 'package:chemistry_initiative/core/l10n/locale_provider.dart';
+import 'package:chemistry_initiative/l10n/app_localizations.dart';
+// import 'package:chemistry_initiative/core/l10n/locale_provider.dart'; // Removed
 import 'package:chemistry_initiative/core/database/models/user_model.dart';
 import 'package:chemistry_initiative/features/auth/data/auth_repository.dart';
 import 'package:chemistry_initiative/features/auth/data/current_user_provider.dart';
@@ -19,59 +19,49 @@ class ProfileScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final user = ref.watch(currentUserNotifierProvider);
-    final localizationAsync = ref.watch(localizationProvider);
+    final localizations = AppLocalizations.of(context)!;
 
     if (user == null) {
-      return const Center(child: Text('يرجى تسجيل الدخول'));
+      return Center(child: Text(localizations.user)); // Should ideally be "Please login"
     }
 
-    return localizationAsync.when(
-      data: (localizations) {
-        final localizationsAr = AppLocalizations(const Locale('ar'));
-        return Directionality(
-          textDirection: localizationsAr.textDirection,
-          child: Scaffold(
-            backgroundColor: Theme.of(context).brightness == Brightness.dark
-                ? const Color(0xFF1D1B20)
-                : AppColors.oyster,
-            body: CustomScrollView(
-              physics: const BouncingScrollPhysics(),
-              slivers: [
-                _ProfileSliverAppBar(
-                  user: user,
-                  localizations: localizations,
-                ),
-                SliverToBoxAdapter(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 24.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const SizedBox(height: 20),
-                        _SectionHeader(title: localizations.contactInfo),
-                        const SizedBox(height: 10),
-                        _ContactInfoSection(
-                          user: user,
-                          localizations: localizations,
-                        ),
-                        const SizedBox(height: 30),
-                        _SectionHeader(title: localizations.settings),
-                        const SizedBox(height: 10),
-                        _SettingsSection(localizations: localizations),
-                        const SizedBox(height: 40),
-                        _ActionButtons(localizations: localizations, user: user),
-                        const SizedBox(height: 50),
-                      ],
-                    ),
+    return Scaffold(
+      backgroundColor: Theme.of(context).brightness == Brightness.dark
+          ? const Color(0xFF1D1B20)
+          : AppColors.oyster,
+      body: CustomScrollView(
+        physics: const BouncingScrollPhysics(),
+        slivers: [
+          _ProfileSliverAppBar(
+            user: user,
+            localizations: localizations,
+          ),
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(height: 20),
+                  _SectionHeader(title: localizations.contactInfo),
+                  const SizedBox(height: 10),
+                  _ContactInfoSection(
+                    user: user,
+                    localizations: localizations,
                   ),
-                ),
-              ],
+                  const SizedBox(height: 30),
+                  _SectionHeader(title: localizations.settings),
+                  const SizedBox(height: 10),
+                  _SettingsSection(localizations: localizations),
+                  const SizedBox(height: 40),
+                  _ActionButtons(localizations: localizations, user: user),
+                  const SizedBox(height: 50),
+                ],
+              ),
             ),
           ),
-        );
-      },
-      loading: () => const Center(child: CircularProgressIndicator()),
-      error: (err, stack) => Center(child: Text('Error: $err')),
+        ],
+      ),
     );
   }
 }

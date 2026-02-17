@@ -165,4 +165,30 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get topicDeleted => 'تم حذف الموضوع';
+
+  @override
+  String get backToHome => 'العودة للصفحة الرئيسية';
+
+  @override
+  String get addToBookmarks => 'إضافة إلى المفضلة';
+
+  @override
+  String get addedToBookmarks => 'تم الإضافة إلى المفضلة';
+
+  @override
+  String get name => 'الاسم';
+
+  @override
+  String get bio => 'نبذة شخصية';
+
+  @override
+  String get profileUpdated => 'تم تحديث الملف الشخصي بنجاح';
+
+  @override
+  String get auroraQuestion =>
+      'هل تساءلت يوماً لماذا تتلألأ السماء بألوان الشفق القطبي؟';
+
+  @override
+  String get auroraDescription =>
+      'الشفق القطبي يحدث عندما تصطدم جسيمات مشحونة من الشمس بالغازات في الغلاف الجوي للأرض، مثل الأكسجين والنيتروجين. هذه الاصطدامات تثير الذرات والجزيئات وتمنحها طاقة إضافية.\n• الأكسجين على ارتفاع منخفض يعطي ضوءاً أخضر\n• الأكسجين على ارتفاع مرتفع يعطي ضوءاً أحمر\n• النيتروجين يعطي ألوان زرقاء وبنفسجية\n\nعندما تعود هذه الذرات إلى حالتها الطبيعية، تطلق الطاقة على شكل ضوء مرئي. هذه العملية هي سبب الألوان المذهلة للشفق، وهي مثال حي على تفاعل كيميائي وفيزيائي طبيعي يمكن ملاحظته في حياتنا اليومية.';
 }

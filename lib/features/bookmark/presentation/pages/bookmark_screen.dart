@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:chemistry_initiative/features/bookmark/data/bookmark_provider.dart';
 import 'package:chemistry_initiative/features/discovery/presentation/pages/question_page.dart';
+import 'package:chemistry_initiative/l10n/app_localizations.dart';
 
 class BookmarkScreen extends ConsumerWidget {
   const BookmarkScreen({super.key});
@@ -11,6 +12,7 @@ class BookmarkScreen extends ConsumerWidget {
     const darkBrown = Color(0xFF5A3E2B);
     const softBrown = Color(0xFF8C6B4F);
     final bookmarks = ref.watch(bookmarkProvider);
+    final localizations = AppLocalizations.of(context)!;
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -24,7 +26,7 @@ class BookmarkScreen extends ConsumerWidget {
                         size: 64, color: Colors.grey[400]),
                     const SizedBox(height: 16),
                     Text(
-                      'لا توجد مواضيع محفوظة',
+                      localizations.noSavedTopics,
                       style: TextStyle(
                         fontSize: 18,
                         color: Colors.grey[600],
@@ -33,7 +35,7 @@ class BookmarkScreen extends ConsumerWidget {
                     ),
                     const SizedBox(height: 8),
                     Text(
-                      'احفظ المواضيع المفضلة لديك',
+                      localizations.saveYourFavorites,
                       style: TextStyle(
                         fontSize: 14,
                         color: Colors.grey[500],
@@ -48,9 +50,9 @@ class BookmarkScreen extends ConsumerWidget {
                     padding: const EdgeInsets.all(16),
                     child: Row(
                       children: [
-                        const Text(
-                          'المواضيع المحفوظة',
-                          style: TextStyle(
+                        Text(
+                          localizations.savedTopics,
+                          style: const TextStyle(
                             fontSize: 24,
                             fontWeight: FontWeight.bold,
                             color: darkBrown,
@@ -59,7 +61,7 @@ class BookmarkScreen extends ConsumerWidget {
                         const Spacer(),
                         Text(
                           '${bookmarks.length}',
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 18,
                             color: softBrown,
                             fontWeight: FontWeight.w600,
@@ -124,11 +126,11 @@ class BookmarkScreen extends ConsumerWidget {
                                         const SizedBox(height: 8),
                                         Row(
                                           children: [
-                                            Icon(Icons.bookmark,
+                                            const Icon(Icons.bookmark,
                                                 size: 16, color: softBrown),
                                             const SizedBox(width: 4),
                                             Text(
-                                              'محفوظ',
+                                              localizations.saved,
                                               style: TextStyle(
                                                 fontSize: 12,
                                                 color: Colors.grey[600],
@@ -146,8 +148,8 @@ class BookmarkScreen extends ConsumerWidget {
                                   onPressed: () {
                                     ref.read(bookmarkProvider.notifier).remove(topic);
                                     ScaffoldMessenger.of(context).showSnackBar(
-                                      const SnackBar(
-                                        content: Text('تم حذف الموضوع'),
+                                      SnackBar(
+                                        content: Text(localizations.topicDeleted),
                                       ),
                                     );
                                   },

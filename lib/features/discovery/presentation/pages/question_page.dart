@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:chemistry_initiative/features/bookmark/data/bookmark_provider.dart';
 import 'package:chemistry_initiative/features/home/presentation/pages/home_page.dart';
+import 'package:chemistry_initiative/l10n/app_localizations.dart';
 
 class QuestionPage extends ConsumerWidget {
   final String image;
@@ -17,6 +18,7 @@ class QuestionPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     const Color darkBrown = Color(0xFF5C4033);
     final topic = {'image': image, 'title': title};
+    final localizations = AppLocalizations.of(context)!;
 
     return Scaffold(
       backgroundColor: const Color(0xffF5F5F5),
@@ -49,12 +51,11 @@ class QuestionPage extends ConsumerWidget {
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
-                  textDirection: TextDirection.rtl,
                   children: [
                     const SizedBox(height: 15),
                     Text(
-                      "هل تساءلت يوماً لماذا تتلألأ السماء بألوان الشفق القطبي؟",
-                      textAlign: TextAlign.right,
+                      localizations.auroraQuestion,
+                      textAlign: TextAlign.start,
                       style: const TextStyle(
                         fontSize: 22,
                         fontWeight: FontWeight.bold,
@@ -65,14 +66,10 @@ class QuestionPage extends ConsumerWidget {
 
                     const SizedBox(height: 12),
 
-                    const Text(
-                      "الشفق القطبي يحدث عندما تصطدم جسيمات مشحونة من الشمس بالغازات في الغلاف الجوي للأرض، مثل الأكسجين والنيتروجين. هذه الاصطدامات تثير الذرات والجزيئات وتمنحها طاقة إضافية.\n"
-                      "• الأكسجين على ارتفاع منخفض يعطي ضوءاً أخضر\n"
-                      "• الأكسجين على ارتفاع مرتفع يعطي ضوءاً أحمر\n"
-                      "• النيتروجين يعطي ألوان زرقاء وبنفسجية\n\n"
-                      "عندما تعود هذه الذرات إلى حالتها الطبيعية، تطلق الطاقة على شكل ضوء مرئي. هذه العملية هي سبب الألوان المذهلة للشفق، وهي مثال حي على تفاعل كيميائي وفيزيائي طبيعي يمكن ملاحظته في حياتنا اليومية.",
-                      textAlign: TextAlign.right,
-                      style: TextStyle(
+                    Text(
+                      localizations.auroraDescription,
+                      textAlign: TextAlign.start,
+                      style: const TextStyle(
                         fontSize: 16,
                         height: 1.6,
                         color: Colors.black87,
@@ -108,16 +105,16 @@ class QuestionPage extends ConsumerWidget {
                               },
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
-                                children: const [
+                                children: [
                                   Text(
-                                    "العودة للصفحة الرئيسية",
-                                    style: TextStyle(
+                                    localizations.backToHome,
+                                    style: const TextStyle(
                                       fontSize: 16,
                                       color: darkBrown,
                                     ),
                                   ),
-                                  SizedBox(width: 6),
-                                  Icon(Icons.home, size: 20, color: darkBrown),
+                                  const SizedBox(width: 6),
+                                  const Icon(Icons.home, size: 20, color: darkBrown),
                                 ],
                               ),
                             ),
@@ -139,23 +136,23 @@ class QuestionPage extends ConsumerWidget {
                               onPressed: () {
                                 ref.read(bookmarkProvider.notifier).add(topic);
                                 ScaffoldMessenger.of(context).showSnackBar(
-                                  const SnackBar(
-                                    content: Text("تم الإضافة إلى المفضلة"),
+                                  SnackBar(
+                                    content: Text(localizations.addedToBookmarks),
                                   ),
                                 );
                               },
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
-                                children: const [
+                                children: [
                                   Text(
-                                    "إضافة إلى المفضلة",
-                                    style: TextStyle(
+                                    localizations.addToBookmarks,
+                                    style: const TextStyle(
                                       fontSize: 16,
                                       color: Colors.white,
                                     ),
                                   ),
-                                  SizedBox(width: 6),
-                                  Icon(
+                                  const SizedBox(width: 6),
+                                  const Icon(
                                     Icons.bookmark,
                                     size: 20,
                                     color: Colors.white,

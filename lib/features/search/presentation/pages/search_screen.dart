@@ -1,58 +1,38 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:chemistry_initiative/features/discovery/presentation/pages/question_page.dart';
+import 'package:chemistry_initiative/features/home/data/models/home_card_model.dart';
+import 'package:chemistry_initiative/features/home/data/providers/home_provider.dart';
+import 'package:chemistry_initiative/l10n/app_localizations.dart';
 
-class SearchScreen extends StatefulWidget {
+class SearchScreen extends ConsumerStatefulWidget {
   const SearchScreen({super.key});
 
   @override
-  State<SearchScreen> createState() => _SearchScreenState();
+  ConsumerState<SearchScreen> createState() => _SearchScreenState();
 }
 
-class _SearchScreenState extends State<SearchScreen> {
+class _SearchScreenState extends ConsumerState<SearchScreen> {
   final TextEditingController _searchController = TextEditingController();
-  final List<Map<String, String>> _allTopics = [
-    {'image': 'assets/images/download (4).jpg', 'title': 'احتراق الغازات'},
-    {'image': 'assets/images/Ancient Forest.jpg', 'title': 'الغابات'},
-    {'image': 'assets/images/A bowl of coal.jpg', 'title': 'اشتعال الفحم'},
-    {'image': 'assets/images/جبل الفيل -  العلاء.jpg', 'title': 'الصخور'},
-    {
-      'image': 'assets/images/Enchanting Nature and Art.jpg',
-      'title': ' امتصاص المحلول ',
-    },
-    {
-      'image': 'assets/images/#nature #rain #aesthetics #overcast.jpg',
-      'title': 'قطرات المطر',
-    },
-    {'image': 'assets/images/contaminación.jpg', 'title': 'دخان المصانع'},
-    {
-      'image':
-          'assets/images/Discover Top Vacation Spots Across the Planet.jpg',
-      'title': 'الكريستال',
-    },
-    {'image': 'assets/images/欧包 by vcg-ailsapan.jpg', 'title': 'تخمير الخبز'},
-    {
-      'image': 'assets/images/Carbon Quantum Dots.jpg',
-      'title': 'المعامل الطبية',
-    },
-    {'image': 'assets/images/Handmade.jpg', 'title': 'الأدوية'},
-    {
-      'image': 'assets/images/michael-glazier-5q5K8Q3x6e4-unsplash.jpg',
-      'title': 'الاشتعال',
-    },
-  ];
-
-  List<Map<String, String>> _filteredTopics = [];
+  List<HomeCardModel> _allTopics = [];
+  List<HomeCardModel> _filteredTopics = [];
 
   @override
-  void initState() {
-    super.initState();
-    _filteredTopics = _allTopics;
-    _searchController.addListener(_filterTopics);
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    final localizations = AppLocalizations.of(context)!;
+    final homeRepository = ref.read(homeRepositoryProvider);
+    
+    _allTopics = [
+      ...homeRepository.getNatureCards(localizations),
+      ...homeRepository.getWaterCards(localizations),
+      ...homeRepository.getDailyCards(localizations),
+    ];
+    _filterTopics();
   }
 
   @override
   void dispose() {
-    _searchController.removeListener(_filterTopics);
     _searchController.dispose();
     super.dispose();
   }
@@ -65,7 +45,7 @@ class _SearchScreenState extends State<SearchScreen> {
       } else {
         _filteredTopics = _allTopics
             .where((topic) =>
-                topic['title']!.toLowerCase().contains(query))
+                topic.title.toLowerCase().contains(query))
             .toList();
       }
     });
@@ -74,6 +54,7 @@ class _SearchScreenState extends State<SearchScreen> {
   @override
   Widget build(BuildContext context) {
     const softBrown = Color(0xFF8C6B4F);
+    final localizations = AppLocalizations.of(context)!;
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -84,14 +65,16 @@ class _SearchScreenState extends State<SearchScreen> {
               padding: const EdgeInsets.all(16),
               child: TextField(
                 controller: _searchController,
+                onChanged: (_) => _filterTopics(),
                 decoration: InputDecoration(
-                  hintText: 'ابحث عن موضوع...',
+                  hintText: localizations.searchPlaceholder,
                   prefixIcon: const Icon(Icons.search, color: softBrown),
                   suffixIcon: _searchController.text.isNotEmpty
                       ? IconButton(
                           icon: const Icon(Icons.clear),
                           onPressed: () {
                             _searchController.clear();
+                            _filterTopics();
                           },
                         )
                       : null,
@@ -119,7 +102,7 @@ class _SearchScreenState extends State<SearchScreen> {
                               size: 64, color: Colors.grey[400]),
                           const SizedBox(height: 16),
                           Text(
-                            'لا توجد نتائج',
+                            localizations.noResults,
                             style: TextStyle(
                               fontSize: 18,
                               color: Colors.grey[600],
@@ -146,8 +129,8 @@ class _SearchScreenState extends State<SearchScreen> {
                               context,
                               MaterialPageRoute(
                                 builder: (context) => QuestionPage(
-                                  image: topic['image']!,
-                                  title: topic['title']!,
+                                  image: topic.image,
+                                  title: topic.title,
                                 ),
                               ),
                             );
@@ -156,7 +139,7 @@ class _SearchScreenState extends State<SearchScreen> {
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(16),
                               image: DecorationImage(
-                                image: AssetImage(topic['image']!),
+                                image: AssetImage(topic.image),
                                 fit: BoxFit.cover,
                               ),
                               boxShadow: const [
@@ -184,7 +167,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                 child: Padding(
                                   padding: const EdgeInsets.all(12),
                                   child: Text(
-                                    topic['title']!,
+                                    topic.title,
                                     textAlign: TextAlign.center,
                                     style: const TextStyle(
                                       color: Colors.white,
