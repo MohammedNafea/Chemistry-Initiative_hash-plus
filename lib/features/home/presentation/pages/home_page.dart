@@ -64,16 +64,41 @@ class _HomePageState extends ConsumerState<HomePage> {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
     final isDark = theme.brightness == Brightness.dark;
+    final isWide = MediaQuery.of(context).size.width >= 1200;
 
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
-      body: Stack(
+      body: Row(
         children: [
-          const ChemistryParticleBackground(),
-          _getPage(_currentIndex),
+          if (isWide)
+            NavigationRail(
+              selectedIndex: _currentIndex,
+              backgroundColor: isDark ? theme.cardColor : Colors.white,
+              onDestinationSelected: (index) {
+                setState(() => _currentIndex = index);
+              },
+              labelType: NavigationRailLabelType.all,
+              selectedIconTheme: IconThemeData(color: colorScheme.primary),
+              unselectedIconTheme: IconThemeData(color: theme.unselectedWidgetColor),
+              selectedLabelTextStyle: TextStyle(color: colorScheme.primary, fontWeight: FontWeight.bold),
+              destinations: const [
+                NavigationRailDestination(icon: Icon(Icons.home_rounded), label: Text('Home')),
+                NavigationRailDestination(icon: Icon(Icons.search_rounded), label: Text('Search')),
+                NavigationRailDestination(icon: Icon(Icons.bookmark_rounded), label: Text('Bookmark')),
+                NavigationRailDestination(icon: Icon(Icons.person_rounded), label: Text('Profile')),
+              ],
+            ),
+          Expanded(
+            child: Stack(
+              children: [
+                const ChemistryParticleBackground(),
+                _getPage(_currentIndex),
+              ],
+            ),
+          ),
         ],
       ),
-      bottomNavigationBar: BottomNavigationBar(
+      bottomNavigationBar: isWide ? null : BottomNavigationBar(
         currentIndex: _currentIndex,
         type: BottomNavigationBarType.fixed,
         backgroundColor: isDark ? theme.cardColor : Colors.white,
@@ -85,13 +110,10 @@ class _HomePageState extends ConsumerState<HomePage> {
           });
         },
         items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.bookmark),
-            label: 'Bookmark',
-          ),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
+          BottomNavigationBarItem(icon: Icon(Icons.home_rounded), label: 'Home'),
+          BottomNavigationBarItem(icon: Icon(Icons.search_rounded), label: 'Search'),
+          BottomNavigationBarItem(icon: Icon(Icons.bookmark_rounded), label: 'Bookmark'),
+          BottomNavigationBarItem(icon: Icon(Icons.person_rounded), label: 'Profile'),
         ],
       ),
     );

@@ -32,8 +32,9 @@ class ElementCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final color = _getCategoryColor(element.category);
-    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final categoryColor = _getCategoryColor(element.category);
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
 
     return GestureDetector(
       onTap: () {
@@ -45,51 +46,64 @@ class ElementCard extends StatelessWidget {
         );
       },
       child: Container(
+        padding: const EdgeInsets.all(8),
         decoration: BoxDecoration(
-          color: isDark ? color.withValues(alpha: 0.2) : color.withValues(alpha: 0.2),
-          borderRadius: BorderRadius.circular(12),
+          color: isDark ? categoryColor.withValues(alpha: 0.15) : categoryColor.withValues(alpha: 0.1),
+          borderRadius: BorderRadius.circular(16),
           border: Border.all(
-            color: color,
+            color: categoryColor.withValues(alpha: 0.6),
             width: 2,
           ),
           boxShadow: [
-            BoxShadow(
-              color: color.withValues(alpha: 0.1),
-              blurRadius: 4,
-              offset: const Offset(0, 2),
-            ),
+            if (isDark)
+              BoxShadow(
+                color: categoryColor.withValues(alpha: 0.3),
+                blurRadius: 10,
+                spreadRadius: -2,
+              ),
           ],
         ),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               '${element.atomicNumber}',
               style: TextStyle(
-                fontSize: 12,
+                fontSize: 10,
+                fontWeight: FontWeight.bold,
                 color: isDark ? Colors.white70 : Colors.black54,
               ),
             ),
-            const SizedBox(height: 4),
-            Text(
-              element.symbol,
-              style: TextStyle(
-                fontSize: 28,
-                fontWeight: FontWeight.bold,
-                color: isDark ? color.withValues(alpha: 0.9) : color.withValues(alpha: 0.9), // Darker shade for text?
-                // Actually let's use the color itself if it's readable
+            Center(
+              child: Text(
+                element.symbol,
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  color: isDark ? Colors.white : categoryColor.withValues(alpha: 0.8),
+                  shadows: [
+                    if (isDark)
+                      Shadow(
+                        color: categoryColor.withValues(alpha: 0.5),
+                        blurRadius: 8,
+                      ),
+                  ],
+                ),
               ),
             ),
-            Text(
-              element.name,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w500,
-                color: isDark ? Colors.white : Colors.black87,
+            Center(
+              child: Text(
+                element.name,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 11,
+                  fontWeight: FontWeight.w600,
+                  color: isDark ? Colors.white : Colors.black87,
+                ),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
               ),
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
             ),
           ],
         ),

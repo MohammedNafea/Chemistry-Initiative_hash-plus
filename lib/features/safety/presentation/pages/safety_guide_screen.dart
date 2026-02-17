@@ -39,7 +39,6 @@ class SafetyGuideScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final symbols = SafetyRepository.getSymbols();
     final localizations = AppLocalizations.of(context)!;
-    final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Scaffold(
       appBar: AppBar(
@@ -48,49 +47,63 @@ class SafetyGuideScreen extends StatelessWidget {
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: GridView.builder(
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            crossAxisSpacing: 16,
-            mainAxisSpacing: 16,
-            childAspectRatio: 1.1,
-          ),
-          itemCount: symbols.length,
-          itemBuilder: (context, index) {
-            final symbol = symbols[index];
-            return GestureDetector(
-              onTap: () {
-                showDialog(
-                  context: context,
-                  builder: (context) => _SymbolDetailDialog(
-                    symbol: symbol,
-                    name: _getLocalizedName(localizations, symbol.name),
-                    desc: _getLocalizedDesc(localizations, symbol.description),
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          int crossAxisCount = 2;
+          if (constraints.maxWidth > 1200) {
+            crossAxisCount = 6;
+          } else if (constraints.maxWidth > 800) {
+            crossAxisCount = 4;
+          } else if (constraints.maxWidth > 600) {
+            crossAxisCount = 3;
+          }
+
+          return GridView.builder(
+            padding: const EdgeInsets.all(16),
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: crossAxisCount,
+              crossAxisSpacing: 16,
+              mainAxisSpacing: 16,
+              childAspectRatio: 1.1,
+            ),
+            itemCount: symbols.length,
+            itemBuilder: (context, index) {
+              final symbol = symbols[index];
+              return Card(
+                clipBehavior: Clip.antiAlias,
+                child: InkWell(
+                  onTap: () {
+                    showDialog(
+                      context: context,
+                      builder: (context) => _SymbolDetailDialog(
+                        symbol: symbol,
+                        name: _getLocalizedName(localizations, symbol.name),
+                        desc: _getLocalizedDesc(localizations, symbol.description),
+                      ),
+                    );
+                  },
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(symbol.icon, size: 48, color: symbol.color),
+                      const SizedBox(height: 12),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8),
+                        child: Text(
+                          _getLocalizedName(localizations, symbol.name),
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                    ],
                   ),
-                );
-              },
-              child: Card(
-                elevation: 4,
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-                color: isDark ? const Color(0xFF2A2831) : Colors.white,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(symbol.icon, size: 48, color: symbol.color),
-                    const SizedBox(height: 12),
-                    Text(
-                      _getLocalizedName(localizations, symbol.name),
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-                    ),
-                  ],
                 ),
-              ),
-            );
-          },
-        ),
+              );
+            },
+          );
+        },
       ),
     );
   }

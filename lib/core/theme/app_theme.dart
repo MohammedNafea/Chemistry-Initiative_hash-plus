@@ -10,13 +10,25 @@ class AppTheme {
       primary: AppColors.scienceIndigo,
       secondary: AppColors.cyanLabs,
       tertiary: AppColors.reactiveGreen,
-      surface: const Color(0xFFF8F9FF),
+      surface: const Color(0xFFF0F2F8),
       onSurface: AppColors.scienceIndigo,
     ),
-    scaffoldBackgroundColor: const Color(0xFFF8F9FF),
+    scaffoldBackgroundColor: const Color(0xFFF0F2F8),
+    cardTheme: CardThemeData(
+      elevation: 0,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      color: Colors.white,
+    ),
     appBarTheme: const AppBarTheme(
       backgroundColor: Colors.transparent,
       elevation: 0,
+      centerTitle: true,
+      titleTextStyle: TextStyle(
+        color: AppColors.scienceIndigo,
+        fontSize: 20,
+        fontWeight: FontWeight.bold,
+        fontFamily: 'Cairo',
+      ),
       iconTheme: IconThemeData(color: AppColors.scienceIndigo),
     ),
   );
@@ -34,9 +46,21 @@ class AppTheme {
       onSurface: Colors.white,
     ),
     scaffoldBackgroundColor: AppColors.deepSpace,
+    cardTheme: CardThemeData(
+      elevation: 0,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      color: AppColors.labSurface,
+    ),
     appBarTheme: const AppBarTheme(
       backgroundColor: Colors.transparent,
       elevation: 0,
+      centerTitle: true,
+      titleTextStyle: TextStyle(
+        color: Colors.white,
+        fontSize: 20,
+        fontWeight: FontWeight.bold,
+        fontFamily: 'Cairo',
+      ),
       iconTheme: IconThemeData(color: Colors.white),
     ),
   );

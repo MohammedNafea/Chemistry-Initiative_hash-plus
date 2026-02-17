@@ -143,28 +143,30 @@ class _CompoundPlaygroundScreenState extends State<CompoundPlaygroundScreen> {
           // Mixing Zone (Glassmorphism)
           Expanded(
             flex: 2,
-            child: Container(
-              margin: const EdgeInsets.all(16),
-              width: double.infinity,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(24),
-                border: Border.all(color: theme.colorScheme.primary.withValues(alpha: 0.2)),
-                gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: [
-                    theme.colorScheme.primary.withValues(alpha: 0.05),
-                    theme.colorScheme.secondary.withValues(alpha: 0.05),
-                  ],
-                ),
-              ),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(24),
-                child: BackdropFilter(
-                  filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
-                  child: Stack(
-                    alignment: Alignment.center,
-                    children: [
+            child: LayoutBuilder(
+              builder: (context, constraints) {
+                return Container(
+                  margin: const EdgeInsets.all(16),
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(24),
+                    border: Border.all(color: theme.colorScheme.primary.withValues(alpha: 0.2)),
+                    gradient: LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: [
+                        theme.colorScheme.primary.withValues(alpha: 0.05),
+                        theme.colorScheme.secondary.withValues(alpha: 0.05),
+                      ],
+                    ),
+                  ),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(24),
+                    child: BackdropFilter(
+                      filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+                      child: Stack(
+                        alignment: Alignment.center,
+                        children: [
                       if (_selectedElements.isEmpty)
                         Column(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -223,24 +225,32 @@ class _CompoundPlaygroundScreenState extends State<CompoundPlaygroundScreen> {
                       ...List.generate(_selectedElements.length, (index) {
                         final element = _selectedElements[index];
                         final angle = (2 * pi / _selectedElements.length) * index;
-                        final radius = _resultCompound != null ? 120.0 : 80.0;
+                        final radius = _resultCompound != null 
+                            ? (constraints.maxWidth > 600 ? 150.0 : 120.0) 
+                            : (constraints.maxWidth > 600 ? 100.0 : 80.0);
                         
                         return AnimatedPositioned(
-                          duration: const Duration(milliseconds: 500),
-                          curve: Curves.easeInOutBack,
-                          left: MediaQuery.of(context).size.width / 2 - 40 + cos(angle) * (radius * (_resultCompound != null ? 1.5 : 1)),
-                          top: (MediaQuery.of(context).size.height * 0.25) - 40 + sin(angle) * (radius * (_resultCompound != null ? 1.5 : 1)),
+                          duration: const Duration(milliseconds: 600),
+                          curve: Curves.elasticOut,
+                          left: (constraints.maxWidth / 2) - 25 + cos(angle) * radius,
+                          top: (constraints.maxHeight / 2) - 25 + sin(angle) * radius,
                           child: Container(
                             width: 50,
                             height: 50,
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
-                              color: theme.colorScheme.surface,
-                              border: Border.all(color: theme.colorScheme.primary),
+                              gradient: LinearGradient(
+                                colors: [
+                                  theme.colorScheme.surface,
+                                  theme.colorScheme.surface.withValues(alpha: 0.8),
+                                ],
+                              ),
+                              border: Border.all(color: theme.colorScheme.primary.withValues(alpha: 0.5)),
                               boxShadow: [
                                 BoxShadow(
-                                  color: theme.colorScheme.primary.withValues(alpha: 0.2),
-                                  blurRadius: 8,
+                                  color: theme.colorScheme.primary.withValues(alpha: 0.3),
+                                  blurRadius: 12,
+                                  spreadRadius: 2,
                                 )
                               ],
                             ),
@@ -249,6 +259,7 @@ class _CompoundPlaygroundScreenState extends State<CompoundPlaygroundScreen> {
                                 element.symbol,
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
+                                  fontSize: 18,
                                   color: theme.colorScheme.primary,
                                 ),
                               ),
@@ -260,8 +271,10 @@ class _CompoundPlaygroundScreenState extends State<CompoundPlaygroundScreen> {
                   ),
                 ),
               ),
-            ),
-          ),
+            );
+          },
+        ),
+      ),
 
           // Element Selector
           Padding(
@@ -313,7 +326,6 @@ class _CompoundPlaygroundScreenState extends State<CompoundPlaygroundScreen> {
               },
             ),
           ),
-          const SizedBox(height: 32),
         ],
       ),
     );
