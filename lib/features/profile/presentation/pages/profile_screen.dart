@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -13,6 +12,7 @@ import 'package:chemistry_initiative/features/auth/data/current_user_provider.da
 import 'package:chemistry_initiative/features/profile/data/profile_repository.dart';
 import 'package:chemistry_initiative/features/profile/presentation/pages/edit_profile_screen.dart';
 import 'package:chemistry_initiative/core/localization/language_switcher.dart';
+import 'package:chemistry_initiative/core/utils/image_helper.dart';
 
 class ProfileScreen extends ConsumerWidget {
   const ProfileScreen({super.key});
@@ -65,16 +65,6 @@ class ProfileScreen extends ConsumerWidget {
       ),
     );
   }
-}
-
-ImageProvider _avatarImageProvider(String imageUrl) {
-  if (imageUrl.startsWith('assets/')) {
-    return AssetImage(imageUrl);
-  }
-  if (imageUrl.startsWith('http')) {
-    return AssetImage('assets/images/avatar.jpg'); // Network blocked; use local fallback
-  }
-  return FileImage(File(imageUrl));
 }
 
 class _ProfileSliverAppBar extends StatelessWidget {
@@ -172,7 +162,7 @@ class _ProfileSliverAppBar extends StatelessWidget {
                   ),
                   child: CircleAvatar(
                     radius: 65,
-                    backgroundImage: _avatarImageProvider(user.imageUrl),
+                    backgroundImage: ImageHelper.getImageProvider(user.imageUrl),
                     backgroundColor: Colors.white,
                   ),
                 ),

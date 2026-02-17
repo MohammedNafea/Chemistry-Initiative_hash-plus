@@ -1,4 +1,4 @@
-import 'dart:io';
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -10,6 +10,7 @@ import 'package:chemistry_initiative/core/database/models/user_model.dart';
 import 'package:chemistry_initiative/l10n/app_localizations.dart';
 import 'package:chemistry_initiative/features/auth/data/current_user_provider.dart';
 import 'package:chemistry_initiative/features/profile/data/profile_repository.dart';
+import 'package:chemistry_initiative/core/utils/image_helper.dart';
 
 class EditProfileScreen extends ConsumerStatefulWidget {
   final ThemeMode currentThemeMode;
@@ -17,16 +18,6 @@ class EditProfileScreen extends ConsumerStatefulWidget {
 
   @override
   ConsumerState<EditProfileScreen> createState() => _EditProfileScreenState();
-}
-
-ImageProvider _avatarImageProvider(String imageUrl) {
-  if (imageUrl.startsWith('assets/')) {
-    return AssetImage(imageUrl);
-  }
-  if (imageUrl.startsWith('http')) {
-    return AssetImage('assets/images/avatar.jpg'); // Network blocked; use local fallback
-  }
-  return FileImage(File(imageUrl));
 }
 
 class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
@@ -39,7 +30,7 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
   late TextEditingController _locationController;
 
   String _fullPhoneNumber = '';
-  File? _pickedImage;
+  String? _pickedImageBase64;
   final ImagePicker _picker = ImagePicker();
 
   @override
@@ -55,10 +46,18 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
   }
 
   Future<void> _pickImage() async {
-    final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
+    final XFile? image = await _picker.pickImage(
+      source: ImageSource.gallery,
+      maxWidth: 800, // Optimize size
+      maxHeight: 800,
+      imageQuality: 85,
+    );
+    
     if (image != null) {
+      final bytes = await image.readAsBytes();
+      final base64String = base64Encode(bytes);
       setState(() {
-        _pickedImage = File(image.path);
+        _pickedImageBase64 = base64String;
       });
     }
   }
@@ -111,7 +110,7 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
                   email: _emailController.text.trim(),
                   phone: _fullPhoneNumber,
                   location: _locationController.text.trim(),
-                  imageUrl: _pickedImage?.path ?? user.imageUrl,
+                  imageUrl: _pickedImageBase64 ?? user.imageUrl,
                 );
 
                 await ProfileRepository.instance.updateProfile(
@@ -120,11 +119,7 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
                 );
                 ref.read(currentUserNotifierProvider.notifier).refresh();
 
-                // 'Profile Updated' is not in ARB, using a hardcoded fallback or we should add it.
-                // For now, I'll use a simple string or repurpose 'save' if appropriate, but let's stick to English/Arabic string literal for simplicity if key missing.
-                // Or better, since I can't easily add keys right now without rerunning pub get context switch, I will just use 'Data Saved' or similar.
-                // Actually 'save' key exists.
-                const message = 'تم تحديث الملف الشخصي'; // localized fallback check?
+                const message = 'تم تحديث الملف الشخصي'; 
 
                 if (context.mounted) {
                   ScaffoldMessenger.of(context).showSnackBar(
@@ -172,9 +167,9 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
                         child: CircleAvatar(
                           radius: 60,
                           backgroundColor: colorScheme.surfaceContainerHighest,
-                          backgroundImage: _pickedImage != null
-                              ? FileImage(_pickedImage!) as ImageProvider
-                              : _avatarImageProvider(user.imageUrl),
+                          backgroundImage: ImageHelper.getImageProvider(
+                            _pickedImageBase64 ?? user.imageUrl,
+                          ),
                         ),
                       ),
                       Positioned(
