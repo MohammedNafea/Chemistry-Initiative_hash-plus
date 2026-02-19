@@ -372,20 +372,60 @@ class AppLocalizationsAr extends AppLocalizations {
   String get factAl2o3 => 'معدن صلب يستخدم كمادة كاشطة وفي الأحجار الكريمة.';
 
   @override
-  String get molAucl3 => 'كلوريد الذهب الثلاثي';
+  String get journal => 'سجل الاكتشافات';
+
+  @override
+  String get dictionary => 'القاموس الكيميائي';
+
+  @override
+  String get noData => 'لم يتم العثور على بيانات.';
+
+  @override
+  String get molAucl3 => 'كلوريد الذهب (III)';
 
   @override
   String get factAucl3 =>
-      'مادة صلبة بلورية حمراء تتشكل عن طريق إذابة الذهب في الماء الملكي.';
+      'مادة صلبة بلورية حمراء تتكون من إذابة الذهب في الماء الملكي.';
+
+  @override
+  String get molAceticAcid => 'حمض الأسيتيك (الخل)';
+
+  @override
+  String get factAceticAcid => 'حمض ضعيف مسؤول عن الطعم الحامض للخل.';
+
+  @override
+  String get molSodiumBicarbonate => 'بيكربونات الصوديوم';
+
+  @override
+  String get factSodiumBicarbonate =>
+      'ملح يستخدم في الخبز للمساعدة في ارتفاع العجين.';
+
+  @override
+  String get molSoap => 'صابون (ستيرات الصوديوم)';
+
+  @override
+  String get factSoap => 'يستخدم للتنظيف؛ يصنع بتفاعل الدهون مع الغسول.';
+
+  @override
+  String get molVolcano => 'ثوران بركاني!';
+
+  @override
+  String get factVolcano => 'تفاعل كلاسيكي يطلق غاز ثاني أكسيد الكربون بسرعة.';
+
+  @override
+  String get compounds => 'مركبات';
 
   @override
   String get labManual => 'دليل المختبر';
 
   @override
+  String get catalystPanel => 'لوحة المحفزات';
+
+  @override
   String get recipes => 'الوصفات';
 
   @override
-  String get discovered => 'مكتشف';
+  String get discovered => 'Discovered';
 
   @override
   String get undiscovered => 'غير مكتشف';

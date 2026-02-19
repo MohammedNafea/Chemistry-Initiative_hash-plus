@@ -10,6 +10,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:chemistry_initiative/features/auth/data/current_user_provider.dart';
 import 'package:chemistry_initiative/core/database/app_database.dart';
 import 'package:chemistry_initiative/core/widgets/lab_widgets.dart';
+import 'package:chemistry_initiative/features/handbook/presentation/pages/chemists_notebook_screen.dart';
 
 class CompoundPlaygroundScreen extends ConsumerStatefulWidget {
   const CompoundPlaygroundScreen({super.key});
@@ -22,7 +23,7 @@ class _CompoundPlaygroundScreenState extends ConsumerState<CompoundPlaygroundScr
   final List<ElementModel> _selectedElements = [];
   String? _resultCompound;
   String? _resultFormula;
-  String? _resultFact;
+  Color _liquidColor = const Color(0xFFE0E5EC);
 
   // Simple reaction master list using localization keys
   final Map<String, Map<String, String>> _reactions = {
@@ -96,7 +97,31 @@ class _CompoundPlaygroundScreenState extends ConsumerState<CompoundPlaygroundScr
       'nameKey': 'molCl2',
       'formula': 'Cl₂',
       'factKey': 'factCl2',
-      'equation': 'Cl + Cl → Cl₂'
+      'equation': '2Cl → Cl₂'
+    },
+    'C,C,H,H,H,H,O,O': {
+      'nameKey': 'molAceticAcid',
+      'formula': 'CH₃COOH',
+      'factKey': 'factAceticAcid',
+      'equation': '2C + 4H + 2O → CH₃COOH'
+    },
+    'C,H,Na,O,O,O': {
+      'nameKey': 'molSodiumBicarbonate',
+      'formula': 'NaHCO₃',
+      'factKey': 'factSodiumBicarbonate',
+      'equation': 'Na + H + C + 3O → NaHCO₃'
+    },
+    'CH₃COOH,NaHCO₃': {
+      'nameKey': 'molVolcano',
+      'formula': '💥',
+      'factKey': 'factVolcano',
+      'equation': 'CH₃COOH + NaHCO₃ → 💥'
+    },
+    'C,H,H,H,H,H,H,H,H,H,H,H,H,Na,O,O': { // Simplified Soap (Sodium Laurate C12)
+       'nameKey': 'molSoap',
+       'formula': 'Soap',
+       'factKey': 'factSoap',
+       'equation': 'Fat + Lye → Soap'
     },
     'O,O,Ti': {
       'nameKey': 'molTio2',
@@ -186,7 +211,6 @@ class _CompoundPlaygroundScreenState extends ConsumerState<CompoundPlaygroundScr
 
   double _temperature = 25.0; // Celsius
   double _pressure = 1.0; // atm
-  Color _liquidColor = Colors.blue.withValues(alpha: 0.1);
   bool _isSynthesisActive = false;
 
   void _addElement(ElementModel element) {
@@ -212,7 +236,6 @@ class _CompoundPlaygroundScreenState extends ConsumerState<CompoundPlaygroundScr
       _selectedElements.clear();
       _resultCompound = null;
       _resultFormula = null;
-      _resultFact = null;
     });
   }
 
@@ -236,7 +259,6 @@ class _CompoundPlaygroundScreenState extends ConsumerState<CompoundPlaygroundScr
         setState(() {
           _resultCompound = _getLocalizedName(reaction['nameKey']!, localizations);
           _resultFormula = reaction['formula'];
-          _resultFact = _getLocalizedFact(reaction['factKey']!, localizations);
           _liquidColor = _getReactionColor(reaction['nameKey']!);
           _isSynthesisActive = true;
         });
@@ -248,7 +270,6 @@ class _CompoundPlaygroundScreenState extends ConsumerState<CompoundPlaygroundScr
         setState(() {
           _resultCompound = null;
           _resultFormula = null;
-          _resultFact = localizations.increaseHeatCatalyst;
           _liquidColor = _getAverageElementColor().withValues(alpha: 0.3);
         });
       }
@@ -256,7 +277,6 @@ class _CompoundPlaygroundScreenState extends ConsumerState<CompoundPlaygroundScr
       setState(() {
         _resultCompound = null;
         _resultFormula = null;
-        _resultFact = null;
         _liquidColor = _getAverageElementColor();
         _isSynthesisActive = false; // Reset if broken
       });
@@ -353,34 +373,7 @@ class _CompoundPlaygroundScreenState extends ConsumerState<CompoundPlaygroundScr
     }
   }
 
-  String _getLocalizedFact(String key, AppLocalizations local) {
-    switch (key) {
-      case 'factWater': return local.factWater;
-      case 'factSalt': return local.factSalt;
-      case 'factCo2': return local.factCo2;
-      case 'factHcl': return local.factHcl;
-      case 'factMethane': return local.factMethane;
-      case 'factAmmonia': return local.factAmmonia;
-      case 'factH2so4': return local.factH2so4;
-      case 'factNaoh': return local.factNaoh;
-      case 'factTio2': return local.factTio2;
-      case 'factPto2': return local.factPto2;
-      case 'factCro3': return local.factCro3;
-      case 'factH2': return local.factH2;
-      case 'factO2': return local.factO2;
-      case 'factN2': return local.factN2;
-      case 'factCl2': return local.factCl2;
-      case 'factH2o2': return local.factH2o2;
-      case 'factFe2o3': return local.factFe2o3;
-      case 'factEthanol': return local.factEthanol;
-      case 'factGlucose': return local.factGlucose;
-      case 'factSio2': return local.factSio2;
-      case 'factCaco3': return local.factCaco3;
-      case 'factAl2o3': return local.factAl2o3;
-      case 'factAucl3': return local.factAucl3;
-      default: return key;
-    }
-  }
+  bool _isPanelExpanded = false;
 
   @override
   Widget build(BuildContext context) {
@@ -392,302 +385,444 @@ class _CompoundPlaygroundScreenState extends ConsumerState<CompoundPlaygroundScr
       appBar: AppBar(
         title: Text(localizations.compoundPlayground),
         actions: [
-          IconButton(onPressed: _showLabManual, icon: const Icon(Icons.menu_book)),
+          IconButton(onPressed: _showChemistsNotebook, icon: const Icon(Icons.menu_book)),
           IconButton(onPressed: _clear, icon: const Icon(Icons.refresh)),
         ],
       ),
-      body: Column(
-        children: [
-          // Mixing Zone (Glassmorphism)
-          Expanded(
-            flex: 2,
-            child: LayoutBuilder(
-              builder: (context, constraints) {
-                return Container(
-                  margin: const EdgeInsets.all(16),
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(24),
-                    border: Border.all(color: theme.colorScheme.primary.withValues(alpha: 0.2)),
-                    gradient: LinearGradient(
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                      colors: [
-                        theme.colorScheme.primary.withValues(alpha: 0.05),
-                        theme.colorScheme.secondary.withValues(alpha: 0.05),
-                      ],
-                    ),
-                  ),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(24),
-                    child: BackdropFilter(
-                      filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
-                      child: Stack(
-                        alignment: Alignment.center,
-                        children: [
-                      if (_resultCompound == null)
-                        SynthesisPulse(
-                          active: _selectedElements.isNotEmpty,
-                          child: InteractiveBeaker(
-                            fillLevel: _selectedElements.length / 10,
-                            liquidColor: _liquidColor,
-                            isBubbling: _selectedElements.isNotEmpty,
-                          ),
-                        ),
-                      
-                      // Compound Result
-                      if (_resultCompound != null)
-                        TweenAnimationBuilder(
-                          duration: const Duration(milliseconds: 500),
-                          tween: Tween<double>(begin: 0, end: 1),
-                          builder: (context, value, child) {
-                            return Opacity(
-                              opacity: value,
-                              child: Transform.scale(
-                                scale: 0.8 + (0.2 * value),
-                                child: child,
-                              ),
-                            );
-                          },
-                          child: SynthesisPulse(
-                            active: _isSynthesisActive,
-                            child: Container(
-                              padding: const EdgeInsets.all(20),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(20),
-                                color: theme.colorScheme.surface.withValues(alpha: 0.1),
-                                border: Border.all(color: theme.colorScheme.primary.withValues(alpha: 0.2)),
-                              ),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  InteractiveBeaker(
-                                    fillLevel: 0.8,
-                                    liquidColor: _liquidColor,
-                                    isBubbling: true,
-                                    height: 160,
-                                    width: 120,
-                                  ),
-                                  const SizedBox(height: 16),
-                                  Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      Container(
-                                        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-                                        decoration: BoxDecoration(
-                                          color: theme.colorScheme.primary.withValues(alpha: 0.15),
-                                          borderRadius: BorderRadius.circular(12),
-                                        ),
-                                        child: Text(
-                                          _resultFormula!,
-                                          style: theme.textTheme.headlineLarge?.copyWith(
-                                            color: theme.colorScheme.primary,
-                                            fontWeight: FontWeight.bold,
-                                            letterSpacing: 2,
-                                          ),
-                                        ),
-                                      ),
-                                      const SizedBox(width: 8),
-                                      if (_getActiveEquation() != null)
-                                        Container(
-                                          padding: const EdgeInsets.all(8),
-                                          decoration: BoxDecoration(
-                                            color: theme.colorScheme.secondary.withValues(alpha: 0.1),
-                                            shape: BoxShape.circle,
-                                          ),
-                                          child: Tooltip(
-                                            message: _getActiveEquation()!,
-                                            child: Icon(Icons.info_outline, size: 16, color: theme.colorScheme.secondary),
-                                          ),
-                                        ),
-                                    ],
-                                  ),
-                                  const SizedBox(height: 8),
-                                  Text(
-                                    _resultCompound!.toUpperCase(),
-                                    style: theme.textTheme.titleLarge?.copyWith(
-                                      fontWeight: FontWeight.w900,
-                                      letterSpacing: 1.5,
-                                    ),
-                                  ),
-                                  if (_getActiveEquation() != null)
-                                    Padding(
-                                      padding: const EdgeInsets.only(top: 4),
-                                      child: Text(
-                                        _getActiveEquation()!,
-                                        style: theme.textTheme.labelMedium?.copyWith(
-                                          color: theme.colorScheme.secondary,
-                                          fontFamily: 'monospace',
-                                        ),
-                                      ),
-                                    ),
-                                  const SizedBox(height: 12),
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                                    child: Text(
-                                      _resultFact!,
-                                      textAlign: TextAlign.center,
-                                      style: theme.textTheme.bodyMedium?.copyWith(
-                                        color: theme.textTheme.bodyMedium?.color?.withValues(alpha: 0.8),
-                                        fontStyle: FontStyle.italic,
-                                      ),
-                                    ),
-                                  ),
-                                  const SizedBox(height: 20),
-                                  _buildJournalButton(theme, localizations),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          final isMobileHeight = constraints.maxHeight < 750;
 
-                      // Selected elements floating
-                      ...List.generate(_selectedElements.length, (index) {
-                        final element = _selectedElements[index];
-                        final angle = (2 * pi / _selectedElements.length) * index;
-                        final radius = _resultCompound != null 
-                            ? (constraints.maxWidth > 600 ? 150.0 : 120.0) 
-                            : (constraints.maxWidth > 600 ? 100.0 : 80.0);
-                        
-                        return AnimatedPositioned(
-                          duration: const Duration(milliseconds: 600),
-                          curve: Curves.elasticOut,
-                          left: (constraints.maxWidth / 2) - 27 + cos(angle) * radius,
-                          top: (constraints.maxHeight / 2) - 27 + sin(angle) * radius,
-                          child: GestureDetector(
-                            onTap: () => _removeElement(index),
-                            child: Container(
-                              width: 54,
-                              height: 54,
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                gradient: RadialGradient(
-                                  colors: [
-                                    _getElementColor(element.symbol).withValues(alpha: 0.4),
-                                    theme.colorScheme.surface,
-                                  ],
-                                ),
-                                border: Border.all(
-                                  color: _getElementColor(element.symbol).withValues(alpha: 0.6),
-                                  width: 2,
-                                ),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: _getElementColor(element.symbol).withValues(alpha: 0.2),
-                                    blurRadius: 10,
-                                    spreadRadius: 1,
-                                  )
-                                ],
-                              ),
-                              child: Center(
-                                child: Text(
-                                  element.symbol,
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 18,
-                                    color: theme.textTheme.bodyLarge?.color,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        );
-                      }),
-                        ],
+          if (isMobileHeight) {
+            return SingleChildScrollView(
+              child: Column(
+                children: [
+                  // Mixing Zone (Fixed Height for Scrollable View)
+                  SizedBox(
+                    height: 400,
+                    child: _buildMixingZone(theme, constraints, isMobileHeight),
+                  ),
+                  
+                  // Collapsible Catalyst Panel
+                  ExpansionTile(
+                    title: Text(
+                      localizations.catalystPanel,
+                      style: const TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    leading: const Icon(Icons.tune),
+                    initiallyExpanded: _isPanelExpanded,
+                    onExpansionChanged: (val) => setState(() => _isPanelExpanded = val),
+                    children: [_buildCatalystPanel(theme, localizations)],
+                  ),
+
+                  // Element Selector
+                _buildElementSelector(theme, localizations, allElements),
+              ],
+            ),
+          );
+        }
+
+        // Desktop / Tall Screen Layout
+        return Column(
+          children: [
+            Expanded(
+              flex: 2,
+              child: _buildMixingZone(theme, constraints, false),
+            ),
+            _buildCatalystPanel(theme, localizations),
+            _buildElementSelector(theme, localizations, allElements),
+          ],
+        );
+      },
+    ),
+  );
+}
+
+// Helper to get discovered compounds as ElementModels for the list
+List<ElementModel> _getDiscoveredCompounds() {
+    final user = ref.read(currentUserNotifierProvider);
+    if (user == null) return [];
+    
+    final discoveredIds = user.researchJournal.keys.toSet();
+    final models = <ElementModel>[];
+
+    for (final entry in _reactions.values) {
+      if (discoveredIds.contains(entry['nameKey'])) {
+        models.add(ElementModel(
+          atomicNumber: -1,
+          symbol: entry['formula']!, // Use Formula as symbol for logic
+          name: entry['nameKey']!, // Need to localize later
+          category: 'Compound',
+          categoryType: ElementCategoryType.unknown,
+          atomicMass: '',
+          summary: entry['factKey']!,
+          dailyLifeUse: '',
+          discoveredBy: 'You',
+          isCompound: true,
+          colorValue: _getReactionColor(entry['nameKey']!).value, // ignore: deprecated_member_use
+        ));
+      }
+    }
+    return models;
+}
+
+  Widget _buildMixingZone(ThemeData theme, BoxConstraints constraints, bool isMobile) {
+    return Container(
+      margin: const EdgeInsets.all(16),
+      width: double.infinity,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(24),
+        border: Border.all(color: theme.colorScheme.primary.withValues(alpha: 0.2)),
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [
+            theme.colorScheme.primary.withValues(alpha: 0.05),
+            theme.colorScheme.secondary.withValues(alpha: 0.05),
+          ],
+        ),
+      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(24),
+        child: BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+          child: Stack(
+            alignment: Alignment.center,
+            children: [
+              if (_resultCompound == null)
+                SynthesisPulse(
+                  active: _selectedElements.isNotEmpty,
+                  child: InteractiveBeaker(
+                    fillLevel: _selectedElements.length / 10,
+                    liquidColor: _liquidColor,
+                    isBubbling: _selectedElements.isNotEmpty,
+                  ),
+                ),
+              
+              if (_resultCompound != null)
+                _buildResultCard(theme, constraints),
+
+              // Floating Elements
+              ...List.generate(_selectedElements.length, (index) {
+                final element = _selectedElements[index];
+                final angle = (2 * pi / _selectedElements.length) * index;
+                // Adjust radius for mobile vs desktop
+                final activeRadius = isMobile ? 120.0 : (constraints.maxWidth > 600 ? 150.0 : 120.0);
+                final inactiveRadius = isMobile ? 80.0 : (constraints.maxWidth > 600 ? 100.0 : 80.0);
+                
+                final radius = _resultCompound != null ? activeRadius : inactiveRadius;
+
+                // Center point calculation might vary slightly if constraints are infinite (in scroll view)
+                // But here we are passed constraints from LayoutBuilder or using fixed Container size
+                // In ScrollView case, we wrapped it in SizedBox(height: 400), so we can use that.
+
+                return AnimatedPositioned(
+                  duration: const Duration(milliseconds: 600),
+                  curve: Curves.elasticOut,
+                  // Use Container center (approximate for simpler math, strict center requires LayoutBuilder inside)
+                  left: (isMobile ? MediaQuery.of(context).size.width / 2 : constraints.maxWidth / 2) - 27 + cos(angle) * radius - 16, // -16 margin adjustment
+                  top: (isMobile ? 200 : (constraints.maxHeight / 2)) - 27 + sin(angle) * radius,
+                  child: GestureDetector(
+                    onTap: () => _removeElement(index),
+                    child: _buildFloatingElement(theme, element),
+                  ),
+                );
+              }),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildResultCard(ThemeData theme, BoxConstraints constraints) {
+    return TweenAnimationBuilder(
+      duration: const Duration(milliseconds: 500),
+      tween: Tween<double>(begin: 0, end: 1),
+      builder: (context, value, child) {
+        return Opacity(
+          opacity: value,
+          child: Transform.scale(
+            scale: 0.8 + (0.2 * value),
+            child: child,
+          ),
+        );
+      },
+      child: SynthesisPulse(
+        active: _isSynthesisActive,
+        child: Container(
+          padding: const EdgeInsets.all(20),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            color: theme.colorScheme.surface.withValues(alpha: 0.1),
+            border: Border.all(color: theme.colorScheme.primary.withValues(alpha: 0.2)),
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              InteractiveBeaker(
+                fillLevel: 0.8,
+                liquidColor: _liquidColor,
+                isBubbling: true,
+                height: 120, // Smaller for better mobile fit
+                width: 90,
+              ),
+              const SizedBox(height: 16),
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+                    decoration: BoxDecoration(
+                      color: theme.colorScheme.primary.withValues(alpha: 0.15),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Text(
+                      _resultFormula!,
+                      style: theme.textTheme.headlineMedium?.copyWith( // Smaller font
+                        color: theme.colorScheme.primary,
+                        fontWeight: FontWeight.bold,
+                        letterSpacing: 2,
                       ),
                     ),
                   ),
-                );
-              },
-            ),
+                  const SizedBox(width: 8),
+                  if (_getActiveEquation() != null)
+                    Tooltip(
+                      message: _getActiveEquation()!,
+                      child: Icon(Icons.info_outline, size: 16, color: theme.colorScheme.secondary),
+                    ),
+                ],
+              ),
+              const SizedBox(height: 8),
+              if (_getActiveEquation() != null)
+                 Text(
+                   _getActiveEquation()!,
+                   style: theme.textTheme.bodySmall?.copyWith(fontFamily: 'monospace'),
+                 ),
+              const SizedBox(height: 12),
+              _buildJournalButton(theme, AppLocalizations.of(context)!),
+            ],
           ),
+        ),
+      ),
+    );
+  }
+  
+  Widget _buildFloatingElement(ThemeData theme, ElementModel element) {
+    return Container(
+      width: 54,
+      height: 54,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        gradient: RadialGradient(
+          colors: [
+            _getElementColor(element.symbol).withValues(alpha: 0.4),
+            theme.colorScheme.surface,
+          ],
+        ),
+        border: Border.all(
+          color: _getElementColor(element.symbol).withValues(alpha: 0.6),
+          width: 2,
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: _getElementColor(element.symbol).withValues(alpha: 0.2),
+            blurRadius: 10,
+            spreadRadius: 1,
+          )
+        ],
+      ),
+      child: Center(
+        child: Text(
+          element.symbol,
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 18,
+            color: theme.textTheme.bodyLarge?.color,
+          ),
+        ),
+      ),
+    );
+  }
 
-        // Catalyst Panel
-        _buildCatalystPanel(theme, localizations),
+    Widget _buildElementSelector(ThemeData theme, AppLocalizations localizations, List<ElementModel> allElements) {
+    // Helper to filter elements
+    List<ElementModel> getMetals() => allElements.where((e) => [
+          ElementCategoryType.alkaliMetal,
+          ElementCategoryType.alkalineEarth,
+          ElementCategoryType.transitionMetal,
+          ElementCategoryType.postTransitionMetal,
+          ElementCategoryType.lanthanide,
+          ElementCategoryType.actinide,
+        ].contains(e.categoryType)).toList();
 
-          // Element Selector
+    List<ElementModel> getNonMetals() => allElements.where((e) => [
+          ElementCategoryType.nonmetal,
+          ElementCategoryType.halogen,
+          ElementCategoryType.nobleGas,
+          ElementCategoryType.metalloid,
+        ].contains(e.categoryType)).toList();
+
+    final compounds = _getDiscoveredCompounds();
+
+    return DefaultTabController(
+      length: 4, // Added Compounds tab
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
             child: Row(
               children: [
-                Text(localizations.elementsRepository, style: const TextStyle(fontWeight: FontWeight.bold)),
+                Icon(Icons.inventory_2_outlined, color: theme.colorScheme.secondary),
+                const SizedBox(width: 8),
+                Text(localizations.elementsRepository, style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold)),
               ],
             ),
           ),
+          const SizedBox(height: 8),
+          Container(
+            height: 40,
+            margin: const EdgeInsets.symmetric(horizontal: 16),
+            decoration: BoxDecoration(
+              color: theme.colorScheme.surfaceContainerHighest.withValues(alpha: 0.5),
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: TabBar(
+              indicatorSize: TabBarIndicatorSize.tab,
+              dividerColor: Colors.transparent,
+              indicator: BoxDecoration(
+                color: theme.colorScheme.primary.withValues(alpha: 0.1),
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(color: theme.colorScheme.primary.withValues(alpha: 0.2)),
+              ),
+              labelColor: theme.colorScheme.primary,
+              unselectedLabelColor: theme.colorScheme.onSurfaceVariant,
+              labelStyle: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
+              isScrollable: true, // Scrollable to fit 4 tabs
+              tabAlignment: TabAlignment.start,
+              tabs: [
+                const Tab(text: "All"), // TODO: Localize
+                const Tab(text: "Metals"), 
+                const Tab(text: "Non-Metals"), 
+                Tab(text: localizations.compounds),
+              ],
+            ),
+          ),
+          const SizedBox(height: 12),
           SizedBox(
-            height: 120,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              itemCount: allElements.length,
-              itemBuilder: (context, index) {
-                final element = allElements[index];
-                return Padding(
-                  padding: const EdgeInsets.only(right: 16, bottom: 8),
-                  child: InkWell(
-                    onTap: () => _addElement(element),
-                    borderRadius: BorderRadius.circular(16),
-                    child: Container(
-                      width: 85,
-                      decoration: BoxDecoration(
-                        color: theme.colorScheme.surface,
-                        borderRadius: BorderRadius.circular(16),
-                        border: Border.all(color: _getElementColor(element.symbol).withValues(alpha: 0.3), width: 1.5),
-                        boxShadow: [
-                          BoxShadow(
-                            color: _getElementColor(element.symbol).withValues(alpha: 0.1),
-                            blurRadius: 8,
-                            offset: const Offset(0, 4),
-                          )
-                        ],
-                      ),
-                      child: Stack(
-                        children: [
-                          Positioned(
-                            top: 4,
-                            right: 8,
-                            child: Text(
-                              '${index + 1}',
-                              style: TextStyle(
-                                fontSize: 8,
-                                color: theme.hintColor.withValues(alpha: 0.5),
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                          Center(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  element.symbol,
-                                  style: TextStyle(
-                                    fontSize: 26,
-                                    fontWeight: FontWeight.w900,
-                                    color: _getElementColor(element.symbol),
-                                  ),
-                                ),
-                                const SizedBox(height: 2),
-                                Text(
-                                  element.name,
-                                  style: theme.textTheme.labelSmall?.copyWith(fontSize: 9),
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                );
-              },
+            height: 130, // Slightly taller for better touch targets
+            child: TabBarView(
+              children: [
+                _buildElementListView(theme, allElements),
+                _buildElementListView(theme, getMetals()),
+                _buildElementListView(theme, getNonMetals()),
+                _buildElementListView(theme, compounds, isCompounds: true, localizations: localizations),
+              ],
             ),
           ),
         ],
       ),
+    );
+  }
+
+  Widget _buildElementListView(ThemeData theme, List<ElementModel> elements, {bool isCompounds = false, AppLocalizations? localizations}) {
+    if (elements.isEmpty) {
+      return Center(child: Text(isCompounds ? "No compounds discovered yet" : "No elements found", style: theme.textTheme.bodySmall));
+    }
+    return ListView.builder(
+      scrollDirection: Axis.horizontal,
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      itemCount: elements.length,
+      itemBuilder: (context, index) {
+        final element = elements[index];
+        final displaySymbol = element.symbol;
+        final displayName = isCompounds && localizations != null 
+             ? _getLocalizedName(element.name, localizations) 
+             : element.name;
+        final color = element.colorValue != null ? Color(element.colorValue!) : _getElementColor(element.symbol);
+
+        return Padding(
+          padding: const EdgeInsets.only(right: 16, bottom: 8), // Increased spacing
+          child: InkWell(
+            onTap: () => _addElement(element),
+            borderRadius: BorderRadius.circular(50), // Circular touch target
+            child: Column(
+              mainAxisSize: MainAxisSize.min, // Compact vertical layout
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                // Circular Atom Token
+                Container(
+                  width: 70, // Slightly smaller than card width
+                  height: 70,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    gradient: RadialGradient(
+                      colors: [
+                        color.withValues(alpha: 0.2), // Light center
+                        color.withValues(alpha: 0.1), // Fading out
+                      ],
+                      stops: const [0.3, 1.0],
+                    ),
+                    border: Border.all(color: color.withValues(alpha: 0.5), width: 2),
+                    boxShadow: [
+                      BoxShadow(
+                        color: color.withValues(alpha: 0.1),
+                        blurRadius: 12,
+                        spreadRadius: 2,
+                      )
+                    ],
+                  ),
+                  child: Stack(
+                    alignment: Alignment.center, // Center symbol
+                    children: [
+                       if (!isCompounds) // Atomic Number badge
+                        Positioned(
+                          top: 4,
+                          child: Text(
+                            element.atomicNumber.toString(),
+                            style: TextStyle(
+                              fontSize: 9,
+                              color: theme.hintColor.withValues(alpha: 0.6),
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      Text(
+                        displaySymbol,
+                        style: TextStyle(
+                          fontSize: isCompounds ? 16 : 24, 
+                          fontWeight: FontWeight.w900,
+                          color: color, // Symbol takes element color
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 8),
+                // External Label
+                SizedBox(
+                  width: 80, // Constrain text width
+                  child: Text(
+                    displayName,
+                    style: theme.textTheme.labelSmall?.copyWith(
+                      fontSize: 11, 
+                      fontWeight: FontWeight.w600,
+                      color: theme.colorScheme.onSurface,
+                    ),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 
@@ -795,130 +930,15 @@ class _CompoundPlaygroundScreenState extends ConsumerState<CompoundPlaygroundScr
     );
   }
 
-  void _showLabManual() {
-    final localizations = AppLocalizations.of(context)!;
-    final theme = Theme.of(context);
-    final isDark = theme.brightness == Brightness.dark;
-
-    showModalBottomSheet(
+  void _showChemistsNotebook() {
+    showDialog(
       context: context,
-      backgroundColor: Colors.transparent,
-      isScrollControlled: true,
-      builder: (context) => DraggableScrollableSheet(
-        initialChildSize: 0.6,
-        minChildSize: 0.4,
-        maxChildSize: 0.9,
-        builder: (_, controller) => Container(
-          decoration: BoxDecoration(
-            color: theme.scaffoldBackgroundColor,
-            borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
-          ),
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(16),
-                child: Row(
-                  children: [
-                    const Icon(Icons.menu_book, color: Colors.blueAccent),
-                    const SizedBox(width: 8),
-                    Text(
-                      localizations.labManual,
-                      style: theme.textTheme.headlineSmall?.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const Spacer(),
-                    IconButton(
-                      icon: const Icon(Icons.close),
-                      onPressed: () => Navigator.pop(context),
-                    ),
-                  ],
-                ),
-              ),
-              Expanded(
-                child: ListView.builder(
-                  controller: controller,
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  itemCount: _reactions.length,
-                  itemBuilder: (context, index) {
-                    final reactionKey = _reactions.keys.elementAt(index);
-                    final reactionData = _reactions[reactionKey]!;
-                    final name = _getLocalizedName(reactionData['nameKey']!, localizations);
-                    
-                    return Card(
-                      margin: const EdgeInsets.only(bottom: 12),
-                      elevation: 2,
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-                      child: Padding(
-                        padding: const EdgeInsets.all(16),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  name,
-                                  style: theme.textTheme.titleMedium?.copyWith(
-                                    fontWeight: FontWeight.bold,
-                                    color: _getReactionColor(reactionData['nameKey']!),
-                                  ),
-                                ),
-                                Container(
-                                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                                  decoration: BoxDecoration(
-                                    color: theme.colorScheme.primaryContainer,
-                                    borderRadius: BorderRadius.circular(8),
-                                  ),
-                                  child: Text(
-                                    reactionData['formula']!,
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      color: theme.colorScheme.onPrimaryContainer,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(height: 8),
-                            Text(
-                              '${localizations.recipes}:',
-                              style: theme.textTheme.labelSmall?.copyWith(color: Colors.grey),
-                            ),
-                            const SizedBox(height: 4),
-                            Container(
-                              padding: const EdgeInsets.all(8),
-                              decoration: BoxDecoration(
-                                color: isDark ? Colors.black26 : Colors.grey[100],
-                                borderRadius: BorderRadius.circular(8),
-                                border: Border.all(color: Colors.grey.withValues(alpha: 0.2)),
-                              ),
-                              child: Row(
-                                children: [
-                                  Icon(Icons.science, size: 16, color: theme.colorScheme.secondary),
-                                  const SizedBox(width: 8),
-                                  Expanded(
-                                    child: Text(
-                                      reactionData['equation']!,
-                                      style: const TextStyle(
-                                        fontFamily: 'monospace',
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    );
-                  },
-                ),
-              ),
-            ],
-          ),
-        ),
+      barrierColor: Colors.black54,
+      builder: (context) => ChemistsNotebookScreen(
+        recipes: _reactions,
+        onSearch: (query) {
+          // Implement search if needed
+        },
       ),
     );
   }

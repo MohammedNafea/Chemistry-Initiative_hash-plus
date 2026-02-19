@@ -8,12 +8,12 @@ class AppTheme {
     colorScheme: ColorScheme.fromSeed(
       seedColor: AppColors.scienceIndigo,
       primary: AppColors.scienceIndigo,
-      secondary: AppColors.cyanLabs,
+      secondary: AppColors.warmOrange, // Warmer accent
       tertiary: AppColors.reactiveGreen,
-      surface: const Color(0xFFF0F2F8),
-      onSurface: AppColors.scienceIndigo,
+      surface: AppColors.softBeige, // Warmer surface
+      onSurface: AppColors.cozyBrown, // Softer text
     ),
-    scaffoldBackgroundColor: const Color(0xFFF0F2F8),
+    scaffoldBackgroundColor: const Color(0xFFF8F5F2), // Warm off-white
     cardTheme: CardThemeData(
       elevation: 0,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
@@ -41,7 +41,7 @@ class AppTheme {
       seedColor: AppColors.scienceIndigo,
       brightness: Brightness.dark,
       primary: AppColors.cyanLabs,
-      secondary: AppColors.reactiveGreen,
+      secondary: AppColors.warmOrange,
       surface: AppColors.labSurface,
       onSurface: Colors.white,
     ),

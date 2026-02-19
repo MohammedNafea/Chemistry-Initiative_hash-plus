@@ -814,6 +814,24 @@ abstract class AppLocalizations {
   /// **'A hard mineral used as an abrasive and in gemstones.'**
   String get factAl2o3;
 
+  /// No description provided for @journal.
+  ///
+  /// In en, this message translates to:
+  /// **'Discovery Journal'**
+  String get journal;
+
+  /// No description provided for @dictionary.
+  ///
+  /// In en, this message translates to:
+  /// **'Chemical Dictionary'**
+  String get dictionary;
+
+  /// No description provided for @noData.
+  ///
+  /// In en, this message translates to:
+  /// **'No data found.'**
+  String get noData;
+
   /// No description provided for @molAucl3.
   ///
   /// In en, this message translates to:
@@ -826,11 +844,71 @@ abstract class AppLocalizations {
   /// **'A red crystalline solid formed by dissolving gold in aqua regia.'**
   String get factAucl3;
 
+  /// No description provided for @molAceticAcid.
+  ///
+  /// In en, this message translates to:
+  /// **'Acetic Acid (Vinegar)'**
+  String get molAceticAcid;
+
+  /// No description provided for @factAceticAcid.
+  ///
+  /// In en, this message translates to:
+  /// **'A weak acid responsible for the sour taste of vinegar.'**
+  String get factAceticAcid;
+
+  /// No description provided for @molSodiumBicarbonate.
+  ///
+  /// In en, this message translates to:
+  /// **'Sodium Bicarbonate (Baking Soda)'**
+  String get molSodiumBicarbonate;
+
+  /// No description provided for @factSodiumBicarbonate.
+  ///
+  /// In en, this message translates to:
+  /// **'A salt used in baking to help dough rise.'**
+  String get factSodiumBicarbonate;
+
+  /// No description provided for @molSoap.
+  ///
+  /// In en, this message translates to:
+  /// **'Soap (Sodium Stearate)'**
+  String get molSoap;
+
+  /// No description provided for @factSoap.
+  ///
+  /// In en, this message translates to:
+  /// **'Used for cleaning; created by reacting fats with lye.'**
+  String get factSoap;
+
+  /// No description provided for @molVolcano.
+  ///
+  /// In en, this message translates to:
+  /// **'Volcanic Eruption!'**
+  String get molVolcano;
+
+  /// No description provided for @factVolcano.
+  ///
+  /// In en, this message translates to:
+  /// **'A classic reaction releasing carbon dioxide gas rapidly.'**
+  String get factVolcano;
+
+  /// No description provided for @compounds.
+  ///
+  /// In en, this message translates to:
+  /// **'Compounds'**
+  String get compounds;
+
   /// No description provided for @labManual.
   ///
   /// In en, this message translates to:
   /// **'Lab Manual'**
   String get labManual;
+
+  /// No description provided for @catalystPanel.
+  ///
+  /// In en, this message translates to:
+  /// **'Catalyst Panel'**
+  String get catalystPanel;
 
   /// No description provided for @recipes.
   ///

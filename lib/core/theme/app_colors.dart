@@ -18,4 +18,10 @@ class AppColors {
   static const Color neonPurple = Color(0xFF9D50BB);
   
   static const Color darkBrown = Color(0xFF5A3E2B);
+  
+  // Daily Life Warm Palette
+  static const Color warmOrange = Color(0xFFFF7043);
+  static const Color cozyBrown = Color(0xFF795548);
+  static const Color softBeige = Color(0xFFFFF3E0);
+  static const Color woodSurface = Color(0xFFF5E6D3);
 }

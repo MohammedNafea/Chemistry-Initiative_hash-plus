@@ -382,6 +382,15 @@ class AppLocalizationsHi extends AppLocalizations {
       'A hard mineral used as an abrasive and in gemstones.';
 
   @override
+  String get journal => 'Discovery Journal';
+
+  @override
+  String get dictionary => 'Chemical Dictionary';
+
+  @override
+  String get noData => 'No data found.';
+
+  @override
   String get molAucl3 => 'Gold(III) Chloride';
 
   @override
@@ -389,7 +398,41 @@ class AppLocalizationsHi extends AppLocalizations {
       'A red crystalline solid formed by dissolving gold in aqua regia.';
 
   @override
+  String get molAceticAcid => 'Acetic Acid (Vinegar)';
+
+  @override
+  String get factAceticAcid =>
+      'A weak acid responsible for the sour taste of vinegar.';
+
+  @override
+  String get molSodiumBicarbonate => 'Sodium Bicarbonate (Baking Soda)';
+
+  @override
+  String get factSodiumBicarbonate =>
+      'A salt used in baking to help dough rise.';
+
+  @override
+  String get molSoap => 'Soap (Sodium Stearate)';
+
+  @override
+  String get factSoap =>
+      'Used for cleaning; created by reacting fats with lye.';
+
+  @override
+  String get molVolcano => 'Volcanic Eruption!';
+
+  @override
+  String get factVolcano =>
+      'A classic reaction releasing carbon dioxide gas rapidly.';
+
+  @override
+  String get compounds => 'Compounds';
+
+  @override
   String get labManual => 'Lab Manual';
+
+  @override
+  String get catalystPanel => 'Catalyst Panel';
 
   @override
   String get recipes => 'Recipes';
