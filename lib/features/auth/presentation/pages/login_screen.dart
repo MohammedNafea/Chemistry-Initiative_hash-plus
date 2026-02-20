@@ -40,235 +40,320 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
     final localizations = AppLocalizations.of(context)!;
 
     return Scaffold(
-      backgroundColor: isLight ? const Color(0xFFFDF7F5) : Theme.of(context).scaffoldBackgroundColor,
-      body: Center(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              const SizedBox(height: 12),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const LanguageSwitcher(),
-                    IconButton(
-                      icon: Icon(Icons.brightness_6, color: Theme.of(context).iconTheme.color),
-                      onPressed: () {
-                        themeNotifier.value = themeNotifier.value == ThemeMode.light
-                            ? ThemeMode.dark
-                            : ThemeMode.light;
-                      },
-                    ),
+      backgroundColor: isLight ? Colors.white : const Color(0xFF0F172A), // Deep dark blue for dark mode
+      body: Stack(
+        children: [
+          // Background Chemistry Effects
+          Positioned(
+            top: -100,
+            left: -50,
+            child: Container(
+              width: 300,
+              height: 300,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                gradient: RadialGradient(
+                  colors: [
+                    isLight ? Colors.deepPurpleAccent.withOpacity(0.3) : Colors.cyan.withOpacity(0.2),
+                    Colors.transparent,
                   ],
                 ),
               ),
-              const CircleAvatar(
-                radius: 30,
-                backgroundColor: Colors.purpleAccent,
-                child: Icon(Icons.star_border, color: Colors.white, size: 40),
-              ),
-              const SizedBox(height: 10),
-              Text(
-                localizations.wonders,
-                style: const TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
-              ),
-              Text(
-                localizations.discoveryWorld,
-                style: const TextStyle(color: Colors.grey),
-              ),
-              const SizedBox(height: 30),
-
-              Container(
-                margin: const EdgeInsets.symmetric(horizontal: 20),
-                padding: const EdgeInsets.all(25),
-                decoration: BoxDecoration(
-                  color: isLight ? Colors.white : Theme.of(context).cardColor,
-                  borderRadius: BorderRadius.circular(30),
-                  boxShadow: const [
-                    BoxShadow(
-                      color: Colors.black12,
-                      blurRadius: 15,
-                      spreadRadius: 2,
-                    ),
+            ),
+          ),
+          Positioned(
+            bottom: -50,
+            right: -100,
+            child: Container(
+              width: 400,
+              height: 400,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                gradient: RadialGradient(
+                  colors: [
+                    isLight ? Colors.blueAccent.withOpacity(0.2) : Colors.purpleAccent.withOpacity(0.15),
+                    Colors.transparent,
                   ],
                 ),
+              ),
+            ),
+          ),
+          
+          SafeArea(
+            child: Center(
+              child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        color: isLight ? Colors.grey[100] : Colors.grey[800],
-                        borderRadius: BorderRadius.circular(20),
-                      ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
                       child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Expanded(
-                            child: GestureDetector(
-                              onTap: () => setState(() => _isSignup = true),
-                              child: Container(
-                                padding: const EdgeInsets.all(10),
-                                decoration: BoxDecoration(
-                                  color: _isSignup ? (isLight ? Colors.white : Theme.of(context).cardColor) : Colors.transparent,
-                                  borderRadius: BorderRadius.circular(20),
-                                ),
-                                child: Center(
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(6),
-                                    child: Text(
-                                      localizations.newAccount,
-                                      style: TextStyle(
-                                        color: _isSignup ? Theme.of(context).textTheme.bodyLarge?.color : Colors.grey,
-                                        fontWeight: _isSignup ? FontWeight.bold : FontWeight.normal,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
+                          const LanguageSwitcher(),
+                          IconButton(
+                            icon: Icon(
+                              themeNotifier.value == ThemeMode.light ? Icons.dark_mode_outlined : Icons.light_mode_outlined, 
+                              color: isLight ? Colors.black87 : Colors.white,
                             ),
-                          ),
-                          Expanded(
-                            child: GestureDetector(
-                              onTap: () => setState(() => _isSignup = false),
-                              child: Container(
-                                padding: const EdgeInsets.all(10),
-                                decoration: BoxDecoration(
-                                  color: !_isSignup ? (isLight ? Colors.white : Theme.of(context).cardColor) : Colors.transparent,
-                                  borderRadius: BorderRadius.circular(20),
-                                ),
-                                child: Center(
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(6),
-                                    child: Text(
-                                      localizations.login,
-                                      style: TextStyle(
-                                        color: !_isSignup ? Theme.of(context).textTheme.bodyLarge?.color : Colors.grey,
-                                        fontWeight: !_isSignup ? FontWeight.bold : FontWeight.normal,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(height: 18),
-
-                    Form(
-                      key: _formKey,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          if (_isSignup) ...[
-                            Align(
-                              alignment: Alignment.centerRight,
-                              child: Text(localizations.fullName, style: const TextStyle(fontWeight: FontWeight.bold)),
-                            ),
-                            const SizedBox(height: 8),
-                            CustomTextfield(hintText: localizations.fullName, controller: _nameCtrl),
-                            const SizedBox(height: 12),
-                          ],
-
-                          Align(
-                            alignment: Alignment.centerRight,
-                            child: Text(
-                              localizations.email,
-                              style: const TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                          const SizedBox(height: 8),
-                          CustomTextfield(hintText: "example@email.com", controller: _emailCtrl),
-
-                          const SizedBox(height: 12),
-
-                          Align(
-                            alignment: Alignment.centerRight,
-                            child: Text(
-                              localizations.password,
-                              style: const TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                          const SizedBox(height: 8),
-                          CustomTextfield(
-                            hintText: "********",
-                            isPassword: true,
-                            controller: _passCtrl,
-                          ),
-
-                          if (_isSignup) ...[
-                            const SizedBox(height: 12),
-                            Align(
-                              alignment: Alignment.centerRight,
-                              child: Text(localizations.confirmPassword, style: const TextStyle(fontWeight: FontWeight.bold)),
-                            ),
-                            const SizedBox(height: 8),
-                            CustomTextfield(hintText: '********', isPassword: true, controller: _confirmCtrl),
-                          ],
-
-                          const SizedBox(height: 18),
-
-                          CustomButton(
-                            text: _isSignup ? localizations.createAccount : localizations.login,
-                            onTap: () async {
-                              final email = _emailCtrl.text.trim();
-                              final pass = _passCtrl.text;
-                              final messenger = ScaffoldMessenger.of(context);
-
-                              if (_isSignup) {
-                                final name = _nameCtrl.text.trim();
-                                final confirm = _confirmCtrl.text;
-                                if (name.isEmpty || email.isEmpty || pass.isEmpty || confirm.isEmpty) {
-                                  messenger.showSnackBar(SnackBar(content: Text(localizations.fillAllFields)));
-                                  return;
-                                }
-                                if (pass != confirm) {
-                                  messenger.showSnackBar(SnackBar(content: Text(localizations.passwordsDoNotMatch)));
-                                  return;
-                                }
-                                final err = await _authRepo.registerUser(name, email, pass);
-                                if (!mounted) return;
-                                if (err != null) {
-                                  messenger.showSnackBar(SnackBar(content: Text(err)));
-                                  return;
-                                }
-                                messenger.showSnackBar(SnackBar(content: Text(localizations.accountCreated)));
-                                setState(() => _isSignup = false);
-                                return;
-                              }
-
-                              if (email.isEmpty || pass.isEmpty) {
-                                messenger.showSnackBar(SnackBar(content: Text(localizations.enterEmailPassword)));
-                                return;
-                              }
-                              messenger.showSnackBar(SnackBar(content: Text(localizations.verifying)));
-                              final ok = await _authRepo.loginUser(email, pass);
-                              if (!mounted) return;
-                              if (!ok) {
-                                messenger.showSnackBar(SnackBar(content: Text(localizations.invalidCredentials)));
-                                return;
-                              }
-                              ref.read(currentUserNotifierProvider.notifier).refresh();
-                              showWelcomeNotifier.value = true;
+                            onPressed: () {
+                              themeNotifier.value = themeNotifier.value == ThemeMode.light
+                                  ? ThemeMode.dark
+                                  : ThemeMode.light;
                             },
                           ),
                         ],
                       ),
                     ),
+                    
+                    // Logo
+                    Container(
+                      padding: const EdgeInsets.all(20),
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: isLight ? Colors.deepPurple.withOpacity(0.1) : Colors.cyanAccent.withOpacity(0.1),
+                        boxShadow: [
+                          BoxShadow(
+                            color: isLight ? Colors.deepPurpleAccent.withOpacity(0.2) : Colors.cyanAccent.withOpacity(0.1),
+                            blurRadius: 20,
+                            spreadRadius: 5,
+                          )
+                        ]
+                      ),
+                      child: Icon(
+                        Icons.science_outlined, 
+                        color: isLight ? Colors.deepPurple : Colors.cyanAccent, 
+                        size: 50,
+                      ),
+                    ),
+                    const SizedBox(height: 16),
+                    Text(
+                      localizations.wonders,
+                      style: TextStyle(
+                        fontSize: 32, 
+                        fontWeight: FontWeight.bold,
+                        letterSpacing: 1.2,
+                        color: isLight ? Colors.black87 : Colors.white,
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      localizations.discoveryWorld,
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: isLight ? Colors.grey[600] : Colors.grey[400],
+                        letterSpacing: 0.5,
+                      ),
+                    ),
+                    const SizedBox(height: 40),
+
+                    // Glassmorphism Card
+                    Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 24),
+                      decoration: BoxDecoration(
+                        color: isLight ? Colors.white.withOpacity(0.7) : Colors.black.withOpacity(0.4),
+                        borderRadius: BorderRadius.circular(30),
+                        border: Border.all(
+                          color: isLight ? Colors.white : Colors.white.withOpacity(0.1),
+                          width: 1.5,
+                        ),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(isLight ? 0.05 : 0.2),
+                            blurRadius: 20,
+                            spreadRadius: 5,
+                          ),
+                        ],
+                      ),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(30),
+                        child: Padding(
+                          padding: const EdgeInsets.all(24),
+                          child: Column(
+                            children: [
+                              // Toggle Switch
+                              Container(
+                                padding: const EdgeInsets.all(4),
+                                decoration: BoxDecoration(
+                                  color: isLight ? Colors.grey[200] : Colors.grey[900],
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                child: Row(
+                                  children: [
+                                    Expanded(
+                                      child: GestureDetector(
+                                        onTap: () => setState(() => _isSignup = true),
+                                        child: AnimatedContainer(
+                                          duration: const Duration(milliseconds: 300),
+                                          padding: const EdgeInsets.symmetric(vertical: 12),
+                                          decoration: BoxDecoration(
+                                            color: _isSignup ? (isLight ? Colors.white : Colors.grey[800]) : Colors.transparent,
+                                            borderRadius: BorderRadius.circular(16),
+                                            boxShadow: _isSignup ? [
+                                              BoxShadow(
+                                                color: Colors.black.withOpacity(0.05),
+                                                blurRadius: 4,
+                                                spreadRadius: 1,
+                                              )
+                                            ] : [],
+                                          ),
+                                          child: Center(
+                                            child: Text(
+                                              localizations.newAccount,
+                                              style: TextStyle(
+                                                color: _isSignup ? (isLight ? Colors.deepPurple : Colors.cyanAccent) : Colors.grey,
+                                                fontWeight: _isSignup ? FontWeight.bold : FontWeight.w500,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: GestureDetector(
+                                        onTap: () => setState(() => _isSignup = false),
+                                        child: AnimatedContainer(
+                                          duration: const Duration(milliseconds: 300),
+                                          padding: const EdgeInsets.symmetric(vertical: 12),
+                                          decoration: BoxDecoration(
+                                            color: !_isSignup ? (isLight ? Colors.white : Colors.grey[800]) : Colors.transparent,
+                                            borderRadius: BorderRadius.circular(16),
+                                            boxShadow: !_isSignup ? [
+                                              BoxShadow(
+                                                color: Colors.black.withOpacity(0.05),
+                                                blurRadius: 4,
+                                                spreadRadius: 1,
+                                              )
+                                            ] : [],
+                                          ),
+                                          child: Center(
+                                            child: Text(
+                                              localizations.login,
+                                              style: TextStyle(
+                                                color: !_isSignup ? (isLight ? Colors.deepPurple : Colors.cyanAccent) : Colors.grey,
+                                                fontWeight: !_isSignup ? FontWeight.bold : FontWeight.w500,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              const SizedBox(height: 24),
+
+                              Form(
+                                key: _formKey,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                                  children: [
+                                    if (_isSignup) ...[
+                                      CustomTextfield(
+                                        hintText: localizations.fullName, 
+                                        controller: _nameCtrl,
+                                        prefixIcon: Icons.person_outline,
+                                      ),
+                                      const SizedBox(height: 16),
+                                    ],
+
+                                    CustomTextfield(
+                                      hintText: localizations.email, 
+                                      controller: _emailCtrl,
+                                      prefixIcon: Icons.email_outlined,
+                                    ),
+                                    const SizedBox(height: 16),
+
+                                    CustomTextfield(
+                                      hintText: localizations.password,
+                                      isPassword: true,
+                                      controller: _passCtrl,
+                                      prefixIcon: Icons.lock_outline,
+                                    ),
+
+                                    if (_isSignup) ...[
+                                      const SizedBox(height: 16),
+                                      CustomTextfield(
+                                        hintText: localizations.confirmPassword, 
+                                        isPassword: true, 
+                                        controller: _confirmCtrl,
+                                        prefixIcon: Icons.lock_reset_outlined,
+                                      ),
+                                    ],
+
+                                    if (!_isSignup) ...[
+                                      const SizedBox(height: 8),
+                                      Align(
+                                        alignment: Alignment.centerRight,
+                                        child: TextButton(
+                                          onPressed: () {},
+                                          style: TextButton.styleFrom(
+                                            foregroundColor: isLight ? Colors.deepPurple : Colors.cyanAccent,
+                                          ),
+                                          child: Text(localizations.forgotPassword),
+                                        ),
+                                      ),
+                                    ] else const SizedBox(height: 24),
+
+                                    CustomButton(
+                                      text: _isSignup ? localizations.createAccount : localizations.login,
+                                      onTap: () async {
+                                        final email = _emailCtrl.text.trim();
+                                        final pass = _passCtrl.text;
+                                        final messenger = ScaffoldMessenger.of(context);
+
+                                        if (_isSignup) {
+                                          final name = _nameCtrl.text.trim();
+                                          final confirm = _confirmCtrl.text;
+                                          if (name.isEmpty || email.isEmpty || pass.isEmpty || confirm.isEmpty) {
+                                            messenger.showSnackBar(SnackBar(content: Text(localizations.fillAllFields)));
+                                            return;
+                                          }
+                                          if (pass != confirm) {
+                                            messenger.showSnackBar(SnackBar(content: Text(localizations.passwordsDoNotMatch)));
+                                            return;
+                                          }
+                                          final err = await _authRepo.registerUser(name, email, pass);
+                                          if (!mounted) return;
+                                          if (err != null) {
+                                            messenger.showSnackBar(SnackBar(content: Text(err)));
+                                            return;
+                                          }
+                                          messenger.showSnackBar(SnackBar(content: Text(localizations.accountCreated)));
+                                          setState(() => _isSignup = false);
+                                          return;
+                                        }
+
+                                        if (email.isEmpty || pass.isEmpty) {
+                                          messenger.showSnackBar(SnackBar(content: Text(localizations.enterEmailPassword)));
+                                          return;
+                                        }
+                                        messenger.showSnackBar(SnackBar(content: Text(localizations.verifying)));
+                                        final ok = await _authRepo.loginUser(email, pass);
+                                        if (!mounted) return;
+                                        if (!ok) {
+                                          messenger.showSnackBar(SnackBar(content: Text(localizations.invalidCredentials)));
+                                          return;
+                                        }
+                                        ref.read(currentUserNotifierProvider.notifier).refresh();
+                                        showWelcomeNotifier.value = true;
+                                      },
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+
+                    const SizedBox(height: 24),
                   ],
                 ),
               ),
-
-              const SizedBox(height: 20),
-              Center(child: Text(localizations.or, style: const TextStyle(color: Colors.grey))),
-              const SizedBox(height: 12),
-
-              socialButton(localizations.continueGoogle, Icons.g_mobiledata, Colors.red),
-              const SizedBox(height: 10),
-              socialButton(localizations.continueFacebook, Icons.facebook, Colors.blue),
-            ],
+            ),
           ),
-        ),
+        ],
       ),
     );
   }

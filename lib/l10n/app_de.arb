@@ -1,4 +1,4 @@
-{
+﻿{
   "@@locale": "de",
   "appTitle": "Chemie Initiative",
   "home": "Startseite",
@@ -151,5 +151,6 @@
   "molHcl": "Salzsäure",
   "factHcl": "Eine starke Säure, die in Ihrem Magen vorkommt und bei der Verdauung hilft.",
   "molH2so4": "Schwefelsäure",
-  "factH2so4": "Eine stark ätzende Säure, die in Batterien und der Mineralverarbeitung verwendet wird."
+  "factH2so4": "Eine stark ätzende Säure, die in Batterien und der Mineralverarbeitung verwendet wird.",
+  "forgotPassword": "Passwort vergessen?"
 }

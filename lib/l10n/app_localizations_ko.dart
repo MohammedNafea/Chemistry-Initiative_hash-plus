@@ -1114,4 +1114,7 @@ class AppLocalizationsKo extends AppLocalizations {
   @override
   String get increaseHeatCatalyst =>
       'Discovery requires more heat! Use the Bunsen burner.';
+
+  @override
+  String get forgotPassword => '비밀번호를 잊으셨나요?';
 }

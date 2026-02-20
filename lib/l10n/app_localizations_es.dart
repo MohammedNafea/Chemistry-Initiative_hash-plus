@@ -1131,4 +1131,7 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get increaseHeatCatalyst =>
       'Discovery requires more heat! Use the Bunsen burner.';
+
+  @override
+  String get forgotPassword => '¿Has olvidado tu contraseña?';
 }

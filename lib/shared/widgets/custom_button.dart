@@ -7,18 +7,28 @@ class CustomButton extends StatelessWidget {
   const CustomButton({super.key, required this.text, required this.onTap});
   @override
   Widget build(BuildContext context) {
+    final isLight = Theme.of(context).brightness == Brightness.light;
     return GestureDetector(
       onTap: onTap,
       child: Container(
         width: double.infinity,
         height: 55,
         decoration: BoxDecoration(
-          gradient: const LinearGradient(
-            colors: [Color(0xFFC47457), Color(0xFF8E4A31)],
-            begin: Alignment.centerLeft,
-            end: Alignment.centerRight,
+          boxShadow: [
+            BoxShadow(
+              color: isLight ? Colors.deepPurpleAccent.withOpacity(0.3) : Colors.cyanAccent.withOpacity(0.3),
+              blurRadius: 15,
+              offset: const Offset(0, 5),
+            ),
+          ],
+          gradient: LinearGradient(
+            colors: isLight
+                ? [Colors.deepPurpleAccent, Colors.purpleAccent]
+                : [Colors.cyan[800]!, Colors.cyanAccent[700]!],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
           ),
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(16),
         ),
         child: Center(
           child: Text(
@@ -27,6 +37,7 @@ class CustomButton extends StatelessWidget {
               color: Colors.white,
               fontSize: 18,
               fontWeight: FontWeight.bold,
+              letterSpacing: 1.2,
             ),
           ),
         ),

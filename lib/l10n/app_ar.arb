@@ -1,4 +1,4 @@
-{
+﻿{
   "@@locale": "ar",
   "appTitle": "مبادرة الكيمياء",
   "home": "الرئيسية",
@@ -372,5 +372,6 @@
   "seniorChemist": "كبير الكيميائيين",
   "alchemist": "خيميائي",
   "discoveryLabel": "اكتشافات",
-  "increaseHeatCatalyst": "الاكتشاف يتطلب حرارة أعلى! استخدم موقد بنزن."
+  "increaseHeatCatalyst": "الاكتشاف يتطلب حرارة أعلى! استخدم موقد بنزن.",
+  "forgotPassword": "نسيت كلمة المرور؟"
 }

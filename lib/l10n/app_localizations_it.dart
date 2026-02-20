@@ -1129,4 +1129,7 @@ class AppLocalizationsIt extends AppLocalizations {
   @override
   String get increaseHeatCatalyst =>
       'Discovery requires more heat! Use the Bunsen burner.';
+
+  @override
+  String get forgotPassword => 'Password dimenticata?';
 }

@@ -1,4 +1,4 @@
-{
+﻿{
   "@@locale": "en",
   "appTitle": "Chemistry Initiative",
   "@appTitle": {
@@ -380,5 +380,6 @@
   "seniorChemist": "Senior Chemist",
   "alchemist": "Alchemist",
   "discoveryLabel": "Discovery",
-  "increaseHeatCatalyst": "Discovery requires more heat! Use the Bunsen burner."
+  "increaseHeatCatalyst": "Discovery requires more heat! Use the Bunsen burner.",
+  "forgotPassword": "Forgot Password?"
 }

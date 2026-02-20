@@ -4,29 +4,52 @@ class CustomTextfield extends StatelessWidget {
   final String hintText;
   final bool isPassword;
   final TextEditingController? controller;
+  final IconData? prefixIcon;
 
   const CustomTextfield({
     super.key,
     required this.hintText,
     this.isPassword = false,
     this.controller,
+    this.prefixIcon,
   });
   @override
   Widget build(BuildContext context) {
+    final isLight = Theme.of(context).brightness == Brightness.light;
     return TextField(
       controller: controller,
       obscureText: isPassword,
+      style: TextStyle(color: isLight ? Colors.black87 : Colors.white),
       decoration: InputDecoration(
         hintText: hintText,
+        hintStyle: TextStyle(color: isLight ? Colors.grey[500] : Colors.grey[400]),
         filled: true,
-        fillColor: Colors.grey[100],
+        fillColor: isLight ? Colors.white.withOpacity(0.5) : Colors.black.withOpacity(0.2),
+        prefixIcon: prefixIcon != null ? Icon(prefixIcon, color: isLight ? Colors.deepPurple[400] : Colors.cyanAccent) : null,
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide.none,
+          borderRadius: BorderRadius.circular(16),
+          borderSide: BorderSide(
+            color: isLight ? Colors.deepPurple.withOpacity(0.2) : Colors.cyanAccent.withOpacity(0.3),
+            width: 1,
+          ),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(16),
+          borderSide: BorderSide(
+            color: isLight ? Colors.deepPurple.withOpacity(0.2) : Colors.cyanAccent.withOpacity(0.3),
+            width: 1,
+          ),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(16),
+          borderSide: BorderSide(
+            color: isLight ? Colors.deepPurpleAccent : Colors.cyanAccent,
+            width: 2,
+          ),
         ),
         contentPadding: const EdgeInsets.symmetric(
-          horizontal: 16,
-          vertical: 16,
+          horizontal: 20,
+          vertical: 18,
         ),
       ),
     );

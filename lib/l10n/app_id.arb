@@ -1,4 +1,4 @@
-{
+﻿{
   "@@locale": "id",
   "appTitle": "Inisiatif Kimia",
   "home": "Beranda",
@@ -156,5 +156,6 @@
   "novice": "Pemula",
   "seniorChemist": "Ahli Kimia Senior",
   "alchemist": "Alkemis",
-  "discoveryLabel": "Penemuan"
+  "discoveryLabel": "Penemuan",
+  "forgotPassword": "Lupa Kata Sandi?"
 }

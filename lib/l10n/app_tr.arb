@@ -1,4 +1,4 @@
-{
+﻿{
   "@@locale": "tr",
   "appTitle": "Kimya Girişimi",
   "home": "Ana Sayfa",
@@ -160,5 +160,6 @@
   "novice": "Acemi",
   "seniorChemist": "Kıdemli Kimyager",
   "alchemist": "Simyacı",
-  "discoveryLabel": "Keşif"
+  "discoveryLabel": "Keşif",
+  "forgotPassword": "Şifrenizi mi unuttunuz?"
 }

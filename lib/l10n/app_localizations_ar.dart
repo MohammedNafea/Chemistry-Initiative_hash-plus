@@ -1107,4 +1107,7 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get increaseHeatCatalyst =>
       'الاكتشاف يتطلب حرارة أعلى! استخدم موقد بنزن.';
+
+  @override
+  String get forgotPassword => 'نسيت كلمة المرور؟';
 }

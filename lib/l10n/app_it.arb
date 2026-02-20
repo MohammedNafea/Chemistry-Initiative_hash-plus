@@ -1,4 +1,4 @@
-{
+﻿{
   "@@locale": "it",
   "appTitle": "Iniziativa Chimica",
   "home": "Home",
@@ -147,5 +147,6 @@
   "molHcl": "Acido Cloridrico",
   "factHcl": "Un acido forte presente nello stomaco che aiuta a digerire il cibo.",
   "molH2so4": "Acido Solforico",
-  "factH2so4": "Un acido altamente corrosivo utilizzato nelle batterie e nella lavorazione dei minerali."
+  "factH2so4": "Un acido altamente corrosivo utilizzato nelle batterie e nella lavorazione dei minerali.",
+  "forgotPassword": "Password dimenticata?"
 }

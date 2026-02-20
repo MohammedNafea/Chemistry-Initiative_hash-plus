@@ -1,4 +1,4 @@
-{
+﻿{
   "@@locale": "es",
   "appTitle": "Iniciativa Química",
   "home": "Inicio",
@@ -160,5 +160,6 @@
   "novice": "Novato",
   "seniorChemist": "Químico superior",
   "alchemist": "Alquimista",
-  "discoveryLabel": "Descubrimiento"
+  "discoveryLabel": "Descubrimiento",
+  "forgotPassword": "¿Has olvidado tu contraseña?"
 }

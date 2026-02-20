@@ -1,4 +1,4 @@
-{
+﻿{
   "@@locale": "pt",
   "appTitle": "Iniciativa Química",
   "home": "Início",
@@ -147,5 +147,6 @@
   "molHcl": "Ácido Clorídrico",
   "factHcl": "Um ácido forte encontrado no seu estômago que ajuda a digerir a comida.",
   "molH2so4": "Ácido Sulfúrico",
-  "factH2so4": "Um ácido altamente corrosivo utilizado em baterias e processamento de minerais."
+  "factH2so4": "Um ácido altamente corrosivo utilizado em baterias e processamento de minerais.",
+  "forgotPassword": "Esqueceu a senha?"
 }
