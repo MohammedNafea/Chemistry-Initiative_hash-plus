@@ -46,8 +46,8 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   intl: ^0.20.2
-  country_flags: ^2.1.0
-  confetti: ^0.7.0
+  country_flags: ^4.1.2
+  confetti: ^0.8.0
 
 dev_dependencies:
   flutter_test:
