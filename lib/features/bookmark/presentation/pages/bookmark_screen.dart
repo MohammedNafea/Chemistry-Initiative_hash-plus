@@ -22,8 +22,11 @@ class BookmarkScreen extends ConsumerWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(Icons.bookmark_border,
-                        size: 64, color: Colors.grey[400]),
+                    Icon(
+                      Icons.bookmark_border,
+                      size: 64,
+                      color: Colors.grey[400],
+                    ),
                     const SizedBox(height: 16),
                     Text(
                       localizations.noSavedTopics,
@@ -36,10 +39,7 @@ class BookmarkScreen extends ConsumerWidget {
                     const SizedBox(height: 8),
                     Text(
                       localizations.saveYourFavorites,
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Colors.grey[500],
-                      ),
+                      style: TextStyle(fontSize: 14, color: Colors.grey[500]),
                     ),
                   ],
                 ),
@@ -126,8 +126,11 @@ class BookmarkScreen extends ConsumerWidget {
                                         const SizedBox(height: 8),
                                         Row(
                                           children: [
-                                            const Icon(Icons.bookmark,
-                                                size: 16, color: softBrown),
+                                            const Icon(
+                                              Icons.bookmark,
+                                              size: 16,
+                                              color: softBrown,
+                                            ),
                                             const SizedBox(width: 4),
                                             Text(
                                               localizations.saved,
@@ -146,10 +149,14 @@ class BookmarkScreen extends ConsumerWidget {
                                   icon: const Icon(Icons.delete_outline),
                                   color: Colors.red[300],
                                   onPressed: () {
-                                    ref.read(bookmarkProvider.notifier).remove(topic);
+                                    ref
+                                        .read(bookmarkProvider.notifier)
+                                        .remove(topic);
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       SnackBar(
-                                        content: Text(localizations.topicDeleted),
+                                        content: Text(
+                                          localizations.topicDeleted,
+                                        ),
                                       ),
                                     );
                                   },

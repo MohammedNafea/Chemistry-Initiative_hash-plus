@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'dart:ui';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:chemistry_initiative/features/auth/data/current_user_provider.dart';
@@ -20,6 +21,9 @@ import 'package:chemistry_initiative/features/home/presentation/widgets/chemical
 import 'package:chemistry_initiative/features/home/presentation/widgets/chemistry_particle_background.dart';
 import 'package:chemistry_initiative/core/widgets/lab_widgets.dart';
 import 'package:chemistry_initiative/features/gamification/data/providers/scientist_rank_provider.dart';
+import 'package:chemistry_initiative/features/tutor/presentation/pages/ai_tutor_screen.dart';
+import 'package:chemistry_initiative/features/multiplayer/presentation/pages/multiplayer_quiz_screen.dart';
+import 'package:chemistry_initiative/features/leaderboard/presentation/pages/leaderboard_screen.dart';
 
 class HomePage extends ConsumerStatefulWidget {
   final bool showWelcome;
@@ -100,14 +104,34 @@ class _HomePageState extends ConsumerState<HomePage> {
               },
               labelType: NavigationRailLabelType.all,
               selectedIconTheme: IconThemeData(color: colorScheme.primary),
-              unselectedIconTheme: IconThemeData(color: theme.unselectedWidgetColor),
-              selectedLabelTextStyle: TextStyle(color: colorScheme.primary, fontWeight: FontWeight.bold),
+              unselectedIconTheme: IconThemeData(
+                color: theme.unselectedWidgetColor,
+              ),
+              selectedLabelTextStyle: TextStyle(
+                color: colorScheme.primary,
+                fontWeight: FontWeight.bold,
+              ),
               destinations: [
-                NavigationRailDestination(icon: const Icon(Icons.home_rounded), label: Text(localizations.home)),
-                NavigationRailDestination(icon: const Icon(Icons.search_rounded), label: Text(localizations.search)),
-                NavigationRailDestination(icon: const Icon(Icons.hub_rounded), label: Text(localizations.discoveryLabel)),
-                NavigationRailDestination(icon: const Icon(Icons.bookmark_rounded), label: Text(localizations.bookmark)),
-                NavigationRailDestination(icon: const Icon(Icons.person_rounded), label: Text(localizations.profile)),
+                NavigationRailDestination(
+                  icon: const Icon(Icons.home_rounded),
+                  label: Text(localizations.home),
+                ),
+                NavigationRailDestination(
+                  icon: const Icon(Icons.search_rounded),
+                  label: Text(localizations.search),
+                ),
+                NavigationRailDestination(
+                  icon: const Icon(Icons.hub_rounded),
+                  label: Text(localizations.discoveryLabel),
+                ),
+                NavigationRailDestination(
+                  icon: const Icon(Icons.bookmark_rounded),
+                  label: Text(localizations.bookmark),
+                ),
+                NavigationRailDestination(
+                  icon: const Icon(Icons.person_rounded),
+                  label: Text(localizations.profile),
+                ),
               ],
             ),
           Expanded(
@@ -120,24 +144,55 @@ class _HomePageState extends ConsumerState<HomePage> {
           ),
         ],
       ),
-      bottomNavigationBar: isWide ? null : BottomNavigationBar(
-        currentIndex: _currentIndex,
-        type: BottomNavigationBarType.fixed,
-        backgroundColor: isDark ? theme.cardColor : Colors.white,
-        selectedItemColor: colorScheme.primary,
-        unselectedItemColor: theme.unselectedWidgetColor,
-        onTap: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
+      bottomNavigationBar: isWide
+          ? null
+          : BottomNavigationBar(
+              currentIndex: _currentIndex,
+              type: BottomNavigationBarType.fixed,
+              backgroundColor: isDark ? theme.cardColor : Colors.white,
+              selectedItemColor: colorScheme.primary,
+              unselectedItemColor: theme.unselectedWidgetColor,
+              onTap: (index) {
+                setState(() {
+                  _currentIndex = index;
+                });
+              },
+              items: [
+                BottomNavigationBarItem(
+                  icon: const Icon(Icons.home_rounded),
+                  label: localizations.home,
+                ),
+                BottomNavigationBarItem(
+                  icon: const Icon(Icons.search_rounded),
+                  label: localizations.search,
+                ),
+                BottomNavigationBarItem(
+                  icon: const Icon(Icons.hub_rounded),
+                  label: localizations.discoveryLabel,
+                ),
+                BottomNavigationBarItem(
+                  icon: const Icon(Icons.bookmark_rounded),
+                  label: localizations.bookmark,
+                ),
+                BottomNavigationBarItem(
+                  icon: const Icon(Icons.person_rounded),
+                  label: localizations.profile,
+                ),
+              ],
+            ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const AITutorScreen()),
+          );
         },
-        items: [
-          BottomNavigationBarItem(icon: const Icon(Icons.home_rounded), label: localizations.home),
-          BottomNavigationBarItem(icon: const Icon(Icons.search_rounded), label: localizations.search),
-          BottomNavigationBarItem(icon: const Icon(Icons.hub_rounded), label: localizations.discoveryLabel),
-          BottomNavigationBarItem(icon: const Icon(Icons.bookmark_rounded), label: localizations.bookmark),
-          BottomNavigationBarItem(icon: const Icon(Icons.person_rounded), label: localizations.profile),
-        ],
+        backgroundColor: theme.colorScheme.primaryContainer,
+        icon: const Icon(Icons.smart_toy_rounded, color: Colors.white),
+        label: const Text(
+          'المعلم الذكي',
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        ),
       ),
     );
   }
@@ -179,7 +234,9 @@ class _HomePageState extends ConsumerState<HomePage> {
                         ),
                         const SizedBox(width: 12),
                         Text(
-                          localizations.welcomeUser(user?.name ?? localizations.user),
+                          localizations.welcomeUser(
+                            user?.name ?? localizations.user,
+                          ),
                           style: TextStyle(
                             fontSize: 22,
                             fontWeight: FontWeight.w600,
@@ -187,6 +244,11 @@ class _HomePageState extends ConsumerState<HomePage> {
                           ),
                         ),
                         const Spacer(),
+                        Image.asset(
+                          'assets/images/logo.png',
+                          height: 40,
+                          fit: BoxFit.contain,
+                        ),
                       ],
                     ),
 
@@ -196,7 +258,8 @@ class _HomePageState extends ConsumerState<HomePage> {
                         ClipRRect(
                           borderRadius: BorderRadius.circular(12),
                           child: Hero(
-                            tag: 'assets/images/Aurora Boreal Aesthetic _ Travel Inspo & Dream Destinations.jpg',
+                            tag:
+                                'assets/images/Aurora Boreal Aesthetic _ Travel Inspo & Dream Destinations.jpg',
                             child: Image.asset(
                               'assets/images/Aurora Boreal Aesthetic _ Travel Inspo & Dream Destinations.jpg',
                               height: 180,
@@ -233,7 +296,8 @@ class _HomePageState extends ConsumerState<HomePage> {
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) => QuestionPage(
-                                        image: 'assets/images/Aurora Boreal Aesthetic _ Travel Inspo & Dream Destinations.jpg',
+                                        image:
+                                            'assets/images/Aurora Boreal Aesthetic _ Travel Inspo & Dream Destinations.jpg',
                                         title: localizations.auroraTitle,
                                       ),
                                     ),
@@ -296,19 +360,35 @@ class _HomePageState extends ConsumerState<HomePage> {
                               ),
                               const SizedBox(height: 4),
                               Container(
-                                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 12,
+                                  vertical: 4,
+                                ),
                                 decoration: BoxDecoration(
-                                  color: colorScheme.primary.withValues(alpha: 0.1),
+                                  color: colorScheme.primary.withValues(
+                                    alpha: 0.1,
+                                  ),
                                   borderRadius: BorderRadius.circular(20),
-                                  border: Border.all(color: colorScheme.primary.withValues(alpha: 0.2)),
+                                  border: Border.all(
+                                    color: colorScheme.primary.withValues(
+                                      alpha: 0.2,
+                                    ),
+                                  ),
                                 ),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
-                                    Icon(Icons.terminal_rounded, size: 14, color: colorScheme.primary),
+                                    Icon(
+                                      Icons.terminal_rounded,
+                                      size: 14,
+                                      color: colorScheme.primary,
+                                    ),
                                     const SizedBox(width: 6),
                                     Text(
-                                      _getRankLabel(ref.watch(scientistRankProvider), localizations),
+                                      _getRankLabel(
+                                        ref.watch(scientistRankProvider),
+                                        localizations,
+                                      ),
                                       style: TextStyle(
                                         fontSize: 12,
                                         fontWeight: FontWeight.bold,
@@ -352,24 +432,35 @@ class _HomePageState extends ConsumerState<HomePage> {
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                          builder: (context) => const PeriodicTableScreen(),
+                                          builder: (context) =>
+                                              const PeriodicTableScreen(),
                                         ),
                                       );
                                     },
                                     style: ElevatedButton.styleFrom(
-                                      backgroundColor: theme.colorScheme.primary.withValues(alpha: 0.1),
-                                      foregroundColor: theme.colorScheme.primary,
-                                      padding: const EdgeInsets.symmetric(vertical: 16),
+                                      backgroundColor: theme.colorScheme.primary
+                                          .withValues(alpha: 0.1),
+                                      foregroundColor:
+                                          theme.colorScheme.primary,
+                                      padding: const EdgeInsets.symmetric(
+                                        vertical: 16,
+                                      ),
                                       elevation: 0,
                                       shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(12),
-                                        side: BorderSide(color: theme.colorScheme.primary.withValues(alpha: 0.2)),
+                                        side: BorderSide(
+                                          color: theme.colorScheme.primary
+                                              .withValues(alpha: 0.2),
+                                        ),
                                       ),
                                     ),
                                     icon: const Icon(Icons.grid_view_rounded),
                                     label: Text(
                                       localizations.periodicTable,
-                                      style: const TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
+                                      style: const TextStyle(
+                                        fontSize: 13,
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                       textAlign: TextAlign.center,
                                       maxLines: 1,
                                       overflow: TextOverflow.ellipsis,
@@ -384,24 +475,37 @@ class _HomePageState extends ConsumerState<HomePage> {
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                          builder: (context) => const QuizScreen(),
+                                          builder: (context) =>
+                                              const QuizScreen(),
                                         ),
                                       );
                                     },
                                     style: ElevatedButton.styleFrom(
-                                      backgroundColor: theme.colorScheme.secondary.withValues(alpha: 0.1),
-                                      foregroundColor: theme.colorScheme.secondary,
-                                      padding: const EdgeInsets.symmetric(vertical: 16),
+                                      backgroundColor: theme
+                                          .colorScheme
+                                          .secondary
+                                          .withValues(alpha: 0.1),
+                                      foregroundColor:
+                                          theme.colorScheme.secondary,
+                                      padding: const EdgeInsets.symmetric(
+                                        vertical: 16,
+                                      ),
                                       elevation: 0,
                                       shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(12),
-                                        side: BorderSide(color: theme.colorScheme.secondary.withValues(alpha: 0.2)),
+                                        side: BorderSide(
+                                          color: theme.colorScheme.secondary
+                                              .withValues(alpha: 0.2),
+                                        ),
                                       ),
                                     ),
                                     icon: const Icon(Icons.school_rounded),
                                     label: Text(
                                       localizations.dailyQuiz,
-                                      style: const TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
+                                      style: const TextStyle(
+                                        fontSize: 13,
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                       textAlign: TextAlign.center,
                                       maxLines: 1,
                                       overflow: TextOverflow.ellipsis,
@@ -419,24 +523,34 @@ class _HomePageState extends ConsumerState<HomePage> {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) => const PeriodicTableScreen(),
+                                        builder: (context) =>
+                                            const PeriodicTableScreen(),
                                       ),
                                     );
                                   },
                                   style: ElevatedButton.styleFrom(
-                                    backgroundColor: theme.colorScheme.primary.withValues(alpha: 0.1),
+                                    backgroundColor: theme.colorScheme.primary
+                                        .withValues(alpha: 0.1),
                                     foregroundColor: theme.colorScheme.primary,
-                                    padding: const EdgeInsets.symmetric(vertical: 16),
+                                    padding: const EdgeInsets.symmetric(
+                                      vertical: 16,
+                                    ),
                                     elevation: 0,
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(12),
-                                      side: BorderSide(color: theme.colorScheme.primary.withValues(alpha: 0.2)),
+                                      side: BorderSide(
+                                        color: theme.colorScheme.primary
+                                            .withValues(alpha: 0.2),
+                                      ),
                                     ),
                                   ),
                                   icon: const Icon(Icons.grid_view_rounded),
                                   label: Text(
                                     localizations.periodicTable,
-                                    style: const TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
+                                    style: const TextStyle(
+                                      fontSize: 13,
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                     textAlign: TextAlign.center,
                                     maxLines: 1,
                                     overflow: TextOverflow.ellipsis,
@@ -450,24 +564,35 @@ class _HomePageState extends ConsumerState<HomePage> {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) => const QuizScreen(),
+                                        builder: (context) =>
+                                            const QuizScreen(),
                                       ),
                                     );
                                   },
                                   style: ElevatedButton.styleFrom(
-                                    backgroundColor: theme.colorScheme.secondary.withValues(alpha: 0.1),
-                                    foregroundColor: theme.colorScheme.secondary,
-                                    padding: const EdgeInsets.symmetric(vertical: 16),
+                                    backgroundColor: theme.colorScheme.secondary
+                                        .withValues(alpha: 0.1),
+                                    foregroundColor:
+                                        theme.colorScheme.secondary,
+                                    padding: const EdgeInsets.symmetric(
+                                      vertical: 16,
+                                    ),
                                     elevation: 0,
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(12),
-                                      side: BorderSide(color: theme.colorScheme.secondary.withValues(alpha: 0.2)),
+                                      side: BorderSide(
+                                        color: theme.colorScheme.secondary
+                                            .withValues(alpha: 0.2),
+                                      ),
                                     ),
                                   ),
                                   icon: const Icon(Icons.school_rounded),
                                   label: Text(
                                     localizations.dailyQuiz,
-                                    style: const TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
+                                    style: const TextStyle(
+                                      fontSize: 13,
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                     textAlign: TextAlign.center,
                                     maxLines: 1,
                                     overflow: TextOverflow.ellipsis,
@@ -494,24 +619,37 @@ class _HomePageState extends ConsumerState<HomePage> {
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                          builder: (context) => const HouseholdItemsScreen(),
+                                          builder: (context) =>
+                                              const HouseholdItemsScreen(),
                                         ),
                                       );
                                     },
                                     style: ElevatedButton.styleFrom(
-                                      backgroundColor: theme.colorScheme.tertiary.withValues(alpha: 0.1),
-                                      foregroundColor: theme.colorScheme.tertiary,
-                                      padding: const EdgeInsets.symmetric(vertical: 16),
+                                      backgroundColor: theme
+                                          .colorScheme
+                                          .tertiary
+                                          .withValues(alpha: 0.1),
+                                      foregroundColor:
+                                          theme.colorScheme.tertiary,
+                                      padding: const EdgeInsets.symmetric(
+                                        vertical: 16,
+                                      ),
                                       elevation: 0,
                                       shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(12),
-                                        side: BorderSide(color: theme.colorScheme.tertiary.withValues(alpha: 0.2)),
+                                        side: BorderSide(
+                                          color: theme.colorScheme.tertiary
+                                              .withValues(alpha: 0.2),
+                                        ),
                                       ),
                                     ),
                                     icon: const Icon(Icons.search_rounded),
                                     label: Text(
                                       localizations.whatsInThis,
-                                      style: const TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
+                                      style: const TextStyle(
+                                        fontSize: 13,
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                       textAlign: TextAlign.center,
                                       maxLines: 1,
                                       overflow: TextOverflow.ellipsis,
@@ -526,24 +664,36 @@ class _HomePageState extends ConsumerState<HomePage> {
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                          builder: (context) => const SafetyGuideScreen(),
+                                          builder: (context) =>
+                                              const SafetyGuideScreen(),
                                         ),
                                       );
                                     },
                                     style: ElevatedButton.styleFrom(
-                                      backgroundColor: theme.colorScheme.error.withValues(alpha: 0.1),
+                                      backgroundColor: theme.colorScheme.error
+                                          .withValues(alpha: 0.1),
                                       foregroundColor: theme.colorScheme.error,
-                                      padding: const EdgeInsets.symmetric(vertical: 16),
+                                      padding: const EdgeInsets.symmetric(
+                                        vertical: 16,
+                                      ),
                                       elevation: 0,
                                       shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(12),
-                                        side: BorderSide(color: theme.colorScheme.error.withValues(alpha: 0.2)),
+                                        side: BorderSide(
+                                          color: theme.colorScheme.error
+                                              .withValues(alpha: 0.2),
+                                        ),
                                       ),
                                     ),
-                                    icon: const Icon(Icons.warning_amber_rounded),
+                                    icon: const Icon(
+                                      Icons.warning_amber_rounded,
+                                    ),
                                     label: Text(
                                       localizations.safetyGuide,
-                                      style: const TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
+                                      style: const TextStyle(
+                                        fontSize: 13,
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                       textAlign: TextAlign.center,
                                       maxLines: 1,
                                       overflow: TextOverflow.ellipsis,
@@ -561,24 +711,34 @@ class _HomePageState extends ConsumerState<HomePage> {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) => const HouseholdItemsScreen(),
+                                        builder: (context) =>
+                                            const HouseholdItemsScreen(),
                                       ),
                                     );
                                   },
                                   style: ElevatedButton.styleFrom(
-                                    backgroundColor: theme.colorScheme.tertiary.withValues(alpha: 0.1),
+                                    backgroundColor: theme.colorScheme.tertiary
+                                        .withValues(alpha: 0.1),
                                     foregroundColor: theme.colorScheme.tertiary,
-                                    padding: const EdgeInsets.symmetric(vertical: 16),
+                                    padding: const EdgeInsets.symmetric(
+                                      vertical: 16,
+                                    ),
                                     elevation: 0,
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(12),
-                                      side: BorderSide(color: theme.colorScheme.tertiary.withValues(alpha: 0.2)),
+                                      side: BorderSide(
+                                        color: theme.colorScheme.tertiary
+                                            .withValues(alpha: 0.2),
+                                      ),
                                     ),
                                   ),
                                   icon: const Icon(Icons.search_rounded),
                                   label: Text(
                                     localizations.whatsInThis,
-                                    style: const TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
+                                    style: const TextStyle(
+                                      fontSize: 13,
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                     textAlign: TextAlign.center,
                                     maxLines: 1,
                                     overflow: TextOverflow.ellipsis,
@@ -592,24 +752,34 @@ class _HomePageState extends ConsumerState<HomePage> {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) => const SafetyGuideScreen(),
+                                        builder: (context) =>
+                                            const SafetyGuideScreen(),
                                       ),
                                     );
                                   },
                                   style: ElevatedButton.styleFrom(
-                                    backgroundColor: theme.colorScheme.error.withValues(alpha: 0.1),
+                                    backgroundColor: theme.colorScheme.error
+                                        .withValues(alpha: 0.1),
                                     foregroundColor: theme.colorScheme.error,
-                                    padding: const EdgeInsets.symmetric(vertical: 16),
+                                    padding: const EdgeInsets.symmetric(
+                                      vertical: 16,
+                                    ),
                                     elevation: 0,
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(12),
-                                      side: BorderSide(color: theme.colorScheme.error.withValues(alpha: 0.2)),
+                                      side: BorderSide(
+                                        color: theme.colorScheme.error
+                                            .withValues(alpha: 0.2),
+                                      ),
                                     ),
                                   ),
                                   icon: const Icon(Icons.warning_amber_rounded),
                                   label: Text(
                                     localizations.safetyGuide,
-                                    style: const TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
+                                    style: const TextStyle(
+                                      fontSize: 13,
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                     textAlign: TextAlign.center,
                                     maxLines: 1,
                                     overflow: TextOverflow.ellipsis,
@@ -630,7 +800,8 @@ class _HomePageState extends ConsumerState<HomePage> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => const ExperimentsListScreen(),
+                                  builder: (context) =>
+                                      const ExperimentsListScreen(),
                                 ),
                               );
                             },
@@ -645,7 +816,10 @@ class _HomePageState extends ConsumerState<HomePage> {
                             icon: const Icon(Icons.science_rounded),
                             label: Text(
                               localizations.virtualLab,
-                              style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                              style: const TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
                         ),
@@ -653,10 +827,11 @@ class _HomePageState extends ConsumerState<HomePage> {
                         Expanded(
                           child: ElevatedButton.icon(
                             onPressed: () {
-                               Navigator.push(
+                              Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => const MoleculeViewerScreen(),
+                                  builder: (context) =>
+                                      const MoleculeViewerScreen(),
                                 ),
                               );
                             },
@@ -671,11 +846,86 @@ class _HomePageState extends ConsumerState<HomePage> {
                             icon: const Icon(Icons.hub_rounded),
                             label: Text(
                               localizations.moleculeViewer,
-                              style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                              style: const TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
                         ),
                       ],
+                    ),
+                    const SizedBox(height: 12),
+                    SizedBox(
+                      width: double.infinity,
+                      child: ElevatedButton.icon(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const LeaderboardScreen(),
+                            ),
+                          );
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.amber,
+                          foregroundColor: Colors.black,
+                          padding: const EdgeInsets.symmetric(vertical: 16),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                        ),
+                        icon: const Icon(Icons.emoji_events_rounded),
+                        label: Text(
+                          localizations.leaderboard,
+                          style: const TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 12),
+                    SizedBox(
+                      width: double.infinity,
+                      child: ElevatedButton.icon(
+                        icon: const Icon(Icons.people_alt_rounded),
+                        label: Text(
+                          localizations.multiplayerQuiz,
+                          style: const TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        onPressed: () {
+                          if (kIsWeb) {
+                            final isAr = Localizations.localeOf(context).languageCode == 'ar';
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(isAr
+                                    ? 'هذه الميزة متاحة فقط على أجهزة Android و iOS'
+                                    : 'This feature is only available on Android and iOS devices'),
+                              ),
+                            );
+                            return;
+                          }
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  const MultiplayerQuizScreen(),
+                            ),
+                          );
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: theme.colorScheme.tertiary,
+                          foregroundColor: theme.colorScheme.onTertiary,
+                          padding: const EdgeInsets.symmetric(vertical: 16),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                        ),
+                      ),
                     ),
                     const SizedBox(height: 30),
                     ChemicalOfTheDayCard(localizations: localizations),
@@ -692,7 +942,9 @@ class _HomePageState extends ConsumerState<HomePage> {
                 child: Center(
                   child: Container(
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 24, vertical: 16),
+                      horizontal: 24,
+                      vertical: 16,
+                    ),
                     decoration: BoxDecoration(
                       color: theme.cardColor,
                       borderRadius: BorderRadius.circular(12),
@@ -701,7 +953,10 @@ class _HomePageState extends ConsumerState<HomePage> {
                       localizations.welcomeMessage,
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                          fontSize: 20, fontWeight: FontWeight.bold, color: theme.textTheme.bodyLarge?.color),
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: theme.textTheme.bodyLarge?.color,
+                      ),
                     ),
                   ),
                 ),
@@ -735,7 +990,7 @@ class _HomePageState extends ConsumerState<HomePage> {
           // Responsive item width: 40% of screen width on small screens, fixed max on large
           final screenWidth = MediaQuery.of(context).size.width;
           final itemWidth = screenWidth > 600 ? 160.0 : screenWidth * 0.38;
-          
+
           return ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: cards.length,
@@ -746,10 +1001,8 @@ class _HomePageState extends ConsumerState<HomePage> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => QuestionPage(
-                        image: card.image,
-                        title: card.title,
-                      ),
+                      builder: (context) =>
+                          QuestionPage(image: card.image, title: card.title),
                     ),
                   );
                 },
@@ -758,7 +1011,9 @@ class _HomePageState extends ConsumerState<HomePage> {
                   margin: const EdgeInsets.only(right: 16),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
-                    border: Border.all(color: Colors.white.withValues(alpha: 0.1)),
+                    border: Border.all(
+                      color: Colors.white.withValues(alpha: 0.1),
+                    ),
                   ),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(20),
@@ -766,8 +1021,8 @@ class _HomePageState extends ConsumerState<HomePage> {
                       filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
                       child: Container(
                         decoration: BoxDecoration(
-                          color: theme.brightness == Brightness.dark 
-                              ? Colors.white.withValues(alpha: 0.03) 
+                          color: theme.brightness == Brightness.dark
+                              ? Colors.white.withValues(alpha: 0.03)
                               : Colors.black.withValues(alpha: 0.02),
                           borderRadius: BorderRadius.circular(20),
                         ),
@@ -779,7 +1034,9 @@ class _HomePageState extends ConsumerState<HomePage> {
                                 tag: card.image,
                                 child: Container(
                                   decoration: BoxDecoration(
-                                    borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
+                                    borderRadius: const BorderRadius.vertical(
+                                      top: Radius.circular(20),
+                                    ),
                                     image: DecorationImage(
                                       image: AssetImage(card.image),
                                       fit: BoxFit.cover,
@@ -811,7 +1068,7 @@ class _HomePageState extends ConsumerState<HomePage> {
               );
             },
           );
-        }
+        },
       ),
     );
   }

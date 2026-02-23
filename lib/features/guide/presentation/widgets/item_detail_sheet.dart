@@ -94,7 +94,10 @@ class ItemDetailSheet extends StatelessWidget {
                 ),
               ),
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 12,
+                  vertical: 6,
+                ),
                 decoration: BoxDecoration(
                   color: safetyColor.withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(20),
@@ -124,9 +127,13 @@ class ItemDetailSheet extends StatelessWidget {
           const SizedBox(height: 24),
 
           // Formula
-          _DetailRow(label: 'Chemical Formula', value: item.formula, isDark: isDark),
+          _DetailRow(
+            label: 'Chemical Formula',
+            value: item.formula,
+            isDark: isDark,
+          ),
           const SizedBox(height: 16),
-          
+
           // Description
           const Text(
             'Description',
@@ -202,7 +209,7 @@ class _DetailRow extends StatelessWidget {
           value,
           style: const TextStyle(
             fontWeight: FontWeight.bold,
-            fontSize: 18, 
+            fontSize: 18,
             fontFamily: 'RobotoMono', // Monospace for formula look
           ),
         ),

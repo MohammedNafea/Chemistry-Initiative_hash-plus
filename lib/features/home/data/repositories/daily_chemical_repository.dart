@@ -10,7 +10,8 @@ class DailyChemicalRepository {
         name: localizations.chemOxygen, // Using localization keys
         category: 'Nonmetal',
         atomicMass: '15.999',
-        summary: localizations.chemOxygenUse, // Reusing use as summary for brevity
+        summary:
+            localizations.chemOxygenUse, // Reusing use as summary for brevity
         dailyLifeUse: localizations.chemOxygenUse,
         discoveredBy: 'Carl Wilhelm Scheele',
       ),
@@ -24,7 +25,7 @@ class DailyChemicalRepository {
         dailyLifeUse: localizations.chemGoldUse,
         discoveredBy: 'Known since antiquity',
       ),
-       ElementModel(
+      ElementModel(
         atomicNumber: 6,
         symbol: 'C',
         name: localizations.chemCarbon,
@@ -36,10 +37,12 @@ class DailyChemicalRepository {
       ),
     ];
 
-    final dayOfYear = int.parse("${DateTime.now().year}${DateTime.now().month}${DateTime.now().day}"); 
+    final dayOfYear = int.parse(
+      "${DateTime.now().year}${DateTime.now().month}${DateTime.now().day}",
+    );
     // Simple hash or just DayOfYear. Using explicit date to avoid issues.
     // Actually DateTime.now().difference(DateTime(year, 1, 1)).inDays is better but this is fine.
-    
+
     final index = dayOfYear % chemicals.length;
     return chemicals[index];
   }

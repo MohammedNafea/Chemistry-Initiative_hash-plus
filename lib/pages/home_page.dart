@@ -184,12 +184,12 @@ class _HomePageState extends State<HomePage> {
                           const SizedBox(height: 6),
                           ElevatedButton(
                             onPressed: () {
-                            // Navigator.push(
-                            //   context,
-                            //   MaterialPageRoute(
-                            //     builder: (context) => const QuestionPage(),
-                            //   ),
-                            // );
+                              // Navigator.push(
+                              //   context,
+                              //   MaterialPageRoute(
+                              //     builder: (context) => const QuestionPage(),
+                              //   ),
+                              // );
                             },
                             style: ElevatedButton.styleFrom(
                               backgroundColor: softBrown,
@@ -274,7 +274,9 @@ class _HomePageState extends State<HomePage> {
                 child: Center(
                   child: Container(
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 24, vertical: 16),
+                      horizontal: 24,
+                      vertical: 16,
+                    ),
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(12),
@@ -283,7 +285,9 @@ class _HomePageState extends State<HomePage> {
                       'أهلاً بك في عجائب الكيمياء',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                          fontSize: 20, fontWeight: FontWeight.bold),
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),

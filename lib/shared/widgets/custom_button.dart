@@ -16,7 +16,9 @@ class CustomButton extends StatelessWidget {
         decoration: BoxDecoration(
           boxShadow: [
             BoxShadow(
-              color: isLight ? Colors.deepPurpleAccent.withOpacity(0.3) : Colors.cyanAccent.withOpacity(0.3),
+              color: isLight
+                  ? Colors.deepPurpleAccent.withValues(alpha: 0.3)
+                  : Colors.cyanAccent.withValues(alpha: 0.3),
               blurRadius: 15,
               offset: const Offset(0, 5),
             ),

@@ -22,21 +22,34 @@ class CustomTextfield extends StatelessWidget {
       style: TextStyle(color: isLight ? Colors.black87 : Colors.white),
       decoration: InputDecoration(
         hintText: hintText,
-        hintStyle: TextStyle(color: isLight ? Colors.grey[500] : Colors.grey[400]),
+        hintStyle: TextStyle(
+          color: isLight ? Colors.grey[500] : Colors.grey[400],
+        ),
         filled: true,
-        fillColor: isLight ? Colors.white.withOpacity(0.5) : Colors.black.withOpacity(0.2),
-        prefixIcon: prefixIcon != null ? Icon(prefixIcon, color: isLight ? Colors.deepPurple[400] : Colors.cyanAccent) : null,
+        fillColor: isLight
+            ? Colors.white.withValues(alpha: 0.5)
+            : Colors.black.withValues(alpha: 0.2),
+        prefixIcon: prefixIcon != null
+            ? Icon(
+                prefixIcon,
+                color: isLight ? Colors.deepPurple[400] : Colors.cyanAccent,
+              )
+            : null,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
           borderSide: BorderSide(
-            color: isLight ? Colors.deepPurple.withOpacity(0.2) : Colors.cyanAccent.withOpacity(0.3),
+            color: isLight
+                ? Colors.deepPurple.withValues(alpha: 0.2)
+                : Colors.cyanAccent.withValues(alpha: 0.3),
             width: 1,
           ),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
           borderSide: BorderSide(
-            color: isLight ? Colors.deepPurple.withOpacity(0.2) : Colors.cyanAccent.withOpacity(0.3),
+            color: isLight
+                ? Colors.deepPurple.withValues(alpha: 0.2)
+                : Colors.cyanAccent.withValues(alpha: 0.3),
             width: 1,
           ),
         ),

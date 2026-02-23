@@ -9,7 +9,7 @@ enum ElementCategoryType {
   nobleGas,
   lanthanide,
   actinide,
-  unknown
+  unknown,
 }
 
 class ElementModel {
@@ -23,7 +23,8 @@ class ElementModel {
   final String dailyLifeUse; // The "Daily Life" connection
   final String discoveredBy;
   final bool isCompound;
-  final int? colorValue; // Store color as int to avoid Flutter dependency in data layer if strictly needed, but Color is fine here if flutter/material is imported.
+  final int?
+  colorValue; // Store color as int to avoid Flutter dependency in data layer if strictly needed, but Color is fine here if flutter/material is imported.
   // Actually ElementModel imports nothing currently. I need to import dart:ui or flutter/material for Color.
   // Or just store int and convert.
   // Let's import dart:ui.

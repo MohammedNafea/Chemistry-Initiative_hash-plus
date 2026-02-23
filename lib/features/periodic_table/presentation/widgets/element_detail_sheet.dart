@@ -3,6 +3,8 @@ import 'package:chemistry_initiative/features/periodic_table/data/models/element
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:chemistry_initiative/l10n/app_localizations.dart';
 import 'package:chemistry_initiative/features/periodic_table/presentation/widgets/bohr_model_painter.dart';
+import 'package:flutter_tts/flutter_tts.dart';
+import 'package:chemistry_initiative/features/periodic_table/presentation/pages/element_3d_viewer_screen.dart';
 
 class ElementDetailSheet extends StatelessWidget {
   final ElementModel element;
@@ -46,7 +48,9 @@ class ElementDetailSheet extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: isDark ? Colors.grey[800] : Colors.grey[100],
                   borderRadius: BorderRadius.circular(16),
-                  border: Border.all(color: theme.primaryColor.withValues(alpha: 0.3)),
+                  border: Border.all(
+                    color: theme.primaryColor.withValues(alpha: 0.3),
+                  ),
                 ),
                 child: Text(
                   element.symbol,
@@ -62,12 +66,31 @@ class ElementDetailSheet extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      element.name,
-                      style: const TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                      ),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Text(
+                            element.name,
+                            style: const TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                        IconButton(
+                          icon: Icon(
+                            Icons.volume_up,
+                            color: theme.primaryColor,
+                          ),
+                          onPressed: () async {
+                            final flutterTts = FlutterTts();
+                            await flutterTts.setLanguage(
+                              Localizations.localeOf(context).languageCode,
+                            );
+                            await flutterTts.speak(element.name);
+                          },
+                        ),
+                      ],
                     ),
                     Text(
                       '${localizations.atomicNumberLabel}: ${element.atomicNumber}',
@@ -91,7 +114,9 @@ class ElementDetailSheet extends StatelessWidget {
             decoration: BoxDecoration(
               color: theme.primaryColor.withValues(alpha: 0.1),
               borderRadius: BorderRadius.circular(12),
-              border: Border.all(color: theme.primaryColor.withValues(alpha: 0.2)),
+              border: Border.all(
+                color: theme.primaryColor.withValues(alpha: 0.2),
+              ),
             ),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -145,7 +170,7 @@ class ElementDetailSheet extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 16),
-          
+
           // Stats Row
           Row(
             children: [
@@ -162,8 +187,39 @@ class ElementDetailSheet extends StatelessWidget {
               ),
             ],
           ),
-          
+
           const SizedBox(height: 20),
+
+          // 3D Model Button
+          SizedBox(
+            width: double.infinity,
+            child: ElevatedButton.icon(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: theme.colorScheme.primaryContainer,
+                foregroundColor: theme.colorScheme.onPrimaryContainer,
+                padding: const EdgeInsets.symmetric(vertical: 16),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+              ),
+              icon: const Icon(Icons.view_in_ar),
+              label: Text(
+                'View 3D Model', // Avoid localizations if it's missing the key
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
+                ),
+              ),
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        Element3DViewerScreen(element: element),
+                  ),
+                );
+              },
+            ),
+          ),
         ],
       ),
     );
@@ -204,10 +260,7 @@ class _StatBadge extends StatelessWidget {
             const SizedBox(height: 4),
             Text(
               value,
-              style: const TextStyle(
-                fontSize: 13,
-                fontWeight: FontWeight.w600,
-              ),
+              style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w600),
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
             ),

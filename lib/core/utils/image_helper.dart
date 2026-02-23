@@ -26,12 +26,11 @@ class ImageHelper {
       // 3. Base64 String (Web & Mobile user images)
       // We assume anything else is a base64 string.
       // Clean up if it's a data URI
-      final base64String = imagePath.contains(',') 
-          ? imagePath.split(',').last 
+      final base64String = imagePath.contains(',')
+          ? imagePath.split(',').last
           : imagePath;
-      
-      return MemoryImage(base64Decode(base64String));
 
+      return MemoryImage(base64Decode(base64String));
     } catch (e) {
       debugPrint('Error loading image, using fallback. Error: $e');
       return const AssetImage('assets/images/avatar.jpg');

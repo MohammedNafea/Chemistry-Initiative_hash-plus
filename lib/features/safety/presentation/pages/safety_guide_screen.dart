@@ -9,29 +9,47 @@ class SafetyGuideScreen extends StatelessWidget {
   String _getLocalizedName(AppLocalizations localizations, String key) {
     // Basic mapping, in a real app these would be in ARB
     switch (key) {
-      case 'flammable': return localizations.flammable;
-      case 'oxidizer': return localizations.oxidizer;
-      case 'toxic': return localizations.toxic;
-      case 'corrosive': return localizations.corrosive;
-      case 'explosive': return localizations.explosive;
-      case 'irritant': return localizations.irritant;
-      case 'healthHazard': return localizations.healthHazard;
-      case 'environment': return localizations.environment;
-      default: return key;
+      case 'flammable':
+        return localizations.flammable;
+      case 'oxidizer':
+        return localizations.oxidizer;
+      case 'toxic':
+        return localizations.toxic;
+      case 'corrosive':
+        return localizations.corrosive;
+      case 'explosive':
+        return localizations.explosive;
+      case 'irritant':
+        return localizations.irritant;
+      case 'healthHazard':
+        return localizations.healthHazard;
+      case 'environment':
+        return localizations.environment;
+      default:
+        return key;
     }
   }
 
   String _getLocalizedDesc(AppLocalizations localizations, String key) {
     switch (key) {
-      case 'flammableDesc': return localizations.flammableDesc;
-      case 'oxidizerDesc': return localizations.oxidizerDesc;
-      case 'toxicDesc': return localizations.toxicDesc;
-      case 'corrosiveDesc': return localizations.corrosiveDesc;
-      case 'explosiveDesc': return localizations.explosiveDesc;
-      case 'irritantDesc': return localizations.irritantDesc;
-      case 'healthHazardDesc': return localizations.healthHazardDesc;
-      case 'environmentDesc': return localizations.environmentDesc;
-      default: return key;
+      case 'flammableDesc':
+        return localizations.flammableDesc;
+      case 'oxidizerDesc':
+        return localizations.oxidizerDesc;
+      case 'toxicDesc':
+        return localizations.toxicDesc;
+      case 'corrosiveDesc':
+        return localizations.corrosiveDesc;
+      case 'explosiveDesc':
+        return localizations.explosiveDesc;
+      case 'irritantDesc':
+        return localizations.irritantDesc;
+      case 'healthHazardDesc':
+        return localizations.healthHazardDesc;
+      case 'environmentDesc':
+        return localizations.environmentDesc;
+      default:
+        return key;
     }
   }
 
@@ -78,7 +96,10 @@ class SafetyGuideScreen extends StatelessWidget {
                       builder: (context) => _SymbolDetailDialog(
                         symbol: symbol,
                         name: _getLocalizedName(localizations, symbol.name),
-                        desc: _getLocalizedDesc(localizations, symbol.description),
+                        desc: _getLocalizedDesc(
+                          localizations,
+                          symbol.description,
+                        ),
                       ),
                     );
                   },
@@ -92,7 +113,10 @@ class SafetyGuideScreen extends StatelessWidget {
                         child: Text(
                           _getLocalizedName(localizations, symbol.name),
                           textAlign: TextAlign.center,
-                          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 14,
+                          ),
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                         ),
@@ -123,7 +147,7 @@ class _SymbolDetailDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    
+
     return Dialog(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       child: Padding(
@@ -142,7 +166,9 @@ class _SymbolDetailDialog extends StatelessWidget {
             const SizedBox(height: 16),
             Text(
               name,
-              style: theme.textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold),
+              style: theme.textTheme.headlineSmall?.copyWith(
+                fontWeight: FontWeight.bold,
+              ),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 12),
@@ -159,9 +185,13 @@ class _SymbolDetailDialog extends StatelessWidget {
                 style: ElevatedButton.styleFrom(
                   backgroundColor: symbol.color,
                   foregroundColor: Colors.white,
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
                 ),
-                child: const Text('OK'), // TODO: Localize 'Close'/'OK' if needed, but 'OK' is universal-ish
+                child: const Text(
+                  'OK',
+                ), // TODO: Localize 'Close'/'OK' if needed, but 'OK' is universal-ish
               ),
             ),
           ],

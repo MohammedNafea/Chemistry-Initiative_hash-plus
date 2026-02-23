@@ -20,7 +20,7 @@ void main() {
 
     // Verify that SplashScreen is displayed.
     expect(find.byType(SplashScreen), findsOneWidget);
-    
+
     // Verify that we are not showing the counter (default test)
     expect(find.text('0'), findsNothing);
     expect(find.byIcon(Icons.add), findsNothing);

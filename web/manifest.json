@@ -1,11 +1,11 @@
 {
-    "name": "Chemistry Wonders",
-    "short_name": "Chemistry Wonders",
+    "name": "عَجَائِبُ الكِيْمِيَاء",
+    "short_name": "عَجَائِبُ الكِيْمِيَاء",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#0175C2",
-    "theme_color": "#0175C2",
-    "description": "Interactive Chemistry Playground",
+    "background_color": "#0F172A",
+    "theme_color": "#0F172A",
+    "description": "مختبر الكيمياء التفاعلي - عالم من الاكتشافات",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

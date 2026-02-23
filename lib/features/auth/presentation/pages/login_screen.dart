@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:chemistry_initiative/core/theme/theme_controller.dart';
-import 'package:chemistry_initiative/shared/widgets/custom_button.dart';
 import 'package:chemistry_initiative/shared/widgets/custom_textfield.dart';
 import 'package:chemistry_initiative/features/auth/data/auth_repository.dart';
 import 'package:chemistry_initiative/features/auth/data/current_user_provider.dart';
@@ -40,7 +39,9 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
     final localizations = AppLocalizations.of(context)!;
 
     return Scaffold(
-      backgroundColor: isLight ? Colors.white : const Color(0xFF0F172A), // Deep dark blue for dark mode
+      backgroundColor: isLight
+          ? Colors.white
+          : const Color(0xFF0F172A), // Deep dark blue for dark mode
       body: Stack(
         children: [
           // Background Chemistry Effects
@@ -54,7 +55,9 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                 shape: BoxShape.circle,
                 gradient: RadialGradient(
                   colors: [
-                    isLight ? Colors.deepPurpleAccent.withOpacity(0.3) : Colors.cyan.withOpacity(0.2),
+                    isLight
+                        ? Colors.deepPurpleAccent.withValues(alpha: 0.3)
+                        : Colors.cyan.withValues(alpha: 0.2),
                     Colors.transparent,
                   ],
                 ),
@@ -71,32 +74,40 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                 shape: BoxShape.circle,
                 gradient: RadialGradient(
                   colors: [
-                    isLight ? Colors.blueAccent.withOpacity(0.2) : Colors.purpleAccent.withOpacity(0.15),
+                    isLight
+                        ? Colors.blueAccent.withValues(alpha: 0.2)
+                        : Colors.purpleAccent.withValues(alpha: 0.15),
                     Colors.transparent,
                   ],
                 ),
               ),
             ),
           ),
-          
+
           SafeArea(
             child: Center(
               child: SingleChildScrollView(
                 child: Column(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 16.0,
+                        vertical: 8.0,
+                      ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           const LanguageSwitcher(),
                           IconButton(
                             icon: Icon(
-                              themeNotifier.value == ThemeMode.light ? Icons.dark_mode_outlined : Icons.light_mode_outlined, 
+                              themeNotifier.value == ThemeMode.light
+                                  ? Icons.dark_mode_outlined
+                                  : Icons.light_mode_outlined,
                               color: isLight ? Colors.black87 : Colors.white,
                             ),
                             onPressed: () {
-                              themeNotifier.value = themeNotifier.value == ThemeMode.light
+                              themeNotifier.value =
+                                  themeNotifier.value == ThemeMode.light
                                   ? ThemeMode.dark
                                   : ThemeMode.light;
                             },
@@ -104,24 +115,28 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                         ],
                       ),
                     ),
-                    
+
                     // Logo
                     Container(
                       padding: const EdgeInsets.all(20),
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color: isLight ? Colors.deepPurple.withOpacity(0.1) : Colors.cyanAccent.withOpacity(0.1),
+                        color: isLight
+                            ? Colors.deepPurple.withValues(alpha: 0.1)
+                            : Colors.cyanAccent.withValues(alpha: 0.1),
                         boxShadow: [
                           BoxShadow(
-                            color: isLight ? Colors.deepPurpleAccent.withOpacity(0.2) : Colors.cyanAccent.withOpacity(0.1),
+                            color: isLight
+                                ? Colors.deepPurpleAccent.withValues(alpha: 0.2)
+                                : Colors.cyanAccent.withValues(alpha: 0.1),
                             blurRadius: 20,
                             spreadRadius: 5,
-                          )
-                        ]
+                          ),
+                        ],
                       ),
                       child: Icon(
-                        Icons.science_outlined, 
-                        color: isLight ? Colors.deepPurple : Colors.cyanAccent, 
+                        Icons.science_outlined,
+                        color: isLight ? Colors.deepPurple : Colors.cyanAccent,
                         size: 50,
                       ),
                     ),
@@ -129,7 +144,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                     Text(
                       localizations.wonders,
                       style: TextStyle(
-                        fontSize: 32, 
+                        fontSize: 32,
                         fontWeight: FontWeight.bold,
                         letterSpacing: 1.2,
                         color: isLight ? Colors.black87 : Colors.white,
@@ -150,15 +165,21 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                     Container(
                       margin: const EdgeInsets.symmetric(horizontal: 24),
                       decoration: BoxDecoration(
-                        color: isLight ? Colors.white.withOpacity(0.7) : Colors.black.withOpacity(0.4),
+                        color: isLight
+                            ? Colors.white.withValues(alpha: 0.7)
+                            : Colors.black.withValues(alpha: 0.4),
                         borderRadius: BorderRadius.circular(30),
                         border: Border.all(
-                          color: isLight ? Colors.white : Colors.white.withOpacity(0.1),
+                          color: isLight
+                              ? Colors.white
+                              : Colors.white.withValues(alpha: 0.1),
                           width: 1.5,
                         ),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.black.withOpacity(isLight ? 0.05 : 0.2),
+                            color: Colors.black.withValues(
+                              alpha: isLight ? 0.05 : 0.2,
+                            ),
                             blurRadius: 20,
                             spreadRadius: 5,
                           ),
@@ -174,34 +195,58 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                               Container(
                                 padding: const EdgeInsets.all(4),
                                 decoration: BoxDecoration(
-                                  color: isLight ? Colors.grey[200] : Colors.grey[900],
+                                  color: isLight
+                                      ? Colors.grey[200]
+                                      : Colors.grey[900],
                                   borderRadius: BorderRadius.circular(20),
                                 ),
                                 child: Row(
                                   children: [
                                     Expanded(
                                       child: GestureDetector(
-                                        onTap: () => setState(() => _isSignup = true),
+                                        onTap: () =>
+                                            setState(() => _isSignup = true),
                                         child: AnimatedContainer(
-                                          duration: const Duration(milliseconds: 300),
-                                          padding: const EdgeInsets.symmetric(vertical: 12),
+                                          duration: const Duration(
+                                            milliseconds: 300,
+                                          ),
+                                          padding: const EdgeInsets.symmetric(
+                                            vertical: 12,
+                                          ),
                                           decoration: BoxDecoration(
-                                            color: _isSignup ? (isLight ? Colors.white : Colors.grey[800]) : Colors.transparent,
-                                            borderRadius: BorderRadius.circular(16),
-                                            boxShadow: _isSignup ? [
-                                              BoxShadow(
-                                                color: Colors.black.withOpacity(0.05),
-                                                blurRadius: 4,
-                                                spreadRadius: 1,
-                                              )
-                                            ] : [],
+                                            color: _isSignup
+                                                ? (isLight
+                                                      ? Colors.white
+                                                      : Colors.grey[800])
+                                                : Colors.transparent,
+                                            borderRadius: BorderRadius.circular(
+                                              16,
+                                            ),
+                                            boxShadow: _isSignup
+                                                ? [
+                                                    BoxShadow(
+                                                      color: Colors.black
+                                                          .withValues(
+                                                            alpha: 0.05,
+                                                          ),
+                                                      blurRadius: 4,
+                                                      spreadRadius: 1,
+                                                    ),
+                                                  ]
+                                                : [],
                                           ),
                                           child: Center(
                                             child: Text(
                                               localizations.newAccount,
                                               style: TextStyle(
-                                                color: _isSignup ? (isLight ? Colors.deepPurple : Colors.cyanAccent) : Colors.grey,
-                                                fontWeight: _isSignup ? FontWeight.bold : FontWeight.w500,
+                                                color: _isSignup
+                                                    ? (isLight
+                                                          ? Colors.deepPurple
+                                                          : Colors.cyanAccent)
+                                                    : Colors.grey,
+                                                fontWeight: _isSignup
+                                                    ? FontWeight.bold
+                                                    : FontWeight.w500,
                                               ),
                                             ),
                                           ),
@@ -210,27 +255,49 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                                     ),
                                     Expanded(
                                       child: GestureDetector(
-                                        onTap: () => setState(() => _isSignup = false),
+                                        onTap: () =>
+                                            setState(() => _isSignup = false),
                                         child: AnimatedContainer(
-                                          duration: const Duration(milliseconds: 300),
-                                          padding: const EdgeInsets.symmetric(vertical: 12),
+                                          duration: const Duration(
+                                            milliseconds: 300,
+                                          ),
+                                          padding: const EdgeInsets.symmetric(
+                                            vertical: 12,
+                                          ),
                                           decoration: BoxDecoration(
-                                            color: !_isSignup ? (isLight ? Colors.white : Colors.grey[800]) : Colors.transparent,
-                                            borderRadius: BorderRadius.circular(16),
-                                            boxShadow: !_isSignup ? [
-                                              BoxShadow(
-                                                color: Colors.black.withOpacity(0.05),
-                                                blurRadius: 4,
-                                                spreadRadius: 1,
-                                              )
-                                            ] : [],
+                                            color: !_isSignup
+                                                ? (isLight
+                                                      ? Colors.white
+                                                      : Colors.grey[800])
+                                                : Colors.transparent,
+                                            borderRadius: BorderRadius.circular(
+                                              16,
+                                            ),
+                                            boxShadow: !_isSignup
+                                                ? [
+                                                    BoxShadow(
+                                                      color: Colors.black
+                                                          .withValues(
+                                                            alpha: 0.05,
+                                                          ),
+                                                      blurRadius: 4,
+                                                      spreadRadius: 1,
+                                                    ),
+                                                  ]
+                                                : [],
                                           ),
                                           child: Center(
                                             child: Text(
                                               localizations.login,
                                               style: TextStyle(
-                                                color: !_isSignup ? (isLight ? Colors.deepPurple : Colors.cyanAccent) : Colors.grey,
-                                                fontWeight: !_isSignup ? FontWeight.bold : FontWeight.w500,
+                                                color: !_isSignup
+                                                    ? (isLight
+                                                          ? Colors.deepPurple
+                                                          : Colors.cyanAccent)
+                                                    : Colors.grey,
+                                                fontWeight: !_isSignup
+                                                    ? FontWeight.bold
+                                                    : FontWeight.w500,
                                               ),
                                             ),
                                           ),
@@ -245,11 +312,12 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                               Form(
                                 key: _formKey,
                                 child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                                  crossAxisAlignment:
+                                      CrossAxisAlignment.stretch,
                                   children: [
                                     if (_isSignup) ...[
                                       CustomTextfield(
-                                        hintText: localizations.fullName, 
+                                        hintText: localizations.fullName,
                                         controller: _nameCtrl,
                                         prefixIcon: Icons.person_outline,
                                       ),
@@ -257,7 +325,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                                     ],
 
                                     CustomTextfield(
-                                      hintText: localizations.email, 
+                                      hintText: localizations.email,
                                       controller: _emailCtrl,
                                       prefixIcon: Icons.email_outlined,
                                     ),
@@ -273,8 +341,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                                     if (_isSignup) ...[
                                       const SizedBox(height: 16),
                                       CustomTextfield(
-                                        hintText: localizations.confirmPassword, 
-                                        isPassword: true, 
+                                        hintText: localizations.confirmPassword,
+                                        isPassword: true,
                                         controller: _confirmCtrl,
                                         prefixIcon: Icons.lock_reset_outlined,
                                       ),
@@ -287,56 +355,89 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                                         child: TextButton(
                                           onPressed: () {},
                                           style: TextButton.styleFrom(
-                                            foregroundColor: isLight ? Colors.deepPurple : Colors.cyanAccent,
+                                            foregroundColor: isLight
+                                                ? Colors.deepPurple
+                                                : Colors.cyanAccent,
                                           ),
-                                          child: Text(localizations.forgotPassword),
+                                          child: Text(
+                                            localizations.forgotPassword,
+                                          ),
                                         ),
                                       ),
-                                    ] else const SizedBox(height: 24),
+                                    ] else
+                                      const SizedBox(height: 24),
 
-                                    CustomButton(
-                                      text: _isSignup ? localizations.createAccount : localizations.login,
-                                      onTap: () async {
-                                        final email = _emailCtrl.text.trim();
-                                        final pass = _passCtrl.text;
-                                        final messenger = ScaffoldMessenger.of(context);
+                                    const SizedBox(height: 24),
+                                    Row(
+                                      children: [
+                                        const Expanded(child: Divider()),
+                                        Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                            horizontal: 16,
+                                          ),
+                                          child: Text(
+                                            localizations.orContinueWith,
+                                            style: TextStyle(
+                                              color: Colors.grey[500],
+                                              fontSize: 12,
+                                            ),
+                                          ),
+                                        ),
+                                        const Expanded(child: Divider()),
+                                      ],
+                                    ),
+                                    const SizedBox(height: 20),
 
-                                        if (_isSignup) {
-                                          final name = _nameCtrl.text.trim();
-                                          final confirm = _confirmCtrl.text;
-                                          if (name.isEmpty || email.isEmpty || pass.isEmpty || confirm.isEmpty) {
-                                            messenger.showSnackBar(SnackBar(content: Text(localizations.fillAllFields)));
-                                            return;
-                                          }
-                                          if (pass != confirm) {
-                                            messenger.showSnackBar(SnackBar(content: Text(localizations.passwordsDoNotMatch)));
-                                            return;
-                                          }
-                                          final err = await _authRepo.registerUser(name, email, pass);
-                                          if (!mounted) return;
-                                          if (err != null) {
-                                            messenger.showSnackBar(SnackBar(content: Text(err)));
-                                            return;
-                                          }
-                                          messenger.showSnackBar(SnackBar(content: Text(localizations.accountCreated)));
-                                          setState(() => _isSignup = false);
-                                          return;
-                                        }
-
-                                        if (email.isEmpty || pass.isEmpty) {
-                                          messenger.showSnackBar(SnackBar(content: Text(localizations.enterEmailPassword)));
-                                          return;
-                                        }
-                                        messenger.showSnackBar(SnackBar(content: Text(localizations.verifying)));
-                                        final ok = await _authRepo.loginUser(email, pass);
-                                        if (!mounted) return;
-                                        if (!ok) {
-                                          messenger.showSnackBar(SnackBar(content: Text(localizations.invalidCredentials)));
-                                          return;
-                                        }
-                                        ref.read(currentUserNotifierProvider.notifier).refresh();
-                                        showWelcomeNotifier.value = true;
-                                      },
+                                    // Social Login Grid
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
+                                      children: [
+                                        _socialIconTile(
+                                          icon: Icons.g_mobiledata,
+                                          color: Colors.redAccent,
+                                          onTap: () async {
+                                            final cred = await _authRepo.signInWithGoogle();
+                                            if (cred != null && mounted) {
+                                              ref.read(currentUserNotifierProvider.notifier).refresh();
+                                              showWelcomeNotifier.value = true;
+                                            }
+                                          },
+                                        ),
+                                        _socialIconTile(
+                                          icon: Icons.apple,
+                                          color: isLight ? Colors.black : Colors.white,
+                                          onTap: () async {
+                                            final cred = await _authRepo.signInWithApple();
+                                            if (cred != null && mounted) {
+                                              ref.read(currentUserNotifierProvider.notifier).refresh();
+                                              showWelcomeNotifier.value = true;
+                                            }
+                                          },
+                                        ),
+                                        _socialIconTile(
+                                          icon: Icons.facebook,
+                                          color: Colors.blueAccent,
+                                          onTap: () async {
+                                            final cred = await _authRepo.signInWithFacebook();
+                                            if (cred != null && mounted) {
+                                              ref.read(currentUserNotifierProvider.notifier).refresh();
+                                              showWelcomeNotifier.value = true;
+                                            }
+                                          },
+                                        ),
+                                        _socialIconTile(
+                                          icon: Icons.code_rounded, // GitHub icon
+                                          color: Colors.black,
+                                          onTap: () async {
+                                            final cred = await _authRepo.signInWithGitHub();
+                                            if (cred != null && mounted) {
+                                              ref.read(currentUserNotifierProvider.notifier).refresh();
+                                              showWelcomeNotifier.value = true;
+                                            }
+                                          },
+                                        ),
+                                      ],
                                     ),
                                   ],
                                 ),
@@ -354,6 +455,29 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _socialIconTile({
+    required IconData icon,
+    required Color color,
+    required VoidCallback onTap,
+  }) {
+    final isLight = Theme.of(context).brightness == Brightness.light;
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        height: 50,
+        width: 50,
+        decoration: BoxDecoration(
+          color: isLight ? Colors.grey[100] : Colors.white10,
+          borderRadius: BorderRadius.circular(15),
+          border: Border.all(
+            color: isLight ? Colors.grey[300]! : Colors.white10,
+          ),
+        ),
+        child: Icon(icon, color: color, size: 30),
       ),
     );
   }

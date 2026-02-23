@@ -52,7 +52,7 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
       maxHeight: 800,
       imageQuality: 85,
     );
-    
+
     if (image != null) {
       final bytes = await image.readAsBytes();
       final base64String = base64Encode(bytes);
@@ -79,9 +79,7 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
     final localizations = AppLocalizations.of(context)!;
 
     if (user == null) {
-      return const Scaffold(
-        body: Center(child: Text('يرجى تسجيل الدخول')),
-      );
+      return const Scaffold(body: Center(child: Text('يرجى تسجيل الدخول')));
     }
 
     return Scaffold(
@@ -119,7 +117,7 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
                 );
                 ref.read(currentUserNotifierProvider.notifier).refresh();
 
-                const message = 'تم تحديث الملف الشخصي'; 
+                const message = 'تم تحديث الملف الشخصي';
 
                 if (context.mounted) {
                   ScaffoldMessenger.of(context).showSnackBar(
@@ -145,102 +143,102 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
         ],
       ),
       body: SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
-          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 10),
-          child: Form(
-            key: _formKey,
-            child: Column(
-              children: [
-                const SizedBox(height: 20),
-                Center(
-                  child: Stack(
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.all(4),
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          border: Border.all(
-                            color: colorScheme.primary.withValues(alpha: 0.5),
-                            width: 2,
-                          ),
+        physics: const BouncingScrollPhysics(),
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 10),
+        child: Form(
+          key: _formKey,
+          child: Column(
+            children: [
+              const SizedBox(height: 20),
+              Center(
+                child: Stack(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(4),
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                          color: colorScheme.primary.withValues(alpha: 0.5),
+                          width: 2,
                         ),
-                        child: CircleAvatar(
-                          radius: 60,
-                          backgroundColor: colorScheme.surfaceContainerHighest,
-                          backgroundImage: ImageHelper.getImageProvider(
-                            _pickedImageBase64 ?? user.imageUrl,
+                      ),
+                      child: CircleAvatar(
+                        radius: 60,
+                        backgroundColor: colorScheme.surfaceContainerHighest,
+                        backgroundImage: ImageHelper.getImageProvider(
+                          _pickedImageBase64 ?? user.imageUrl,
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      bottom: 0,
+                      right: 0,
+                      child: GestureDetector(
+                        onTap: _pickImage,
+                        child: Container(
+                          padding: const EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            color: colorScheme.primary,
+                            shape: BoxShape.circle,
+                            border: Border.all(
+                              color: colorScheme.surface,
+                              width: 3,
+                            ),
+                          ),
+                          child: const Icon(
+                            Icons.camera_alt,
+                            color: Colors.white,
+                            size: 20,
                           ),
                         ),
                       ),
-                      Positioned(
-                        bottom: 0,
-                        right: 0,
-                        child: GestureDetector(
-                          onTap: _pickImage,
-                          child: Container(
-                            padding: const EdgeInsets.all(10),
-                            decoration: BoxDecoration(
-                              color: colorScheme.primary,
-                              shape: BoxShape.circle,
-                              border: Border.all(
-                                color: colorScheme.surface,
-                                width: 3,
-                              ),
-                            ),
-                            child: const Icon(
-                              Icons.camera_alt,
-                              color: Colors.white,
-                              size: 20,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-                const SizedBox(height: 40),
+              ),
+              const SizedBox(height: 40),
 
-                _buildModernField(
-                  controller: _nameController,
-                  label: localizations.name,
-                  icon: FontAwesomeIcons.user,
-                  colorScheme: colorScheme,
-                ),
-                const SizedBox(height: 20),
+              _buildModernField(
+                controller: _nameController,
+                label: localizations.name,
+                icon: FontAwesomeIcons.user,
+                colorScheme: colorScheme,
+              ),
+              const SizedBox(height: 20),
 
-                _buildModernField(
-                  controller: _bioController,
-                  label: localizations.bio,
-                  icon: FontAwesomeIcons.idCard,
-                  colorScheme: colorScheme,
-                  maxLines: 3,
-                ),
-                const SizedBox(height: 20),
+              _buildModernField(
+                controller: _bioController,
+                label: localizations.bio,
+                icon: FontAwesomeIcons.idCard,
+                colorScheme: colorScheme,
+                maxLines: 3,
+              ),
+              const SizedBox(height: 20),
 
-                _buildModernField(
-                  controller: _emailController,
-                  label: localizations.email,
-                  icon: FontAwesomeIcons.envelope,
-                  colorScheme: colorScheme,
-                  keyboardType: TextInputType.emailAddress,
-                ),
-                const SizedBox(height: 20),
+              _buildModernField(
+                controller: _emailController,
+                label: localizations.email,
+                icon: FontAwesomeIcons.envelope,
+                colorScheme: colorScheme,
+                keyboardType: TextInputType.emailAddress,
+              ),
+              const SizedBox(height: 20),
 
-                _buildPhoneField(
-                  colorScheme: colorScheme,
-                  user: user,
-                  localizations: localizations,
-                ),
-                const SizedBox(height: 20),
+              _buildPhoneField(
+                colorScheme: colorScheme,
+                user: user,
+                localizations: localizations,
+              ),
+              const SizedBox(height: 20),
 
-                _buildLocationField(
-                  colorScheme: colorScheme,
-                  localizations: localizations,
-                ),
-                const SizedBox(height: 40),
-              ],
-            ),
+              _buildLocationField(
+                colorScheme: colorScheme,
+                localizations: localizations,
+              ),
+              const SizedBox(height: 40),
+            ],
           ),
+        ),
       ),
     );
   }
@@ -278,10 +276,7 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
             controller: controller,
             maxLines: maxLines,
             keyboardType: keyboardType,
-            style: TextStyle(
-              color: colorScheme.onSurface,
-              fontSize: 15,
-            ),
+            style: TextStyle(color: colorScheme.onSurface, fontSize: 15),
             decoration: InputDecoration(
               prefixIcon: Icon(
                 icon,
@@ -351,13 +346,8 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
             ),
             ignoreBlank: false,
             autoValidateMode: AutovalidateMode.disabled,
-            selectorTextStyle: TextStyle(
-              color: colorScheme.onSurface,
-            ),
-            initialValue: PhoneNumber(
-              isoCode: 'SA',
-              phoneNumber: user.phone,
-            ),
+            selectorTextStyle: TextStyle(color: colorScheme.onSurface),
+            initialValue: PhoneNumber(isoCode: 'SA', phoneNumber: user.phone),
             textFieldController: _phoneController,
             formatInput: true,
             keyboardType: const TextInputType.numberWithOptions(
@@ -372,16 +362,11 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
               ),
               contentPadding: const EdgeInsets.symmetric(vertical: 0),
             ),
-            textStyle: TextStyle(
-              color: colorScheme.onSurface,
-              fontSize: 15,
-            ),
+            textStyle: TextStyle(color: colorScheme.onSurface, fontSize: 15),
             cursorColor: colorScheme.primary,
             searchBoxDecoration: InputDecoration(
               labelText: 'Search',
-              labelStyle: TextStyle(
-                color: colorScheme.onSurfaceVariant,
-              ),
+              labelStyle: TextStyle(color: colorScheme.onSurfaceVariant),
             ),
           ),
         ),

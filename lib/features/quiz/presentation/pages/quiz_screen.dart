@@ -23,7 +23,7 @@ class _QuizScreenState extends State<QuizScreen> {
     super.didChangeDependencies();
     final localizations = AppLocalizations.of(context)!;
     // TODO: Ideally fetch random 5 if we have a larger bank
-    _questions = QuizRepository.getQuestions(localizations); 
+    _questions = QuizRepository.getQuestions(localizations);
   }
 
   void _submitAnswer(int optionIndex) {
@@ -64,6 +64,7 @@ class _QuizScreenState extends State<QuizScreen> {
     final isDark = theme.brightness == Brightness.dark;
     final question = _questions[_currentIndex];
     final colorScheme = theme.colorScheme;
+    final isAr = Localizations.localeOf(context).languageCode == 'ar';
 
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
@@ -118,9 +119,11 @@ class _QuizScreenState extends State<QuizScreen> {
             ...List.generate(question.options.length, (index) {
               final isSelected = _selectedOptionIndex == index;
               final isCorrect = question.correctIndex == index;
-              
+
               Color? backgroundColor;
-              Color borderColor = isDark ? Colors.grey[700]! : Colors.grey[300]!;
+              Color borderColor = isDark
+                  ? Colors.grey[700]!
+                  : Colors.grey[300]!;
               IconData? icon;
 
               if (_answered) {
@@ -141,12 +144,19 @@ class _QuizScreenState extends State<QuizScreen> {
                   onTap: () => _submitAnswer(index),
                   borderRadius: BorderRadius.circular(12),
                   child: Container(
-                    padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 16,
+                      horizontal: 20,
+                    ),
                     decoration: BoxDecoration(
-                      color: backgroundColor ?? (isDark ? Colors.grey[900] : Colors.white),
+                      color:
+                          backgroundColor ??
+                          (isDark ? Colors.grey[900] : Colors.white),
                       borderRadius: BorderRadius.circular(12),
                       border: Border.all(
-                        color: isSelected && !_answered ? colorScheme.primary : borderColor,
+                        color: isSelected && !_answered
+                            ? colorScheme.primary
+                            : borderColor,
                         width: 2,
                       ),
                     ),
@@ -162,8 +172,7 @@ class _QuizScreenState extends State<QuizScreen> {
                             ),
                           ),
                         ),
-                        if (icon != null)
-                          Icon(icon, color: borderColor),
+                        if (icon != null) Icon(icon, color: borderColor),
                       ],
                     ),
                   ),
@@ -185,7 +194,7 @@ class _QuizScreenState extends State<QuizScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Explanation:',
+                      isAr ? 'التفسير:' : 'Explanation:',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         color: isDark ? Colors.blue[200] : Colors.blue[800],
@@ -208,8 +217,13 @@ class _QuizScreenState extends State<QuizScreen> {
                   ),
                 ),
                 child: Text(
-                  _currentIndex < _questions.length - 1 ? 'Next Question' : 'See Results',
-                  style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  _currentIndex < _questions.length - 1
+                      ? (isAr ? 'السؤال التالي' : 'Next Question')
+                      : (isAr ? 'عرض النتائج' : 'See Results'),
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ],

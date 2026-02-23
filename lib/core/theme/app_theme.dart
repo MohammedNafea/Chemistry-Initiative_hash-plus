@@ -55,10 +55,39 @@ class AppTheme {
       backgroundColor: Colors.transparent,
       elevation: 0,
       centerTitle: true,
+      titleTextStyle: TextStyle(fontFamily: 'Cairo'),
+      iconTheme: IconThemeData(color: Colors.white),
+    ),
+  );
+
+  static final ThemeData highContrastDark = ThemeData(
+    useMaterial3: true,
+    fontFamily: 'Cairo',
+    brightness: Brightness.dark,
+    colorScheme: const ColorScheme.dark(
+      primary: Colors.white,
+      secondary: Colors.yellow,
+      surface: Colors.black,
+      onSurface: Colors.white,
+      error: Colors.redAccent,
+    ),
+    scaffoldBackgroundColor: Colors.black,
+    cardTheme: CardThemeData(
+      elevation: 0,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16),
+        side: const BorderSide(color: Colors.white24, width: 2),
+      ),
+      color: const Color(0xFF111111),
+    ),
+    appBarTheme: const AppBarTheme(
+      backgroundColor: Colors.black,
+      elevation: 0,
+      centerTitle: true,
       titleTextStyle: TextStyle(
         color: Colors.white,
         fontSize: 20,
-        fontWeight: FontWeight.bold,
+        fontWeight: FontWeight.w900,
         fontFamily: 'Cairo',
       ),
       iconTheme: IconThemeData(color: Colors.white),

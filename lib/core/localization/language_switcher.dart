@@ -30,7 +30,10 @@ class LanguageSwitcher extends ConsumerWidget {
     };
 
     return PopupMenuButton<String>(
-      icon: Icon(Icons.language, color: iconColor ?? Theme.of(context).iconTheme.color),
+      icon: Icon(
+        Icons.language,
+        color: iconColor ?? Theme.of(context).iconTheme.color,
+      ),
       tooltip: 'Change Language',
       onSelected: (String code) {
         ref.read(localeProvider.notifier).setLocale(Locale(code));
@@ -54,7 +57,11 @@ class LanguageSwitcher extends ConsumerWidget {
                 ),
                 if (currentLocale.languageCode == entry.key) ...[
                   const Spacer(),
-                  Icon(Icons.check, size: 16, color: Theme.of(context).primaryColor),
+                  Icon(
+                    Icons.check,
+                    size: 16,
+                    color: Theme.of(context).primaryColor,
+                  ),
                 ],
               ],
             ),

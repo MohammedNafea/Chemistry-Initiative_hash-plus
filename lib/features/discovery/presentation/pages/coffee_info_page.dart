@@ -165,7 +165,7 @@ class _CoffeeInfoPageState extends State<CoffeeInfoPage>
                       child: Container(
                         padding: const EdgeInsets.all(20),
                         decoration: BoxDecoration(
-                            gradient: LinearGradient(
+                          gradient: LinearGradient(
                             colors: [
                               const Color(0xFF8B7355).withValues(alpha: 0.1),
                               const Color(0xFFA0826D).withValues(alpha: 0.1),
@@ -173,7 +173,9 @@ class _CoffeeInfoPageState extends State<CoffeeInfoPage>
                           ),
                           borderRadius: BorderRadius.circular(16),
                           border: Border.all(
-                            color: const Color(0xFF8B7355).withValues(alpha: 0.2),
+                            color: const Color(
+                              0xFF8B7355,
+                            ).withValues(alpha: 0.2),
                             width: 2,
                           ),
                         ),

@@ -94,7 +94,10 @@ class _HouseholdItemsScreenState extends State<HouseholdItemsScreen> {
                   borderRadius: BorderRadius.circular(16),
                   borderSide: BorderSide.none,
                 ),
-                contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+                contentPadding: const EdgeInsets.symmetric(
+                  horizontal: 20,
+                  vertical: 16,
+                ),
               ),
             ),
           ),
@@ -126,18 +129,26 @@ class _HouseholdItemsScreenState extends State<HouseholdItemsScreen> {
                             child: Row(
                               children: [
                                 CircleAvatar(
-                                  backgroundColor: _getSafetyColor(item.safetyLevel).withValues(alpha: 0.1),
-                                  child: Icon(Icons.science_rounded, color: _getSafetyColor(item.safetyLevel)),
+                                  backgroundColor: _getSafetyColor(
+                                    item.safetyLevel,
+                                  ).withValues(alpha: 0.1),
+                                  child: Icon(
+                                    Icons.science_rounded,
+                                    color: _getSafetyColor(item.safetyLevel),
+                                  ),
                                 ),
                                 const SizedBox(width: 12),
                                 Expanded(
                                   child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Text(
                                         item.commonName,
-                                        style: const TextStyle(fontWeight: FontWeight.bold),
+                                        style: const TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                        ),
                                         maxLines: 1,
                                         overflow: TextOverflow.ellipsis,
                                       ),
@@ -162,17 +173,29 @@ class _HouseholdItemsScreenState extends State<HouseholdItemsScreen> {
                   return ListView.separated(
                     padding: const EdgeInsets.symmetric(vertical: 8),
                     itemCount: _filteredItems.length,
-                    separatorBuilder: (context, index) => const Divider(height: 1, indent: 72),
+                    separatorBuilder: (context, index) =>
+                        const Divider(height: 1, indent: 72),
                     itemBuilder: (context, index) {
                       final item = _filteredItems[index];
                       return ListTile(
                         leading: CircleAvatar(
-                          backgroundColor: _getSafetyColor(item.safetyLevel).withValues(alpha: 0.1),
-                          child: Icon(Icons.science_rounded, color: _getSafetyColor(item.safetyLevel)),
+                          backgroundColor: _getSafetyColor(
+                            item.safetyLevel,
+                          ).withValues(alpha: 0.1),
+                          child: Icon(
+                            Icons.science_rounded,
+                            color: _getSafetyColor(item.safetyLevel),
+                          ),
                         ),
-                        title: Text(item.commonName, style: const TextStyle(fontWeight: FontWeight.bold)),
+                        title: Text(
+                          item.commonName,
+                          style: const TextStyle(fontWeight: FontWeight.bold),
+                        ),
                         subtitle: Text(item.chemicalName),
-                        trailing: const Icon(Icons.arrow_forward_ios_rounded, size: 14),
+                        trailing: const Icon(
+                          Icons.arrow_forward_ios_rounded,
+                          size: 14,
+                        ),
                         onTap: () => _openDetail(item),
                       );
                     },

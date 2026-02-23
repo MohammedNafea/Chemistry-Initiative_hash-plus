@@ -1,9 +1,30 @@
+import 'package:chemistry_initiative/core/database/app_database.dart';
 import 'package:chemistry_initiative/features/periodic_table/data/models/element_model.dart';
 import 'package:chemistry_initiative/l10n/app_localizations.dart';
 
 class PeriodicTableRepository {
-  // Using a static list for now, could be moved to a JSON asset later
-  static List<ElementModel> getElements(AppLocalizations localizations) {
+  static const String _cacheKey = 'cached_periodic_elements';
+
+  static Future<List<ElementModel>> getElements(
+    AppLocalizations localizations,
+  ) async {
+    final cacheBox = AppDatabase.instance.cache;
+
+    // Check if we have cached data
+    if (cacheBox.containsKey(_cacheKey)) {
+      final cachedList = cacheBox.get(_cacheKey) as List;
+      return cachedList.cast<ElementModel>();
+    }
+
+    // If no cache, load default data and save to cache
+    final defaultElements = _getDefaultElements(localizations);
+    await cacheBox.put(_cacheKey, defaultElements);
+    return defaultElements;
+  }
+
+  static List<ElementModel> _getDefaultElements(
+    AppLocalizations localizations,
+  ) {
     return [
       ElementModel(
         atomicNumber: 1,

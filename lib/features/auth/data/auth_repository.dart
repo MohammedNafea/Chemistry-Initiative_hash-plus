@@ -1,49 +1,201 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
+import 'package:chemistry_initiative/features/virtual_lab/data/repositories/lab_sync_repository.dart';
+import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 import 'package:chemistry_initiative/core/database/app_database.dart';
 import 'package:chemistry_initiative/core/database/models/user_model.dart';
+import 'package:flutter/foundation.dart';
 
-/// Auth repository - handles user registration and login using local database.
+/// Auth repository - handles user registration and login using Firebase & local database.
 class AuthRepository {
   AuthRepository._();
   static final AuthRepository _instance = AuthRepository._();
   static AuthRepository get instance => _instance;
 
   final _db = AppDatabase.instance;
+  final _auth = FirebaseAuth.instance;
+  final _googleSignIn = GoogleSignIn();
 
-  /// Register new user
+  /// Register new user (Email/Password)
   Future<String?> registerUser(
     String fullName,
     String email,
     String password,
   ) async {
-    final key = email.toLowerCase().trim();
-    if (_db.userExists(key)) {
-      return 'الحساب موجود بالفعل لهذا الإيميل';
+    try {
+      // 1. Create in Firebase
+      final cred = await _auth.createUserWithEmailAndPassword(
+        email: email.trim(),
+        password: password,
+      );
+      
+      if (cred.user != null) {
+        await cred.user!.updateDisplayName(fullName.trim());
+        
+        // 2. Sync with local DB
+        final key = email.toLowerCase().trim();
+        final user = UserModel(
+          id: key,
+          email: key,
+          password: password, // Store for local compat if needed
+          name: fullName.trim(),
+        );
+        await _db.createUser(user);
+        return null;
+      }
+    } on FirebaseAuthException catch (e) {
+      return _mapFirebaseError(e.code);
+    } catch (e) {
+      return "An unexpected error occurred: $e";
     }
-    final user = UserModel(
-      id: key,
-      email: key,
-      password: password,
-      name: fullName.trim(),
-    );
-    await _db.createUser(user);
+    return "Registration failed";
+  }
+
+  /// Login user (Email/Password)
+  Future<bool> loginUser(String email, String password) async {
+    try {
+      final cred = await _auth.signInWithEmailAndPassword(
+        email: email.trim(),
+        password: password,
+      );
+      if (cred.user != null) {
+        // Sync local session
+        await _db.setCurrentUser(email.trim());
+        return true;
+      }
+    } catch (_) {
+      // Fallback to local DB check for offline compatibility or legacy users
+      final user = _db.readUserByEmail(email);
+      if (user != null && user.password == password) {
+        await _db.setCurrentUser(user.email);
+        return true;
+      }
+    }
+    return false;
+  }
+
+  /// Google Sign In
+  Future<UserCredential?> signInWithGoogle() async {
+    try {
+      final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
+      if (googleUser == null) return null;
+
+      final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
+      final OAuthCredential credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
+      );
+
+      final cred = await _auth.signInWithCredential(credential);
+      if (cred.user != null) {
+        _syncLocalUserFromFirebase(cred.user!);
+      }
+      return cred;
+    } catch (e) {
+      debugPrint("Google Sign In Error: $e");
+      return null;
+    }
+  }
+
+  /// Facebook Sign In
+  Future<UserCredential?> signInWithFacebook() async {
+    try {
+      final LoginResult result = await FacebookAuth.instance.login();
+      if (result.status == LoginStatus.success) {
+        final OAuthCredential credential = FacebookAuthProvider.credential(result.accessToken!.tokenString);
+        final cred = await _auth.signInWithCredential(credential);
+        if (cred.user != null) {
+          _syncLocalUserFromFirebase(cred.user!);
+        }
+        return cred;
+      }
+    } catch (e) {
+      debugPrint("Facebook Sign In Error: $e");
+    }
     return null;
   }
 
-  /// Login user and set current session
-  Future<bool> loginUser(String email, String password) async {
-    final user = _db.readUserByEmail(email);
-    if (user == null || user.password != password) return false;
-    await _db.setCurrentUser(user.email);
-    return true;
+  /// Apple Sign In
+  Future<UserCredential?> signInWithApple() async {
+    try {
+      final appleCredential = await SignInWithApple.getAppleIDCredential(
+        scopes: [
+          AppleIDAuthorizationScopes.email,
+          AppleIDAuthorizationScopes.fullName,
+        ],
+      );
+
+      final OAuthCredential credential = OAuthProvider("apple.com").credential(
+        idToken: appleCredential.identityToken,
+        accessToken: appleCredential.authorizationCode,
+      );
+
+      final cred = await _auth.signInWithCredential(credential);
+      if (cred.user != null) {
+        _syncLocalUserFromFirebase(cred.user!);
+      }
+      return cred;
+    } catch (e) {
+      debugPrint("Apple Sign In Error: $e");
+    }
+    return null;
+  }
+
+  /// GitHub Sign In
+  Future<UserCredential?> signInWithGitHub() async {
+    try {
+      final OAuthProvider githubProvider = OAuthProvider("github.com");
+      final cred = await _auth.signInWithProvider(githubProvider);
+      if (cred.user != null) {
+        _syncLocalUserFromFirebase(cred.user!);
+      }
+      return cred;
+    } catch (e) {
+      debugPrint("GitHub Sign In Error: $e");
+    }
+    return null;
+  }
+
+  /// Sync Firebase user info with local database
+  Future<void> _syncLocalUserFromFirebase(User fbUser) async {
+    final email = fbUser.email ?? "";
+    if (email.isEmpty) return;
+    
+    final key = email.toLowerCase().trim();
+    if (!_db.userExists(key)) {
+      final newUser = UserModel(
+        id: key,
+        email: key,
+        password: "", // Social accounts don't use local pass
+        name: fbUser.displayName ?? "User",
+      );
+      await _db.createUser(newUser);
+    }
+    await _db.setCurrentUser(email);
+    
+    // Trigger Lab Cloud Sync
+    await LabSyncRepository().syncCloudToLocal(fbUser.uid);
+  }
+
+  String _mapFirebaseError(String code) {
+    switch (code) {
+      case 'email-already-in-use': return 'الحساب موجود بالفعل لهذا الإيميل';
+      case 'weak-password': return 'كلمة المرور ضعيفة جداً';
+      case 'invalid-email': return 'البريد الإلكتروني غير صحيح';
+      default: return 'حدث خطأ أثناء التسجيل: $code';
+    }
   }
 
   /// Logout - clear current session
   Future<void> logout() async {
+    await _auth.signOut();
+    await _googleSignIn.signOut();
     await _db.logout();
   }
 
   /// Check if user is logged in
-  bool get isLoggedIn => _db.currentUser != null;
+  bool get isLoggedIn => _auth.currentUser != null || _db.currentUser != null;
 
   /// Get current logged-in user
   UserModel? get currentUser => _db.currentUser;

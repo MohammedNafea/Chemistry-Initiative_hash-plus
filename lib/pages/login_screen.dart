@@ -6,12 +6,16 @@ import '../shared/widgets/custom_textfield.dart';
 
 // Simple auth service mock for now
 class AuthService {
-  static Future<String?> registerUser(String name, String email, String password) async {
+  static Future<String?> registerUser(
+    String name,
+    String email,
+    String password,
+  ) async {
     // Mock implementation
     await Future.delayed(Duration(seconds: 1));
     return null; // Return null for success
   }
-  
+
   static Future<bool> loginUser(String email, String password) async {
     // Mock implementation
     await Future.delayed(Duration(seconds: 1));
@@ -48,7 +52,9 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     final isLight = Theme.of(context).brightness == Brightness.light;
     return Scaffold(
-      backgroundColor: isLight ? const Color(0xFFFDF7F5) : Theme.of(context).scaffoldBackgroundColor,
+      backgroundColor: isLight
+          ? const Color(0xFFFDF7F5)
+          : Theme.of(context).scaffoldBackgroundColor,
       body: Center(
         child: SingleChildScrollView(
           child: Column(
@@ -58,9 +64,13 @@ class _LoginScreenState extends State<LoginScreen> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   IconButton(
-                    icon: Icon(Icons.brightness_6, color: Theme.of(context).iconTheme.color),
+                    icon: Icon(
+                      Icons.brightness_6,
+                      color: Theme.of(context).iconTheme.color,
+                    ),
                     onPressed: () {
-                      themeNotifier.value = themeNotifier.value == ThemeMode.light
+                      themeNotifier.value =
+                          themeNotifier.value == ThemeMode.light
                           ? ThemeMode.dark
                           : ThemeMode.light;
                     },
@@ -115,7 +125,11 @@ class _LoginScreenState extends State<LoginScreen> {
                               child: Container(
                                 padding: const EdgeInsets.all(10),
                                 decoration: BoxDecoration(
-                                  color: _isSignup ? (isLight ? Colors.white : Theme.of(context).cardColor) : Colors.transparent,
+                                  color: _isSignup
+                                      ? (isLight
+                                            ? Colors.white
+                                            : Theme.of(context).cardColor)
+                                      : Colors.transparent,
                                   borderRadius: BorderRadius.circular(20),
                                 ),
                                 child: Center(
@@ -124,8 +138,14 @@ class _LoginScreenState extends State<LoginScreen> {
                                     child: Text(
                                       "حساب جديد",
                                       style: TextStyle(
-                                        color: _isSignup ? Theme.of(context).textTheme.bodyLarge?.color : Colors.grey,
-                                        fontWeight: _isSignup ? FontWeight.bold : FontWeight.normal,
+                                        color: _isSignup
+                                            ? Theme.of(
+                                                context,
+                                              ).textTheme.bodyLarge?.color
+                                            : Colors.grey,
+                                        fontWeight: _isSignup
+                                            ? FontWeight.bold
+                                            : FontWeight.normal,
                                       ),
                                     ),
                                   ),
@@ -139,7 +159,11 @@ class _LoginScreenState extends State<LoginScreen> {
                               child: Container(
                                 padding: const EdgeInsets.all(10),
                                 decoration: BoxDecoration(
-                                  color: !_isSignup ? (isLight ? Colors.white : Theme.of(context).cardColor) : Colors.transparent,
+                                  color: !_isSignup
+                                      ? (isLight
+                                            ? Colors.white
+                                            : Theme.of(context).cardColor)
+                                      : Colors.transparent,
                                   borderRadius: BorderRadius.circular(20),
                                 ),
                                 child: Center(
@@ -148,8 +172,14 @@ class _LoginScreenState extends State<LoginScreen> {
                                     child: Text(
                                       "تسجيل الدخول",
                                       style: TextStyle(
-                                        color: !_isSignup ? Theme.of(context).textTheme.bodyLarge?.color : Colors.grey,
-                                        fontWeight: !_isSignup ? FontWeight.bold : FontWeight.normal,
+                                        color: !_isSignup
+                                            ? Theme.of(
+                                                context,
+                                              ).textTheme.bodyLarge?.color
+                                            : Colors.grey,
+                                        fontWeight: !_isSignup
+                                            ? FontWeight.bold
+                                            : FontWeight.normal,
                                       ),
                                     ),
                                   ),
@@ -171,10 +201,16 @@ class _LoginScreenState extends State<LoginScreen> {
                           if (_isSignup) ...[
                             const Align(
                               alignment: Alignment.centerRight,
-                              child: Text('الاسم الكامل', style: TextStyle(fontWeight: FontWeight.bold)),
+                              child: Text(
+                                'الاسم الكامل',
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
                             ),
                             const SizedBox(height: 8),
-                            CustomTextfield(hintText: 'الاسم الكامل', controller: _nameCtrl),
+                            CustomTextfield(
+                              hintText: 'الاسم الكامل',
+                              controller: _nameCtrl,
+                            ),
                             const SizedBox(height: 12),
                           ],
 
@@ -186,7 +222,10 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                           ),
                           const SizedBox(height: 8),
-                          CustomTextfield(hintText: "example@email.com", controller: _emailCtrl),
+                          CustomTextfield(
+                            hintText: "example@email.com",
+                            controller: _emailCtrl,
+                          ),
 
                           const SizedBox(height: 12),
 
@@ -208,10 +247,17 @@ class _LoginScreenState extends State<LoginScreen> {
                             const SizedBox(height: 12),
                             const Align(
                               alignment: Alignment.centerRight,
-                              child: Text('إعادة كلمة المرور', style: TextStyle(fontWeight: FontWeight.bold)),
+                              child: Text(
+                                'إعادة كلمة المرور',
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
                             ),
                             const SizedBox(height: 8),
-                            CustomTextfield(hintText: '********', isPassword: true, controller: _confirmCtrl),
+                            CustomTextfield(
+                              hintText: '********',
+                              isPassword: true,
+                              controller: _confirmCtrl,
+                            ),
                           ],
 
                           const SizedBox(height: 18),
@@ -227,40 +273,77 @@ class _LoginScreenState extends State<LoginScreen> {
                               if (_isSignup) {
                                 final name = _nameCtrl.text.trim();
                                 final confirm = _confirmCtrl.text;
-                                if (name.isEmpty || email.isEmpty || pass.isEmpty || confirm.isEmpty) {
-                                  messenger.showSnackBar(const SnackBar(content: Text('يرجى ملء جميع الحقول')));
+                                if (name.isEmpty ||
+                                    email.isEmpty ||
+                                    pass.isEmpty ||
+                                    confirm.isEmpty) {
+                                  messenger.showSnackBar(
+                                    const SnackBar(
+                                      content: Text('يرجى ملء جميع الحقول'),
+                                    ),
+                                  );
                                   return;
                                 }
                                 if (pass != confirm) {
-                                  messenger.showSnackBar(const SnackBar(content: Text('كلمة المرور غير متطابقة')));
+                                  messenger.showSnackBar(
+                                    const SnackBar(
+                                      content: Text('كلمة المرور غير متطابقة'),
+                                    ),
+                                  );
                                   return;
                                 }
-                                final err = await AuthService.registerUser(name, email, pass);
+                                final err = await AuthService.registerUser(
+                                  name,
+                                  email,
+                                  pass,
+                                );
                                 if (!mounted) return;
                                 if (err != null) {
-                                  messenger.showSnackBar(SnackBar(content: Text(err)));
+                                  messenger.showSnackBar(
+                                    SnackBar(content: Text(err)),
+                                  );
                                   return;
                                 }
-                                messenger.showSnackBar(const SnackBar(content: Text('تم إنشاء الحساب')));
+                                messenger.showSnackBar(
+                                  const SnackBar(
+                                    content: Text('تم إنشاء الحساب'),
+                                  ),
+                                );
                                 setState(() => _isSignup = false);
                                 return;
                               }
 
                               // Login flow
                               if (email.isEmpty || pass.isEmpty) {
-                                messenger.showSnackBar(const SnackBar(content: Text('يرجى إدخال البريد وكلمة المرور')));
+                                messenger.showSnackBar(
+                                  const SnackBar(
+                                    content: Text(
+                                      'يرجى إدخال البريد وكلمة المرور',
+                                    ),
+                                  ),
+                                );
                                 return;
                               }
-                              messenger.showSnackBar(const SnackBar(content: Text('جاري التحقق...')));
-                              final ok = await AuthService.loginUser(email, pass);
+                              messenger.showSnackBar(
+                                const SnackBar(content: Text('جاري التحقق...')),
+                              );
+                              final ok = await AuthService.loginUser(
+                                email,
+                                pass,
+                              );
                               if (!mounted) return;
                               if (!ok) {
-                                messenger.showSnackBar(const SnackBar(content: Text('بيانات الدخول غير صحيحة')));
+                                messenger.showSnackBar(
+                                  const SnackBar(
+                                    content: Text('بيانات الدخول غير صحيحة'),
+                                  ),
+                                );
                                 return;
                               }
                               navigator.pushReplacement(
                                 MaterialPageRoute(
-                                  builder: (context) => const HomePage(showWelcome: true),
+                                  builder: (context) =>
+                                      const HomePage(showWelcome: true),
                                 ),
                               );
                             },
@@ -273,7 +356,9 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
 
               const SizedBox(height: 20),
-              const Center(child: Text('أو', style: TextStyle(color: Colors.grey))),
+              const Center(
+                child: Text('أو', style: TextStyle(color: Colors.grey)),
+              ),
               const SizedBox(height: 12),
 
               // أزرار جوجل وفيسبوك

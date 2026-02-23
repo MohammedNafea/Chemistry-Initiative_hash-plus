@@ -9,22 +9,25 @@ class AppLocalizationsPt extends AppLocalizations {
   AppLocalizationsPt([String locale = 'pt']) : super(locale);
 
   @override
-  String get appTitle => 'Iniciativa Química';
+  String get appTitle => 'Iniciativa Qu?mica';
 
   @override
-  String get periodicTable => 'Tabela Periódica Interativa';
+  String get leaderboard => 'Leaderboard';
 
   @override
-  String get dailyQuiz => 'Quiz Diário';
+  String get periodicTable => 'Tabela Peri?dica Interativa';
 
   @override
-  String get whatsInThis => 'O que há nisto?';
+  String get dailyQuiz => 'Quiz Di?rio';
+
+  @override
+  String get whatsInThis => 'O que h? nisto?';
 
   @override
   String get safetyGuide => 'Guia de Segurança';
 
   @override
-  String get flammable => 'Inflamável';
+  String get flammable => 'Inflam?vel';
 
   @override
   String get flammableDesc =>
@@ -37,7 +40,7 @@ class AppLocalizationsPt extends AppLocalizations {
   String get oxidizerDesc => 'Pode causar ou intensificar um incêndio.';
 
   @override
-  String get toxic => 'Tóxico';
+  String get toxic => 'T?xico';
 
   @override
   String get toxicDesc => 'Pode causar a morte ou doenças graves se ingerido.';
@@ -59,34 +62,34 @@ class AppLocalizationsPt extends AppLocalizations {
   String get irritant => 'Irritante';
 
   @override
-  String get irritantDesc => 'Pode causar irritação na pele ou olhos.';
+  String get irritantDesc => 'Pode causar irritaç?o na pele ou olhos.';
 
   @override
-  String get healthHazard => 'Perigo para a saúde';
+  String get healthHazard => 'Perigo para a sa?de';
 
   @override
   String get healthHazardDesc =>
-      'Pode causar efeitos graves na saúde a longo prazo.';
+      'Pode causar efeitos graves na sa?de a longo prazo.';
 
   @override
   String get environment => 'Perigo ambiental';
 
   @override
-  String get environmentDesc => 'Nocivo para a vida aquática.';
+  String get environmentDesc => 'Nocivo para a vida aqu?tica.';
 
   @override
-  String get virtualLab => 'Laboratório Virtual';
+  String get virtualLab => 'Laborat?rio Virtual';
 
   @override
-  String get volcanoExp => 'Vulcão de Bicarbonato';
+  String get volcanoExp => 'Vulc?o de Bicarbonato';
 
   @override
   String get volcanoDesc =>
-      'Crie uma erupção vulcânica clássica usando ingredientes de cozinha.';
+      'Crie uma erupç?o vulcânica cl?ssica usando ingredientes de cozinha.';
 
   @override
   String get volcanoExplanation =>
-      'A reação entre bicarbonato e vinagre produz gás carbônico.';
+      'A reaç?o entre bicarbonato e vinagre produz g?s carbônico.';
 
   @override
   String get cabbageExp => 'Red Cabbage Indicator';
@@ -110,13 +113,13 @@ class AppLocalizationsPt extends AppLocalizations {
       'Lemon juice is organic. When heated, it oxidizes and turns brown faster than the paper, revealing the message.';
 
   @override
-  String get easy => 'Fácil';
+  String get easy => 'F?cil';
 
   @override
   String get medium => 'Médio';
 
   @override
-  String get hard => 'Difícil';
+  String get hard => 'Dif?cil';
 
   @override
   String get ingredients => 'Ingredientes';
@@ -125,10 +128,10 @@ class AppLocalizationsPt extends AppLocalizations {
   String get steps => 'Passos';
 
   @override
-  String get scientificExplanation => 'Explicação Científica';
+  String get scientificExplanation => 'Explicaç?o Cient?fica';
 
   @override
-  String get generalSafety => 'Realize sempre com a supervisão de um adulto.';
+  String get generalSafety => 'Realize sempre com a supervis?o de um adulto.';
 
   @override
   String get hotWaterSafety => 'Be careful with hot water.';
@@ -173,6 +176,42 @@ class AppLocalizationsPt extends AppLocalizations {
   String get heatSource => 'Heat Source (Lamp/Iron)';
 
   @override
+  String get hydrogenPeroxide => 'Hydrogen Peroxide';
+
+  @override
+  String get yeast => 'Yeast';
+
+  @override
+  String get warmWater => 'Warm Water';
+
+  @override
+  String get sugar => 'Sugar';
+
+  @override
+  String get boilingWater => 'Boiling Water';
+
+  @override
+  String get string => 'String';
+
+  @override
+  String get jar => 'Jar';
+
+  @override
+  String get milk => 'Milk';
+
+  @override
+  String get oil => 'Oil';
+
+  @override
+  String get egg => 'Egg';
+
+  @override
+  String get effervescentTablet => 'Effervescent Tablet';
+
+  @override
+  String get eyeProtection => 'Wear eye protection.';
+
+  @override
   String get volcanoStep1 => 'Place the container on a tray.';
 
   @override
@@ -215,7 +254,7 @@ class AppLocalizationsPt extends AppLocalizations {
   String get badgeNewScientist => 'Novo Cientista';
 
   @override
-  String get badgeNewScientistDesc => 'Iniciou sessão pela primeira vez.';
+  String get badgeNewScientistDesc => 'Iniciou sess?o pela primeira vez.';
 
   @override
   String get badgeQuizMaster => 'Mestre de Quizzes';
@@ -233,11 +272,11 @@ class AppLocalizationsPt extends AppLocalizations {
   String get moleculeViewer => 'Visualizador de Moléculas 3D';
 
   @override
-  String get molWater => 'Água';
+  String get molWater => '?gua';
 
   @override
   String get factWater =>
-      'A vida como a conhecemos não existiria sem este composto!';
+      'A vida como a conhecemos n?o existiria sem este composto!';
 
   @override
   String get molH2 => 'Hydrogen Gas';
@@ -266,46 +305,46 @@ class AppLocalizationsPt extends AppLocalizations {
       'A yellowish-green gas used as a disinfectant and bleach.';
 
   @override
-  String get molCo2 => 'Dióxido de Carbono';
+  String get molCo2 => 'Di?xido de Carbono';
 
   @override
   String get factCo2 =>
-      'Um gás incolor vital para la vida na Terra. As plantas respiram-no para produzir oxigénio.';
+      'Um g?s incolor vital para la vida na Terra. As plantas respiram-no para produzir oxigénio.';
 
   @override
   String get molMethane => 'Metano';
 
   @override
   String get factMethane =>
-      'Um potente gás com efeito de estufa e o principal componente do gás natural.';
+      'Um potente g?s com efeito de estufa e o principal componente do g?s natural.';
 
   @override
-  String get molSalt => 'Cloreto de Sódio (Sal)';
+  String get molSalt => 'Cloreto de S?dio (Sal)';
 
   @override
   String get factSalt =>
-      'Sal de cozinha comum. Essencial para muitos processos biológicos.';
+      'Sal de cozinha comum. Essencial para muitos processos biol?gicos.';
 
   @override
-  String get molAmmonia => 'Amoníaco';
+  String get molAmmonia => 'Amon?aco';
 
   @override
   String get factAmmonia =>
       'Amplamente utilizado em fertilizantes e produtos de limpeza.';
 
   @override
-  String get molHcl => 'Ácido Clorídrico';
+  String get molHcl => '?cido Clor?drico';
 
   @override
   String get factHcl =>
-      'Um ácido forte encontrado no seu estômago que ajuda a digerir a comida.';
+      'Um ?cido forte encontrado no seu estômago que ajuda a digerir a comida.';
 
   @override
-  String get molH2so4 => 'Ácido Sulfúrico';
+  String get molH2so4 => '?cido Sulf?rico';
 
   @override
   String get factH2so4 =>
-      'Um ácido altamente corrosivo utilizado em baterias e processamento de minerais.';
+      'Um ?cido altamente corrosivo utilizado em baterias e processamento de minerais.';
 
   @override
   String get molNaoh => 'Sodium Hydroxide (Lye)';
@@ -444,26 +483,26 @@ class AppLocalizationsPt extends AppLocalizations {
   String get undiscovered => 'Undiscovered';
 
   @override
-  String get chemicalOfTheDay => 'Química do Dia';
+  String get chemicalOfTheDay => 'Qu?mica do Dia';
 
   @override
   String get didYouKnow => 'Sabia que?';
 
   @override
-  String get dailyUse => 'Uso Diário:';
+  String get dailyUse => 'Uso Di?rio:';
 
   @override
   String get chemOxygen => 'Oxigénio';
 
   @override
-  String get chemOxygenUse => 'Essencial para a respiração e produção de aço.';
+  String get chemOxygenUse => 'Essencial para a respiraç?o e produç?o de aço.';
 
   @override
   String get chemGold => 'Ouro';
 
   @override
   String get chemGoldUse =>
-      'Utilizado em eletrónica e joalharia pela sua condutividade.';
+      'Utilizado em eletr?nica e joalharia pela sua condutividade.';
 
   @override
   String get chemCarbon => 'Carbono';
@@ -472,7 +511,7 @@ class AppLocalizationsPt extends AppLocalizations {
   String get chemCarbonUse => 'A base de todas as formas de vida conhecidas.';
 
   @override
-  String get home => 'Início';
+  String get home => 'In?cio';
 
   @override
   String get search => 'Pesquisar';
@@ -501,19 +540,19 @@ class AppLocalizationsPt extends AppLocalizations {
   String get natureSection => 'Natureza';
 
   @override
-  String get waterAirSection => 'Água e Ar';
+  String get waterAirSection => '?gua e Ar';
 
   @override
-  String get dailyLifeSection => 'Vida Diária';
+  String get dailyLifeSection => 'Vida Di?ria';
 
   @override
-  String get welcomeMessage => 'Bem-vindo às Maravilhas da Química';
+  String get welcomeMessage => 'Bem-vindo às Maravilhas da Qu?mica';
 
   @override
   String get contactInfo => 'Info de Contato';
 
   @override
-  String get settings => 'Configurações';
+  String get settings => 'Configuraç?es';
 
   @override
   String get editProfile => 'Editar Perfil';
@@ -528,7 +567,7 @@ class AppLocalizationsPt extends AppLocalizations {
   String get phone => 'Telefone';
 
   @override
-  String get location => 'Localização';
+  String get location => 'Localizaç?o';
 
   @override
   String get theme => 'Tema';
@@ -537,7 +576,7 @@ class AppLocalizationsPt extends AppLocalizations {
   String get language => 'Idioma';
 
   @override
-  String get notifications => 'Notificações';
+  String get notifications => 'Notificaç?es';
 
   @override
   String get privacySecurity => 'Privacidade e Segurança';
@@ -549,31 +588,31 @@ class AppLocalizationsPt extends AppLocalizations {
   String get logout => 'Sair';
 
   @override
-  String get burningGas => 'Queima de Gás';
+  String get burningGas => 'Queima de G?s';
 
   @override
   String get forests => 'Florestas';
 
   @override
-  String get coalBurning => 'Queima de Carvão';
+  String get coalBurning => 'Queima de Carv?o';
 
   @override
   String get rocks => 'Rochas';
 
   @override
-  String get solutionAbsorption => 'Absorção de Solução';
+  String get solutionAbsorption => 'Absorç?o de Soluç?o';
 
   @override
   String get rainDrops => 'Gotas de Chuva';
 
   @override
-  String get factorySmoke => 'Fumaça de Fábrica';
+  String get factorySmoke => 'Fumaça de F?brica';
 
   @override
   String get crystal => 'Cristal';
 
   @override
-  String get breadFermentation => 'Fermentação de Pão';
+  String get breadFermentation => 'Fermentaç?o de P?o';
 
   @override
   String get medicalLabs => 'Labs Médicos';
@@ -582,13 +621,13 @@ class AppLocalizationsPt extends AppLocalizations {
   String get medicines => 'Medicamentos';
 
   @override
-  String get combustion => 'Combustão';
+  String get combustion => 'Combust?o';
 
   @override
   String get welcome => 'Bem-vindo';
 
   @override
-  String get user => 'Usuário';
+  String get user => 'Usu?rio';
 
   @override
   String get auroraBorealis => 'Aurora Boreal';
@@ -597,25 +636,25 @@ class AppLocalizationsPt extends AppLocalizations {
   String get nature => 'Natureza';
 
   @override
-  String get waterAndAir => 'Água e Ar';
+  String get waterAndAir => '?gua e Ar';
 
   @override
-  String get dailyLife => 'Vida Diária';
+  String get dailyLife => 'Vida Di?ria';
 
   @override
-  String get searchPlaceholder => 'Pesquisar um tópico...';
+  String get searchPlaceholder => 'Pesquisar um t?pico...';
 
   @override
   String get noResults => 'Nenhum resultado encontrado';
 
   @override
-  String get noSavedTopics => 'Nenhum tópico salvo';
+  String get noSavedTopics => 'Nenhum t?pico salvo';
 
   @override
-  String get saveYourFavorites => 'Salve seus tópicos favoritos';
+  String get saveYourFavorites => 'Salve seus t?picos favoritos';
 
   @override
-  String get savedTopics => 'Tópicos Salvos';
+  String get savedTopics => 'T?picos Salvos';
 
   @override
   String get saved => 'Salvo';
@@ -624,10 +663,10 @@ class AppLocalizationsPt extends AppLocalizations {
   String get bookmarks => 'Favoritos';
 
   @override
-  String get topicDeleted => 'Tópico excluído';
+  String get topicDeleted => 'T?pico exclu?do';
 
   @override
-  String get backToHome => 'Voltar ao Início';
+  String get backToHome => 'Voltar ao In?cio';
 
   @override
   String get addToBookmarks => 'Adicionar aos Favoritos';
@@ -646,11 +685,11 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get auroraQuestion =>
-      'Você já se perguntou por que o céu brilha com as cores da Aurora Boreal?';
+      'Você j? se perguntou por que o céu brilha com as cores da Aurora Boreal?';
 
   @override
   String get auroraDescription =>
-      'A Aurora Boreal ocorre quando partículas carregadas do sol colidem com gases na atmosfera da Terra, como oxigênio e nitrogênio. Essas colisões excitam átomos e moléculas, dando-lhes energia extra.\n• O oxigênio em baixa altitude emite luz verde\n• O oxigênio em alta altitude emite luz vermelha\n• O nitrogênio emite cores azul e roxa\n\nQuando esses átomos retornam ao seu estado normal, eles liberam energia na forma de luz visível. Esse processo é a causa das cores deslumbrantes da aurora, um exemplo vívido de uma reação química e física natural observável em nossa vida diária.';
+      'A Aurora Boreal ocorre quando part?culas carregadas do sol colidem com gases na atmosfera da Terra, como oxigênio e nitrogênio. Essas colis?es excitam ?tomos e moléculas, dando-lhes energia extra.\n• O oxigênio em baixa altitude emite luz verde\n• O oxigênio em alta altitude emite luz vermelha\n• O nitrogênio emite cores azul e roxa\n\nQuando esses ?tomos retornam ao seu estado normal, eles liberam energia na forma de luz vis?vel. Esse processo é a causa das cores deslumbrantes da aurora, um exemplo v?vido de uma reaç?o qu?mica e f?sica natural observ?vel em nossa vida di?ria.';
 
   @override
   String get wonders => 'Maravilhas';
@@ -680,7 +719,7 @@ class AppLocalizationsPt extends AppLocalizations {
   String get fillAllFields => 'Por favor preencha todos os campos';
 
   @override
-  String get passwordsDoNotMatch => 'As senhas não coincidem';
+  String get passwordsDoNotMatch => 'As senhas n?o coincidem';
 
   @override
   String get accountCreated => 'Conta Criada';
@@ -692,10 +731,7 @@ class AppLocalizationsPt extends AppLocalizations {
   String get verifying => 'Verificando...';
 
   @override
-  String get invalidCredentials => 'Credenciais inválidas';
-
-  @override
-  String get or => 'Ou';
+  String get invalidCredentials => 'Credenciais inv?lidas';
 
   @override
   String get continueGoogle => 'Continuar com Google';
@@ -704,13 +740,13 @@ class AppLocalizationsPt extends AppLocalizations {
   String get continueFacebook => 'Continuar com Facebook';
 
   @override
-  String get atomicNumberLabel => 'Número Atómico';
+  String get atomicNumberLabel => 'N?mero At?mico';
 
   @override
-  String get dailyLifeUseLabel => 'Uso na Vida Diária';
+  String get dailyLifeUseLabel => 'Uso na Vida Di?ria';
 
   @override
-  String get scientificSummaryLabel => 'Resumo Científico';
+  String get scientificSummaryLabel => 'Resumo Cient?fico';
 
   @override
   String get massLabel => 'Massa';
@@ -728,7 +764,7 @@ class AppLocalizationsPt extends AppLocalizations {
   String get selectElementsMix => 'Selecione elementos para misturar';
 
   @override
-  String get elementsRepository => 'Repositório de Elementos';
+  String get elementsRepository => 'Reposit?rio de Elementos';
 
   @override
   String get mixElements => 'Misturar Elementos';
@@ -880,29 +916,31 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get elemMgSummary =>
-      'Magnesium is a shiny gray metal which burns with a brilliant white light.';
+      'Magnesium is a shiny gray solid alkaline earth metal.';
 
   @override
-  String get elemMgUse => 'Used in flares, fireworks, and lightweight alloys.';
+  String get elemMgUse => 'Used in flares, laptops, and human muscle function.';
 
   @override
   String get elemAlName => 'Aluminum';
 
   @override
-  String get elemAlSummary => 'Aluminum is a silvery-white, lightweight metal.';
+  String get elemAlSummary =>
+      'Aluminum is a lightweight, silvery-white, non-magnetic metal.';
 
   @override
-  String get elemAlUse => 'Used in aircraft, cans, and foils.';
+  String get elemAlUse =>
+      'Used in soda cans, foil, airplanes, and window frames.';
 
   @override
   String get elemSiName => 'Silicon';
 
   @override
   String get elemSiSummary =>
-      'Silicon is a hard, brittle crystalline solid with a blue-grey metallic lustre.';
+      'Silicon is a hard, brittle crystalline metalloid widely used in electronics.';
 
   @override
-  String get elemSiUse => 'The basis of modern electronics and computer chips.';
+  String get elemSiUse => 'The heart of computer chips and glass production.';
 
   @override
   String get elemPName => 'Phosphorus';
@@ -960,32 +998,32 @@ class AppLocalizationsPt extends AppLocalizations {
   String get elemCaName => 'Calcium';
 
   @override
-  String get elemCaSummary => 'Calcium is a soft gray alkaline earth metal.';
+  String get elemCaSummary =>
+      'Calcium is a grey alkaline earth metal, the most abundant metal in humans.';
 
   @override
-  String get elemCaUse =>
-      'Essential for living organisms, particularly in cell physiology.';
+  String get elemCaUse => 'Found in milk, bones, teeth, and cement.';
 
   @override
   String get elemFeName => 'Iron';
 
   @override
   String get elemFeSummary =>
-      'Iron is a strong, ductile, and lustrous transition metal.';
+      'Iron is the most common element on Earth by mass, forming much of the core.';
 
   @override
   String get elemFeUse =>
-      'The most used metal, essential for construction and machinery.';
+      'Used in steel construction and found in red blood cells.';
 
   @override
   String get elemCuName => 'Copper';
 
   @override
   String get elemCuSummary =>
-      'Copper is a ductile, malleable metal with high thermal and electrical conductivity.';
+      'Copper is a soft, malleable, and ductile metal with very high conductivity.';
 
   @override
-  String get elemCuUse => 'Used in electrical wiring, plumbing, and coins.';
+  String get elemCuUse => 'Used in electrical wiring and plumbing pipes.';
 
   @override
   String get elemZnName => 'Zinc';
@@ -1002,10 +1040,10 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get elemAgSummary =>
-      'Silver is a lustrous transition metal with the highest electrical conductivity of any element.';
+      'Silver has the highest electrical and thermal conductivity of any metal.';
 
   @override
-  String get elemAgUse => 'Used in jewelry, silverware, and electronics.';
+  String get elemAgUse => 'Used in jewelry, coins, and high-end electronics.';
 
   @override
   String get elemSnName => 'Tin';
@@ -1032,10 +1070,10 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get elemAuSummary =>
-      'Gold is a bright, slightly reddish yellow, dense, soft, malleable, and ductile metal.';
+      'Gold is a noble metal that does not tarnish and is highly valuable.';
 
   @override
-  String get elemAuUse => 'Used in jewelry, electronics, and finance.';
+  String get elemAuUse => 'Used in jewelry, investment, and space tech.';
 
   @override
   String get elemHgName => 'Mercury';
@@ -1130,5 +1168,254 @@ class AppLocalizationsPt extends AppLocalizations {
       'Discovery requires more heat! Use the Bunsen burner.';
 
   @override
+  String get multiplayerQuiz => 'Quiz Multijogador';
+
+  @override
+  String get aiTutor => 'AI Tutor';
+
+  @override
+  String get viewIn3D => 'View in 3D';
+
+  @override
+  String get searchCompounds => 'Search compounds...';
+
+  @override
+  String get scientificInsight => 'Scientific Insight';
+
+  @override
+  String get gotIt => 'Got it!';
+
+  @override
+  String get challengingPlayers => 'Looking for nearby challengers...';
+
+  @override
+  String get inviteHost => 'Invite (Host)';
+
+  @override
+  String get connectedTo => 'Connected to';
+
+  @override
+  String get hostScore => 'Host Score';
+
+  @override
+  String get guestScore => 'Guest Score';
+
+  @override
+  String get aiTutorGreeting =>
+      'Hello Young Scientist! I am your AI Chemistry Tutor 🧪. How can I help you today?';
+
+  @override
+  String get aiTutorHint => 'Ask about any chemical reaction...';
+
+  @override
+  String aiTutorSystemInstruction(String language) {
+    return 'You are an expert, friendly AI Chemistry Tutor. You explain chemistry concepts clearly and simply. IMPORTANT: You must respond in the following language: $language.';
+  }
+
+  @override
   String get forgotPassword => 'Esqueceu a senha?';
+
+  @override
+  String get orContinueWith => 'Or continue with';
+
+  @override
+  String get hhVinegar => 'Vinegar';
+
+  @override
+  String get hhVinegarChem => 'Acetic Acid';
+
+  @override
+  String get hhVinegarDesc => 'Commonly used in cooking and cleaning.';
+
+  @override
+  String get hhVinegarWarn => 'Safe for consumption in small amounts. Acidic.';
+
+  @override
+  String get hhBakingSoda => 'Baking Soda';
+
+  @override
+  String get hhBakingSodaChem => 'Sodium Bicarbonate';
+
+  @override
+  String get hhBakingSodaDesc =>
+      'Used in baking and as a mild abrasive cleaner.';
+
+  @override
+  String get hhBakingSodaWarn => 'Safe. Produces gas when mixed with acid.';
+
+  @override
+  String get hhBleach => 'Bleach';
+
+  @override
+  String get hhBleachChem => 'Sodium Hypochlorite';
+
+  @override
+  String get hhBleachDesc => 'Strong disinfectant and whitener.';
+
+  @override
+  String get hhBleachWarn =>
+      'DANGER: Never mix with Vinegar or Ammonia! Produces toxic gas.';
+
+  @override
+  String get hhSalt => 'Table Salt';
+
+  @override
+  String get hhSaltChem => 'Sodium Chloride';
+
+  @override
+  String get hhSaltDesc => 'Essential for life, used for seasoning.';
+
+  @override
+  String get hhSaltWarn => 'Safe. Excessive intake can raise blood pressure.';
+
+  @override
+  String get hhAmmonia => 'Ammonia';
+
+  @override
+  String get hhAmmoniaChem => 'Ammonium Hydroxide';
+
+  @override
+  String get hhAmmoniaDesc => 'Common glass cleaner.';
+
+  @override
+  String get hhAmmoniaWarn => 'Irritating fumes. Do not mix with bleach.';
+
+  @override
+  String get hhSugar => 'Sugar';
+
+  @override
+  String get hhSugarChem => 'Sucrose';
+
+  @override
+  String get hhSugarDesc => 'Sweetener found in many foods.';
+
+  @override
+  String get hhSugarWarn => 'Safe. High consumption leads to health issues.';
+
+  @override
+  String get hhNailPolish => 'Nail Polish Remover';
+
+  @override
+  String get hhNailPolishChem => 'Acetone';
+
+  @override
+  String get hhNailPolishDesc => 'Solvent for removing nail polish and glue.';
+
+  @override
+  String get hhNailPolishWarn => 'Flammable. Keep away from fire.';
+
+  @override
+  String get elephantExp => 'Elephant Toothpaste';
+
+  @override
+  String get elephantDesc => 'A giant foamy reaction that releases oxygen.';
+
+  @override
+  String get elephantStep1 => 'Pour hydrogen peroxide into a flask.';
+
+  @override
+  String get elephantStep2 => 'Add dish soap and food coloring.';
+
+  @override
+  String get elephantStep3 => 'Add warm yeast solution and stand back!';
+
+  @override
+  String get elephantExplanation =>
+      'The catalyst (yeast) quickly breaks down hydrogen peroxide into water and oxygen gas.';
+
+  @override
+  String get crystalExp => 'Crystal Growing';
+
+  @override
+  String get crystalDesc => 'Use salt or sugar to grow beautiful crystals.';
+
+  @override
+  String get crystalStep1 =>
+      'Dissolve sugar in boiling water until no more dissolves.';
+
+  @override
+  String get crystalStep2 =>
+      'Suspend a string in the solution without touching the bottom.';
+
+  @override
+  String get crystalStep3 => 'Wait a few days for crystals to form.';
+
+  @override
+  String get crystalExplanation =>
+      'As water cools and evaporates, the excess sugar atoms gather on the string in a regular pattern.';
+
+  @override
+  String get milkArtExp => 'Magic Milk Art';
+
+  @override
+  String get milkArtDesc => 'Use soap to create colorful patterns in milk.';
+
+  @override
+  String get milkArtStep1 =>
+      'Pour milk into a plate and add food coloring drops.';
+
+  @override
+  String get milkArtStep2 => 'Dip a cotton swab in dish soap.';
+
+  @override
+  String get milkArtStep3 =>
+      'Touch the center of the milk and watch the colors explode.';
+
+  @override
+  String get milkArtExplanation =>
+      'The soap reduces surface tension and reacts with fats, pushing the colors around.';
+
+  @override
+  String get oilWaterExp => 'Oil & Water Volcano';
+
+  @override
+  String get oilWaterDesc => 'Explore density and polarity.';
+
+  @override
+  String get oilWaterStep1 => 'Fill 2/3 of a cup with oil and 1/3 with water.';
+
+  @override
+  String get oilWaterStep2 => 'Add food coloring drops.';
+
+  @override
+  String get oilWaterStep3 =>
+      'Drop an effervescent tablet and watch bubbles rise.';
+
+  @override
+  String get oilWaterExplanation =>
+      'Oil is lighter than water and doesn\'t mix due to polarity. The tablet produces CO2 that carries colored water up.';
+
+  @override
+  String get eggExp => 'Bouncy Egg';
+
+  @override
+  String get eggDesc => 'Remove an eggshell with vinegar.';
+
+  @override
+  String get eggStep1 => 'Place an egg in a cup and cover it with vinegar.';
+
+  @override
+  String get eggStep2 => 'Leave it for 24-48 hours.';
+
+  @override
+  String get eggStep3 => 'Wash it with water and watch the shell disappear.';
+
+  @override
+  String get eggExplanation =>
+      'Acetic acid reacts with calcium carbonate in the shell, dissolving it into CO2 and water.';
+
+  @override
+  String get chemicalScanner => 'Chemical Scanner';
+
+  @override
+  String get scanInstructions => 'Point camera at a chemical product label';
+
+  @override
+  String get identifying => 'Identifying compound...';
+
+  @override
+  String get identifiedElements => 'Elements in this compound:';
+
+  @override
+  String get noCompoundFound => 'Could not identify compound. Try again.';
 }

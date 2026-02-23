@@ -17,7 +17,8 @@ class ChemistsNotebookScreen extends StatefulWidget {
   State<ChemistsNotebookScreen> createState() => _ChemistsNotebookScreenState();
 }
 
-class _ChemistsNotebookScreenState extends State<ChemistsNotebookScreen> with SingleTickerProviderStateMixin {
+class _ChemistsNotebookScreenState extends State<ChemistsNotebookScreen>
+    with SingleTickerProviderStateMixin {
   late TabController _tabController;
 
   @override
@@ -54,7 +55,7 @@ class _ChemistsNotebookScreenState extends State<ChemistsNotebookScreen> with Si
               color: Colors.black.withValues(alpha: 0.2),
               blurRadius: 20,
               offset: const Offset(0, 10),
-            )
+            ),
           ],
         ),
         child: Column(
@@ -63,17 +64,27 @@ class _ChemistsNotebookScreenState extends State<ChemistsNotebookScreen> with Si
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: theme.colorScheme.primaryContainer.withValues(alpha: 0.3),
-                borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
+                color: theme.colorScheme.primaryContainer.withValues(
+                  alpha: 0.3,
+                ),
+                borderRadius: const BorderRadius.vertical(
+                  top: Radius.circular(24),
+                ),
               ),
               child: Row(
                 children: [
-                  Icon(Icons.menu_book_rounded, color: theme.colorScheme.primary),
+                  Icon(
+                    Icons.menu_book_rounded,
+                    color: theme.colorScheme.primary,
+                  ),
                   const SizedBox(width: 12),
                   Expanded(
                     child: Text(
-                      localizations.labManual, // TODO: Update to "Chemist's Notebook"
-                      style: theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
+                      localizations
+                          .labManual, // TODO: Update to "Chemist's Notebook"
+                      style: theme.textTheme.titleLarge?.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                   IconButton(
@@ -83,7 +94,7 @@ class _ChemistsNotebookScreenState extends State<ChemistsNotebookScreen> with Si
                 ],
               ),
             ),
-            
+
             // Tabs
             TabBar(
               controller: _tabController,
@@ -91,9 +102,18 @@ class _ChemistsNotebookScreenState extends State<ChemistsNotebookScreen> with Si
               unselectedLabelColor: theme.colorScheme.onSurfaceVariant,
               indicatorColor: theme.colorScheme.primary,
               tabs: [
-                Tab(text: localizations.recipes, icon: const Icon(Icons.science)),
-                Tab(text: localizations.journal, icon: const Icon(Icons.history_edu)),
-                Tab(text: localizations.dictionary, icon: const Icon(Icons.library_books)),
+                Tab(
+                  text: localizations.recipes,
+                  icon: const Icon(Icons.science),
+                ),
+                Tab(
+                  text: localizations.journal,
+                  icon: const Icon(Icons.history_edu),
+                ),
+                Tab(
+                  text: localizations.dictionary,
+                  icon: const Icon(Icons.library_books),
+                ),
               ],
             ),
 
@@ -118,7 +138,7 @@ class _ChemistsNotebookScreenState extends State<ChemistsNotebookScreen> with Si
     if (widget.recipes.isEmpty) {
       return Center(child: Text(localizations.noData));
     }
-    
+
     return ListView.builder(
       padding: const EdgeInsets.all(16),
       itemCount: widget.recipes.length,
@@ -126,11 +146,13 @@ class _ChemistsNotebookScreenState extends State<ChemistsNotebookScreen> with Si
         final key = widget.recipes.keys.elementAt(index);
         final data = widget.recipes[key]!;
         final name = _getLocalizedName(data['nameKey']!, localizations);
-        
+
         return Card(
           elevation: 2,
           margin: const EdgeInsets.only(bottom: 12),
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),
           child: ListTile(
             contentPadding: const EdgeInsets.all(16),
             leading: Container(
@@ -142,21 +164,24 @@ class _ChemistsNotebookScreenState extends State<ChemistsNotebookScreen> with Si
               ),
               alignment: Alignment.center,
               child: Text(
-                data['formula'] ?? '?', 
+                data['formula'] ?? '?',
                 style: TextStyle(
-                  fontSize: 14, 
+                  fontSize: 14,
                   fontWeight: FontWeight.bold,
                   color: theme.colorScheme.primary,
                 ),
               ),
             ),
-            title: Text(name, style: const TextStyle(fontWeight: FontWeight.bold)),
+            title: Text(
+              name,
+              style: const TextStyle(fontWeight: FontWeight.bold),
+            ),
             subtitle: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(height: 4),
                 Text(
-                  data['equation'] ?? '', 
+                  data['equation'] ?? '',
                   style: TextStyle(
                     fontFamily: 'monospace',
                     color: theme.colorScheme.secondary,
@@ -174,13 +199,17 @@ class _ChemistsNotebookScreenState extends State<ChemistsNotebookScreen> with Si
     // Get current user synchronously
     final user = AppDatabase.instance.currentUser;
     final journal = user?.researchJournal ?? {};
-    
+
     if (journal.isEmpty) {
       return Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.lock_clock, size: 48, color: theme.colorScheme.tertiary.withValues(alpha: 0.5)),
+            Icon(
+              Icons.lock_clock,
+              size: 48,
+              color: theme.colorScheme.tertiary.withValues(alpha: 0.5),
+            ),
             const SizedBox(height: 16),
             Text(localizations.noData, style: theme.textTheme.titleMedium),
             const SizedBox(height: 8),
@@ -211,41 +240,49 @@ class _ChemistsNotebookScreenState extends State<ChemistsNotebookScreen> with Si
       itemCount: discoveries.length,
       itemBuilder: (context, index) {
         final discovery = discoveries[index];
-        final name = _getLocalizedName(discovery['name'] as String, localizations);
-        
+        final name = _getLocalizedName(
+          discovery['name'] as String,
+          localizations,
+        );
+
         return Container(
           decoration: BoxDecoration(
             color: theme.colorScheme.surface,
             borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: theme.colorScheme.tertiary.withValues(alpha: 0.3)),
+            border: Border.all(
+              color: theme.colorScheme.tertiary.withValues(alpha: 0.3),
+            ),
             boxShadow: [
               BoxShadow(
                 color: theme.colorScheme.tertiary.withValues(alpha: 0.1),
                 blurRadius: 8,
                 offset: const Offset(0, 4),
-              )
+              ),
             ],
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-               const Icon(Icons.check_circle, color: Colors.green, size: 24),
-               const SizedBox(height: 8),
-               Text(
-                 discovery['formula'] as String,
-                 style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-               ),
-               const SizedBox(height: 4),
-               Padding(
-                 padding: const EdgeInsets.symmetric(horizontal: 8),
-                 child: Text(
-                   name,
-                   textAlign: TextAlign.center,
-                   style: theme.textTheme.bodySmall,
-                   maxLines: 2,
-                   overflow: TextOverflow.ellipsis,
-                 ),
-               ),
+              const Icon(Icons.check_circle, color: Colors.green, size: 24),
+              const SizedBox(height: 8),
+              Text(
+                discovery['formula'] as String,
+                style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(height: 4),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8),
+                child: Text(
+                  name,
+                  textAlign: TextAlign.center,
+                  style: theme.textTheme.bodySmall,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
             ],
           ),
         );
@@ -254,65 +291,125 @@ class _ChemistsNotebookScreenState extends State<ChemistsNotebookScreen> with Si
   }
 
   Widget _buildDictionaryTab(AppLocalizations localizations, ThemeData theme) {
-    final elements = PeriodicTableRepository.getElements(localizations);
-    
-    return ListView.builder(
-      padding: const EdgeInsets.all(16),
-      itemCount: elements.length,
-      itemBuilder: (context, index) {
-        final element = elements[index];
-        return Card(
-           elevation: 0,
-           color: theme.colorScheme.surfaceContainerHighest.withValues(alpha: 0.3),
-           margin: const EdgeInsets.only(bottom: 8),
-           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-           child: ListTile(
-             leading: Container(
-               width: 40,
-               height: 40,
-               alignment: Alignment.center,
-               decoration: BoxDecoration(
-                 color: theme.colorScheme.primaryContainer,
-                 shape: BoxShape.circle,
-               ),
-               child: Text(element.symbol, style: const TextStyle(fontWeight: FontWeight.bold)),
-             ),
-             title: Text(element.name, style: const TextStyle(fontWeight: FontWeight.bold)),
-             subtitle: Text(element.category, style: TextStyle(fontSize: 12, color: theme.colorScheme.onSurfaceVariant)),
-             trailing: Text(element.atomicNumber.toString(), style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.grey)),
-           ),
+    return FutureBuilder<List<dynamic>>(
+      future: PeriodicTableRepository.getElements(localizations),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Center(child: CircularProgressIndicator());
+        } else if (snapshot.hasError) {
+          return Center(child: Text('Error: ${snapshot.error}'));
+        } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+          return const Center(child: Text('No elements available.'));
+        }
+
+        final elements = snapshot.data!;
+
+        return ListView.builder(
+          padding: const EdgeInsets.all(16),
+          itemCount: elements.length,
+          itemBuilder: (context, index) {
+            final element = elements[index];
+            return Card(
+              elevation: 0,
+              color: theme.colorScheme.surfaceContainerHighest.withValues(
+                alpha: 0.3,
+              ),
+              margin: const EdgeInsets.only(bottom: 8),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: ListTile(
+                leading: Container(
+                  width: 40,
+                  height: 40,
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    color: theme.colorScheme.primaryContainer,
+                    shape: BoxShape.circle,
+                  ),
+                  child: Text(
+                    element.symbol,
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ),
+                title: Text(
+                  element.name,
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                ),
+                subtitle: Text(
+                  element.category,
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: theme.colorScheme.onSurfaceVariant,
+                  ),
+                ),
+                trailing: Text(
+                  element.atomicNumber.toString(),
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                    color: Colors.grey,
+                  ),
+                ),
+              ),
+            );
+          },
         );
       },
     );
   }
 } // End of class
 
-  // Helper to localize names
-  String _getLocalizedName(String key, AppLocalizations local) {
-    switch (key) {
-      case 'molWater': return local.molWater;
-      case 'molSalt': return local.molSalt;
-      case 'molCo2': return local.molCo2;
-      case 'molHcl': return local.molHcl;
-      case 'molMethane': return local.molMethane;
-      case 'molAmmonia': return local.molAmmonia;
-      case 'molH2so4': return local.molH2so4;
-      case 'molNaoh': return local.molNaoh;
-      case 'molH2': return local.molH2;
-      case 'molO2': return local.molO2;
-      case 'molN2': return local.molN2;
-      case 'molCl2': return local.molCl2;
-      case 'molTio2': return local.molTio2;
-      case 'molPto2': return local.molPto2;
-      case 'molCro3': return local.molCro3;
-      case 'molH2o2': return local.molH2o2;
-      case 'molFe2o3': return local.molFe2o3;
-      case 'molEthanol': return local.molEthanol;
-      case 'molGlucose': return local.molGlucose;
-      case 'molSio2': return local.molSio2;
-      case 'molCaco3': return local.molCaco3;
-      case 'molAl2o3': return local.molAl2o3;
-      case 'molAucl3': return local.molAucl3;
-      default: return key;
-    }
+// Helper to localize names
+String _getLocalizedName(String key, AppLocalizations local) {
+  switch (key) {
+    case 'molWater':
+      return local.molWater;
+    case 'molSalt':
+      return local.molSalt;
+    case 'molCo2':
+      return local.molCo2;
+    case 'molHcl':
+      return local.molHcl;
+    case 'molMethane':
+      return local.molMethane;
+    case 'molAmmonia':
+      return local.molAmmonia;
+    case 'molH2so4':
+      return local.molH2so4;
+    case 'molNaoh':
+      return local.molNaoh;
+    case 'molH2':
+      return local.molH2;
+    case 'molO2':
+      return local.molO2;
+    case 'molN2':
+      return local.molN2;
+    case 'molCl2':
+      return local.molCl2;
+    case 'molTio2':
+      return local.molTio2;
+    case 'molPto2':
+      return local.molPto2;
+    case 'molCro3':
+      return local.molCro3;
+    case 'molH2o2':
+      return local.molH2o2;
+    case 'molFe2o3':
+      return local.molFe2o3;
+    case 'molEthanol':
+      return local.molEthanol;
+    case 'molGlucose':
+      return local.molGlucose;
+    case 'molSio2':
+      return local.molSio2;
+    case 'molCaco3':
+      return local.molCaco3;
+    case 'molAl2o3':
+      return local.molAl2o3;
+    case 'molAucl3':
+      return local.molAucl3;
+    default:
+      return key;
   }
+}

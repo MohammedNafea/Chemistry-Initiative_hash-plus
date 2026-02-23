@@ -16,7 +16,7 @@ class BohrModelPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     final center = Offset(size.width / 2, size.height / 2);
     final maxRadius = min(size.width, size.height) / 2;
-    
+
     // Draw Nucleus
     final nucleusPaint = Paint()
       ..color = electronColor.withValues(alpha: 0.8)
@@ -35,12 +35,12 @@ class BohrModelPainter extends CustomPainter {
     // Calculate shell distribution
     int remainingElectrons = atomicNumber;
     int shellIndex = 1;
-    
+
     while (remainingElectrons > 0) {
       final shellCapacity = 2 * (shellIndex * shellIndex);
       final electronsInShell = min(remainingElectrons, shellCapacity);
       final shellRadius = (maxRadius * 0.2) + (shellIndex * (maxRadius * 0.15));
-      
+
       if (shellRadius > maxRadius) break;
 
       // Draw Shell Orbit
@@ -76,7 +76,8 @@ class BohrModelWidget extends StatefulWidget {
   State<BohrModelWidget> createState() => _BohrModelWidgetState();
 }
 
-class _BohrModelWidgetState extends State<BohrModelWidget> with SingleTickerProviderStateMixin {
+class _BohrModelWidgetState extends State<BohrModelWidget>
+    with SingleTickerProviderStateMixin {
   late AnimationController _controller;
 
   @override

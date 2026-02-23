@@ -48,7 +48,9 @@ class ElementCard extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(8),
         decoration: BoxDecoration(
-          color: isDark ? categoryColor.withValues(alpha: 0.15) : categoryColor.withValues(alpha: 0.1),
+          color: isDark
+              ? categoryColor.withValues(alpha: 0.15)
+              : categoryColor.withValues(alpha: 0.1),
           borderRadius: BorderRadius.circular(16),
           border: Border.all(
             color: categoryColor.withValues(alpha: 0.6),
@@ -81,7 +83,9 @@ class ElementCard extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
-                  color: isDark ? Colors.white : categoryColor.withValues(alpha: 0.8),
+                  color: isDark
+                      ? Colors.white
+                      : categoryColor.withValues(alpha: 0.8),
                   shadows: [
                     if (isDark)
                       Shadow(

@@ -11,7 +11,8 @@ class ExperimentDetailScreen extends StatefulWidget {
   State<ExperimentDetailScreen> createState() => _ExperimentDetailScreenState();
 }
 
-class _ExperimentDetailScreenState extends State<ExperimentDetailScreen> with SingleTickerProviderStateMixin {
+class _ExperimentDetailScreenState extends State<ExperimentDetailScreen>
+    with SingleTickerProviderStateMixin {
   bool _isSimulating = false;
   late AnimationController _animationController;
 
@@ -43,56 +44,92 @@ class _ExperimentDetailScreenState extends State<ExperimentDetailScreen> with Si
   }
 
   String _getLocalizedText(AppLocalizations localizations, String key) {
-     // Dynamic fallback for demo
+    // Dynamic fallback for demo
     switch (key) {
       // Titles & Descs
-      case 'volcanoExp': return localizations.volcanoExp;
-      case 'cabbageExp': return localizations.cabbageExp;
-      case 'invisibleInkExp': return localizations.invisibleInkExp;
-      case 'volcanoDesc': return localizations.volcanoDesc;
-      case 'cabbageDesc': return localizations.cabbageDesc;
-      case 'invisibleInkDesc': return localizations.invisibleInkDesc;
-      
+      case 'volcanoExp':
+        return localizations.volcanoExp;
+      case 'cabbageExp':
+        return localizations.cabbageExp;
+      case 'invisibleInkExp':
+        return localizations.invisibleInkExp;
+      case 'volcanoDesc':
+        return localizations.volcanoDesc;
+      case 'cabbageDesc':
+        return localizations.cabbageDesc;
+      case 'invisibleInkDesc':
+        return localizations.invisibleInkDesc;
+
       // Safety
-      case 'generalSafety': return localizations.generalSafety;
-      case 'hotWaterSafety': return localizations.hotWaterSafety;
-      case 'heatSafety': return localizations.heatSafety;
+      case 'generalSafety':
+        return localizations.generalSafety;
+      case 'hotWaterSafety':
+        return localizations.hotWaterSafety;
+      case 'heatSafety':
+        return localizations.heatSafety;
 
       // Explanation
-      case 'volcanoExplanation': return localizations.volcanoExplanation;
-      case 'cabbageExplanation': return localizations.cabbageExplanation;
-      case 'inkExplanation': return localizations.inkExplanation;
+      case 'volcanoExplanation':
+        return localizations.volcanoExplanation;
+      case 'cabbageExplanation':
+        return localizations.cabbageExplanation;
+      case 'inkExplanation':
+        return localizations.inkExplanation;
 
       // Ingredients
-      case 'bakingSoda': return localizations.bakingSoda;
-      case 'vinegar': return localizations.vinegar;
-      case 'foodColoring': return localizations.foodColoring;
-      case 'dishSoap': return localizations.dishSoap;
-      case 'container': return localizations.container;
-      case 'redCabbage': return localizations.redCabbage;
-      case 'water': return localizations.water;
-      case 'lemonJuice': return localizations.lemonJuice;
-      case 'cups': return localizations.cups;
-      case 'cottonSwab': return localizations.cottonSwab;
-      case 'whitePaper': return localizations.whitePaper;
-      case 'heatSource': return localizations.heatSource;
+      case 'bakingSoda':
+        return localizations.bakingSoda;
+      case 'vinegar':
+        return localizations.vinegar;
+      case 'foodColoring':
+        return localizations.foodColoring;
+      case 'dishSoap':
+        return localizations.dishSoap;
+      case 'container':
+        return localizations.container;
+      case 'redCabbage':
+        return localizations.redCabbage;
+      case 'water':
+        return localizations.water;
+      case 'lemonJuice':
+        return localizations.lemonJuice;
+      case 'cups':
+        return localizations.cups;
+      case 'cottonSwab':
+        return localizations.cottonSwab;
+      case 'whitePaper':
+        return localizations.whitePaper;
+      case 'heatSource':
+        return localizations.heatSource;
 
       // Steps
-      case 'volcanoStep1': return localizations.volcanoStep1;
-      case 'volcanoStep2': return localizations.volcanoStep2;
-      case 'volcanoStep3': return localizations.volcanoStep3;
-      case 'volcanoStep4': return localizations.volcanoStep4;
-      
-      case 'cabbageStep1': return localizations.cabbageStep1;
-      case 'cabbageStep2': return localizations.cabbageStep2;
-      case 'cabbageStep3': return localizations.cabbageStep3;
-      case 'cabbageStep4': return localizations.cabbageStep4;
+      case 'volcanoStep1':
+        return localizations.volcanoStep1;
+      case 'volcanoStep2':
+        return localizations.volcanoStep2;
+      case 'volcanoStep3':
+        return localizations.volcanoStep3;
+      case 'volcanoStep4':
+        return localizations.volcanoStep4;
 
-      case 'inkStep1': return localizations.inkStep1;
-      case 'inkStep2': return localizations.inkStep2;
-      case 'inkStep3': return localizations.inkStep3;
+      case 'cabbageStep1':
+        return localizations.cabbageStep1;
+      case 'cabbageStep2':
+        return localizations.cabbageStep2;
+      case 'cabbageStep3':
+        return localizations.cabbageStep3;
+      case 'cabbageStep4':
+        return localizations.cabbageStep4;
 
-      default: return key;
+      case 'inkStep1':
+        return localizations.inkStep1;
+      case 'inkStep2':
+        return localizations.inkStep2;
+      case 'inkStep3':
+        return localizations.inkStep3;
+
+      default:
+        return key;
     }
   }
 
@@ -135,7 +172,9 @@ class _ExperimentDetailScreenState extends State<ExperimentDetailScreen> with Si
                           theme.colorScheme.secondary.withValues(alpha: 0.1),
                         ],
                       ),
-                      border: Border.all(color: theme.colorScheme.primary.withValues(alpha: 0.2)),
+                      border: Border.all(
+                        color: theme.colorScheme.primary.withValues(alpha: 0.2),
+                      ),
                     ),
                     child: Stack(
                       alignment: Alignment.center,
@@ -143,17 +182,24 @@ class _ExperimentDetailScreenState extends State<ExperimentDetailScreen> with Si
                         // Experiment-specific effects
                         if (_isSimulating)
                           ...List.generate(12, (index) {
-                            final val = (_animationController.value * 1.5 + (index * 0.1)) % 1.0;
+                            final val =
+                                (_animationController.value * 1.5 +
+                                    (index * 0.1)) %
+                                1.0;
                             Color effectColor = theme.colorScheme.secondary;
                             IconData effectIcon = Icons.blur_on;
 
                             if (widget.experiment.title == 'volcanoExp') {
                               effectColor = Colors.orangeAccent;
                               effectIcon = Icons.local_fire_department;
-                            } else if (widget.experiment.title == 'cabbageExp') {
-                              effectColor = index % 2 == 0 ? Colors.purple : Colors.pink;
+                            } else if (widget.experiment.title ==
+                                'cabbageExp') {
+                              effectColor = index % 2 == 0
+                                  ? Colors.purple
+                                  : Colors.pink;
                               effectIcon = Icons.water_drop;
-                            } else if (widget.experiment.title == 'invisibleInkExp') {
+                            } else if (widget.experiment.title ==
+                                'invisibleInkExp') {
                               effectColor = Colors.lightBlueAccent;
                               effectIcon = Icons.auto_fix_high;
                             }
@@ -165,37 +211,57 @@ class _ExperimentDetailScreenState extends State<ExperimentDetailScreen> with Si
                                 opacity: (1.0 - val).clamp(0.0, 1.0),
                                 child: Transform.scale(
                                   scale: 0.5 + val,
-                                  child: Icon(effectIcon, size: 24, color: effectColor.withValues(alpha: 0.6)),
+                                  child: Icon(
+                                    effectIcon,
+                                    size: 24,
+                                    color: effectColor.withValues(alpha: 0.6),
+                                  ),
                                 ),
                               ),
                             );
                           }),
 
                         // Eruption effect for volcano
-                        if (_isSimulating && widget.experiment.title == 'volcanoExp')
-                           Positioned(
+                        if (_isSimulating &&
+                            widget.experiment.title == 'volcanoExp')
+                          Positioned(
                             top: 40,
                             child: Opacity(
-                              opacity: _animationController.value < 0.5 ? _animationController.value * 2 : (1 - _animationController.value) * 2,
-                              child: Icon(Icons.volcano, size: 120, color: Colors.deepOrange.withValues(alpha: 0.4)),
+                              opacity: _animationController.value < 0.5
+                                  ? _animationController.value * 2
+                                  : (1 - _animationController.value) * 2,
+                              child: Icon(
+                                Icons.volcano,
+                                size: 120,
+                                color: Colors.deepOrange.withValues(alpha: 0.4),
+                              ),
                             ),
                           ),
 
                         Transform.rotate(
-                          angle: _isSimulating ? _animationController.value * 0.2 : 0,
+                          angle: _isSimulating
+                              ? _animationController.value * 0.2
+                              : 0,
                           child: Icon(
-                            _isSimulating ? Icons.science : Icons.science_outlined, 
-                            size: 100, 
-                            color: _isSimulating 
-                                ? (widget.experiment.title == 'cabbageExp' ? Colors.purple : theme.colorScheme.secondary) 
-                                : Colors.blueAccent
+                            _isSimulating
+                                ? Icons.science
+                                : Icons.science_outlined,
+                            size: 100,
+                            color: _isSimulating
+                                ? (widget.experiment.title == 'cabbageExp'
+                                      ? Colors.purple
+                                      : theme.colorScheme.secondary)
+                                : Colors.blueAccent,
                           ),
                         ),
-                        
+
                         Positioned(
                           bottom: 16,
                           child: Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 16,
+                              vertical: 8,
+                            ),
                             decoration: BoxDecoration(
                               color: Colors.white.withValues(alpha: 0.8),
                               borderRadius: BorderRadius.circular(20),
@@ -203,13 +269,15 @@ class _ExperimentDetailScreenState extends State<ExperimentDetailScreen> with Si
                             child: Row(
                               children: [
                                 Icon(
-                                  _isSimulating ? Icons.loop : Icons.touch_app, 
-                                  size: 16, 
-                                  color: theme.colorScheme.primary
+                                  _isSimulating ? Icons.loop : Icons.touch_app,
+                                  size: 16,
+                                  color: theme.colorScheme.primary,
                                 ),
                                 const SizedBox(width: 8),
                                 Text(
-                                  _isSimulating ? 'Reaction in progress...' : 'Tap to simulate reaction',
+                                  _isSimulating
+                                      ? 'Reaction in progress...'
+                                      : 'Tap to simulate reaction',
                                   style: TextStyle(
                                     color: theme.colorScheme.primary,
                                     fontWeight: FontWeight.bold,
@@ -223,7 +291,7 @@ class _ExperimentDetailScreenState extends State<ExperimentDetailScreen> with Si
                       ],
                     ),
                   );
-                }
+                },
               ),
             ),
 
@@ -237,13 +305,17 @@ class _ExperimentDetailScreenState extends State<ExperimentDetailScreen> with Si
               ),
               child: Row(
                 children: [
-                   Container(
+                  Container(
                     padding: const EdgeInsets.all(8),
                     decoration: const BoxDecoration(
                       color: Colors.red,
                       shape: BoxShape.circle,
                     ),
-                    child: const Icon(Icons.priority_high, color: Colors.white, size: 20),
+                    child: const Icon(
+                      Icons.priority_high,
+                      color: Colors.white,
+                      size: 20,
+                    ),
                   ),
                   const SizedBox(width: 16),
                   Expanded(
@@ -252,12 +324,20 @@ class _ExperimentDetailScreenState extends State<ExperimentDetailScreen> with Si
                       children: [
                         const Text(
                           'Safety First',
-                          style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                            color: Colors.red,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                         const SizedBox(height: 4),
                         Text(
-                          _getLocalizedText(localizations, widget.experiment.safetyWarning),
-                          style: theme.textTheme.bodyMedium?.copyWith(color: Colors.red[900]),
+                          _getLocalizedText(
+                            localizations,
+                            widget.experiment.safetyWarning,
+                          ),
+                          style: theme.textTheme.bodyMedium?.copyWith(
+                            color: Colors.red[900],
+                          ),
                         ),
                       ],
                     ),
@@ -270,7 +350,10 @@ class _ExperimentDetailScreenState extends State<ExperimentDetailScreen> with Si
             // Ingredients
             Text(
               localizations.ingredients,
-              style: theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold, color: theme.colorScheme.primary),
+              style: theme.textTheme.titleLarge?.copyWith(
+                fontWeight: FontWeight.bold,
+                color: theme.colorScheme.primary,
+              ),
             ),
             const SizedBox(height: 12),
             ListView.builder(
@@ -280,18 +363,30 @@ class _ExperimentDetailScreenState extends State<ExperimentDetailScreen> with Si
               itemBuilder: (context, index) {
                 return Container(
                   margin: const EdgeInsets.only(bottom: 8),
-                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 12,
+                  ),
                   decoration: BoxDecoration(
                     color: theme.colorScheme.surface,
                     borderRadius: BorderRadius.circular(12),
-                    border: Border.all(color: Colors.grey.withValues(alpha: 0.1)),
+                    border: Border.all(
+                      color: Colors.grey.withValues(alpha: 0.1),
+                    ),
                   ),
                   child: Row(
                     children: [
-                      Icon(Icons.check_circle_outline, size: 20, color: theme.colorScheme.secondary),
+                      Icon(
+                        Icons.check_circle_outline,
+                        size: 20,
+                        color: theme.colorScheme.secondary,
+                      ),
                       const SizedBox(width: 12),
                       Text(
-                        _getLocalizedText(localizations, widget.experiment.ingredients[index]),
+                        _getLocalizedText(
+                          localizations,
+                          widget.experiment.ingredients[index],
+                        ),
                         style: theme.textTheme.bodyLarge,
                       ),
                     ],
@@ -301,11 +396,14 @@ class _ExperimentDetailScreenState extends State<ExperimentDetailScreen> with Si
             ),
 
             const SizedBox(height: 32),
-            
+
             // Steps
             Text(
               localizations.steps,
-              style: theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold, color: theme.colorScheme.primary),
+              style: theme.textTheme.titleLarge?.copyWith(
+                fontWeight: FontWeight.bold,
+                color: theme.colorScheme.primary,
+              ),
             ),
             const SizedBox(height: 12),
             ListView.separated(
@@ -319,7 +417,9 @@ class _ExperimentDetailScreenState extends State<ExperimentDetailScreen> with Si
                   decoration: BoxDecoration(
                     color: theme.colorScheme.primary.withValues(alpha: 0.03),
                     borderRadius: BorderRadius.circular(16),
-                    border: Border.all(color: theme.colorScheme.primary.withValues(alpha: 0.05)),
+                    border: Border.all(
+                      color: theme.colorScheme.primary.withValues(alpha: 0.05),
+                    ),
                   ),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -333,22 +433,32 @@ class _ExperimentDetailScreenState extends State<ExperimentDetailScreen> with Si
                           shape: BoxShape.circle,
                           boxShadow: [
                             BoxShadow(
-                              color: theme.colorScheme.primary.withValues(alpha: 0.3),
+                              color: theme.colorScheme.primary.withValues(
+                                alpha: 0.3,
+                              ),
                               blurRadius: 8,
                               offset: const Offset(0, 4),
-                            )
+                            ),
                           ],
                         ),
                         child: Text(
                           '${index + 1}',
-                          style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                       const SizedBox(width: 16),
                       Expanded(
                         child: Text(
-                          _getLocalizedText(localizations, widget.experiment.steps[index]),
-                          style: theme.textTheme.bodyLarge?.copyWith(height: 1.5),
+                          _getLocalizedText(
+                            localizations,
+                            widget.experiment.steps[index],
+                          ),
+                          style: theme.textTheme.bodyLarge?.copyWith(
+                            height: 1.5,
+                          ),
                         ),
                       ),
                     ],
@@ -365,7 +475,9 @@ class _ExperimentDetailScreenState extends State<ExperimentDetailScreen> with Si
               decoration: BoxDecoration(
                 color: theme.colorScheme.primary.withValues(alpha: 0.05),
                 borderRadius: BorderRadius.circular(24),
-                border: Border.all(color: theme.colorScheme.primary.withValues(alpha: 0.1)),
+                border: Border.all(
+                  color: theme.colorScheme.primary.withValues(alpha: 0.1),
+                ),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -378,7 +490,10 @@ class _ExperimentDetailScreenState extends State<ExperimentDetailScreen> with Si
                           color: theme.colorScheme.primary,
                           borderRadius: BorderRadius.circular(8),
                         ),
-                        child: const Icon(Icons.lightbulb_outline, color: Colors.white),
+                        child: const Icon(
+                          Icons.lightbulb_outline,
+                          color: Colors.white,
+                        ),
                       ),
                       const SizedBox(width: 16),
                       Text(
@@ -392,8 +507,11 @@ class _ExperimentDetailScreenState extends State<ExperimentDetailScreen> with Si
                   ),
                   const SizedBox(height: 16),
                   Text(
-                     _getLocalizedText(localizations, widget.experiment.explanation),
-                     style: theme.textTheme.bodyMedium?.copyWith(height: 1.6),
+                    _getLocalizedText(
+                      localizations,
+                      widget.experiment.explanation,
+                    ),
+                    style: theme.textTheme.bodyMedium?.copyWith(height: 1.6),
                   ),
                 ],
               ),

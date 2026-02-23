@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final localeProvider = NotifierProvider<LocaleNotifier, Locale>(LocaleNotifier.new);
+final localeProvider = NotifierProvider<LocaleNotifier, Locale>(
+  LocaleNotifier.new,
+);
 
 class LocaleNotifier extends Notifier<Locale> {
   @override

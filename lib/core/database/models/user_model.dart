@@ -11,7 +11,8 @@ class UserModel {
   final List<String> badges;
   final int quizzesCompleted;
   final int experimentsViewed;
-  final Map<String, String> researchJournal; // Compound ID -> Discovery Date/Notes
+  final Map<String, String>
+  researchJournal; // Compound ID -> Discovery Date/Notes
 
   UserModel({
     required this.id,
@@ -59,32 +60,34 @@ class UserModel {
   }
 
   Map<String, dynamic> toJson() => {
-        'id': id,
-        'email': email,
-        'password': password,
-        'name': name,
-        'bio': bio,
-        'phone': phone,
-        'location': location,
-        'imageUrl': imageUrl,
-        'badges': badges,
-        'quizzesCompleted': quizzesCompleted,
-        'experimentsViewed': experimentsViewed,
-        'researchJournal': researchJournal,
-      };
+    'id': id,
+    'email': email,
+    'password': password,
+    'name': name,
+    'bio': bio,
+    'phone': phone,
+    'location': location,
+    'imageUrl': imageUrl,
+    'badges': badges,
+    'quizzesCompleted': quizzesCompleted,
+    'experimentsViewed': experimentsViewed,
+    'researchJournal': researchJournal,
+  };
 
   factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
-        id: json['id'] as String,
-        email: json['email'] as String,
-        password: json['password'] as String,
-        name: json['name'] as String,
-        bio: json['bio'] as String? ?? 'مستكشف فضولي',
-        phone: json['phone'] as String? ?? '',
-        location: json['location'] as String? ?? '',
-        imageUrl: json['imageUrl'] as String? ?? 'assets/images/avatar.jpg',
-        badges: (json['badges'] as List<dynamic>?)?.map((e) => e as String).toList() ?? [],
-        quizzesCompleted: json['quizzesCompleted'] as int? ?? 0,
-        experimentsViewed: json['experimentsViewed'] as int? ?? 0,
-        researchJournal: Map<String, String>.from(json['researchJournal'] ?? {}),
-      );
+    id: json['id'] as String,
+    email: json['email'] as String,
+    password: json['password'] as String,
+    name: json['name'] as String,
+    bio: json['bio'] as String? ?? 'مستكشف فضولي',
+    phone: json['phone'] as String? ?? '',
+    location: json['location'] as String? ?? '',
+    imageUrl: json['imageUrl'] as String? ?? 'assets/images/avatar.jpg',
+    badges:
+        (json['badges'] as List<dynamic>?)?.map((e) => e as String).toList() ??
+        [],
+    quizzesCompleted: json['quizzesCompleted'] as int? ?? 0,
+    experimentsViewed: json['experimentsViewed'] as int? ?? 0,
+    researchJournal: Map<String, String>.from(json['researchJournal'] ?? {}),
+  );
 }

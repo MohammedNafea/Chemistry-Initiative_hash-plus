@@ -164,8 +164,8 @@ class _SplashScreenState extends State<SplashScreen>
                       radius: 1.5,
                       colors: [
                         Colors.transparent,
-                        Colors.black.withValues(alpha:0.3),
-                        Colors.black.withValues(alpha:0.8),
+                        Colors.black.withValues(alpha: 0.3),
+                        Colors.black.withValues(alpha: 0.8),
                       ],
                       stops: const [0.5, 0.8, 1.0],
                     ),
@@ -215,7 +215,7 @@ class _SplashScreenState extends State<SplashScreen>
                         Container(
                           width: 40,
                           height: 1,
-                          color: const Color(0xFFC6A664).withValues(alpha:0.6),
+                          color: const Color(0xFFC6A664).withValues(alpha: 0.6),
                         ),
                       ],
                     ),
@@ -259,7 +259,7 @@ class BackgroundLightPainter extends CustomPainter {
         center: Alignment(0.0 + (dx / size.width), -0.2 + (dy / size.height)),
         radius: 1.4,
         colors: [
-          const Color(0xFF5D4037).withValues(alpha:0.8), // Warm light
+          const Color(0xFF5D4037).withValues(alpha: 0.8), // Warm light
           const Color(0xFF2D1B15), // Deep chocolate
           const Color(0xFF0F0806), // Near black
         ],
@@ -320,7 +320,7 @@ class CinematicParticlePainter extends CustomPainter {
       final opacity = 0.3 + (p.z * 0.4); // Nearer = Brighter
 
       final paint = Paint()
-        ..color = const Color(0xFFFFD700).withValues(alpha:opacity)
+        ..color = const Color(0xFFFFD700).withValues(alpha: opacity)
         ..style = PaintingStyle.fill;
 
       if (blurAmount > 0) {
@@ -350,7 +350,7 @@ class UltraPremiumMoleculePainter extends CustomPainter {
 
     // 1. Back Glow
     final glowPaint = Paint()
-      ..color = const Color(0xFFC6A664).withValues(alpha:0.15)
+      ..color = const Color(0xFFC6A664).withValues(alpha: 0.15)
       ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 40);
     canvas.drawCircle(center, size.width * 0.5, glowPaint);
 
@@ -427,7 +427,7 @@ class UltraPremiumMoleculePainter extends CustomPainter {
       center + const Offset(0, 5),
       radius,
       Paint()
-        ..color = Colors.black.withValues(alpha:0.4)
+        ..color = Colors.black.withValues(alpha: 0.4)
         ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 8),
     );
 
@@ -437,7 +437,7 @@ class UltraPremiumMoleculePainter extends CustomPainter {
     final rimPaint = Paint()
       ..style = PaintingStyle.stroke
       ..strokeWidth = 1.0
-      ..color = Colors.white.withValues(alpha:0.3)
+      ..color = Colors.white.withValues(alpha: 0.3)
       ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 1);
 
     canvas.drawArc(
@@ -450,7 +450,7 @@ class UltraPremiumMoleculePainter extends CustomPainter {
 
     // Specular Highlight (Hotspot)
     final highlightPaint = Paint()
-      ..color = Colors.white.withValues(alpha:0.8)
+      ..color = Colors.white.withValues(alpha: 0.8)
       ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 2);
 
     canvas.drawOval(

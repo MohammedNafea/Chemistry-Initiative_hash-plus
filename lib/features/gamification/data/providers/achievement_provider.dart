@@ -14,7 +14,6 @@ class AchievementManager {
     final user = _ref.read(currentUserNotifierProvider);
     if (user == null) return;
 
-    
     final allBadges = AchievementRepository.getBadges();
     final matchingBadges = allBadges.where((b) => b.condition == condition);
 
@@ -23,10 +22,10 @@ class AchievementManager {
         // Unlock!
         final updatedBadges = List<String>.from(user.badges)..add(badge.id);
         final updatedUser = user.copyWith(badges: updatedBadges);
-        
+
         await AppDatabase.instance.updateUser(updatedUser);
         _ref.read(currentUserNotifierProvider.notifier).refresh();
-        
+
         // Ensure UI knows about update (optional, user provider refresh should trigger rebuilds)
       }
     }

@@ -127,8 +127,14 @@ abstract class AppLocalizations {
   /// The title of the application
   ///
   /// In en, this message translates to:
-  /// **'Chemistry Initiative'**
+  /// **'Chemistry Wonders'**
   String get appTitle;
+
+  /// No description provided for @leaderboard.
+  ///
+  /// In en, this message translates to:
+  /// **'Leaderboard'**
+  String get leaderboard;
 
   /// No description provided for @periodicTable.
   ///
@@ -435,6 +441,78 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Heat Source (Lamp/Iron)'**
   String get heatSource;
+
+  /// No description provided for @hydrogenPeroxide.
+  ///
+  /// In en, this message translates to:
+  /// **'Hydrogen Peroxide'**
+  String get hydrogenPeroxide;
+
+  /// No description provided for @yeast.
+  ///
+  /// In en, this message translates to:
+  /// **'Yeast'**
+  String get yeast;
+
+  /// No description provided for @warmWater.
+  ///
+  /// In en, this message translates to:
+  /// **'Warm Water'**
+  String get warmWater;
+
+  /// No description provided for @sugar.
+  ///
+  /// In en, this message translates to:
+  /// **'Sugar'**
+  String get sugar;
+
+  /// No description provided for @boilingWater.
+  ///
+  /// In en, this message translates to:
+  /// **'Boiling Water'**
+  String get boilingWater;
+
+  /// No description provided for @string.
+  ///
+  /// In en, this message translates to:
+  /// **'String'**
+  String get string;
+
+  /// No description provided for @jar.
+  ///
+  /// In en, this message translates to:
+  /// **'Jar'**
+  String get jar;
+
+  /// No description provided for @milk.
+  ///
+  /// In en, this message translates to:
+  /// **'Milk'**
+  String get milk;
+
+  /// No description provided for @oil.
+  ///
+  /// In en, this message translates to:
+  /// **'Oil'**
+  String get oil;
+
+  /// No description provided for @egg.
+  ///
+  /// In en, this message translates to:
+  /// **'Egg'**
+  String get egg;
+
+  /// No description provided for @effervescentTablet.
+  ///
+  /// In en, this message translates to:
+  /// **'Effervescent Tablet'**
+  String get effervescentTablet;
+
+  /// No description provided for @eyeProtection.
+  ///
+  /// In en, this message translates to:
+  /// **'Wear eye protection.'**
+  String get eyeProtection;
 
   /// No description provided for @volcanoStep1.
   ///
@@ -1420,12 +1498,6 @@ abstract class AppLocalizations {
   /// **'Invalid credentials'**
   String get invalidCredentials;
 
-  /// No description provided for @or.
-  ///
-  /// In en, this message translates to:
-  /// **'Or'**
-  String get or;
-
   /// No description provided for @continueGoogle.
   ///
   /// In en, this message translates to:
@@ -1759,13 +1831,13 @@ abstract class AppLocalizations {
   /// No description provided for @elemMgSummary.
   ///
   /// In en, this message translates to:
-  /// **'Magnesium is a shiny gray metal which burns with a brilliant white light.'**
+  /// **'Magnesium is a shiny gray solid alkaline earth metal.'**
   String get elemMgSummary;
 
   /// No description provided for @elemMgUse.
   ///
   /// In en, this message translates to:
-  /// **'Used in flares, fireworks, and lightweight alloys.'**
+  /// **'Used in flares, laptops, and human muscle function.'**
   String get elemMgUse;
 
   /// No description provided for @elemAlName.
@@ -1777,13 +1849,13 @@ abstract class AppLocalizations {
   /// No description provided for @elemAlSummary.
   ///
   /// In en, this message translates to:
-  /// **'Aluminum is a silvery-white, lightweight metal.'**
+  /// **'Aluminum is a lightweight, silvery-white, non-magnetic metal.'**
   String get elemAlSummary;
 
   /// No description provided for @elemAlUse.
   ///
   /// In en, this message translates to:
-  /// **'Used in aircraft, cans, and foils.'**
+  /// **'Used in soda cans, foil, airplanes, and window frames.'**
   String get elemAlUse;
 
   /// No description provided for @elemSiName.
@@ -1795,13 +1867,13 @@ abstract class AppLocalizations {
   /// No description provided for @elemSiSummary.
   ///
   /// In en, this message translates to:
-  /// **'Silicon is a hard, brittle crystalline solid with a blue-grey metallic lustre.'**
+  /// **'Silicon is a hard, brittle crystalline metalloid widely used in electronics.'**
   String get elemSiSummary;
 
   /// No description provided for @elemSiUse.
   ///
   /// In en, this message translates to:
-  /// **'The basis of modern electronics and computer chips.'**
+  /// **'The heart of computer chips and glass production.'**
   String get elemSiUse;
 
   /// No description provided for @elemPName.
@@ -1903,13 +1975,13 @@ abstract class AppLocalizations {
   /// No description provided for @elemCaSummary.
   ///
   /// In en, this message translates to:
-  /// **'Calcium is a soft gray alkaline earth metal.'**
+  /// **'Calcium is a grey alkaline earth metal, the most abundant metal in humans.'**
   String get elemCaSummary;
 
   /// No description provided for @elemCaUse.
   ///
   /// In en, this message translates to:
-  /// **'Essential for living organisms, particularly in cell physiology.'**
+  /// **'Found in milk, bones, teeth, and cement.'**
   String get elemCaUse;
 
   /// No description provided for @elemFeName.
@@ -1921,13 +1993,13 @@ abstract class AppLocalizations {
   /// No description provided for @elemFeSummary.
   ///
   /// In en, this message translates to:
-  /// **'Iron is a strong, ductile, and lustrous transition metal.'**
+  /// **'Iron is the most common element on Earth by mass, forming much of the core.'**
   String get elemFeSummary;
 
   /// No description provided for @elemFeUse.
   ///
   /// In en, this message translates to:
-  /// **'The most used metal, essential for construction and machinery.'**
+  /// **'Used in steel construction and found in red blood cells.'**
   String get elemFeUse;
 
   /// No description provided for @elemCuName.
@@ -1939,13 +2011,13 @@ abstract class AppLocalizations {
   /// No description provided for @elemCuSummary.
   ///
   /// In en, this message translates to:
-  /// **'Copper is a ductile, malleable metal with high thermal and electrical conductivity.'**
+  /// **'Copper is a soft, malleable, and ductile metal with very high conductivity.'**
   String get elemCuSummary;
 
   /// No description provided for @elemCuUse.
   ///
   /// In en, this message translates to:
-  /// **'Used in electrical wiring, plumbing, and coins.'**
+  /// **'Used in electrical wiring and plumbing pipes.'**
   String get elemCuUse;
 
   /// No description provided for @elemZnName.
@@ -1975,13 +2047,13 @@ abstract class AppLocalizations {
   /// No description provided for @elemAgSummary.
   ///
   /// In en, this message translates to:
-  /// **'Silver is a lustrous transition metal with the highest electrical conductivity of any element.'**
+  /// **'Silver has the highest electrical and thermal conductivity of any metal.'**
   String get elemAgSummary;
 
   /// No description provided for @elemAgUse.
   ///
   /// In en, this message translates to:
-  /// **'Used in jewelry, silverware, and electronics.'**
+  /// **'Used in jewelry, coins, and high-end electronics.'**
   String get elemAgUse;
 
   /// No description provided for @elemSnName.
@@ -2029,13 +2101,13 @@ abstract class AppLocalizations {
   /// No description provided for @elemAuSummary.
   ///
   /// In en, this message translates to:
-  /// **'Gold is a bright, slightly reddish yellow, dense, soft, malleable, and ductile metal.'**
+  /// **'Gold is a noble metal that does not tarnish and is highly valuable.'**
   String get elemAuSummary;
 
   /// No description provided for @elemAuUse.
   ///
   /// In en, this message translates to:
-  /// **'Used in jewelry, electronics, and finance.'**
+  /// **'Used in jewelry, investment, and space tech.'**
   String get elemAuUse;
 
   /// No description provided for @elemHgName.
@@ -2206,11 +2278,479 @@ abstract class AppLocalizations {
   /// **'Discovery requires more heat! Use the Bunsen burner.'**
   String get increaseHeatCatalyst;
 
+  /// No description provided for @multiplayerQuiz.
+  ///
+  /// In en, this message translates to:
+  /// **'Multiplayer Quiz'**
+  String get multiplayerQuiz;
+
+  /// No description provided for @aiTutor.
+  ///
+  /// In en, this message translates to:
+  /// **'AI Tutor'**
+  String get aiTutor;
+
+  /// No description provided for @viewIn3D.
+  ///
+  /// In en, this message translates to:
+  /// **'View in 3D'**
+  String get viewIn3D;
+
+  /// No description provided for @searchCompounds.
+  ///
+  /// In en, this message translates to:
+  /// **'Search compounds...'**
+  String get searchCompounds;
+
+  /// No description provided for @scientificInsight.
+  ///
+  /// In en, this message translates to:
+  /// **'Scientific Insight'**
+  String get scientificInsight;
+
+  /// No description provided for @gotIt.
+  ///
+  /// In en, this message translates to:
+  /// **'Got it!'**
+  String get gotIt;
+
+  /// No description provided for @challengingPlayers.
+  ///
+  /// In en, this message translates to:
+  /// **'Looking for nearby challengers...'**
+  String get challengingPlayers;
+
+  /// No description provided for @inviteHost.
+  ///
+  /// In en, this message translates to:
+  /// **'Invite (Host)'**
+  String get inviteHost;
+
+  /// No description provided for @connectedTo.
+  ///
+  /// In en, this message translates to:
+  /// **'Connected to'**
+  String get connectedTo;
+
+  /// No description provided for @hostScore.
+  ///
+  /// In en, this message translates to:
+  /// **'Host Score'**
+  String get hostScore;
+
+  /// No description provided for @guestScore.
+  ///
+  /// In en, this message translates to:
+  /// **'Guest Score'**
+  String get guestScore;
+
+  /// No description provided for @aiTutorGreeting.
+  ///
+  /// In en, this message translates to:
+  /// **'Hello Young Scientist! I am your AI Chemistry Tutor 🧪. How can I help you today?'**
+  String get aiTutorGreeting;
+
+  /// No description provided for @aiTutorHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Ask about any chemical reaction...'**
+  String get aiTutorHint;
+
+  /// No description provided for @aiTutorSystemInstruction.
+  ///
+  /// In en, this message translates to:
+  /// **'You are an expert, friendly AI Chemistry Tutor. You explain chemistry concepts clearly and simply. IMPORTANT: You must respond in the following language: {language}.'**
+  String aiTutorSystemInstruction(String language);
+
   /// No description provided for @forgotPassword.
   ///
   /// In en, this message translates to:
   /// **'Forgot Password?'**
   String get forgotPassword;
+
+  /// No description provided for @orContinueWith.
+  ///
+  /// In en, this message translates to:
+  /// **'Or continue with'**
+  String get orContinueWith;
+
+  /// No description provided for @hhVinegar.
+  ///
+  /// In en, this message translates to:
+  /// **'Vinegar'**
+  String get hhVinegar;
+
+  /// No description provided for @hhVinegarChem.
+  ///
+  /// In en, this message translates to:
+  /// **'Acetic Acid'**
+  String get hhVinegarChem;
+
+  /// No description provided for @hhVinegarDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Commonly used in cooking and cleaning.'**
+  String get hhVinegarDesc;
+
+  /// No description provided for @hhVinegarWarn.
+  ///
+  /// In en, this message translates to:
+  /// **'Safe for consumption in small amounts. Acidic.'**
+  String get hhVinegarWarn;
+
+  /// No description provided for @hhBakingSoda.
+  ///
+  /// In en, this message translates to:
+  /// **'Baking Soda'**
+  String get hhBakingSoda;
+
+  /// No description provided for @hhBakingSodaChem.
+  ///
+  /// In en, this message translates to:
+  /// **'Sodium Bicarbonate'**
+  String get hhBakingSodaChem;
+
+  /// No description provided for @hhBakingSodaDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Used in baking and as a mild abrasive cleaner.'**
+  String get hhBakingSodaDesc;
+
+  /// No description provided for @hhBakingSodaWarn.
+  ///
+  /// In en, this message translates to:
+  /// **'Safe. Produces gas when mixed with acid.'**
+  String get hhBakingSodaWarn;
+
+  /// No description provided for @hhBleach.
+  ///
+  /// In en, this message translates to:
+  /// **'Bleach'**
+  String get hhBleach;
+
+  /// No description provided for @hhBleachChem.
+  ///
+  /// In en, this message translates to:
+  /// **'Sodium Hypochlorite'**
+  String get hhBleachChem;
+
+  /// No description provided for @hhBleachDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Strong disinfectant and whitener.'**
+  String get hhBleachDesc;
+
+  /// No description provided for @hhBleachWarn.
+  ///
+  /// In en, this message translates to:
+  /// **'DANGER: Never mix with Vinegar or Ammonia! Produces toxic gas.'**
+  String get hhBleachWarn;
+
+  /// No description provided for @hhSalt.
+  ///
+  /// In en, this message translates to:
+  /// **'Table Salt'**
+  String get hhSalt;
+
+  /// No description provided for @hhSaltChem.
+  ///
+  /// In en, this message translates to:
+  /// **'Sodium Chloride'**
+  String get hhSaltChem;
+
+  /// No description provided for @hhSaltDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Essential for life, used for seasoning.'**
+  String get hhSaltDesc;
+
+  /// No description provided for @hhSaltWarn.
+  ///
+  /// In en, this message translates to:
+  /// **'Safe. Excessive intake can raise blood pressure.'**
+  String get hhSaltWarn;
+
+  /// No description provided for @hhAmmonia.
+  ///
+  /// In en, this message translates to:
+  /// **'Ammonia'**
+  String get hhAmmonia;
+
+  /// No description provided for @hhAmmoniaChem.
+  ///
+  /// In en, this message translates to:
+  /// **'Ammonium Hydroxide'**
+  String get hhAmmoniaChem;
+
+  /// No description provided for @hhAmmoniaDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Common glass cleaner.'**
+  String get hhAmmoniaDesc;
+
+  /// No description provided for @hhAmmoniaWarn.
+  ///
+  /// In en, this message translates to:
+  /// **'Irritating fumes. Do not mix with bleach.'**
+  String get hhAmmoniaWarn;
+
+  /// No description provided for @hhSugar.
+  ///
+  /// In en, this message translates to:
+  /// **'Sugar'**
+  String get hhSugar;
+
+  /// No description provided for @hhSugarChem.
+  ///
+  /// In en, this message translates to:
+  /// **'Sucrose'**
+  String get hhSugarChem;
+
+  /// No description provided for @hhSugarDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Sweetener found in many foods.'**
+  String get hhSugarDesc;
+
+  /// No description provided for @hhSugarWarn.
+  ///
+  /// In en, this message translates to:
+  /// **'Safe. High consumption leads to health issues.'**
+  String get hhSugarWarn;
+
+  /// No description provided for @hhNailPolish.
+  ///
+  /// In en, this message translates to:
+  /// **'Nail Polish Remover'**
+  String get hhNailPolish;
+
+  /// No description provided for @hhNailPolishChem.
+  ///
+  /// In en, this message translates to:
+  /// **'Acetone'**
+  String get hhNailPolishChem;
+
+  /// No description provided for @hhNailPolishDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Solvent for removing nail polish and glue.'**
+  String get hhNailPolishDesc;
+
+  /// No description provided for @hhNailPolishWarn.
+  ///
+  /// In en, this message translates to:
+  /// **'Flammable. Keep away from fire.'**
+  String get hhNailPolishWarn;
+
+  /// No description provided for @elephantExp.
+  ///
+  /// In en, this message translates to:
+  /// **'Elephant Toothpaste'**
+  String get elephantExp;
+
+  /// No description provided for @elephantDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'A giant foamy reaction that releases oxygen.'**
+  String get elephantDesc;
+
+  /// No description provided for @elephantStep1.
+  ///
+  /// In en, this message translates to:
+  /// **'Pour hydrogen peroxide into a flask.'**
+  String get elephantStep1;
+
+  /// No description provided for @elephantStep2.
+  ///
+  /// In en, this message translates to:
+  /// **'Add dish soap and food coloring.'**
+  String get elephantStep2;
+
+  /// No description provided for @elephantStep3.
+  ///
+  /// In en, this message translates to:
+  /// **'Add warm yeast solution and stand back!'**
+  String get elephantStep3;
+
+  /// No description provided for @elephantExplanation.
+  ///
+  /// In en, this message translates to:
+  /// **'The catalyst (yeast) quickly breaks down hydrogen peroxide into water and oxygen gas.'**
+  String get elephantExplanation;
+
+  /// No description provided for @crystalExp.
+  ///
+  /// In en, this message translates to:
+  /// **'Crystal Growing'**
+  String get crystalExp;
+
+  /// No description provided for @crystalDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Use salt or sugar to grow beautiful crystals.'**
+  String get crystalDesc;
+
+  /// No description provided for @crystalStep1.
+  ///
+  /// In en, this message translates to:
+  /// **'Dissolve sugar in boiling water until no more dissolves.'**
+  String get crystalStep1;
+
+  /// No description provided for @crystalStep2.
+  ///
+  /// In en, this message translates to:
+  /// **'Suspend a string in the solution without touching the bottom.'**
+  String get crystalStep2;
+
+  /// No description provided for @crystalStep3.
+  ///
+  /// In en, this message translates to:
+  /// **'Wait a few days for crystals to form.'**
+  String get crystalStep3;
+
+  /// No description provided for @crystalExplanation.
+  ///
+  /// In en, this message translates to:
+  /// **'As water cools and evaporates, the excess sugar atoms gather on the string in a regular pattern.'**
+  String get crystalExplanation;
+
+  /// No description provided for @milkArtExp.
+  ///
+  /// In en, this message translates to:
+  /// **'Magic Milk Art'**
+  String get milkArtExp;
+
+  /// No description provided for @milkArtDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Use soap to create colorful patterns in milk.'**
+  String get milkArtDesc;
+
+  /// No description provided for @milkArtStep1.
+  ///
+  /// In en, this message translates to:
+  /// **'Pour milk into a plate and add food coloring drops.'**
+  String get milkArtStep1;
+
+  /// No description provided for @milkArtStep2.
+  ///
+  /// In en, this message translates to:
+  /// **'Dip a cotton swab in dish soap.'**
+  String get milkArtStep2;
+
+  /// No description provided for @milkArtStep3.
+  ///
+  /// In en, this message translates to:
+  /// **'Touch the center of the milk and watch the colors explode.'**
+  String get milkArtStep3;
+
+  /// No description provided for @milkArtExplanation.
+  ///
+  /// In en, this message translates to:
+  /// **'The soap reduces surface tension and reacts with fats, pushing the colors around.'**
+  String get milkArtExplanation;
+
+  /// No description provided for @oilWaterExp.
+  ///
+  /// In en, this message translates to:
+  /// **'Oil & Water Volcano'**
+  String get oilWaterExp;
+
+  /// No description provided for @oilWaterDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Explore density and polarity.'**
+  String get oilWaterDesc;
+
+  /// No description provided for @oilWaterStep1.
+  ///
+  /// In en, this message translates to:
+  /// **'Fill 2/3 of a cup with oil and 1/3 with water.'**
+  String get oilWaterStep1;
+
+  /// No description provided for @oilWaterStep2.
+  ///
+  /// In en, this message translates to:
+  /// **'Add food coloring drops.'**
+  String get oilWaterStep2;
+
+  /// No description provided for @oilWaterStep3.
+  ///
+  /// In en, this message translates to:
+  /// **'Drop an effervescent tablet and watch bubbles rise.'**
+  String get oilWaterStep3;
+
+  /// No description provided for @oilWaterExplanation.
+  ///
+  /// In en, this message translates to:
+  /// **'Oil is lighter than water and doesn\'t mix due to polarity. The tablet produces CO2 that carries colored water up.'**
+  String get oilWaterExplanation;
+
+  /// No description provided for @eggExp.
+  ///
+  /// In en, this message translates to:
+  /// **'Bouncy Egg'**
+  String get eggExp;
+
+  /// No description provided for @eggDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove an eggshell with vinegar.'**
+  String get eggDesc;
+
+  /// No description provided for @eggStep1.
+  ///
+  /// In en, this message translates to:
+  /// **'Place an egg in a cup and cover it with vinegar.'**
+  String get eggStep1;
+
+  /// No description provided for @eggStep2.
+  ///
+  /// In en, this message translates to:
+  /// **'Leave it for 24-48 hours.'**
+  String get eggStep2;
+
+  /// No description provided for @eggStep3.
+  ///
+  /// In en, this message translates to:
+  /// **'Wash it with water and watch the shell disappear.'**
+  String get eggStep3;
+
+  /// No description provided for @eggExplanation.
+  ///
+  /// In en, this message translates to:
+  /// **'Acetic acid reacts with calcium carbonate in the shell, dissolving it into CO2 and water.'**
+  String get eggExplanation;
+
+  /// No description provided for @chemicalScanner.
+  ///
+  /// In en, this message translates to:
+  /// **'Chemical Scanner'**
+  String get chemicalScanner;
+
+  /// No description provided for @scanInstructions.
+  ///
+  /// In en, this message translates to:
+  /// **'Point camera at a chemical product label'**
+  String get scanInstructions;
+
+  /// No description provided for @identifying.
+  ///
+  /// In en, this message translates to:
+  /// **'Identifying compound...'**
+  String get identifying;
+
+  /// No description provided for @identifiedElements.
+  ///
+  /// In en, this message translates to:
+  /// **'Elements in this compound:'**
+  String get identifiedElements;
+
+  /// No description provided for @noCompoundFound.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not identify compound. Try again.'**
+  String get noCompoundFound;
 }
 
 class _AppLocalizationsDelegate

@@ -105,7 +105,7 @@
   "medium": "Moyen",
   "hard": "Difficile",
   "ingredients": "Ingrédients",
-  "steps": "Étapes",
+  "steps": "Etapes",
   "scientificExplanation": "Explication Scientifique",
   "generalSafety": "Toujours effectuer sous la surveillance d'un adulte.",
   "achievements": "Succès",
@@ -136,8 +136,8 @@
   "categoryLabel": "Catégorie",
   "compoundPlayground": "Terrain de Jeux des Composés",
   "selectElementsMix": "Sélectionnez des éléments à mélanger",
-  "elementsRepository": "Répertoire des Éléments",
-  "mixElements": "Mélanger les Éléments",
+  "elementsRepository": "Répertoire des Eléments",
+  "mixElements": "Mélanger les Eléments",
   "molWater": "Eau",
   "factWater": "La vie telle que nous la connaissons n'existerait pas sans ce composé !",
   "molCo2": "Dioxyde de Carbone",
@@ -161,5 +161,6 @@
   "seniorChemist": "Chimiste principal",
   "alchemist": "Alchimiste",
   "discoveryLabel": "Découverte",
+    "multiplayerQuiz": "Quiz Multijoueur",
   "forgotPassword": "Mot de passe oublié ?"
 }

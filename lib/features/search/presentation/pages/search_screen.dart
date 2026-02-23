@@ -22,7 +22,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
     super.didChangeDependencies();
     final localizations = AppLocalizations.of(context)!;
     final homeRepository = ref.read(homeRepositoryProvider);
-    
+
     _allTopics = [
       ...homeRepository.getNatureCards(localizations),
       ...homeRepository.getWaterCards(localizations),
@@ -44,8 +44,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
         _filteredTopics = _allTopics;
       } else {
         _filteredTopics = _allTopics
-            .where((topic) =>
-                topic.title.toLowerCase().contains(query))
+            .where((topic) => topic.title.toLowerCase().contains(query))
             .toList();
       }
     });
@@ -98,8 +97,11 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(Icons.search_off,
-                              size: 64, color: Colors.grey[400]),
+                          Icon(
+                            Icons.search_off,
+                            size: 64,
+                            color: Colors.grey[400],
+                          ),
                           const SizedBox(height: 16),
                           Text(
                             localizations.noResults,
@@ -115,11 +117,11 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
                       padding: const EdgeInsets.all(16),
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        crossAxisSpacing: 12,
-                        mainAxisSpacing: 12,
-                        childAspectRatio: 0.75,
-                      ),
+                            crossAxisCount: 2,
+                            crossAxisSpacing: 12,
+                            mainAxisSpacing: 12,
+                            childAspectRatio: 0.75,
+                          ),
                       itemCount: _filteredTopics.length,
                       itemBuilder: (context, index) {
                         final topic = _filteredTopics[index];

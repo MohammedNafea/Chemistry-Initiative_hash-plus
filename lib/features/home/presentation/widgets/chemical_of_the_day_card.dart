@@ -15,7 +15,9 @@ class ChemicalOfTheDayCard extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(24),
-        border: Border.all(color: theme.colorScheme.primary.withValues(alpha: 0.1)),
+        border: Border.all(
+          color: theme.colorScheme.primary.withValues(alpha: 0.1),
+        ),
       ),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(24),
@@ -51,7 +53,9 @@ class ChemicalOfTheDayCard extends StatelessWidget {
                           shape: BoxShape.circle,
                           boxShadow: [
                             BoxShadow(
-                              color: theme.colorScheme.primary.withValues(alpha: 0.3),
+                              color: theme.colorScheme.primary.withValues(
+                                alpha: 0.3,
+                              ),
                               blurRadius: 10,
                             ),
                           ],
@@ -73,9 +77,9 @@ class ChemicalOfTheDayCard extends StatelessWidget {
                             Row(
                               children: [
                                 Icon(
-                                  Icons.bolt_rounded, 
-                                  size: 14, 
-                                  color: theme.colorScheme.secondary
+                                  Icons.bolt_rounded,
+                                  size: 14,
+                                  color: theme.colorScheme.secondary,
                                 ),
                                 const SizedBox(width: 6),
                                 Text(
@@ -102,7 +106,9 @@ class ChemicalOfTheDayCard extends StatelessWidget {
                             Text(
                               chemical.summary,
                               style: theme.textTheme.bodyMedium?.copyWith(
-                                color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
+                                color: theme.colorScheme.onSurface.withValues(
+                                  alpha: 0.7,
+                                ),
                                 height: 1.4,
                               ),
                               maxLines: 2,

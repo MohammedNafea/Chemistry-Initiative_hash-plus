@@ -5,10 +5,13 @@ class ChemistryParticleBackground extends StatefulWidget {
   const ChemistryParticleBackground({super.key});
 
   @override
-  State<ChemistryParticleBackground> createState() => _ChemistryParticleBackgroundState();
+  State<ChemistryParticleBackground> createState() =>
+      _ChemistryParticleBackgroundState();
 }
 
-class _ChemistryParticleBackgroundState extends State<ChemistryParticleBackground> with SingleTickerProviderStateMixin {
+class _ChemistryParticleBackgroundState
+    extends State<ChemistryParticleBackground>
+    with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   final List<Particle> _particles = [];
   final Random _random = Random();
@@ -22,15 +25,17 @@ class _ChemistryParticleBackgroundState extends State<ChemistryParticleBackgroun
     )..repeat();
 
     for (int i = 0; i < 30; i++) {
-      _particles.add(Particle(
-        offset: Offset(_random.nextDouble(), _random.nextDouble()),
-        size: _random.nextDouble() * 20 + 5,
-        velocity: Offset(
-          (_random.nextDouble() - 0.5) * 0.001,
-          (_random.nextDouble() - 0.5) * 0.001,
+      _particles.add(
+        Particle(
+          offset: Offset(_random.nextDouble(), _random.nextDouble()),
+          size: _random.nextDouble() * 20 + 5,
+          velocity: Offset(
+            (_random.nextDouble() - 0.5) * 0.001,
+            (_random.nextDouble() - 0.5) * 0.001,
+          ),
+          type: _random.nextInt(3),
         ),
-        type: _random.nextInt(3),
-      ));
+      );
     }
   }
 
@@ -44,7 +49,7 @@ class _ChemistryParticleBackgroundState extends State<ChemistryParticleBackgroun
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final isDark = theme.brightness == Brightness.dark;
-    
+
     return AnimatedBuilder(
       animation: _controller,
       builder: (context, child) {
@@ -60,8 +65,12 @@ class _ChemistryParticleBackgroundState extends State<ChemistryParticleBackgroun
           size: Size.infinite,
           painter: ParticlePainter(
             particles: _particles,
-            primaryColor: theme.colorScheme.primary.withValues(alpha: isDark ? 0.15 : 0.1),
-            accentColor: theme.colorScheme.secondary.withValues(alpha: isDark ? 0.1 : 0.05),
+            primaryColor: theme.colorScheme.primary.withValues(
+              alpha: isDark ? 0.15 : 0.1,
+            ),
+            accentColor: theme.colorScheme.secondary.withValues(
+              alpha: isDark ? 0.1 : 0.05,
+            ),
           ),
         );
       },
@@ -75,7 +84,12 @@ class Particle {
   Offset velocity;
   int type; // 0: atom, 1: complex, 2: hexagon
 
-  Particle({required this.offset, required this.size, required this.velocity, required this.type});
+  Particle({
+    required this.offset,
+    required this.size,
+    required this.velocity,
+    required this.type,
+  });
 }
 
 class ParticlePainter extends CustomPainter {
@@ -83,7 +97,11 @@ class ParticlePainter extends CustomPainter {
   final Color primaryColor;
   final Color accentColor;
 
-  ParticlePainter({required this.particles, required this.primaryColor, required this.accentColor});
+  ParticlePainter({
+    required this.particles,
+    required this.primaryColor,
+    required this.accentColor,
+  });
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -96,11 +114,17 @@ class ParticlePainter extends CustomPainter {
     // Draw Bonds first
     for (int i = 0; i < particles.length; i++) {
       final p1 = particles[i];
-      final pos1 = Offset(p1.offset.dx * size.width, p1.offset.dy * size.height);
+      final pos1 = Offset(
+        p1.offset.dx * size.width,
+        p1.offset.dy * size.height,
+      );
 
       for (int j = i + 1; j < particles.length; j++) {
         final p2 = particles[j];
-        final pos2 = Offset(p2.offset.dx * size.width, p2.offset.dy * size.height);
+        final pos2 = Offset(
+          p2.offset.dx * size.width,
+          p2.offset.dy * size.height,
+        );
 
         final distance = (pos1 - pos2).distance;
         if (distance < maxDistance) {
@@ -113,7 +137,10 @@ class ParticlePainter extends CustomPainter {
 
     // Draw Nodes
     for (var particle in particles) {
-      final center = Offset(particle.offset.dx * size.width, particle.offset.dy * size.height);
+      final center = Offset(
+        particle.offset.dx * size.width,
+        particle.offset.dy * size.height,
+      );
       paint.color = primaryColor;
 
       switch (particle.type) {
@@ -124,7 +151,11 @@ class ParticlePainter extends CustomPainter {
           break;
         case 1: // Electron Shell feel
           canvas.drawCircle(center, particle.size / 2, paint);
-          canvas.drawCircle(center, particle.size / 4, paint..color = accentColor);
+          canvas.drawCircle(
+            center,
+            particle.size / 4,
+            paint..color = accentColor,
+          );
           paint.style = PaintingStyle.stroke;
           break;
         case 2: // Benzene fragment

@@ -41,7 +41,9 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
     final localizations = AppLocalizations.of(context)!;
 
     if (user == null) {
-      return Center(child: Text(localizations.user)); // Should ideally be "Please login"
+      return Center(
+        child: Text(localizations.user),
+      ); // Should ideally be "Please login"
     }
 
     return Scaffold(
@@ -51,27 +53,24 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
       body: CustomScrollView(
         physics: const BouncingScrollPhysics(),
         slivers: [
-          _ProfileSliverAppBar(
-            user: user,
-            localizations: localizations,
-          ),
+          _ProfileSliverAppBar(user: user, localizations: localizations),
           SliverToBoxAdapter(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                   const SizedBox(height: 20),
-                   _SectionHeader(title: localizations.achievements),
-                   const SizedBox(height: 10),
-                   _BadgesSection(userBadges: user.badges, localizations: localizations),
+                  const SizedBox(height: 20),
+                  _SectionHeader(title: localizations.achievements),
+                  const SizedBox(height: 10),
+                  _BadgesSection(
+                    userBadges: user.badges,
+                    localizations: localizations,
+                  ),
                   const SizedBox(height: 30),
                   _SectionHeader(title: localizations.contactInfo),
                   const SizedBox(height: 10),
-                  _ContactInfoSection(
-                    user: user,
-                    localizations: localizations,
-                  ),
+                  _ContactInfoSection(user: user, localizations: localizations),
                   const SizedBox(height: 30),
                   _SectionHeader(title: localizations.settings),
                   const SizedBox(height: 10),
@@ -96,14 +95,21 @@ class _BadgesSection extends StatelessWidget {
   const _BadgesSection({required this.userBadges, required this.localizations});
 
   String _getLocalizedText(String key) {
-     switch (key) {
-      case 'badgeNewScientist': return localizations.badgeNewScientist;
-      case 'badgeQuizMaster': return localizations.badgeQuizMaster;
-      case 'badgeSafetyExpert': return localizations.badgeSafetyExpert;
-      case 'badgeNewScientistDesc': return localizations.badgeNewScientistDesc;
-      case 'badgeQuizMasterDesc': return localizations.badgeQuizMasterDesc;
-      case 'badgeSafetyExpertDesc': return localizations.badgeSafetyExpertDesc;
-      default: return key;
+    switch (key) {
+      case 'badgeNewScientist':
+        return localizations.badgeNewScientist;
+      case 'badgeQuizMaster':
+        return localizations.badgeQuizMaster;
+      case 'badgeSafetyExpert':
+        return localizations.badgeSafetyExpert;
+      case 'badgeNewScientistDesc':
+        return localizations.badgeNewScientistDesc;
+      case 'badgeQuizMasterDesc':
+        return localizations.badgeQuizMasterDesc;
+      case 'badgeSafetyExpertDesc':
+        return localizations.badgeSafetyExpertDesc;
+      default:
+        return key;
     }
   }
 
@@ -133,16 +139,20 @@ class _BadgesSection extends StatelessWidget {
                     padding: const EdgeInsets.all(12),
                     decoration: BoxDecoration(
                       color: isUnlocked
-                          ? (isDark ? Colors.amber.withValues(alpha: 0.2) : Colors.amber.withValues(alpha: 0.2))
+                          ? (isDark
+                                ? Colors.amber.withValues(alpha: 0.2)
+                                : Colors.amber.withValues(alpha: 0.2))
                           : (isDark ? Colors.grey[800] : Colors.grey[300]),
                       shape: BoxShape.circle,
-                      border: isUnlocked ? Border.all(color: Colors.amber, width: 2) : null,
+                      border: isUnlocked
+                          ? Border.all(color: Colors.amber, width: 2)
+                          : null,
                     ),
                     child: Icon(
                       Icons.star_rounded, // Placeholder for badge icon
                       size: 32,
                       color: isUnlocked ? Colors.amber : Colors.grey,
-                    ), 
+                    ),
                   ),
                 ),
                 const SizedBox(height: 8),
@@ -152,8 +162,12 @@ class _BadgesSection extends StatelessWidget {
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   style: theme.textTheme.bodySmall?.copyWith(
-                    fontWeight: isUnlocked ? FontWeight.bold : FontWeight.normal,
-                    color: isUnlocked ? (isDark ? Colors.white : Colors.black) : Colors.grey,
+                    fontWeight: isUnlocked
+                        ? FontWeight.bold
+                        : FontWeight.normal,
+                    color: isUnlocked
+                        ? (isDark ? Colors.white : Colors.black)
+                        : Colors.grey,
                     fontSize: 10,
                   ),
                 ),
@@ -169,10 +183,7 @@ class _BadgesSection extends StatelessWidget {
 class _ProfileSliverAppBar extends StatelessWidget {
   final UserModel user;
   final AppLocalizations localizations;
-  const _ProfileSliverAppBar({
-    required this.user,
-    required this.localizations,
-  });
+  const _ProfileSliverAppBar({required this.user, required this.localizations});
 
   @override
   Widget build(BuildContext context) {
@@ -261,7 +272,9 @@ class _ProfileSliverAppBar extends StatelessWidget {
                   ),
                   child: CircleAvatar(
                     radius: 65,
-                    backgroundImage: ImageHelper.getImageProvider(user.imageUrl),
+                    backgroundImage: ImageHelper.getImageProvider(
+                      user.imageUrl,
+                    ),
                     backgroundColor: Colors.white,
                   ),
                 ),
@@ -291,7 +304,9 @@ class _ProfileSliverAppBar extends StatelessWidget {
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 12,
-                      color: isDark ? Colors.white70 : AppColors.truffle.withAlpha(230),
+                      color: isDark
+                          ? Colors.white70
+                          : AppColors.truffle.withAlpha(230),
                     ),
                   ),
                 ),
@@ -326,10 +341,7 @@ class _SectionHeader extends StatelessWidget {
 class _ContactInfoSection extends ConsumerWidget {
   final UserModel user;
   final AppLocalizations localizations;
-  const _ContactInfoSection({
-    required this.user,
-    required this.localizations,
-  });
+  const _ContactInfoSection({required this.user, required this.localizations});
 
   Future<void> _showEditSheet(
     BuildContext context,
@@ -423,7 +435,10 @@ class _ContactInfoSection extends ConsumerWidget {
               keyboardType: TextInputType.emailAddress,
               onSave: (val) async {
                 final updated = user.copyWith(email: val);
-                await ProfileRepository.instance.updateProfile(updated, previousEmail: user.email);
+                await ProfileRepository.instance.updateProfile(
+                  updated,
+                  previousEmail: user.email,
+                );
                 ref.read(currentUserNotifierProvider.notifier).refresh();
               },
             );
@@ -444,7 +459,10 @@ class _ContactInfoSection extends ConsumerWidget {
               keyboardType: TextInputType.phone,
               onSave: (val) async {
                 final updated = user.copyWith(phone: val);
-                await ProfileRepository.instance.updateProfile(updated, previousEmail: user.email);
+                await ProfileRepository.instance.updateProfile(
+                  updated,
+                  previousEmail: user.email,
+                );
                 ref.read(currentUserNotifierProvider.notifier).refresh();
               },
             );
@@ -464,7 +482,10 @@ class _ContactInfoSection extends ConsumerWidget {
               keyboardType: TextInputType.text,
               onSave: (val) async {
                 final updated = user.copyWith(location: val);
-                await ProfileRepository.instance.updateProfile(updated, previousEmail: user.email);
+                await ProfileRepository.instance.updateProfile(
+                  updated,
+                  previousEmail: user.email,
+                );
                 ref.read(currentUserNotifierProvider.notifier).refresh();
               },
             );
@@ -513,6 +534,38 @@ class _SettingsSection extends ConsumerWidget {
                     themeNotifier.value = value
                         ? ThemeMode.dark
                         : ThemeMode.light;
+                  },
+                ),
+              ),
+            );
+          },
+        ),
+        const SizedBox(height: 12),
+        // High Contrast Mode Toggle
+        ValueListenableBuilder<bool>(
+          valueListenable: highContrastNotifier,
+          builder: (context, isHighContrast, child) {
+            final isDark = Theme.of(context).brightness == Brightness.dark;
+            return Card(
+              margin: EdgeInsets.zero,
+              child: ListTile(
+                leading: Container(
+                  padding: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: isDark ? const Color(0xFF2A2831) : AppColors.sand,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Icon(
+                    FontAwesomeIcons.eye,
+                    color: isDark ? Colors.white : AppColors.truffle,
+                    size: 18,
+                  ),
+                ),
+                title: const Text('وضع عمى الألوان (Color Blind)'),
+                trailing: Switch.adaptive(
+                  value: isHighContrast,
+                  onChanged: (value) {
+                    highContrastNotifier.value = value;
                   },
                 ),
               ),
@@ -661,12 +714,10 @@ class _ActionButtons extends ConsumerWidget {
             onPressed: () async {
               await AuthRepository.instance.logout();
               ref.read(currentUserNotifierProvider.notifier).refresh();
-              
+
               if (context.mounted) {
                 Navigator.of(context).pushAndRemoveUntil(
-                  MaterialPageRoute(
-                    builder: (context) => const LoginScreen(),
-                  ),
+                  MaterialPageRoute(builder: (context) => const LoginScreen()),
                   (route) => false,
                 );
               }

@@ -9,7 +9,10 @@ class AppLocalizationsAr extends AppLocalizations {
   AppLocalizationsAr([String locale = 'ar']) : super(locale);
 
   @override
-  String get appTitle => 'مبادرة الكيمياء';
+  String get appTitle => 'عَجَائِبُ الكِيْمِيَاء';
+
+  @override
+  String get leaderboard => 'لوحة المتصدرين';
 
   @override
   String get periodicTable => 'الجدول الدوري التفاعلي';
@@ -172,6 +175,42 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get heatSource => 'مصدر حرارة (مصباح/مكواة)';
+
+  @override
+  String get hydrogenPeroxide => 'بيروكسيد الهيدروجين';
+
+  @override
+  String get yeast => 'خميرة';
+
+  @override
+  String get warmWater => 'ماء دافئ';
+
+  @override
+  String get sugar => 'سكر';
+
+  @override
+  String get boilingWater => 'ماء مغلي';
+
+  @override
+  String get string => 'خيط';
+
+  @override
+  String get jar => 'جرة/وعاء';
+
+  @override
+  String get milk => 'حليب';
+
+  @override
+  String get oil => 'زيت';
+
+  @override
+  String get egg => 'بيضة';
+
+  @override
+  String get effervescentTablet => 'قرص فوار';
+
+  @override
+  String get eyeProtection => 'ارتدِ نظارات واقية.';
 
   @override
   String get volcanoStep1 => 'ضع الوعاء في صينية.';
@@ -493,7 +532,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get dailyLifeSection => 'الحياة اليومية';
 
   @override
-  String get welcomeMessage => 'أهلاً بك في عجائب الكيمياء';
+  String get welcomeMessage => 'أهلاً بك في عَجَائِبُ الكِيْمِيَاء';
 
   @override
   String get contactInfo => 'معلومات الاتصال';
@@ -681,9 +720,6 @@ class AppLocalizationsAr extends AppLocalizations {
   String get invalidCredentials => 'بيانات الدخول غير صحيحة';
 
   @override
-  String get or => 'أو';
-
-  @override
   String get continueGoogle => 'متابعة مع جوجل';
 
   @override
@@ -864,31 +900,32 @@ class AppLocalizationsAr extends AppLocalizations {
   String get elemMgName => 'المغنيسيوم';
 
   @override
-  String get elemMgSummary =>
-      'المغنيسيوم معدن رمادي لامع يحترق بضوء أبيض ساطع.';
+  String get elemMgSummary => 'المغنيسيوم فلز قلوي ترابي صلب رمادي لامع.';
 
   @override
   String get elemMgUse =>
-      'يستخدم في المشاعل والألعاب النارية والسبائك خفيفة الوزن.';
+      'يستخدم في كشافات الإضاءة والمحمول ووظائف العضلات عند الإنسان.';
 
   @override
   String get elemAlName => 'الألومنيوم';
 
   @override
-  String get elemAlSummary => 'الألومنيوم معدن فضي أبيض خفيف الوزن.';
+  String get elemAlSummary =>
+      'الألومنيوم فلز خفيف الوزن أبيض فضي وغير مغناطيسي.';
 
   @override
-  String get elemAlUse => 'يستخدم في الطائرات والعلب والرقائق.';
+  String get elemAlUse =>
+      'يستخدم في علب الصودا والرقائق والطائرات وإطارات النوافذ.';
 
   @override
   String get elemSiName => 'السيليكون';
 
   @override
   String get elemSiSummary =>
-      'السيليكون مادة صلبة بلورية هشة ذات لمعان معدني أزرق رمادي.';
+      'السيليكون شبه فلز بلوري صلب وقصف يستخدم على نطاق واسع في الإلكترونيات.';
 
   @override
-  String get elemSiUse => 'أساس الإلكترونيات الحديثة ورقائق الكمبيوتر.';
+  String get elemSiUse => 'قلب رقائق الكمبيوتر وإنتاج الزجاج.';
 
   @override
   String get elemPName => 'الفوسفور';
@@ -944,30 +981,32 @@ class AppLocalizationsAr extends AppLocalizations {
   String get elemCaName => 'الكالسيوم';
 
   @override
-  String get elemCaSummary => 'الكالسيوم معدن أرضي قلوي رمادي ناعم.';
+  String get elemCaSummary =>
+      'الكالسيوم فلز قلوي ترابي رمادي، وهو أكثر الفلزات وفرة في جسم الإنسان.';
 
   @override
-  String get elemCaUse => 'ضروري للكائنات الحية، وخاصة في فسيولوجيا الخلية.';
+  String get elemCaUse => 'يوجد في الحليب والعظام والأسنان والأسمنت.';
 
   @override
   String get elemFeName => 'الحديد';
 
   @override
-  String get elemFeSummary => 'الحديد معدن انتقالي قوي وطيع ولامع.';
+  String get elemFeSummary =>
+      'الحديد هو العنصر الأكثر شيوعاً على الأرض من حيث الكتلة، ويكوّن معظم اللب.';
 
   @override
-  String get elemFeUse => 'المعدن الأكثر استخداماً، ضروري للبناء والآلات.';
+  String get elemFeUse =>
+      'يستخدم في بناء الفولاذ والمركبات ويوجد في خلايا الدم الحمراء.';
 
   @override
   String get elemCuName => 'النحاس';
 
   @override
   String get elemCuSummary =>
-      'النحاس معدن طيع وقابل للطرق ذو موصلية حرارية وكهربائية عالية.';
+      'النحاس فلز ناعم وقابل للطرق والسحب مع موصلية عالية جداً للكهرباء.';
 
   @override
-  String get elemCuUse =>
-      'يستخدم في الأسلاك الكهربائية والسباكة والعملات المعدنية.';
+  String get elemCuUse => 'يستخدم في الأسلاك الكهربائية وأنابيب السباكة.';
 
   @override
   String get elemZnName => 'الزنك';
@@ -983,10 +1022,11 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get elemAgSummary =>
-      'الفضة معدن انتقالي لامع يتمتع بأعلى موصلية كهربائية لأي عنصر.';
+      'تتميز الفضة بأعلى موصلية كهربائية وحرارية بين جميع الفلزات.';
 
   @override
-  String get elemAgUse => 'تستخدم في المجوهرات والأواني الفضية والإلكترونيات.';
+  String get elemAgUse =>
+      'تستخدم في المجوهرات والعملات المعدنية والإلكترونيات عالية الجودة.';
 
   @override
   String get elemSnName => 'القصدير';
@@ -1010,11 +1050,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get elemAuName => 'الذهب';
 
   @override
-  String get elemAuSummary =>
-      'الذهب معدن أصفر محمر قليلاً، كثيف، ناعم، مرن، وطيع.';
+  String get elemAuSummary => 'الذهب فلز نبيل لا يصدأ وذو قيمة عالية جداً.';
 
   @override
-  String get elemAuUse => 'يستخدم في المجوهرات والإلكترونيات والتمويل.';
+  String get elemAuUse => 'يستخدم في المجوهرات والاستثمار وتكنولوجيا الفضاء.';
 
   @override
   String get elemHgName => 'الزئبق';
@@ -1109,5 +1148,251 @@ class AppLocalizationsAr extends AppLocalizations {
       'الاكتشاف يتطلب حرارة أعلى! استخدم موقد بنزن.';
 
   @override
+  String get multiplayerQuiz => 'تحدي الأسئلة المتعددة';
+
+  @override
+  String get aiTutor => 'المعلم الذكي';
+
+  @override
+  String get viewIn3D => 'عرض ثلاثي الأبعاد';
+
+  @override
+  String get searchCompounds => 'البحث عن المركبات...';
+
+  @override
+  String get scientificInsight => 'نظرة علمية';
+
+  @override
+  String get gotIt => 'حسناً!';
+
+  @override
+  String get challengingPlayers => 'البحث عن متنافسين قريبين...';
+
+  @override
+  String get inviteHost => 'دعوة (مضيف)';
+
+  @override
+  String get connectedTo => 'متصل بـ';
+
+  @override
+  String get hostScore => 'نقاط المضيف';
+
+  @override
+  String get guestScore => 'نقاط الضيف';
+
+  @override
+  String get aiTutorGreeting =>
+      'مرحباً أيها العالم الشاب! أنا مساعدك الذكي في الكيمياء 🧪. كيف يمكنني مساعدتك اليوم؟';
+
+  @override
+  String get aiTutorHint => 'اسأل عن أي تفاعل كيميائي...';
+
+  @override
+  String aiTutorSystemInstruction(String language) {
+    return 'أنت معلم كيمياء خبير وودود بالذكاء الاصطناعي. تشرح مفاهيم الكيمياء بوضوح وبساطة. هام: يجب أن ترسل ردك باللغة التالية: $language.';
+  }
+
+  @override
   String get forgotPassword => 'نسيت كلمة المرور؟';
+
+  @override
+  String get orContinueWith => 'أو تابع باستخدام';
+
+  @override
+  String get hhVinegar => 'الخل';
+
+  @override
+  String get hhVinegarChem => 'حمض الخليك';
+
+  @override
+  String get hhVinegarDesc => 'يُستخدم عادةً في الطبخ والتنظيف.';
+
+  @override
+  String get hhVinegarWarn => 'آمن للاستهلاك بكميات صغيرة. حمضي.';
+
+  @override
+  String get hhBakingSoda => 'بيكربونات الصودا';
+
+  @override
+  String get hhBakingSodaChem => 'بيكربونات الصوديوم';
+
+  @override
+  String get hhBakingSodaDesc => 'يُستخدم في الخبز وكمنظف كاشط خفيف.';
+
+  @override
+  String get hhBakingSodaWarn => 'آمن. ينتج غازاً عند خلطه مع الحمض.';
+
+  @override
+  String get hhBleach => 'المبيّض (الكلور)';
+
+  @override
+  String get hhBleachChem => 'هيبوكلوريت الصوديوم';
+
+  @override
+  String get hhBleachDesc => 'مطهر ومبيّض قوي.';
+
+  @override
+  String get hhBleachWarn =>
+      'خطير: لا تخلطه أبداً مع الخل أو الأمونيا! ينتج غازاً ساماً.';
+
+  @override
+  String get hhSalt => 'ملح الطعام';
+
+  @override
+  String get hhSaltChem => 'كلوريد الصوديوم';
+
+  @override
+  String get hhSaltDesc => 'ضروري للحياة، يُستخدم كتوابل.';
+
+  @override
+  String get hhSaltWarn => 'آمن. الإفراط في تناوله يرفع ضغط الدم.';
+
+  @override
+  String get hhAmmonia => 'الأمونيا';
+
+  @override
+  String get hhAmmoniaChem => 'هيدروكسيد الأمونيوم';
+
+  @override
+  String get hhAmmoniaDesc => 'منظف زجاج شائع.';
+
+  @override
+  String get hhAmmoniaWarn => 'أبخرة مزعجة. لا تخلطه مع المبيّض.';
+
+  @override
+  String get hhSugar => 'السكر';
+
+  @override
+  String get hhSugarChem => 'السكروز';
+
+  @override
+  String get hhSugarDesc => 'مُحلّي موجود في العديد من الأطعمة.';
+
+  @override
+  String get hhSugarWarn => 'آمن. الاستهلاك المفرط يؤدي لمشاكل صحية.';
+
+  @override
+  String get hhNailPolish => 'مزيل طلاء الأظافر';
+
+  @override
+  String get hhNailPolishChem => 'الأسيتون';
+
+  @override
+  String get hhNailPolishDesc => 'مذيب لإزالة طلاء الأظافر والصمغ.';
+
+  @override
+  String get hhNailPolishWarn => 'قابل للاشتعال. أبعده عن النار.';
+
+  @override
+  String get elephantExp => 'معجون أسنان الفيل';
+
+  @override
+  String get elephantDesc => 'تفاعل برغوي ضخم يطلق الأكسجين.';
+
+  @override
+  String get elephantStep1 => 'ضع بيروكسيد الهيدروجين في قارورة.';
+
+  @override
+  String get elephantStep2 => 'أضف صابون الأطباق وملون الطعام.';
+
+  @override
+  String get elephantStep3 => 'أضف محلول الخميرة الدافئ وابتعد!';
+
+  @override
+  String get elephantExplanation =>
+      'يعمل المحفز (الخميرة) على تكسير بيروكسيد الهيدروجين بسرعة إلى ماء وغاز الأكسجين.';
+
+  @override
+  String get crystalExp => 'تنمية البلورات';
+
+  @override
+  String get crystalDesc => 'استخدم الملح أو السكر لتنمية بلورات جميلة.';
+
+  @override
+  String get crystalStep1 =>
+      'قم بإذابة السكر في ماء مغلي حتى يتوقف عن الذوبان.';
+
+  @override
+  String get crystalStep2 => 'علق خيطاً في المحلول دون لمس القاع.';
+
+  @override
+  String get crystalStep3 => 'انتظر بضعة أيام لتشكل البلورات.';
+
+  @override
+  String get crystalExplanation =>
+      'بينما يبرد الماء ويتبخر، تصبح ذرات السكر زائدة وتتجمع على الخيط مكونة بلورات منتظمة.';
+
+  @override
+  String get milkArtExp => 'فن الحليب السحري';
+
+  @override
+  String get milkArtDesc => 'استخدم الصابون لإنشاء أنماط ملونة في الحليب.';
+
+  @override
+  String get milkArtStep1 => 'صب الحليب في طبق وأضف قطرات ملون الطعام.';
+
+  @override
+  String get milkArtStep2 => 'اغمس عود قطني في سائل الجلي.';
+
+  @override
+  String get milkArtStep3 => 'المس مركز الحليب وشاهد الألوان تتفجر.';
+
+  @override
+  String get milkArtExplanation =>
+      'يقلل الصابون من التوتر السطحي للحليب ويتفاعل مع الدهون، مما يدفع الألوان للحركة.';
+
+  @override
+  String get oilWaterExp => 'بركان الزيت والماء';
+
+  @override
+  String get oilWaterDesc => 'استكشف الكثافة والقطبية.';
+
+  @override
+  String get oilWaterStep1 => 'املأ ثلثي الكوب بالزيت والثلث بالماء.';
+
+  @override
+  String get oilWaterStep2 => 'أضف قطرات من ملون الطعام.';
+
+  @override
+  String get oilWaterStep3 => 'ألقِ قرصاً فوّاراً وشاهد فقاعات الألوان تصعد.';
+
+  @override
+  String get oilWaterExplanation =>
+      'الزيت أخف من الماء ولا يختلط به بسبب القطبية. القرص الفوار ينتج ثاني أكسيد الكربون الذي يحمل الماء الملون للأعلى.';
+
+  @override
+  String get eggExp => 'البيضة النطاطة';
+
+  @override
+  String get eggDesc => 'أزل قشرة البيضة بالخل.';
+
+  @override
+  String get eggStep1 => 'ضع بيضة في كوب وغطها بالخل تماماً.';
+
+  @override
+  String get eggStep2 => 'اتركها لمدة 24-48 ساعة.';
+
+  @override
+  String get eggStep3 =>
+      'اغسلها بالماء وشاهد القشرة وهي تختفي والبيضة تصبح مرنة.';
+
+  @override
+  String get eggExplanation =>
+      'حمض الخليك يتفاعل مع كربونات الكالسيوم في القشرة ويحولها لثاني أكسيد الكربون وماء، تاركاً غشاء البيضة الداخلي.';
+
+  @override
+  String get chemicalScanner => 'الماسح الكيميائي';
+
+  @override
+  String get scanInstructions => 'وجه الكاميرا نحو ملصق المنتج الكيميائي';
+
+  @override
+  String get identifying => 'جاري التعرف على المركب...';
+
+  @override
+  String get identifiedElements => 'العناصر المكونة لهذا المركب:';
+
+  @override
+  String get noCompoundFound =>
+      'لم نتمكن من التعرف على هذا المركب. حاول مرة أخرى.';
 }

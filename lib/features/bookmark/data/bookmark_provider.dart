@@ -2,7 +2,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 /// Provider for bookmarked topics - shared state across QuestionPage and BookmarkScreen.
 final bookmarkProvider =
-    NotifierProvider<BookmarkNotifier, List<Map<String, String>>>(BookmarkNotifier.new);
+    NotifierProvider<BookmarkNotifier, List<Map<String, String>>>(
+      BookmarkNotifier.new,
+    );
 
 class BookmarkNotifier extends Notifier<List<Map<String, String>>> {
   @override

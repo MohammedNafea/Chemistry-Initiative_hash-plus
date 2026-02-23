@@ -18,9 +18,11 @@ class QuestionPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
     final isDark = theme.brightness == Brightness.dark;
-    
+
     // Instead of hardcoded darkBrown, use primary color from theme or a specific dark shade if needed
-    final primaryColor = isDark ? theme.colorScheme.primary : const Color(0xFF5C4033);
+    final primaryColor = isDark
+        ? theme.colorScheme.primary
+        : const Color(0xFF5C4033);
     final backgroundColor = theme.scaffoldBackgroundColor;
     final textColor = isDark ? Colors.white : const Color(0xFF5C4033);
     final descriptionColor = isDark ? Colors.grey[300] : Colors.black87;
@@ -93,8 +95,12 @@ class QuestionPage extends ConsumerWidget {
                           Expanded(
                             child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: isDark ? Colors.grey[800] : Colors.white,
-                                foregroundColor: isDark ? Colors.white : primaryColor,
+                                backgroundColor: isDark
+                                    ? Colors.grey[800]
+                                    : Colors.white,
+                                foregroundColor: isDark
+                                    ? Colors.white
+                                    : primaryColor,
                                 padding: const EdgeInsets.symmetric(
                                   vertical: 14,
                                 ),
@@ -119,11 +125,17 @@ class QuestionPage extends ConsumerWidget {
                                     localizations.backToHome,
                                     style: TextStyle(
                                       fontSize: 16,
-                                      color: isDark ? Colors.white : primaryColor,
+                                      color: isDark
+                                          ? Colors.white
+                                          : primaryColor,
                                     ),
                                   ),
                                   const SizedBox(width: 6),
-                                  Icon(Icons.home, size: 20, color: isDark ? Colors.white : primaryColor),
+                                  Icon(
+                                    Icons.home,
+                                    size: 20,
+                                    color: isDark ? Colors.white : primaryColor,
+                                  ),
                                 ],
                               ),
                             ),
@@ -146,7 +158,9 @@ class QuestionPage extends ConsumerWidget {
                                 ref.read(bookmarkProvider.notifier).add(topic);
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
-                                    content: Text(localizations.addedToBookmarks),
+                                    content: Text(
+                                      localizations.addedToBookmarks,
+                                    ),
                                   ),
                                 );
                               },
@@ -157,7 +171,9 @@ class QuestionPage extends ConsumerWidget {
                                     localizations.addToBookmarks,
                                     style: TextStyle(
                                       fontSize: 16,
-                                      color: isDark ? Colors.black : Colors.white,
+                                      color: isDark
+                                          ? Colors.black
+                                          : Colors.white,
                                     ),
                                   ),
                                   const SizedBox(width: 6),

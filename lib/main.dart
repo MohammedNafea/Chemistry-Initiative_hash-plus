@@ -8,9 +8,28 @@ import 'package:chemistry_initiative/splash_screen1.dart';
 import 'package:chemistry_initiative/l10n/app_localizations.dart';
 import 'package:chemistry_initiative/core/localization/locale_provider.dart';
 
+import 'package:chemistry_initiative/core/services/notification_service.dart';
+
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:firebase_core/firebase_core.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  
+  // Initialize Firebase
+  try {
+    await Firebase.initializeApp();
+  } catch (e) {
+    debugPrint("Firebase initialization failed: $e");
+  }
+
+  await dotenv.load(fileName: ".env");
   await AppDatabase.instance.init();
+
+  // Initialize and schedule daily notifications
+  final notificationService = NotificationService();
+  await notificationService.init();
+  await notificationService.scheduleDailyChemFact();
 
   runApp(const ProviderScope(child: MyApp()));
 }
@@ -22,19 +41,26 @@ class MyApp extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final locale = ref.watch(localeProvider);
 
-    return ValueListenableBuilder<ThemeMode>(
-      valueListenable: themeNotifier,
-      builder: (context, mode, child) {
-        return MaterialApp(
-          debugShowCheckedModeBanner: false,
-          title: 'Chemistry Initiative',
-          theme: AppTheme.light,
-          darkTheme: AppTheme.dark,
-          themeMode: mode,
-          locale: locale,
-          localizationsDelegates: AppLocalizations.localizationsDelegates,
-          supportedLocales: AppLocalizations.supportedLocales,
-          home: const SplashScreen(),
+    return ValueListenableBuilder<bool>(
+      valueListenable: highContrastNotifier,
+      builder: (context, isHighContrast, _) {
+        return ValueListenableBuilder<ThemeMode>(
+          valueListenable: themeNotifier,
+          builder: (context, mode, child) {
+            return MaterialApp(
+              debugShowCheckedModeBanner: false,
+              onGenerateTitle: (context) => AppLocalizations.of(context)!.appTitle,
+              theme: AppTheme.light,
+              darkTheme: isHighContrast
+                  ? AppTheme.highContrastDark
+                  : AppTheme.dark,
+              themeMode: isHighContrast ? ThemeMode.dark : mode,
+              locale: locale,
+              localizationsDelegates: AppLocalizations.localizationsDelegates,
+              supportedLocales: AppLocalizations.supportedLocales,
+              home: const SplashScreen(),
+            );
+          },
         );
       },
     );

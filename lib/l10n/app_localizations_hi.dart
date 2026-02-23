@@ -9,85 +9,88 @@ class AppLocalizationsHi extends AppLocalizations {
   AppLocalizationsHi([String locale = 'hi']) : super(locale);
 
   @override
-  String get appTitle => 'रसायन विज्ञान पहल';
+  String get appTitle => '????? ??????? ???';
 
   @override
-  String get periodicTable => 'इंटरैक्टिव आवर्त सारणी';
+  String get leaderboard => 'Leaderboard';
 
   @override
-  String get dailyQuiz => 'दैनिक प्रश्नोत्तरी';
+  String get periodicTable => '?????????? ????? ?????';
 
   @override
-  String get whatsInThis => 'इसमें क्या है?';
+  String get dailyQuiz => '????? ????????????';
 
   @override
-  String get safetyGuide => 'सुरक्षा मार्गदर्शिका';
+  String get whatsInThis => '????? ???? ???';
 
   @override
-  String get flammable => 'ज्वलनशील';
+  String get safetyGuide => '??????? ????????????';
+
+  @override
+  String get flammable => '????????';
 
   @override
   String get flammableDesc =>
-      'आसानी से आग पकड़ लेता है। गर्मी और आग से दूर रखें।';
+      '????? ?? ?? ???? ???? ??? ????? ?? ?? ?? ??? ?????';
 
   @override
-  String get oxidizer => 'ऑक्सीडाइज़र';
+  String get oxidizer => '???????????';
 
   @override
-  String get oxidizerDesc => 'आग का कारण बन सकता है या उसे तेज कर सकता है।';
+  String get oxidizerDesc => '?? ?? ???? ?? ???? ?? ?? ??? ??? ?? ???? ???';
 
   @override
-  String get toxic => 'विषाक्त';
+  String get toxic => '???????';
 
   @override
   String get toxicDesc =>
-      'निगलने पर मृत्यु या गंभीर बीमारी का कारण बन सकता है।';
+      '?????? ?? ?????? ?? ????? ?????? ?? ???? ?? ???? ???';
 
   @override
-  String get corrosive => 'संक्षारक (Corrosive)';
+  String get corrosive => '???????? (Corrosive)';
 
   @override
   String get corrosiveDesc =>
-      'त्वचा को जला सकता है और आंखों को नुकसान पहुंचा सकता है।';
+      '????? ?? ??? ???? ?? ?? ????? ?? ?????? ?????? ???? ???';
 
   @override
-  String get explosive => 'विस्फोटक';
+  String get explosive => '????????';
 
   @override
-  String get explosiveDesc => 'गर्मी या झटके से फट सकता है।';
+  String get explosiveDesc => '????? ?? ???? ?? ?? ???? ???';
 
   @override
-  String get irritant => 'चिड़चिड़ाहट पैदा करने वाला (Irritant)';
+  String get irritant => '??????????? ???? ???? ???? (Irritant)';
 
   @override
-  String get irritantDesc => 'त्वचा या आंखों में जलन पैदा कर सकता है।';
+  String get irritantDesc => '????? ?? ????? ??? ??? ???? ?? ???? ???';
 
   @override
-  String get healthHazard => 'स्वास्थ्य के लिए खतरा';
+  String get healthHazard => '????????? ?? ??? ????';
 
   @override
   String get healthHazardDesc =>
-      'गंभीर दीर्घकालिक स्वास्थ्य प्रभाव पैदा कर सकता है।';
+      '????? ?????????? ????????? ?????? ???? ?? ???? ???';
 
   @override
-  String get environment => 'पर्यावरण के लिए खतरा';
+  String get environment => '???????? ?? ??? ????';
 
   @override
-  String get environmentDesc => 'जलीय जीवन के लिए हानिकारक।';
+  String get environmentDesc => '???? ???? ?? ??? ?????????';
 
   @override
-  String get virtualLab => 'आभासी प्रयोगशाला (Virtual Lab)';
+  String get virtualLab => '????? ?????????? (Virtual Lab)';
 
   @override
-  String get volcanoExp => 'बेकिंग सोडा ज्वालामुखी';
+  String get volcanoExp => '?????? ???? ??????????';
 
   @override
   String get volcanoDesc =>
-      'रसोई की सामग्री का उपयोग करके एक क्लासिक ज्वालामुखी विस्फोट बनाएं।';
+      '???? ?? ??????? ?? ????? ???? ?? ??????? ?????????? ??????? ??????';
 
   @override
   String get volcanoExplanation =>
-      'बेकिंग सोडा और सिरका के बीच की प्रतिक्रिया से कार्बन डाइऑक्साइड गैस निकलती है।';
+      '?????? ???? ?? ????? ?? ??? ?? ??????????? ?? ?????? ?????????? ??? ?????? ???';
 
   @override
   String get cabbageExp => 'Red Cabbage Indicator';
@@ -111,25 +114,25 @@ class AppLocalizationsHi extends AppLocalizations {
       'Lemon juice is organic. When heated, it oxidizes and turns brown faster than the paper, revealing the message.';
 
   @override
-  String get easy => 'आसान';
+  String get easy => '????';
 
   @override
-  String get medium => 'मध्यम';
+  String get medium => '?????';
 
   @override
-  String get hard => 'कठिन';
+  String get hard => '????';
 
   @override
-  String get ingredients => 'सामग्री';
+  String get ingredients => '???????';
 
   @override
-  String get steps => 'चरण';
+  String get steps => '???';
 
   @override
-  String get scientificExplanation => 'वैज्ञानिक व्याख्या';
+  String get scientificExplanation => '????????? ????????';
 
   @override
-  String get generalSafety => 'हमेशा बड़े की देखरेख में ही करें।';
+  String get generalSafety => '????? ???? ?? ?????? ??? ?? ?????';
 
   @override
   String get hotWaterSafety => 'Be careful with hot water.';
@@ -174,6 +177,42 @@ class AppLocalizationsHi extends AppLocalizations {
   String get heatSource => 'Heat Source (Lamp/Iron)';
 
   @override
+  String get hydrogenPeroxide => 'Hydrogen Peroxide';
+
+  @override
+  String get yeast => 'Yeast';
+
+  @override
+  String get warmWater => 'Warm Water';
+
+  @override
+  String get sugar => 'Sugar';
+
+  @override
+  String get boilingWater => 'Boiling Water';
+
+  @override
+  String get string => 'String';
+
+  @override
+  String get jar => 'Jar';
+
+  @override
+  String get milk => 'Milk';
+
+  @override
+  String get oil => 'Oil';
+
+  @override
+  String get egg => 'Egg';
+
+  @override
+  String get effervescentTablet => 'Effervescent Tablet';
+
+  @override
+  String get eyeProtection => 'Wear eye protection.';
+
+  @override
   String get volcanoStep1 => 'Place the container on a tray.';
 
   @override
@@ -210,35 +249,35 @@ class AppLocalizationsHi extends AppLocalizations {
   String get inkStep3 => 'Heat the paper gently to reveal the message.';
 
   @override
-  String get achievements => 'उपलब्धियां';
+  String get achievements => '??????????';
 
   @override
-  String get badgeNewScientist => 'नया वैज्ञानिक';
+  String get badgeNewScientist => '??? ?????????';
 
   @override
-  String get badgeNewScientistDesc => 'पहली बार लॉग इन किया।';
+  String get badgeNewScientistDesc => '???? ??? ??? ?? ?????';
 
   @override
-  String get badgeQuizMaster => 'प्रश्नोत्तरी मास्टर';
+  String get badgeQuizMaster => '???????????? ??????';
 
   @override
-  String get badgeQuizMasterDesc => '5 प्रश्नोत्तरी पूरी की।';
+  String get badgeQuizMasterDesc => '5 ???????????? ???? ???';
 
   @override
-  String get badgeSafetyExpert => 'सुरक्षा विशेषज्ञ';
+  String get badgeSafetyExpert => '??????? ????????';
 
   @override
-  String get badgeSafetyExpertDesc => 'सुरक्षा मार्गदर्शिका पढ़ी।';
+  String get badgeSafetyExpertDesc => '??????? ???????????? ?????';
 
   @override
-  String get moleculeViewer => '3D अणु व्यूअर';
+  String get moleculeViewer => '3D ??? ??????';
 
   @override
-  String get molWater => 'पानी';
+  String get molWater => '????';
 
   @override
   String get factWater =>
-      'जैसा कि हम जानते हैं, इस यौगिक के बिना जीवन का अस्तित्व नहीं होता!';
+      '???? ?? ?? ????? ???, ?? ????? ?? ???? ???? ?? ???????? ???? ????!';
 
   @override
   String get molH2 => 'Hydrogen Gas';
@@ -267,45 +306,45 @@ class AppLocalizationsHi extends AppLocalizations {
       'A yellowish-green gas used as a disinfectant and bleach.';
 
   @override
-  String get molCo2 => 'कार्बन डाइऑक्साइड';
+  String get molCo2 => '?????? ??????????';
 
   @override
   String get factCo2 =>
-      'पृथ्वी पर जीवन के लिए महत्वपूर्ण एक रंगहीन गैस। पौधे ऑक्सीजन बनाने के लिए इसे ग्रहण करते हैं।';
+      '?????? ?? ???? ?? ??? ?????????? ?? ?????? ???? ???? ??????? ????? ?? ??? ??? ????? ???? ????';
 
   @override
-  String get molMethane => 'मीथेन';
+  String get molMethane => '?????';
 
   @override
   String get factMethane =>
-      'एक शक्तिशाली ग्रीनहाउस गैस और प्राकृतिक गैस का मुख्य घटक।';
+      '?? ????????? ????????? ??? ?? ????????? ??? ?? ????? ????';
 
   @override
-  String get molSalt => 'नमक (NaCl)';
+  String get molSalt => '??? (NaCl)';
 
   @override
-  String get factSalt => 'साधारण नमक। कई जैविक प्रक्रियाओं के लिए आवश्यक।';
+  String get factSalt => '?????? ???? ?? ????? ??????????? ?? ??? ???????';
 
   @override
-  String get molAmmonia => 'अमोनिया';
+  String get molAmmonia => '???????';
 
   @override
   String get factAmmonia =>
-      'उर्वरकों और सफाई उत्पादों में व्यापक रूप से उपयोग किया जाता।';
+      '???????? ?? ???? ???????? ??? ?????? ??? ?? ????? ???? ?????';
 
   @override
-  String get molHcl => 'हाइड्रोक्लोरिक एसिड';
+  String get molHcl => '?????????????? ????';
 
   @override
   String get factHcl =>
-      'पेट में पाया जाने वाला एसिड जो भोजन पचाने में मदद करता है।';
+      '??? ??? ???? ???? ???? ???? ?? ???? ????? ??? ??? ???? ???';
 
   @override
-  String get molH2so4 => 'सल्फ्यूरिक एसिड';
+  String get molH2so4 => '?????????? ????';
 
   @override
   String get factH2so4 =>
-      'बैटरी और खनिज प्रसंस्करण में उपयोग किया जाने वाला एसिड।';
+      '????? ?? ???? ?????????? ??? ????? ???? ???? ???? ?????';
 
   @override
   String get molNaoh => 'Sodium Hydroxide (Lye)';
@@ -444,294 +483,291 @@ class AppLocalizationsHi extends AppLocalizations {
   String get undiscovered => 'Undiscovered';
 
   @override
-  String get chemicalOfTheDay => 'आज का रसायन';
+  String get chemicalOfTheDay => '?? ?? ?????';
 
   @override
-  String get didYouKnow => 'क्या आप जानते हैं?';
+  String get didYouKnow => '???? ?? ????? ????';
 
   @override
-  String get dailyUse => 'दैनिक उपयोग:';
+  String get dailyUse => '????? ?????:';
 
   @override
-  String get chemOxygen => 'ऑक्सीजन';
+  String get chemOxygen => '???????';
 
   @override
-  String get chemOxygenUse => 'श्वसन और इस्पात उत्पादन के लिए आवश्यक।';
+  String get chemOxygenUse => '????? ?? ?????? ??????? ?? ??? ???????';
 
   @override
-  String get chemGold => 'सोना';
+  String get chemGold => '????';
 
   @override
   String get chemGoldUse =>
-      'अपनी चालकता के कारण इलेक्ट्रॉनिक्स और गहनों में उपयोग किया जाता है।';
+      '???? ?????? ?? ???? ?????????????? ?? ????? ??? ????? ???? ???? ???';
 
   @override
-  String get chemCarbon => 'कार्बन';
+  String get chemCarbon => '??????';
 
   @override
-  String get chemCarbonUse => 'सभी ज्ञात जीवन रूपों का आधार।';
+  String get chemCarbonUse => '??? ????? ???? ????? ?? ?????';
 
   @override
-  String get home => 'होम';
+  String get home => '???';
 
   @override
-  String get search => 'खोजें';
+  String get search => '?????';
 
   @override
-  String get bookmark => 'बुकमार्क';
+  String get bookmark => '????????';
 
   @override
-  String get profile => 'प्रोफाइल';
+  String get profile => '????????';
 
   @override
   String welcomeUser(String name) {
-    return 'स्वागत है $name';
+    return '?????? ?? $name';
   }
 
   @override
-  String get auroraTitle => 'ऑरोरा बोरेलिस';
+  String get auroraTitle => '????? ???????';
 
   @override
-  String get exploreMore => 'और खोजें';
+  String get exploreMore => '?? ?????';
 
   @override
-  String get yourProgress => 'आपकी प्रगति';
+  String get yourProgress => '???? ??????';
 
   @override
-  String get natureSection => 'प्रकृति';
+  String get natureSection => '???????';
 
   @override
-  String get waterAirSection => 'जल और वायु';
+  String get waterAirSection => '?? ?? ????';
 
   @override
-  String get dailyLifeSection => 'दैनिक जीवन';
+  String get dailyLifeSection => '????? ????';
 
   @override
-  String get welcomeMessage => 'रसायन विज्ञान के चमत्कारों में आपका स्वागत है';
+  String get welcomeMessage => '????? ??????? ?? ????????? ??? ???? ?????? ??';
 
   @override
-  String get contactInfo => 'संपर्क जानकारी';
+  String get contactInfo => '?????? ???????';
 
   @override
-  String get settings => 'सेटिंग्स';
+  String get settings => '????????';
 
   @override
-  String get editProfile => 'प्रोफाइल संपादित करें';
+  String get editProfile => '???????? ??????? ????';
 
   @override
-  String get save => 'सहेजें';
+  String get save => '??????';
 
   @override
-  String get email => 'ईमेल';
+  String get email => '????';
 
   @override
-  String get phone => 'फ़ोन';
+  String get phone => '????';
 
   @override
-  String get location => 'स्थान';
+  String get location => '?????';
 
   @override
-  String get theme => 'थीम';
+  String get theme => '???';
 
   @override
-  String get language => 'भाषा';
+  String get language => '????';
 
   @override
-  String get notifications => 'सूचनाएं';
+  String get notifications => '???????';
 
   @override
-  String get privacySecurity => 'गोपनीयता और सुरक्षा';
+  String get privacySecurity => '???????? ?? ???????';
 
   @override
-  String get helpSupport => 'मदद और समर्थन';
+  String get helpSupport => '??? ?? ??????';
 
   @override
-  String get logout => 'लॉग आउट';
+  String get logout => '??? ???';
 
   @override
-  String get burningGas => 'गैस जलना';
+  String get burningGas => '??? ????';
 
   @override
-  String get forests => 'वन';
+  String get forests => '??';
 
   @override
-  String get coalBurning => 'कोयला जलना';
+  String get coalBurning => '????? ????';
 
   @override
-  String get rocks => 'चट्टानें';
+  String get rocks => '????????';
 
   @override
-  String get solutionAbsorption => 'समाधान अवशोषण';
+  String get solutionAbsorption => '?????? ??????';
 
   @override
-  String get rainDrops => 'बारिश की बूंदें';
+  String get rainDrops => '????? ?? ??????';
 
   @override
-  String get factorySmoke => 'फैक्ट्री का धुआं';
+  String get factorySmoke => '???????? ?? ????';
 
   @override
-  String get crystal => 'क्रिस्टल';
+  String get crystal => '????????';
 
   @override
-  String get breadFermentation => 'ब्रेड किण्वन';
+  String get breadFermentation => '????? ??????';
 
   @override
-  String get medicalLabs => 'चिकित्सा प्रयोगशालाएं';
+  String get medicalLabs => '???????? ????????????';
 
   @override
-  String get medicines => 'दवाइयां';
+  String get medicines => '???????';
 
   @override
-  String get combustion => 'दहन';
+  String get combustion => '???';
 
   @override
-  String get welcome => 'स्वागत है';
+  String get welcome => '?????? ??';
 
   @override
-  String get user => 'उपयोगकर्ता';
+  String get user => '??????????';
 
   @override
-  String get auroraBorealis => 'ऑरोरा बोरेलिस';
+  String get auroraBorealis => '????? ???????';
 
   @override
-  String get nature => 'प्रकृति';
+  String get nature => '???????';
 
   @override
-  String get waterAndAir => 'जल और वायु';
+  String get waterAndAir => '?? ?? ????';
 
   @override
-  String get dailyLife => 'दैनिक जीवन';
+  String get dailyLife => '????? ????';
 
   @override
-  String get searchPlaceholder => 'विषय खोजें...';
+  String get searchPlaceholder => '???? ?????...';
 
   @override
-  String get noResults => 'कोई परिणाम नहीं मिला';
+  String get noResults => '??? ?????? ???? ????';
 
   @override
-  String get noSavedTopics => 'कोई सहेजे गए विषय नहीं';
+  String get noSavedTopics => '??? ????? ?? ???? ????';
 
   @override
-  String get saveYourFavorites => 'अपने पसंदीदा विषयों को सहेजें';
+  String get saveYourFavorites => '???? ??????? ?????? ?? ??????';
 
   @override
-  String get savedTopics => 'सहेजे गए विषय';
+  String get savedTopics => '????? ?? ????';
 
   @override
-  String get saved => 'सहेजा गया';
+  String get saved => '????? ???';
 
   @override
-  String get bookmarks => 'बुकमार्क';
+  String get bookmarks => '????????';
 
   @override
-  String get topicDeleted => 'विषय हटा दिया गया';
+  String get topicDeleted => '???? ??? ???? ???';
 
   @override
-  String get backToHome => 'होम पर वापस जाएं';
+  String get backToHome => '??? ?? ???? ????';
 
   @override
-  String get addToBookmarks => 'बुकमार्क में जोड़ें';
+  String get addToBookmarks => '???????? ??? ??????';
 
   @override
-  String get addedToBookmarks => 'बुकमार्क में जोड़ा गया';
+  String get addedToBookmarks => '???????? ??? ????? ???';
 
   @override
-  String get name => 'नाम';
+  String get name => '???';
 
   @override
-  String get bio => 'बायो';
+  String get bio => '????';
 
   @override
-  String get profileUpdated => 'प्रोफाइल सफलतापूर्वक अपडेट किया गया';
+  String get profileUpdated => '???????? ??????????? ????? ???? ???';
 
   @override
   String get auroraQuestion =>
-      'क्या आपने कभी सोचा है कि आसमान ऑरोरा बोरेलिस के रंगों से क्यों चमकता है?';
+      '???? ???? ??? ???? ?? ?? ????? ????? ??????? ?? ????? ?? ????? ????? ???';
 
   @override
   String get auroraDescription =>
-      'ऑरोरा बोरेलिस तब होता है जब सूर्य से आवेशित कण पृथ्वी के वायुमंडल में गैसों, जैसे ऑक्सीजन और नाइट्रोजन, से टकराते हैं। ये टकराव परमाणुओं और अणुओं को उत्तेजित करते हैं, उन्हें अतिरिक्त ऊर्जा देते हैं।\n• कम ऊंचाई पर ऑक्सीजन हरी रोशनी देता है\n• अधिक ऊंचाई पर ऑक्सीजन लाल रोशनी देता है\n• नाइट्रोजन नीले और बैंगनी रंग देता है\n\nजब ये परमाणु अपनी सामान्य स्थिति में लौटते हैं, तो वे दृश्य प्रकाश के रूप में ऊर्जा छोड़ते हैं। यह प्रक्रिया ऑरोरा के आश्चर्यजनक रंगों का कारण है, जो हमारे दैनिक जीवन में देखने योग्य प्राकृतिक रासायनिक और भौतिक प्रतिक्रिया का एक ज्वलंत उदाहरण है।';
+      '????? ??????? ?? ???? ?? ?? ????? ?? ?????? ?? ?????? ?? ???????? ??? ?????, ???? ??????? ?? ?????????, ?? ?????? ???? ?? ????? ???????? ?? ????? ?? ???????? ???? ???, ?????? ???????? ????? ???? ????\n• ?? ????? ?? ??????? ??? ????? ???? ??\n• ???? ????? ?? ??????? ??? ????? ???? ??\n• ????????? ???? ?? ?????? ??? ???? ??\n\n?? ?? ?????? ???? ??????? ?????? ??? ????? ???, ?? ?? ????? ?????? ?? ??? ??? ????? ?????? ???? ?? ????????? ????? ?? ?????????? ????? ?? ???? ??, ?? ????? ????? ???? ??? ????? ????? ????????? ???????? ?? ????? ??????????? ?? ?? ?????? ?????? ???';
 
   @override
-  String get wonders => 'चमत्कार';
+  String get wonders => '???????';
 
   @override
-  String get discoveryWorld => 'खोजों की दुनिया आपका इंतजार कर रही है';
+  String get discoveryWorld => '????? ?? ?????? ???? ?????? ?? ??? ??';
 
   @override
-  String get newAccount => 'नया खाता';
+  String get newAccount => '??? ????';
 
   @override
-  String get login => 'लॉग इन करें';
+  String get login => '??? ?? ????';
 
   @override
-  String get fullName => 'पूरा नाम';
+  String get fullName => '???? ???';
 
   @override
-  String get password => 'पাসवर्ड';
+  String get password => '???????';
 
   @override
-  String get confirmPassword => 'पासवर्ड की पुष्टि करें';
+  String get confirmPassword => '??????? ?? ?????? ????';
 
   @override
-  String get createAccount => 'खाता बनाएं';
+  String get createAccount => '???? ?????';
 
   @override
-  String get fillAllFields => 'कृपया सभी फ़ील्ड भरें';
+  String get fillAllFields => '????? ??? ?????? ????';
 
   @override
-  String get passwordsDoNotMatch => 'पासवर्ड मेल नहीं खाते';
+  String get passwordsDoNotMatch => '??????? ??? ???? ????';
 
   @override
-  String get accountCreated => 'खाता बनाया गया';
+  String get accountCreated => '???? ????? ???';
 
   @override
-  String get enterEmailPassword => 'ईमेल और पासवर्ड दर्ज करें';
+  String get enterEmailPassword => '???? ?? ??????? ???? ????';
 
   @override
-  String get verifying => 'सत्यापित कर रहा है...';
+  String get verifying => '???????? ?? ??? ??...';
 
   @override
-  String get invalidCredentials => 'अमान्य क्रेडेंशियल्स';
+  String get invalidCredentials => '?????? ?????????????';
 
   @override
-  String get or => 'या';
+  String get continueGoogle => 'Google ?? ??? ???? ????';
 
   @override
-  String get continueGoogle => 'Google के साथ जारी रखें';
+  String get continueFacebook => 'Facebook ?? ??? ???? ????';
 
   @override
-  String get continueFacebook => 'Facebook के साथ जारी रखें';
+  String get atomicNumberLabel => '?????? ???????';
 
   @override
-  String get atomicNumberLabel => 'परमाणु क्रमांक';
+  String get dailyLifeUseLabel => '????? ???? ??? ?????';
 
   @override
-  String get dailyLifeUseLabel => 'दैनिक जीवन में उपयोग';
+  String get scientificSummaryLabel => '????????? ??????';
 
   @override
-  String get scientificSummaryLabel => 'वैज्ञानिक सारांश';
+  String get massLabel => '????????? (Mass)';
 
   @override
-  String get massLabel => 'द्रव्यमान (Mass)';
-
-  @override
-  String get categoryLabel => 'श्रेणी';
+  String get categoryLabel => '??????';
 
   @override
   String get catNonmetal => 'Nonmetal';
 
   @override
-  String get compoundPlayground => 'यौगिक खेल का मैदान (Playground)';
+  String get compoundPlayground => '????? ??? ?? ????? (Playground)';
 
   @override
-  String get selectElementsMix => 'मिश्रण के लिए तत्वों का चयन करें';
+  String get selectElementsMix => '?????? ?? ??? ?????? ?? ??? ????';
 
   @override
-  String get elementsRepository => 'तत्व भंडार (Repository)';
+  String get elementsRepository => '???? ????? (Repository)';
 
   @override
-  String get mixElements => 'मिश्रण करें';
+  String get mixElements => '?????? ????';
 
   @override
   String get catNobleGas => 'Noble Gas';
@@ -880,29 +916,31 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get elemMgSummary =>
-      'Magnesium is a shiny gray metal which burns with a brilliant white light.';
+      'Magnesium is a shiny gray solid alkaline earth metal.';
 
   @override
-  String get elemMgUse => 'Used in flares, fireworks, and lightweight alloys.';
+  String get elemMgUse => 'Used in flares, laptops, and human muscle function.';
 
   @override
   String get elemAlName => 'Aluminum';
 
   @override
-  String get elemAlSummary => 'Aluminum is a silvery-white, lightweight metal.';
+  String get elemAlSummary =>
+      'Aluminum is a lightweight, silvery-white, non-magnetic metal.';
 
   @override
-  String get elemAlUse => 'Used in aircraft, cans, and foils.';
+  String get elemAlUse =>
+      'Used in soda cans, foil, airplanes, and window frames.';
 
   @override
   String get elemSiName => 'Silicon';
 
   @override
   String get elemSiSummary =>
-      'Silicon is a hard, brittle crystalline solid with a blue-grey metallic lustre.';
+      'Silicon is a hard, brittle crystalline metalloid widely used in electronics.';
 
   @override
-  String get elemSiUse => 'The basis of modern electronics and computer chips.';
+  String get elemSiUse => 'The heart of computer chips and glass production.';
 
   @override
   String get elemPName => 'Phosphorus';
@@ -960,32 +998,32 @@ class AppLocalizationsHi extends AppLocalizations {
   String get elemCaName => 'Calcium';
 
   @override
-  String get elemCaSummary => 'Calcium is a soft gray alkaline earth metal.';
+  String get elemCaSummary =>
+      'Calcium is a grey alkaline earth metal, the most abundant metal in humans.';
 
   @override
-  String get elemCaUse =>
-      'Essential for living organisms, particularly in cell physiology.';
+  String get elemCaUse => 'Found in milk, bones, teeth, and cement.';
 
   @override
   String get elemFeName => 'Iron';
 
   @override
   String get elemFeSummary =>
-      'Iron is a strong, ductile, and lustrous transition metal.';
+      'Iron is the most common element on Earth by mass, forming much of the core.';
 
   @override
   String get elemFeUse =>
-      'The most used metal, essential for construction and machinery.';
+      'Used in steel construction and found in red blood cells.';
 
   @override
   String get elemCuName => 'Copper';
 
   @override
   String get elemCuSummary =>
-      'Copper is a ductile, malleable metal with high thermal and electrical conductivity.';
+      'Copper is a soft, malleable, and ductile metal with very high conductivity.';
 
   @override
-  String get elemCuUse => 'Used in electrical wiring, plumbing, and coins.';
+  String get elemCuUse => 'Used in electrical wiring and plumbing pipes.';
 
   @override
   String get elemZnName => 'Zinc';
@@ -1002,10 +1040,10 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get elemAgSummary =>
-      'Silver is a lustrous transition metal with the highest electrical conductivity of any element.';
+      'Silver has the highest electrical and thermal conductivity of any metal.';
 
   @override
-  String get elemAgUse => 'Used in jewelry, silverware, and electronics.';
+  String get elemAgUse => 'Used in jewelry, coins, and high-end electronics.';
 
   @override
   String get elemSnName => 'Tin';
@@ -1032,10 +1070,10 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get elemAuSummary =>
-      'Gold is a bright, slightly reddish yellow, dense, soft, malleable, and ductile metal.';
+      'Gold is a noble metal that does not tarnish and is highly valuable.';
 
   @override
-  String get elemAuUse => 'Used in jewelry, electronics, and finance.';
+  String get elemAuUse => 'Used in jewelry, investment, and space tech.';
 
   @override
   String get elemHgName => 'Mercury';
@@ -1130,5 +1168,254 @@ class AppLocalizationsHi extends AppLocalizations {
       'Discovery requires more heat! Use the Bunsen burner.';
 
   @override
-  String get forgotPassword => 'पासवर्ड भूल गए?';
+  String get multiplayerQuiz => '??????????? ??????';
+
+  @override
+  String get aiTutor => 'AI Tutor';
+
+  @override
+  String get viewIn3D => 'View in 3D';
+
+  @override
+  String get searchCompounds => 'Search compounds...';
+
+  @override
+  String get scientificInsight => 'Scientific Insight';
+
+  @override
+  String get gotIt => 'Got it!';
+
+  @override
+  String get challengingPlayers => 'Looking for nearby challengers...';
+
+  @override
+  String get inviteHost => 'Invite (Host)';
+
+  @override
+  String get connectedTo => 'Connected to';
+
+  @override
+  String get hostScore => 'Host Score';
+
+  @override
+  String get guestScore => 'Guest Score';
+
+  @override
+  String get aiTutorGreeting =>
+      'Hello Young Scientist! I am your AI Chemistry Tutor 🧪. How can I help you today?';
+
+  @override
+  String get aiTutorHint => 'Ask about any chemical reaction...';
+
+  @override
+  String aiTutorSystemInstruction(String language) {
+    return 'You are an expert, friendly AI Chemistry Tutor. You explain chemistry concepts clearly and simply. IMPORTANT: You must respond in the following language: $language.';
+  }
+
+  @override
+  String get forgotPassword => '??????? ??? ???';
+
+  @override
+  String get orContinueWith => 'Or continue with';
+
+  @override
+  String get hhVinegar => 'Vinegar';
+
+  @override
+  String get hhVinegarChem => 'Acetic Acid';
+
+  @override
+  String get hhVinegarDesc => 'Commonly used in cooking and cleaning.';
+
+  @override
+  String get hhVinegarWarn => 'Safe for consumption in small amounts. Acidic.';
+
+  @override
+  String get hhBakingSoda => 'Baking Soda';
+
+  @override
+  String get hhBakingSodaChem => 'Sodium Bicarbonate';
+
+  @override
+  String get hhBakingSodaDesc =>
+      'Used in baking and as a mild abrasive cleaner.';
+
+  @override
+  String get hhBakingSodaWarn => 'Safe. Produces gas when mixed with acid.';
+
+  @override
+  String get hhBleach => 'Bleach';
+
+  @override
+  String get hhBleachChem => 'Sodium Hypochlorite';
+
+  @override
+  String get hhBleachDesc => 'Strong disinfectant and whitener.';
+
+  @override
+  String get hhBleachWarn =>
+      'DANGER: Never mix with Vinegar or Ammonia! Produces toxic gas.';
+
+  @override
+  String get hhSalt => 'Table Salt';
+
+  @override
+  String get hhSaltChem => 'Sodium Chloride';
+
+  @override
+  String get hhSaltDesc => 'Essential for life, used for seasoning.';
+
+  @override
+  String get hhSaltWarn => 'Safe. Excessive intake can raise blood pressure.';
+
+  @override
+  String get hhAmmonia => 'Ammonia';
+
+  @override
+  String get hhAmmoniaChem => 'Ammonium Hydroxide';
+
+  @override
+  String get hhAmmoniaDesc => 'Common glass cleaner.';
+
+  @override
+  String get hhAmmoniaWarn => 'Irritating fumes. Do not mix with bleach.';
+
+  @override
+  String get hhSugar => 'Sugar';
+
+  @override
+  String get hhSugarChem => 'Sucrose';
+
+  @override
+  String get hhSugarDesc => 'Sweetener found in many foods.';
+
+  @override
+  String get hhSugarWarn => 'Safe. High consumption leads to health issues.';
+
+  @override
+  String get hhNailPolish => 'Nail Polish Remover';
+
+  @override
+  String get hhNailPolishChem => 'Acetone';
+
+  @override
+  String get hhNailPolishDesc => 'Solvent for removing nail polish and glue.';
+
+  @override
+  String get hhNailPolishWarn => 'Flammable. Keep away from fire.';
+
+  @override
+  String get elephantExp => 'Elephant Toothpaste';
+
+  @override
+  String get elephantDesc => 'A giant foamy reaction that releases oxygen.';
+
+  @override
+  String get elephantStep1 => 'Pour hydrogen peroxide into a flask.';
+
+  @override
+  String get elephantStep2 => 'Add dish soap and food coloring.';
+
+  @override
+  String get elephantStep3 => 'Add warm yeast solution and stand back!';
+
+  @override
+  String get elephantExplanation =>
+      'The catalyst (yeast) quickly breaks down hydrogen peroxide into water and oxygen gas.';
+
+  @override
+  String get crystalExp => 'Crystal Growing';
+
+  @override
+  String get crystalDesc => 'Use salt or sugar to grow beautiful crystals.';
+
+  @override
+  String get crystalStep1 =>
+      'Dissolve sugar in boiling water until no more dissolves.';
+
+  @override
+  String get crystalStep2 =>
+      'Suspend a string in the solution without touching the bottom.';
+
+  @override
+  String get crystalStep3 => 'Wait a few days for crystals to form.';
+
+  @override
+  String get crystalExplanation =>
+      'As water cools and evaporates, the excess sugar atoms gather on the string in a regular pattern.';
+
+  @override
+  String get milkArtExp => 'Magic Milk Art';
+
+  @override
+  String get milkArtDesc => 'Use soap to create colorful patterns in milk.';
+
+  @override
+  String get milkArtStep1 =>
+      'Pour milk into a plate and add food coloring drops.';
+
+  @override
+  String get milkArtStep2 => 'Dip a cotton swab in dish soap.';
+
+  @override
+  String get milkArtStep3 =>
+      'Touch the center of the milk and watch the colors explode.';
+
+  @override
+  String get milkArtExplanation =>
+      'The soap reduces surface tension and reacts with fats, pushing the colors around.';
+
+  @override
+  String get oilWaterExp => 'Oil & Water Volcano';
+
+  @override
+  String get oilWaterDesc => 'Explore density and polarity.';
+
+  @override
+  String get oilWaterStep1 => 'Fill 2/3 of a cup with oil and 1/3 with water.';
+
+  @override
+  String get oilWaterStep2 => 'Add food coloring drops.';
+
+  @override
+  String get oilWaterStep3 =>
+      'Drop an effervescent tablet and watch bubbles rise.';
+
+  @override
+  String get oilWaterExplanation =>
+      'Oil is lighter than water and doesn\'t mix due to polarity. The tablet produces CO2 that carries colored water up.';
+
+  @override
+  String get eggExp => 'Bouncy Egg';
+
+  @override
+  String get eggDesc => 'Remove an eggshell with vinegar.';
+
+  @override
+  String get eggStep1 => 'Place an egg in a cup and cover it with vinegar.';
+
+  @override
+  String get eggStep2 => 'Leave it for 24-48 hours.';
+
+  @override
+  String get eggStep3 => 'Wash it with water and watch the shell disappear.';
+
+  @override
+  String get eggExplanation =>
+      'Acetic acid reacts with calcium carbonate in the shell, dissolving it into CO2 and water.';
+
+  @override
+  String get chemicalScanner => 'Chemical Scanner';
+
+  @override
+  String get scanInstructions => 'Point camera at a chemical product label';
+
+  @override
+  String get identifying => 'Identifying compound...';
+
+  @override
+  String get identifiedElements => 'Elements in this compound:';
+
+  @override
+  String get noCompoundFound => 'Could not identify compound. Try again.';
 }

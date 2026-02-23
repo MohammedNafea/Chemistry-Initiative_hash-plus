@@ -1,11 +1,14 @@
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:chemistry_initiative/core/database/models/user_model.dart';
 
+import 'package:chemistry_initiative/features/periodic_table/data/models/element_model_adapter.dart';
+
 /// Database keys
 class _Keys {
   static const String usersBox = 'users_box';
   static const String appBox = 'app_box';
   static const String currentUserEmail = 'current_user_email';
+  static const String cacheBox = 'offline_cache_box'; // Added for offline data
 }
 
 /// Local database service using Hive - provides CRUD operations.
@@ -16,12 +19,18 @@ class AppDatabase {
 
   Box<dynamic>? _usersBox;
   Box<dynamic>? _appBox;
+  Box<dynamic>? _cacheBox;
 
   Future<void> init() async {
     await Hive.initFlutter();
+    Hive.registerAdapter(ElementModelAdapter());
+
     _usersBox = await Hive.openBox(_Keys.usersBox);
     _appBox = await Hive.openBox(_Keys.appBox);
+    _cacheBox = await Hive.openBox(_Keys.cacheBox);
   }
+
+  Box<dynamic> get cache => _cacheBox!;
 
   Box<dynamic> get _users {
     final box = _usersBox;
