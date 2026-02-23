@@ -118,29 +118,26 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
 
                     // Logo
                     Container(
-                      padding: const EdgeInsets.all(20),
+                      height: 150,
+                      width: 150,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color: isLight
-                            ? Colors.deepPurple.withValues(alpha: 0.1)
-                            : Colors.cyanAccent.withValues(alpha: 0.1),
                         boxShadow: [
                           BoxShadow(
                             color: isLight
-                                ? Colors.deepPurpleAccent.withValues(alpha: 0.2)
-                                : Colors.cyanAccent.withValues(alpha: 0.1),
-                            blurRadius: 20,
-                            spreadRadius: 5,
+                                ? Colors.deepPurpleAccent.withValues(alpha: 0.15)
+                                : Colors.cyanAccent.withValues(alpha: 0.15),
+                            blurRadius: 30,
+                            spreadRadius: 10,
                           ),
                         ],
                       ),
-                      child: Icon(
-                        Icons.science_outlined,
-                        color: isLight ? Colors.deepPurple : Colors.cyanAccent,
-                        size: 80,
+                      child: Image.asset(
+                        'assets/images/app_icon_v3.png',
+                        fit: BoxFit.contain,
                       ),
                     ),
-                    const SizedBox(height: 16),
+                    const SizedBox(height: 24),
                     Text(
                       localizations.wonders,
                       style: TextStyle(

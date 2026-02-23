@@ -181,9 +181,15 @@ class AuthRepository {
   String _mapFirebaseError(String code) {
     switch (code) {
       case 'email-already-in-use': return 'الحساب موجود بالفعل لهذا الإيميل';
-      case 'weak-password': return 'كلمة المرور ضعيفة جداً';
+      case 'weak-password': return 'كلمة المرور ضعيفة جداً (يجب أن تكون 6 أحرف على الأقل)';
       case 'invalid-email': return 'البريد الإلكتروني غير صحيح';
-      default: return 'حدث خطأ أثناء التسجيل: $code';
+      case 'operation-not-allowed': return 'هذه الوسيلة غير مفعلة في Firebase';
+      case 'user-not-found': return 'المستخدم غير موجود';
+      case 'wrong-password': return 'كلمة المرور خاطئة';
+      case 'network-request-failed': return 'خطأ في الاتصال بالإنترنت';
+      case 'internal-error': return 'خطأ داخلي في الخادم';
+      case 'too-many-requests': return 'محاولات كثيرة جداً، يرجى المحاولة لاحقاً';
+      default: return 'حدث خطأ (كود: $code). تأكد من إعدادات Firebase.';
     }
   }
 
