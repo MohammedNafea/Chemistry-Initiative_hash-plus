@@ -137,7 +137,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                       child: Icon(
                         Icons.science_outlined,
                         color: isLight ? Colors.deepPurple : Colors.cyanAccent,
-                        size: 50,
+                        size: 80,
                       ),
                     ),
                     const SizedBox(height: 16),
@@ -368,6 +368,66 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                                       const SizedBox(height: 24),
 
                                     const SizedBox(height: 24),
+                                    ElevatedButton(
+                                      onPressed: () async {
+                                        if (_formKey.currentState!.validate()) {
+                                          if (_isSignup) {
+                                            final error = await _authRepo.registerUser(
+                                              _nameCtrl.text,
+                                              _emailCtrl.text,
+                                              _passCtrl.text,
+                                            );
+                                            if (error != null && mounted) {
+                                              ScaffoldMessenger.of(context).showSnackBar(
+                                                SnackBar(content: Text(error)),
+                                              );
+                                            } else if (mounted) {
+                                              ref.read(currentUserNotifierProvider.notifier).refresh();
+                                            }
+                                          } else {
+                                            final success = await _authRepo.loginUser(
+                                              _emailCtrl.text,
+                                              _passCtrl.text,
+                                            );
+                                            if (!success && mounted) {
+                                              ScaffoldMessenger.of(context).showSnackBar(
+                                                const SnackBar(content: Text('Login Failed')),
+                                              );
+                                            } else if (mounted) {
+                                              ref.read(currentUserNotifierProvider.notifier).refresh();
+                                            }
+                                          }
+                                        }
+                                      },
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: isLight
+                                            ? Colors.deepPurple
+                                            : Colors.cyanAccent,
+                                        foregroundColor: isLight
+                                            ? Colors.white
+                                            : Colors.black87,
+                                        padding: const EdgeInsets.symmetric(
+                                          vertical: 16,
+                                        ),
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(
+                                            16,
+                                          ),
+                                        ),
+                                        elevation: 5,
+                                      ),
+                                      child: Text(
+                                        _isSignup
+                                            ? localizations.newAccount
+                                            : localizations.login,
+                                        style: const TextStyle(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ),
+
+                                    const SizedBox(height: 32),
                                     Row(
                                       children: [
                                         const Expanded(child: Divider()),
@@ -394,13 +454,25 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                                           MainAxisAlignment.spaceEvenly,
                                       children: [
                                         _socialIconTile(
-                                          icon: Icons.g_mobiledata,
+                                          icon: Icons.account_circle_outlined, // Better Google placeholder
                                           color: Colors.redAccent,
                                           onTap: () async {
-                                            final cred = await _authRepo.signInWithGoogle();
-                                            if (cred != null && mounted) {
-                                              ref.read(currentUserNotifierProvider.notifier).refresh();
-                                              showWelcomeNotifier.value = true;
+                                            try {
+                                              final cred = await _authRepo.signInWithGoogle();
+                                              if (cred != null && mounted) {
+                                                ref.read(currentUserNotifierProvider.notifier).refresh();
+                                                showWelcomeNotifier.value = true;
+                                              } else if (mounted) {
+                                                ScaffoldMessenger.of(context).showSnackBar(
+                                                  const SnackBar(content: Text('Google Sign-In Cancelled or Failed')),
+                                                );
+                                              }
+                                            } catch (e) {
+                                              if (mounted) {
+                                                ScaffoldMessenger.of(context).showSnackBar(
+                                                  SnackBar(content: Text('Error: $e')),
+                                                );
+                                              }
                                             }
                                           },
                                         ),
@@ -408,10 +480,22 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                                           icon: Icons.apple,
                                           color: isLight ? Colors.black : Colors.white,
                                           onTap: () async {
-                                            final cred = await _authRepo.signInWithApple();
-                                            if (cred != null && mounted) {
-                                              ref.read(currentUserNotifierProvider.notifier).refresh();
-                                              showWelcomeNotifier.value = true;
+                                            try {
+                                              final cred = await _authRepo.signInWithApple();
+                                              if (cred != null && mounted) {
+                                                ref.read(currentUserNotifierProvider.notifier).refresh();
+                                                showWelcomeNotifier.value = true;
+                                              } else if (mounted) {
+                                                ScaffoldMessenger.of(context).showSnackBar(
+                                                  const SnackBar(content: Text('Apple Sign-In Failed')),
+                                                );
+                                              }
+                                            } catch (e) {
+                                              if (mounted) {
+                                                ScaffoldMessenger.of(context).showSnackBar(
+                                                  SnackBar(content: Text('Error: $e')),
+                                                );
+                                              }
                                             }
                                           },
                                         ),
@@ -419,21 +503,45 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                                           icon: Icons.facebook,
                                           color: Colors.blueAccent,
                                           onTap: () async {
-                                            final cred = await _authRepo.signInWithFacebook();
-                                            if (cred != null && mounted) {
-                                              ref.read(currentUserNotifierProvider.notifier).refresh();
-                                              showWelcomeNotifier.value = true;
+                                            try {
+                                              final cred = await _authRepo.signInWithFacebook();
+                                              if (cred != null && mounted) {
+                                                ref.read(currentUserNotifierProvider.notifier).refresh();
+                                                showWelcomeNotifier.value = true;
+                                              } else if (mounted) {
+                                                ScaffoldMessenger.of(context).showSnackBar(
+                                                  const SnackBar(content: Text('Facebook Sign-In Failed')),
+                                                );
+                                              }
+                                            } catch (e) {
+                                              if (mounted) {
+                                                ScaffoldMessenger.of(context).showSnackBar(
+                                                  SnackBar(content: Text('Error: $e')),
+                                                );
+                                              }
                                             }
                                           },
                                         ),
                                         _socialIconTile(
-                                          icon: Icons.code_rounded, // GitHub icon
+                                          icon: Icons.terminal_rounded, // Better GitHub placeholder
                                           color: Colors.black,
                                           onTap: () async {
-                                            final cred = await _authRepo.signInWithGitHub();
-                                            if (cred != null && mounted) {
-                                              ref.read(currentUserNotifierProvider.notifier).refresh();
-                                              showWelcomeNotifier.value = true;
+                                            try {
+                                              final cred = await _authRepo.signInWithGitHub();
+                                              if (cred != null && mounted) {
+                                                ref.read(currentUserNotifierProvider.notifier).refresh();
+                                                showWelcomeNotifier.value = true;
+                                              } else if (mounted) {
+                                                ScaffoldMessenger.of(context).showSnackBar(
+                                                  const SnackBar(content: Text('GitHub Sign-In Failed')),
+                                                );
+                                              }
+                                            } catch (e) {
+                                              if (mounted) {
+                                                ScaffoldMessenger.of(context).showSnackBar(
+                                                  SnackBar(content: Text('Error: $e')),
+                                                );
+                                              }
                                             }
                                           },
                                         ),
