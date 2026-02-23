@@ -63,9 +63,9 @@ class AuthRepository {
       );
       debugPrint("AuthRepository: Firebase call completed. User: ${cred.user?.uid}");
       if (cred.user != null) {
-        // Sync local session
-        await _db.setCurrentUser(email.trim());
-        debugPrint("AuthRepository: Local session synced.");
+        // Sync local session and user profile
+        await _syncLocalUserFromFirebase(cred.user!);
+        debugPrint("AuthRepository: Local sync completed.");
         return true;
       }
     } catch (e) {
@@ -181,8 +181,11 @@ class AuthRepository {
     }
     await _db.setCurrentUser(email);
     
-    // Trigger Lab Cloud Sync
-    await LabSyncRepository().syncCloudToLocal(fbUser.uid);
+    // Trigger Lab Cloud Sync in background - don't block login
+    debugPrint("AuthRepository: Triggering lab cloud sync...");
+    LabSyncRepository().syncCloudToLocal(fbUser.uid).catchError((e) {
+      debugPrint("AuthRepository: Lab cloud sync failed (non-critical): $e");
+    });
   }
 
   String _mapFirebaseError(String code) {
