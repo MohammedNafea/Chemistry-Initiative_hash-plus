@@ -14,15 +14,35 @@ subprojects {
                     extension.namespace = "com.example.chemistry_initiative.${name.replace("-", "_")}"
                 }
                 extension.compileOptions {
-                    sourceCompatibility = JavaVersion.VERSION_1_8
-                    targetCompatibility = JavaVersion.VERSION_1_8
+                    sourceCompatibility = JavaVersion.VERSION_11
+                    targetCompatibility = JavaVersion.VERSION_11
                 }
             }
         }
 
         tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
             kotlinOptions {
-                jvmTarget = "1.8"
+                jvmTarget = "11"
+            }
+        }
+    }
+}
+
+allprojects {
+    configurations.all {
+        resolutionStrategy.eachDependency {
+            if (requested.group == "org.jetbrains.kotlin") {
+                useVersion("1.9.24")
+            }
+        }
+    }
+}
+
+subprojects {
+    afterEvaluate {
+        if (project.hasProperty("android")) {
+            dependencies {
+                add("implementation", "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.24")
             }
         }
     }

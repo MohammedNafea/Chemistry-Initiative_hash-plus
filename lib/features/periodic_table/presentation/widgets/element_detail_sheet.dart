@@ -3,7 +3,7 @@ import 'package:chemistry_initiative/features/periodic_table/data/models/element
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:chemistry_initiative/l10n/app_localizations.dart';
 import 'package:chemistry_initiative/features/periodic_table/presentation/widgets/bohr_model_painter.dart';
-import 'package:flutter_tts/flutter_tts.dart';
+// import 'package:flutter_tts/flutter_tts.dart';
 import 'package:chemistry_initiative/features/periodic_table/presentation/pages/element_3d_viewer_screen.dart';
 
 class ElementDetailSheet extends StatelessWidget {
@@ -82,12 +82,13 @@ class ElementDetailSheet extends StatelessWidget {
                             Icons.volume_up,
                             color: theme.primaryColor,
                           ),
-                          onPressed: () async {
-                            final flutterTts = FlutterTts();
-                            await flutterTts.setLanguage(
-                              Localizations.localeOf(context).languageCode,
+                          onPressed: () {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text('Voice pronunciation coming soon in the next update!'),
+                                duration: Duration(seconds: 2),
+                              ),
                             );
-                            await flutterTts.speak(element.name);
                           },
                         ),
                       ],

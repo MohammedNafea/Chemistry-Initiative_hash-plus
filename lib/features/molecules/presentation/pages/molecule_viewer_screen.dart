@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:chemistry_initiative/features/molecules/data/repositories/molecule_repository.dart';
 import 'package:chemistry_initiative/features/molecules/data/models/molecule.dart';
 import 'package:chemistry_initiative/l10n/app_localizations.dart';
-import 'package:flutter_tts/flutter_tts.dart';
 import 'package:model_viewer_plus/model_viewer_plus.dart';
 
 class MoleculeViewerScreen extends StatefulWidget {
@@ -236,15 +235,11 @@ class _MoleculeViewerScreenState extends State<MoleculeViewerScreen> {
                                   Icons.volume_up,
                                   color: theme.colorScheme.primary,
                                 ),
-                                onPressed: () async {
-                                  final flutterTts = FlutterTts();
-                                  await flutterTts.setLanguage(
-                                    Localizations.localeOf(context).languageCode,
-                                  );
-                                  await flutterTts.speak(
-                                    _getLocalizedText(
-                                      localizations,
-                                      _selectedMolecule.name,
+                                onPressed: () {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    const SnackBar(
+                                      content: Text('Voice pronunciation coming soon!'),
+                                      duration: Duration(seconds: 2),
                                     ),
                                   );
                                 },

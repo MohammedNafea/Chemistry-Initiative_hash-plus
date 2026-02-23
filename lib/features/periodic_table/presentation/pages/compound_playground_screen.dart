@@ -449,8 +449,6 @@ class _CompoundPlaygroundScreenState
     }
   }
 
-  final bool _isPanelExpanded = false;
-
   @override
   Widget build(BuildContext context) {
     final localizations = AppLocalizations.of(context)!;
