@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:chemistry_initiative/core/database/app_database.dart';
@@ -19,10 +18,18 @@ void main() async {
   
   // Initialize Firebase
   try {
-    if (kIsWeb) {
+    await dotenv.load(fileName: ".env");
+    
+    if (identical(0, 0.0)) { // Check if running on web
+      // Try to get key from .env, fallback to index.html key if not present
+      final envApiKey = dotenv.maybeGet('FIREBASE_API_KEY');
+      final apiKey = (envApiKey != null && envApiKey.isNotEmpty) 
+          ? envApiKey 
+          : ""; // Required from .env for security
+
       await Firebase.initializeApp(
-        options: const FirebaseOptions(
-          apiKey: "AIzaSyCLbyEaFC_oCXwstxmxQITja6WQGhiEX4",
+        options: FirebaseOptions(
+          apiKey: apiKey,
           authDomain: "wonders-of-chemistry.firebaseapp.com",
           projectId: "wonders-of-chemistry",
           storageBucket: "wonders-of-chemistry.firebasestorage.app",
@@ -38,15 +45,12 @@ void main() async {
     debugPrint("Firebase initialization failed: $e");
   }
 
-  await dotenv.load(fileName: ".env");
   await AppDatabase.instance.init();
 
   // Initialize and schedule daily notifications
-  if (!kIsWeb) {
-    final notificationService = NotificationService();
-    await notificationService.init();
-    await notificationService.scheduleDailyChemFact();
-  }
+  final notificationService = NotificationService();
+  await notificationService.init();
+  await notificationService.scheduleDailyChemFact();
 
   runApp(const ProviderScope(child: MyApp()));
 }

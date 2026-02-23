@@ -6,19 +6,23 @@ class CustomTextfield extends StatelessWidget {
   final TextEditingController? controller;
   final IconData? prefixIcon;
 
+  final String? Function(String?)? validator;
+
   const CustomTextfield({
     super.key,
     required this.hintText,
     this.isPassword = false,
     this.controller,
     this.prefixIcon,
+    this.validator,
   });
   @override
   Widget build(BuildContext context) {
     final isLight = Theme.of(context).brightness == Brightness.light;
-    return TextField(
+    return TextFormField(
       controller: controller,
       obscureText: isPassword,
+      validator: validator,
       style: TextStyle(color: isLight ? Colors.black87 : Colors.white),
       decoration: InputDecoration(
         hintText: hintText,

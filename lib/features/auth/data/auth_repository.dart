@@ -181,15 +181,14 @@ class AuthRepository {
   String _mapFirebaseError(String code) {
     switch (code) {
       case 'email-already-in-use': return 'الحساب موجود بالفعل لهذا الإيميل';
-      case 'weak-password': return 'كلمة المرور ضعيفة جداً (يجب أن تكون 6 أحرف على الأقل)';
+      case 'weak-password': return 'كلمة المرور ضعيفة جداً';
       case 'invalid-email': return 'البريد الإلكتروني غير صحيح';
-      case 'operation-not-allowed': return 'هذه الوسيلة غير مفعلة في Firebase';
-      case 'user-not-found': return 'المستخدم غير موجود';
-      case 'wrong-password': return 'كلمة المرور خاطئة';
-      case 'network-request-failed': return 'خطأ في الاتصال بالإنترنت';
-      case 'internal-error': return 'خطأ داخلي في الخادم';
-      case 'too-many-requests': return 'محاولات كثيرة جداً، يرجى المحاولة لاحقاً';
-      default: return 'حدث خطأ (كود: $code). تأكد من إعدادات Firebase.';
+      case 'configuration-not-found':
+        return 'إعدادات Firebase غير مكتملة. يرجى التأكد من تفعيل "Email/Password" في Firebase Console (Build > Authentication > Sign-in method).';
+      case 'api-key-not-valid':
+      case 'api-key-not-valid-please-pass-a-valid-api-key': 
+        return 'مفتاح Firebase غير صالح. يرجى التأكد من ضبط FIREBASE_API_KEY في ملف .env بشكل صحيح.';
+      default: return 'حدث خطأ أثناء التسجيل: $code';
     }
   }
 

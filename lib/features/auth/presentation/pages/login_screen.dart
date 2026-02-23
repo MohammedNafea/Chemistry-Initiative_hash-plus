@@ -33,6 +33,65 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
     super.dispose();
   }
 
+  Future<void> _handleAuth() async {
+    if (!_formKey.currentState!.validate()) return;
+
+    final email = _emailCtrl.text.trim();
+    final pass = _passCtrl.text.trim();
+    final name = _nameCtrl.text.trim();
+
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) => const Center(child: CircularProgressIndicator()),
+    );
+
+    try {
+      if (_isSignup) {
+        if (pass != _confirmCtrl.text.trim()) {
+          Navigator.pop(context);
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('كلمات المرور غير متطابقة')),
+          );
+          return;
+        }
+
+        final error = await _authRepo.registerUser(name, email, pass);
+        Navigator.pop(context);
+        
+        if (error == null) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('تم إنشاء الحساب بنجاح! يمكنك الدخول الآن.')),
+          );
+          setState(() {
+            _isSignup = false;
+          });
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(error)),
+          );
+        }
+      } else {
+        final success = await _authRepo.loginUser(email, pass);
+        Navigator.pop(context);
+        
+        if (success) {
+          ref.read(currentUserNotifierProvider.notifier).refresh();
+          showWelcomeNotifier.value = true;
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('خطأ في البريد الإلكتروني أو كلمة المرور')),
+          );
+        }
+      }
+    } catch (e) {
+      Navigator.pop(context);
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('حدث خطأ غير متوقع: $e')),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final isLight = Theme.of(context).brightness == Brightness.light;
@@ -118,26 +177,29 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
 
                     // Logo
                     Container(
-                      height: 150,
-                      width: 150,
+                      padding: const EdgeInsets.all(20),
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
+                        color: isLight
+                            ? Colors.deepPurple.withValues(alpha: 0.1)
+                            : Colors.cyanAccent.withValues(alpha: 0.1),
                         boxShadow: [
                           BoxShadow(
                             color: isLight
-                                ? Colors.deepPurpleAccent.withValues(alpha: 0.15)
-                                : Colors.cyanAccent.withValues(alpha: 0.15),
-                            blurRadius: 30,
-                            spreadRadius: 10,
+                                ? Colors.deepPurpleAccent.withValues(alpha: 0.2)
+                                : Colors.cyanAccent.withValues(alpha: 0.1),
+                            blurRadius: 20,
+                            spreadRadius: 5,
                           ),
                         ],
                       ),
-                      child: Image.asset(
-                        'assets/images/app_icon_v3.png',
-                        fit: BoxFit.contain,
+                      child: Icon(
+                        Icons.science_outlined,
+                        color: isLight ? Colors.deepPurple : Colors.cyanAccent,
+                        size: 50,
                       ),
                     ),
-                    const SizedBox(height: 24),
+                    const SizedBox(height: 16),
                     Text(
                       localizations.wonders,
                       style: TextStyle(
@@ -317,6 +379,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                                         hintText: localizations.fullName,
                                         controller: _nameCtrl,
                                         prefixIcon: Icons.person_outline,
+                                        validator: (val) => val == null || val.isEmpty ? 'يرجى إدخال الاسم' : null,
                                       ),
                                       const SizedBox(height: 16),
                                     ],
@@ -325,6 +388,11 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                                       hintText: localizations.email,
                                       controller: _emailCtrl,
                                       prefixIcon: Icons.email_outlined,
+                                      validator: (val) {
+                                        if (val == null || val.isEmpty) return 'يرجى إدخال البريد الإلكتروني';
+                                        if (!val.contains('@')) return 'بريد إلكتروني غير صالح';
+                                        return null;
+                                      },
                                     ),
                                     const SizedBox(height: 16),
 
@@ -333,6 +401,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                                       isPassword: true,
                                       controller: _passCtrl,
                                       prefixIcon: Icons.lock_outline,
+                                      validator: (val) => val == null || val.length < 6 ? 'كلمة المرور يجب أن تكون 6 أحرف على الأقل' : null,
                                     ),
 
                                     if (_isSignup) ...[
@@ -342,6 +411,11 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                                         isPassword: true,
                                         controller: _confirmCtrl,
                                         prefixIcon: Icons.lock_reset_outlined,
+                                        validator: (val) {
+                                          if (val == null || val.isEmpty) return 'يرجى تأكيد كلمة المرور';
+                                          if (val != _passCtrl.text) return 'كلمات المرور غير متطابقة';
+                                          return null;
+                                        },
                                       ),
                                     ],
 
@@ -350,7 +424,11 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                                       Align(
                                         alignment: Alignment.centerRight,
                                         child: TextButton(
-                                          onPressed: () {},
+                                          onPressed: () {
+                                            ScaffoldMessenger.of(context).showSnackBar(
+                                              const SnackBar(content: Text('نسيت كلمة المرور؟ هذه الميزة ستتوفر قريباً.')),
+                                            );
+                                          },
                                           style: TextButton.styleFrom(
                                             foregroundColor: isLight
                                                 ? Colors.deepPurple
@@ -365,58 +443,21 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                                       const SizedBox(height: 24),
 
                                     const SizedBox(height: 24),
+                                    
+                                    // Primary Action Button
                                     ElevatedButton(
-                                      onPressed: () async {
-                                        if (_formKey.currentState!.validate()) {
-                                          if (_isSignup) {
-                                            final error = await _authRepo.registerUser(
-                                              _nameCtrl.text,
-                                              _emailCtrl.text,
-                                              _passCtrl.text,
-                                            );
-                                            if (error != null && mounted) {
-                                              ScaffoldMessenger.of(context).showSnackBar(
-                                                SnackBar(content: Text(error)),
-                                              );
-                                            } else if (mounted) {
-                                              ref.read(currentUserNotifierProvider.notifier).refresh();
-                                            }
-                                          } else {
-                                            final success = await _authRepo.loginUser(
-                                              _emailCtrl.text,
-                                              _passCtrl.text,
-                                            );
-                                            if (!success && mounted) {
-                                              ScaffoldMessenger.of(context).showSnackBar(
-                                                const SnackBar(content: Text('Login Failed')),
-                                              );
-                                            } else if (mounted) {
-                                              ref.read(currentUserNotifierProvider.notifier).refresh();
-                                            }
-                                          }
-                                        }
-                                      },
+                                      onPressed: _handleAuth,
                                       style: ElevatedButton.styleFrom(
-                                        backgroundColor: isLight
-                                            ? Colors.deepPurple
-                                            : Colors.cyanAccent,
-                                        foregroundColor: isLight
-                                            ? Colors.white
-                                            : Colors.black87,
-                                        padding: const EdgeInsets.symmetric(
-                                          vertical: 16,
-                                        ),
+                                        backgroundColor: isLight ? Colors.deepPurple : Colors.cyanAccent,
+                                        foregroundColor: isLight ? Colors.white : Colors.black87,
+                                        padding: const EdgeInsets.symmetric(vertical: 16),
                                         shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(
-                                            16,
-                                          ),
+                                          borderRadius: BorderRadius.circular(15),
                                         ),
                                         elevation: 5,
                                       ),
                                       child: Text(
-                                        _isSignup
-                                            ? localizations.newAccount
-                                            : localizations.login,
+                                        _isSignup ? localizations.newAccount : localizations.login,
                                         style: const TextStyle(
                                           fontSize: 18,
                                           fontWeight: FontWeight.bold,
@@ -424,7 +465,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                                       ),
                                     ),
 
-                                    const SizedBox(height: 32),
+                                    const SizedBox(height: 24),
                                     Row(
                                       children: [
                                         const Expanded(child: Divider()),
@@ -451,25 +492,13 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                                           MainAxisAlignment.spaceEvenly,
                                       children: [
                                         _socialIconTile(
-                                          icon: Icons.account_circle_outlined, // Better Google placeholder
+                                          icon: Icons.g_mobiledata,
                                           color: Colors.redAccent,
                                           onTap: () async {
-                                            try {
-                                              final cred = await _authRepo.signInWithGoogle();
-                                              if (cred != null && mounted) {
-                                                ref.read(currentUserNotifierProvider.notifier).refresh();
-                                                showWelcomeNotifier.value = true;
-                                              } else if (mounted) {
-                                                ScaffoldMessenger.of(context).showSnackBar(
-                                                  const SnackBar(content: Text('Google Sign-In Cancelled or Failed')),
-                                                );
-                                              }
-                                            } catch (e) {
-                                              if (mounted) {
-                                                ScaffoldMessenger.of(context).showSnackBar(
-                                                  SnackBar(content: Text('Error: $e')),
-                                                );
-                                              }
+                                            final cred = await _authRepo.signInWithGoogle();
+                                            if (cred != null && mounted) {
+                                              ref.read(currentUserNotifierProvider.notifier).refresh();
+                                              showWelcomeNotifier.value = true;
                                             }
                                           },
                                         ),
@@ -477,22 +506,10 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                                           icon: Icons.apple,
                                           color: isLight ? Colors.black : Colors.white,
                                           onTap: () async {
-                                            try {
-                                              final cred = await _authRepo.signInWithApple();
-                                              if (cred != null && mounted) {
-                                                ref.read(currentUserNotifierProvider.notifier).refresh();
-                                                showWelcomeNotifier.value = true;
-                                              } else if (mounted) {
-                                                ScaffoldMessenger.of(context).showSnackBar(
-                                                  const SnackBar(content: Text('Apple Sign-In Failed')),
-                                                );
-                                              }
-                                            } catch (e) {
-                                              if (mounted) {
-                                                ScaffoldMessenger.of(context).showSnackBar(
-                                                  SnackBar(content: Text('Error: $e')),
-                                                );
-                                              }
+                                            final cred = await _authRepo.signInWithApple();
+                                            if (cred != null && mounted) {
+                                              ref.read(currentUserNotifierProvider.notifier).refresh();
+                                              showWelcomeNotifier.value = true;
                                             }
                                           },
                                         ),
@@ -500,45 +517,21 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                                           icon: Icons.facebook,
                                           color: Colors.blueAccent,
                                           onTap: () async {
-                                            try {
-                                              final cred = await _authRepo.signInWithFacebook();
-                                              if (cred != null && mounted) {
-                                                ref.read(currentUserNotifierProvider.notifier).refresh();
-                                                showWelcomeNotifier.value = true;
-                                              } else if (mounted) {
-                                                ScaffoldMessenger.of(context).showSnackBar(
-                                                  const SnackBar(content: Text('Facebook Sign-In Failed')),
-                                                );
-                                              }
-                                            } catch (e) {
-                                              if (mounted) {
-                                                ScaffoldMessenger.of(context).showSnackBar(
-                                                  SnackBar(content: Text('Error: $e')),
-                                                );
-                                              }
+                                            final cred = await _authRepo.signInWithFacebook();
+                                            if (cred != null && mounted) {
+                                              ref.read(currentUserNotifierProvider.notifier).refresh();
+                                              showWelcomeNotifier.value = true;
                                             }
                                           },
                                         ),
                                         _socialIconTile(
-                                          icon: Icons.terminal_rounded, // Better GitHub placeholder
+                                          icon: Icons.code_rounded, // GitHub icon
                                           color: Colors.black,
                                           onTap: () async {
-                                            try {
-                                              final cred = await _authRepo.signInWithGitHub();
-                                              if (cred != null && mounted) {
-                                                ref.read(currentUserNotifierProvider.notifier).refresh();
-                                                showWelcomeNotifier.value = true;
-                                              } else if (mounted) {
-                                                ScaffoldMessenger.of(context).showSnackBar(
-                                                  const SnackBar(content: Text('GitHub Sign-In Failed')),
-                                                );
-                                              }
-                                            } catch (e) {
-                                              if (mounted) {
-                                                ScaffoldMessenger.of(context).showSnackBar(
-                                                  SnackBar(content: Text('Error: $e')),
-                                                );
-                                              }
+                                            final cred = await _authRepo.signInWithGitHub();
+                                            if (cred != null && mounted) {
+                                              ref.read(currentUserNotifierProvider.notifier).refresh();
+                                              showWelcomeNotifier.value = true;
                                             }
                                           },
                                         ),
