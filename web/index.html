@@ -43,14 +43,16 @@
 <body>
   <script src="flutter_bootstrap.js" async></script>
 
-  <!-- Firebase SDKs -->
+  <script src="flutter_bootstrap.js" async></script>
+
+  <!-- Firebase SDKs (Required for Web Compatibility) -->
   <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore-compat.js"></script>
 
   <script>
     const firebaseConfig = {
-      apiKey: "AIzaSyCLbyEaFC_oCXwstxmxQITja6WQGHixEX4",
+      apiKey: "AIzaSyCnw_agoEaDzAhWZrRZRGT1zarAypwTmUw",
       authDomain: "wonders-of-chemistry.firebaseapp.com",
       projectId: "wonders-of-chemistry",
       storageBucket: "wonders-of-chemistry.firebasestorage.app",
@@ -59,7 +61,9 @@
       measurementId: "G-ERVTPVFW67"
     };
     // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
+    if (!firebase.apps.length) {
+      firebase.initializeApp(firebaseConfig);
+    }
   </script>
 </body>
 

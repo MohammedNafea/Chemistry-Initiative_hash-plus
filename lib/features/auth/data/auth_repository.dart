@@ -54,24 +54,31 @@ class AuthRepository {
 
   /// Login user (Email/Password)
   Future<bool> loginUser(String email, String password) async {
+    debugPrint("AuthRepository: Starting login for $email");
     try {
+      debugPrint("AuthRepository: Calling signInWithEmailAndPassword...");
       final cred = await _auth.signInWithEmailAndPassword(
         email: email.trim(),
         password: password,
       );
+      debugPrint("AuthRepository: Firebase call completed. User: ${cred.user?.uid}");
       if (cred.user != null) {
         // Sync local session
         await _db.setCurrentUser(email.trim());
+        debugPrint("AuthRepository: Local session synced.");
         return true;
       }
-    } catch (_) {
+    } catch (e) {
+      debugPrint("AuthRepository: Firebase login failed with error: $e");
       // Fallback to local DB check for offline compatibility or legacy users
       final user = _db.readUserByEmail(email);
       if (user != null && user.password == password) {
+        debugPrint("AuthRepository: Fallback to local DB successful.");
         await _db.setCurrentUser(user.email);
         return true;
       }
     }
+    debugPrint("AuthRepository: Login process finished with false.");
     return false;
   }
 

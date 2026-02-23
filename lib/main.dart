@@ -21,25 +21,30 @@ void main() async {
     await dotenv.load(fileName: ".env");
     
     if (identical(0, 0.0)) { // Check if running on web
-      // Try to get key from .env, fallback to index.html key if not present
-      final envApiKey = dotenv.maybeGet('FIREBASE_API_KEY');
-      final apiKey = (envApiKey != null && envApiKey.isNotEmpty) 
-          ? envApiKey 
-          : ""; 
+      // Use the verified Web API Key consistently
+      const String webApiKey = "AIzaSyCLbyEaFC_oCXwstxmxQITja6WQGHixEX4";
+      debugPrint("Initializing Firebase on Web with key: ${webApiKey.substring(0, 10)}...");
       
-      await Firebase.initializeApp(
-        options: FirebaseOptions(
-          apiKey: apiKey,
-          authDomain: "wonders-of-chemistry.firebaseapp.com",
-          projectId: "wonders-of-chemistry",
-          storageBucket: "wonders-of-chemistry.firebasestorage.app",
-          messagingSenderId: "111827250668",
-          appId: "1:111827250668:web:8336acdae7a5a82497e4c9",
-          measurementId: "G-ERVTPVFW67",
-        ),
-      );
+      if (Firebase.apps.isEmpty) {
+        await Firebase.initializeApp(
+          options: const FirebaseOptions(
+            apiKey: webApiKey,
+            authDomain: "wonders-of-chemistry.firebaseapp.com",
+            projectId: "wonders-of-chemistry",
+            storageBucket: "wonders-of-chemistry.firebasestorage.app",
+            messagingSenderId: "111827250668",
+            appId: "1:111827250668:web:8336acdae7a5a82497e4c9",
+            measurementId: "G-ERVTPVFW67",
+          ),
+        );
+        debugPrint("Firebase initialized successfully on Web.");
+      } else {
+        debugPrint("Firebase already initialized on Web.");
+      }
     } else {
-      await Firebase.initializeApp();
+      if (Firebase.apps.isEmpty) {
+        await Firebase.initializeApp();
+      }
     }
   } catch (e) {
     debugPrint("Firebase initialization failed: $e");
