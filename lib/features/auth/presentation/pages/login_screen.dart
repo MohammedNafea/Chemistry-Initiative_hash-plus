@@ -57,6 +57,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
         }
 
         final error = await _authRepo.registerUser(name, email, pass);
+        if (!mounted) return;
         Navigator.pop(context);
         
         if (error == null) {
@@ -73,6 +74,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
         }
       } else {
         final success = await _authRepo.loginUser(email, pass);
+        if (!mounted) return;
         Navigator.pop(context);
         
         if (success) {
@@ -85,6 +87,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
         }
       }
     } catch (e) {
+      if (!mounted) return;
       Navigator.pop(context);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('حدث خطأ غير متوقع: $e')),
@@ -496,7 +499,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                                           color: Colors.redAccent,
                                           onTap: () async {
                                             final cred = await _authRepo.signInWithGoogle();
-                                            if (cred != null && mounted) {
+                                            if (!mounted) return;
+                                            if (cred != null) {
                                               ref.read(currentUserNotifierProvider.notifier).refresh();
                                               showWelcomeNotifier.value = true;
                                             }
@@ -507,7 +511,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                                           color: isLight ? Colors.black : Colors.white,
                                           onTap: () async {
                                             final cred = await _authRepo.signInWithApple();
-                                            if (cred != null && mounted) {
+                                            if (!mounted) return;
+                                            if (cred != null) {
                                               ref.read(currentUserNotifierProvider.notifier).refresh();
                                               showWelcomeNotifier.value = true;
                                             }
@@ -518,7 +523,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                                           color: Colors.blueAccent,
                                           onTap: () async {
                                             final cred = await _authRepo.signInWithFacebook();
-                                            if (cred != null && mounted) {
+                                            if (!mounted) return;
+                                            if (cred != null) {
                                               ref.read(currentUserNotifierProvider.notifier).refresh();
                                               showWelcomeNotifier.value = true;
                                             }
@@ -529,7 +535,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                                           color: Colors.black,
                                           onTap: () async {
                                             final cred = await _authRepo.signInWithGitHub();
-                                            if (cred != null && mounted) {
+                                            if (!mounted) return;
+                                            if (cred != null) {
                                               ref.read(currentUserNotifierProvider.notifier).refresh();
                                               showWelcomeNotifier.value = true;
                                             }
