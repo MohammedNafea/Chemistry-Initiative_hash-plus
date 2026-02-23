@@ -25,8 +25,8 @@ void main() async {
       final envApiKey = dotenv.maybeGet('FIREBASE_API_KEY');
       final apiKey = (envApiKey != null && envApiKey.isNotEmpty) 
           ? envApiKey 
-          : ""; // Required from .env for security
-
+          : ""; 
+      
       await Firebase.initializeApp(
         options: FirebaseOptions(
           apiKey: apiKey,
