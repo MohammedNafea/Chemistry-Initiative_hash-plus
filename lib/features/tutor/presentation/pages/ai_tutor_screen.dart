@@ -229,8 +229,8 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
     await Future.delayed(const Duration(seconds: 1));
 
     String response = isAr 
-      ? "أنا أعمل حالياً في **الوضع التجريبي** (Demo Mode) لأن مفتاح API غير مفعل.\n\nكـمعلم كيمياء، يمكنني إخبارك أن الكيمياء هي دراسة المادة وتغيراتها. هل تريد أن تعرف عن أحد هذه المواضيع؟\n1. الجدول الدوري 🧬\n2. الروابط الكيميائية ⛓️\n3. الأحماض والقواعد 🧪"
-      : "I am currently running in **Demo Mode** because the API key is not configured.\n\nAs your chemistry tutor, I can tell you that chemistry is the study of matter and its changes. Would you like to learn about:\n1. Periodic Table 🧬\n2. Chemical Bonds ⛓️\n3. Acids and Bases 🧪";
+      ? "**الوضع التجريبي نشط** (Demo Mode) 🧪\n\nأهلاً بك! أنا أعمل حالياً بقدرات محدودة لأن مفتاح API غير مفعّل في ملف `.env` الخاص بالمشروع.\n\nلتفعيل المعلم الذكي بالكامل (الرؤية، المحادثة العميقة، والتحليل):\n1. احصل على مفتاح من [aistudio.google.com](https://aistudio.google.com)\n2. ضعه في ملف `.env` هكذا: `GEMINI_API_KEY=your_key`\n3. أعد تشغيل التطبيق.\n\n**حالياً كنسخة تجريبية:** هل تريد معرفة المزيد عن الجدول الدوري أو الروابط الكيميائية؟"
+      : "**Demo Mode Active** 🧪\n\nWelcome! I am currently running with limited capabilities because the API key is not configured in the project's `.env` file.\n\nTo enable full AI power (Vision, deep conversation, and analysis):\n1. Get a key from [aistudio.google.com](https://aistudio.google.com)\n2. Add it to `.env`: `GEMINI_API_KEY=your_key`\n3. Restart the app.\n\n**In the meantime:** Would you like to learn about the Periodic Table or Chemical Bonds?";
 
     if (!mounted) return;
     setState(() {

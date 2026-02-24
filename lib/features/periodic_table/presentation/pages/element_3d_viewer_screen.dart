@@ -11,12 +11,7 @@ class Element3DViewerScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    // Fallback logic for elements. Since we only downloaded water/carbon:
-    // We treat 'C' as carbon, and everything else uses the generic water model as placeholder.
-    String modelUrl = 'assets/models/water.glb';
-    if (element.symbol == 'C') {
-      modelUrl = 'assets/models/carbon.glb';
-    }
+    String modelUrl = element.symbol == 'C' ? 'assets/models/carbon.glb' : 'assets/models/water.glb';
 
     return Scaffold(
       appBar: AppBar(
@@ -26,13 +21,53 @@ class Element3DViewerScreen extends StatelessWidget {
       ),
       body: Container(
         color: theme.colorScheme.surface,
-        child: ModelViewer(
-          src: modelUrl,
-          alt: 'A 3D model of ${element.name}',
-          ar: true,
-          autoRotate: true,
-          cameraControls: true,
-        ),
+        child: element.symbol == 'C' || (element.name.toLowerCase().contains('water') || element.symbol == 'O') 
+          ? ModelViewer(
+              src: modelUrl,
+              alt: 'A 3D model of ${element.name}',
+              ar: true,
+              autoRotate: true,
+              cameraControls: true,
+            )
+          : Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                   Container(
+                    width: 200,
+                    height: 200,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: theme.colorScheme.primaryContainer.withValues(alpha: 0.3),
+                    ),
+                    child: Icon(
+                      Icons.blur_on_rounded,
+                      size: 100,
+                      color: theme.colorScheme.primary,
+                    ),
+                  ),
+                  const SizedBox(height: 32),
+                  Text(
+                    'Visualizing ${element.name}...',
+                    style: theme.textTheme.headlineSmall?.copyWith(
+                      fontWeight: FontWeight.bold,
+                      color: theme.colorScheme.primary,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 40),
+                    child: Text(
+                      'A detailed 3D model for ${element.symbol} is being prepared. View its physical properties in the Periodic Table.',
+                      textAlign: TextAlign.center,
+                      style: theme.textTheme.bodyMedium?.copyWith(
+                        color: theme.colorScheme.onSurfaceVariant,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
       ),
     );
   }
