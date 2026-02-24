@@ -17,7 +17,7 @@ class LeaderboardScreen extends StatelessWidget {
       backgroundColor: isLight ? const Color(0xFFF8FAFC) : const Color(0xFF0F172A),
       appBar: AppBar(
         title: Text(
-          l10n.periodicTable, // Placeholder until leaderboard key added
+          l10n.leaderboard,
           style: const TextStyle(fontWeight: FontWeight.bold),
         ),
         backgroundColor: Colors.transparent,

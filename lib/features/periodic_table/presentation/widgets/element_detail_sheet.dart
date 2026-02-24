@@ -3,19 +3,33 @@ import 'package:chemistry_initiative/features/periodic_table/data/models/element
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:chemistry_initiative/l10n/app_localizations.dart';
 import 'package:chemistry_initiative/features/periodic_table/presentation/widgets/bohr_model_painter.dart';
-// import 'package:flutter_tts/flutter_tts.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 import 'package:chemistry_initiative/features/periodic_table/presentation/pages/element_3d_viewer_screen.dart';
 
-class ElementDetailSheet extends StatelessWidget {
+class ElementDetailSheet extends StatefulWidget {
   final ElementModel element;
 
   const ElementDetailSheet({super.key, required this.element});
+
+  @override
+  State<ElementDetailSheet> createState() => _ElementDetailSheetState();
+}
+
+class _ElementDetailSheetState extends State<ElementDetailSheet> {
+  final FlutterTts flutterTts = FlutterTts();
+
+  Future<void> _speak(String text, String langCode) async {
+    await flutterTts.setLanguage(langCode);
+    await flutterTts.setPitch(1.0);
+    await flutterTts.speak(text);
+  }
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final isDark = theme.brightness == Brightness.dark;
     final localizations = AppLocalizations.of(context)!;
+    final langCode = Localizations.localeOf(context).languageCode;
 
     return Container(
       decoration: BoxDecoration(
@@ -53,7 +67,7 @@ class ElementDetailSheet extends StatelessWidget {
                   ),
                 ),
                 child: Text(
-                  element.symbol,
+                  widget.element.symbol,
                   style: TextStyle(
                     fontSize: 32,
                     fontWeight: FontWeight.bold,
@@ -70,7 +84,7 @@ class ElementDetailSheet extends StatelessWidget {
                       children: [
                         Expanded(
                           child: Text(
-                            element.name,
+                            widget.element.name,
                             style: const TextStyle(
                               fontSize: 24,
                               fontWeight: FontWeight.bold,
@@ -82,19 +96,12 @@ class ElementDetailSheet extends StatelessWidget {
                             Icons.volume_up,
                             color: theme.primaryColor,
                           ),
-                          onPressed: () {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                content: Text('Voice pronunciation coming soon in the next update!'),
-                                duration: Duration(seconds: 2),
-                              ),
-                            );
-                          },
+                          onPressed: () => _speak(widget.element.name, langCode),
                         ),
                       ],
                     ),
                     Text(
-                      '${localizations.atomicNumberLabel}: ${element.atomicNumber}',
+                      '${localizations.atomicNumberLabel}: ${widget.element.atomicNumber}',
                       style: TextStyle(
                         color: isDark ? Colors.grey[400] : Colors.grey[600],
                         fontSize: 14,
@@ -104,7 +111,7 @@ class ElementDetailSheet extends StatelessWidget {
                 ),
               ),
               // Bohr Model Visualization
-              BohrModelWidget(atomicNumber: element.atomicNumber),
+              BohrModelWidget(atomicNumber: widget.element.atomicNumber),
             ],
           ),
           const SizedBox(height: 24),
@@ -142,7 +149,7 @@ class ElementDetailSheet extends StatelessWidget {
                       ),
                       const SizedBox(height: 4),
                       Text(
-                        element.dailyLifeUse,
+                        widget.element.dailyLifeUse,
                         style: TextStyle(
                           fontSize: 15,
                           color: isDark ? Colors.white70 : Colors.black87,
@@ -163,7 +170,7 @@ class ElementDetailSheet extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           Text(
-            element.summary,
+            widget.element.summary,
             style: TextStyle(
               fontSize: 14,
               color: isDark ? Colors.grey[400] : Colors.grey[700],
@@ -177,13 +184,13 @@ class ElementDetailSheet extends StatelessWidget {
             children: [
               _StatBadge(
                 label: localizations.massLabel,
-                value: element.atomicMass,
+                value: widget.element.atomicMass,
                 isDark: isDark,
               ),
               const SizedBox(width: 12),
               _StatBadge(
                 label: localizations.categoryLabel,
-                value: element.category,
+                value: widget.element.category,
                 isDark: isDark,
               ),
             ],
@@ -215,7 +222,7 @@ class ElementDetailSheet extends StatelessWidget {
                 Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (context) =>
-                        Element3DViewerScreen(element: element),
+                        Element3DViewerScreen(element: widget.element),
                   ),
                 );
               },

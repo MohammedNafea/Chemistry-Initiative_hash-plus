@@ -224,9 +224,9 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
     });
   }
 
-  Future<void> _pickImage() async {
+  Future<void> _pickImage(ImageSource source) async {
     final XFile? image = await _picker.pickImage(
-      source: ImageSource.camera,
+      source: source,
       imageQuality: 70,
     );
     if (image != null) {
@@ -445,8 +445,16 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
                     Row(
                       children: [
                         IconButton(
-                          onPressed: _pickImage,
+                          onPressed: () => _pickImage(ImageSource.camera),
                           icon: Icon(Icons.camera_alt_rounded, color: theme.colorScheme.primary),
+                          style: IconButton.styleFrom(
+                            backgroundColor: theme.colorScheme.primaryContainer.withValues(alpha: 0.4),
+                          ),
+                        ),
+                        const SizedBox(width: 8),
+                        IconButton(
+                          onPressed: () => _pickImage(ImageSource.gallery),
+                          icon: Icon(Icons.photo_library_rounded, color: theme.colorScheme.primary),
                           style: IconButton.styleFrom(
                             backgroundColor: theme.colorScheme.primaryContainer.withValues(alpha: 0.4),
                           ),
