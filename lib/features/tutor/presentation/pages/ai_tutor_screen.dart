@@ -141,6 +141,7 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
       final responseStream = _chatSession!.sendMessageStream(Content.multi(parts));
 
       await for (final chunk in responseStream) {
+        if (!mounted) return;
         setState(() {
           _messages.last["text"] = (_messages.last["text"] ?? "") + (chunk.text ?? "");
         });
@@ -188,6 +189,7 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
             errorStr.contains("403") ||
             errorStr.contains("401");
 
+        if (!mounted) return;
         final isAr = Localizations.localeOf(context).languageCode == 'ar';
 
         String errorMsg;
