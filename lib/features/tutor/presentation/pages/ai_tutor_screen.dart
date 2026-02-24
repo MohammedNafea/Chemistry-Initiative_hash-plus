@@ -4,8 +4,7 @@ import 'package:google_generative_ai/google_generative_ai.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_markdown_plus/flutter_markdown_plus.dart';
 import 'package:image_picker/image_picker.dart';
-import 'dart:io' show File; // Restricted to specific use
-import 'package:flutter/foundation.dart' show kIsWeb;
+import 'package:chemistry_initiative/core/utils/platform_image_loader.dart';
 import 'package:chemistry_initiative/l10n/app_localizations.dart';
 
 class AITutorScreen extends ConsumerStatefulWidget {
@@ -97,20 +96,21 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
       return;
     }
 
+    if (!mounted) return;
+    final localizations = AppLocalizations.of(context)!;
+    final currentLocale = Localizations.localeOf(context);
+    final isAr = currentLocale.languageCode == 'ar';
+    final language = isAr ? 'Arabic' : 'English';
+
     setState(() {
       if (retryText == null && retryImage == null) {
+        _controller.clear();
+        _messages.add({"role": "user", "text": text});
         if (image != null) {
-          _messages.add({
-            "role": "user",
-            "text": text.isEmpty ? "Image uploaded" : text,
-            "image": image.path,
-          });
-        } else {
-          _messages.add({"role": "user", "text": text});
+          _messages.last["image"] = image.path;
         }
         _messages.add({"role": "model", "text": ""});
       } else {
-        // Update the existing error/thinking message instead of adding new ones
         _messages.last["text"] = "";
       }
       _isLoading = true;
@@ -129,8 +129,6 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
       
       // If using legacy mode and this is the first message beyond greeting, prepend instructions
       if (_useLegacySystemInstruction && _messages.length <= 3) {
-        final localizations = AppLocalizations.of(context)!;
-        final language = Localizations.localeOf(context).languageCode == 'ar' ? 'Arabic' : 'English';
         final instruction = localizations.aiTutorSystemInstruction(language);
         processedText = "[$instruction]\n\nUser Question: $processedText";
       }
@@ -162,10 +160,10 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
         return;
       }
 
-      if (errorStr.contains("not found") || 
+      if (retryText == null && (errorStr.contains("not found") || 
           errorStr.contains("404") || 
           errorStr.contains("not supported") ||
-          errorStr.contains("is not available")) {
+          errorStr.contains("is not available"))) {
         String? nextModel;
         if (_modelName == _flashModel) {
           nextModel = _proModel;
@@ -190,7 +188,6 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
             errorStr.contains("401");
 
         if (!mounted) return;
-        final isAr = Localizations.localeOf(context).languageCode == 'ar';
 
         String errorMsg;
         if (isAuthError) {
@@ -247,21 +244,7 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
 
   /// Cross-platform image builder
   Widget _buildImage(String path, {double? width, double? height, BoxFit fit = BoxFit.cover}) {
-    if (kIsWeb) {
-      return Image.network(
-        path,
-        width: width,
-        height: height,
-        fit: fit,
-      );
-    } else {
-      return Image.file(
-        File(path),
-        width: width,
-        height: height,
-        fit: fit,
-      );
-    }
+    return buildPlatformImage(path, width: width, height: height, fit: fit);
   }
 
   @override
