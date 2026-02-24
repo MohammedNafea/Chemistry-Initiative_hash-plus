@@ -20,6 +20,7 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
   bool _isLoading = false;
   GenerativeModel? _model;
   ChatSession? _chatSession;
+  bool _isDemoMode = false;
   String _modelName = 'gemini-2.5-flash';
   final String _flashModel = 'gemini-2.5-flash';
   final String _proModel = 'gemini-2.0-flash';
@@ -66,16 +67,14 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
       if (_messages.isEmpty) {
         _messages.add({"role": "model", "text": localizations.aiTutorGreeting});
       }
+      _isDemoMode = false;
     } else {
       _model = null;
       _chatSession = null;
-      final isAr = Localizations.localeOf(context).languageCode == 'ar';
-      _messages.add({
-        "role": "model",
-        "text": isAr
-            ? "⚠️ ملف الإعدادات (.env) فارغ أو المفتاح غير صحيح.\n\nلتفعيل المعلم الذكي:\n1. احصل على مفتاح من aistudio.google.com\n2. افتح ملف .env في المشروع\n3. أضف المفتاح كالتالي:\nGEMINI_API_KEY=your_key\n4. أعد تشغيل التطبيق."
-            : "⚠️ The (.env) file is empty or the key is invalid.\n\nTo activate the AI Tutor:\n1. Get a key from aistudio.google.com\n2. Open the .env file in the project\n3. Add the key like this:\nGEMINI_API_KEY=your_key\n4. Restart the app.",
-      });
+      _isDemoMode = true;
+      if (_messages.isEmpty) {
+        _messages.add({"role": "model", "text": localizations.aiTutorGreeting});
+      }
     }
   }
 
@@ -89,10 +88,15 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
       _clearSelectedImage();
     }
 
-    if (_chatSession == null) {
+    if (_chatSession == null && !_isDemoMode) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Missing API Key in .env')),
       );
+      return;
+    }
+
+    if (_isDemoMode) {
+      _sendDemoMessage(text);
       return;
     }
 
@@ -210,6 +214,30 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
       });
       _scrollToBottom();
     }
+  }
+
+  void _sendDemoMessage(String userText) async {
+    final isAr = Localizations.localeOf(context).languageCode == 'ar';
+    
+    setState(() {
+      _messages.add({"role": "user", "text": userText});
+      _messages.add({"role": "model", "text": ""});
+      _isLoading = true;
+    });
+    _scrollToBottom();
+
+    await Future.delayed(const Duration(seconds: 1));
+
+    String response = isAr 
+      ? "أنا أعمل حالياً في **الوضع التجريبي** (Demo Mode) لأن مفتاح API غير مفعل.\n\nكـمعلم كيمياء، يمكنني إخبارك أن الكيمياء هي دراسة المادة وتغيراتها. هل تريد أن تعرف عن أحد هذه المواضيع؟\n1. الجدول الدوري 🧬\n2. الروابط الكيميائية ⛓️\n3. الأحماض والقواعد 🧪"
+      : "I am currently running in **Demo Mode** because the API key is not configured.\n\nAs your chemistry tutor, I can tell you that chemistry is the study of matter and its changes. Would you like to learn about:\n1. Periodic Table 🧬\n2. Chemical Bonds ⛓️\n3. Acids and Bases 🧪";
+
+    if (!mounted) return;
+    setState(() {
+      _messages.last["text"] = response;
+      _isLoading = false;
+    });
+    _scrollToBottom();
   }
 
   void _scrollToBottom() {

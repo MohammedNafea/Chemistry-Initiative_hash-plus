@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:chemistry_initiative/features/molecules/data/repositories/molecule_repository.dart';
 import 'package:chemistry_initiative/features/molecules/data/models/molecule.dart';
 import 'package:chemistry_initiative/l10n/app_localizations.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 import 'package:model_viewer_plus/model_viewer_plus.dart';
 
 class MoleculeViewerScreen extends StatefulWidget {
@@ -14,6 +15,7 @@ class MoleculeViewerScreen extends StatefulWidget {
 class _MoleculeViewerScreenState extends State<MoleculeViewerScreen> {
   late Molecule _selectedMolecule;
   final List<Molecule> _molecules = MoleculeRepository.getMolecules();
+  final FlutterTts flutterTts = FlutterTts();
 
   @override
   void initState() {
@@ -29,6 +31,13 @@ class _MoleculeViewerScreenState extends State<MoleculeViewerScreen> {
       return 'assets/models/water.glb';
     }
     return 'assets/models/carbon.glb'; // Fallback to duck/carbon for others.
+  }
+
+  Future<void> _speak(String text) async {
+    final locale = Localizations.localeOf(context).toString();
+    await flutterTts.setLanguage(locale);
+    await flutterTts.setPitch(1.0);
+    await flutterTts.speak(text);
   }
 
   String _getLocalizedText(AppLocalizations localizations, String key) {
@@ -235,14 +244,12 @@ class _MoleculeViewerScreenState extends State<MoleculeViewerScreen> {
                                   Icons.volume_up,
                                   color: theme.colorScheme.primary,
                                 ),
-                                onPressed: () {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    const SnackBar(
-                                      content: Text('Voice pronunciation coming soon!'),
-                                      duration: Duration(seconds: 2),
-                                    ),
-                                  );
-                                },
+                                onPressed: () => _speak(
+                                  _getLocalizedText(
+                                    localizations,
+                                    _selectedMolecule.name,
+                                  ),
+                                ),
                               ),
                             ],
                           ),
