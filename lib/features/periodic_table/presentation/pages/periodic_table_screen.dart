@@ -43,21 +43,11 @@ class PeriodicTableScreen extends StatelessWidget {
 
             return LayoutBuilder(
               builder: (context, constraints) {
-                // Responsive grid calculation
-                int crossAxisCount = 3;
-                if (constraints.maxWidth > 1200) {
-                  crossAxisCount = 9;
-                } else if (constraints.maxWidth > 800) {
-                  crossAxisCount = 6;
-                } else if (constraints.maxWidth > 600) {
-                  crossAxisCount = 4;
-                }
-
                 return GridView.builder(
-                  padding: const EdgeInsets.only(bottom: 80),
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: crossAxisCount,
-                    childAspectRatio: 0.9,
+                  padding: const EdgeInsets.fromLTRB(16, 8, 16, 100),
+                  gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                    maxCrossAxisExtent: 150,
+                    childAspectRatio: 0.85,
                     crossAxisSpacing: 12,
                     mainAxisSpacing: 12,
                   ),
