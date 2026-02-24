@@ -11,7 +11,7 @@ import 'package:chemistry_initiative/features/auth/data/auth_repository.dart';
 import 'package:chemistry_initiative/features/auth/data/current_user_provider.dart';
 import 'package:chemistry_initiative/features/profile/data/profile_repository.dart';
 import 'package:chemistry_initiative/features/profile/presentation/pages/edit_profile_screen.dart';
-import 'package:chemistry_initiative/features/auth/presentation/pages/login_screen.dart';
+// import 'package:chemistry_initiative/features/auth/presentation/pages/login_screen.dart'; // Unused now that AuthGuard handles redirection
 import 'package:chemistry_initiative/core/localization/language_switcher.dart';
 import 'package:chemistry_initiative/core/utils/image_helper.dart';
 
@@ -712,14 +712,34 @@ class _ActionButtons extends ConsumerWidget {
         Expanded(
           child: ElevatedButton.icon(
             onPressed: () async {
-              await AuthRepository.instance.logout();
-              ref.read(currentUserNotifierProvider.notifier).refresh();
+              // 1. Show Confirmation Dialog
+              final confirm = await showDialog<bool>(
+                context: context,
+                builder: (context) => AlertDialog(
+                  title: Text(localizations.logout),
+                  content: const Text('هل أنت متأكد أنك تريد تسجيل الخروج؟'),
+                  actions: [
+                    TextButton(
+                      onPressed: () => Navigator.pop(context, false),
+                      child: const Text('إلغاء'), // localizations.cancel is missing, using hardcoded Arabic
+                    ),
+                    TextButton(
+                      onPressed: () => Navigator.pop(context, true),
+                      style: TextButton.styleFrom(foregroundColor: Colors.red),
+                      child: Text(localizations.logout),
+                    ),
+                  ],
+                ),
+              );
 
-              if (context.mounted) {
-                Navigator.of(context).pushAndRemoveUntil(
-                  MaterialPageRoute(builder: (context) => const LoginScreen()),
-                  (route) => false,
-                );
+              if (confirm == true) {
+                // 2. Perform Logout
+                await AuthRepository.instance.logout();
+                
+                // 3. Refresh Provider - This will trigger AuthGuard in main.dart
+                ref.read(currentUserNotifierProvider.notifier).refresh();
+                
+                // Note: AuthGuard will handle the redirection automatically
               }
             },
             style: ElevatedButton.styleFrom(

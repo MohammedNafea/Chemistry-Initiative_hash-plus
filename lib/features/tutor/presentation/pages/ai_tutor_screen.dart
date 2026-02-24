@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_generative_ai/google_generative_ai.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:flutter_markdown/flutter_markdown.dart';
+import 'package:flutter_markdown_plus/flutter_markdown_plus.dart';
 import 'package:image_picker/image_picker.dart';
-import 'dart:io';
+import 'dart:io' show File; // Restricted to specific use
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:chemistry_initiative/l10n/app_localizations.dart';
 
 class AITutorScreen extends ConsumerStatefulWidget {
@@ -18,12 +19,16 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
   final TextEditingController _controller = TextEditingController();
   final List<Map<String, String>> _messages = [];
   bool _isLoading = false;
-  late final GenerativeModel? _model;
-  late final ChatSession? _chatSession;
-  final String _modelName = 'gemini-1.5-flash';
+  GenerativeModel? _model;
+  ChatSession? _chatSession;
+  String _modelName = 'gemini-2.5-flash';
+  final String _flashModel = 'gemini-2.5-flash';
+  final String _proModel = 'gemini-2.0-flash';
+  final String _pro1Model = 'gemini-flash-latest';
   final ScrollController _scrollController = ScrollController();
   final ImagePicker _picker = ImagePicker();
   XFile? _selectedImage;
+  bool _useLegacySystemInstruction = true;
 
   @override
   void didChangeDependencies() {
@@ -50,13 +55,18 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
 
       _model = GenerativeModel(
         model: _modelName,
-        apiKey: apiKey,
-        systemInstruction: Content.system(
-          localizations.aiTutorSystemInstruction(language),
-        ),
+        apiKey: apiKey.trim(),
+        requestOptions: const RequestOptions(apiVersion: 'v1'),
+        systemInstruction: _useLegacySystemInstruction
+            ? null
+            : Content.system(
+                localizations.aiTutorSystemInstruction(language),
+              ),
       );
       _chatSession = _model!.startChat();
-      _messages.add({"role": "model", "text": localizations.aiTutorGreeting});
+      if (_messages.isEmpty) {
+        _messages.add({"role": "model", "text": localizations.aiTutorGreeting});
+      }
     } else {
       _model = null;
       _chatSession = null;
@@ -70,10 +80,15 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
     }
   }
 
-  void _sendMessage() async {
-    final text = _controller.text.trim();
-    final image = _selectedImage;
+  void _sendMessage({String? retryText, XFile? retryImage}) async {
+    final text = retryText ?? _controller.text.trim();
+    final image = retryImage ?? _selectedImage;
     if (text.isEmpty && image == null) return;
+
+    if (retryText == null && retryImage == null) {
+      _controller.clear();
+      _clearSelectedImage();
+    }
 
     if (_chatSession == null) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -83,20 +98,24 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
     }
 
     setState(() {
-      if (image != null) {
-        _messages.add({
-          "role": "user",
-          "text": text.isEmpty ? "Image uploaded" : text,
-          "image": image.path,
-        });
+      if (retryText == null && retryImage == null) {
+        if (image != null) {
+          _messages.add({
+            "role": "user",
+            "text": text.isEmpty ? "Image uploaded" : text,
+            "image": image.path,
+          });
+        } else {
+          _messages.add({"role": "user", "text": text});
+        }
+        _messages.add({"role": "model", "text": ""});
       } else {
-        _messages.add({"role": "user", "text": text});
+        // Update the existing error/thinking message instead of adding new ones
+        _messages.last["text"] = "";
       }
-      _messages.add({"role": "model", "text": ""}); // Placeholder for stream
       _isLoading = true;
       _selectedImage = null;
     });
-    _controller.clear();
     _scrollToBottom();
 
     try {
@@ -105,9 +124,21 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
         final bytes = await image.readAsBytes();
         parts.add(DataPart('image/jpeg', bytes));
       }
-      parts.add(TextPart(text.isEmpty ? "What is this chemical compound or element?" : text));
+      
+      String processedText = text.isEmpty ? "What is this chemical compound or element?" : text;
+      
+      // If using legacy mode and this is the first message beyond greeting, prepend instructions
+      if (_useLegacySystemInstruction && _messages.length <= 3) {
+        final localizations = AppLocalizations.of(context)!;
+        final language = Localizations.localeOf(context).languageCode == 'ar' ? 'Arabic' : 'English';
+        final instruction = localizations.aiTutorSystemInstruction(language);
+        processedText = "[$instruction]\n\nUser Question: $processedText";
+      }
+      
+      parts.add(TextPart(processedText));
 
-      final responseStream = _chatSession.sendMessageStream(Content.multi(parts));
+      if (_chatSession == null) throw Exception("Chat session not initialized");
+      final responseStream = _chatSession!.sendMessageStream(Content.multi(parts));
 
       await for (final chunk in responseStream) {
         setState(() {
@@ -116,9 +147,41 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
         _scrollToBottom();
       }
     } catch (e) {
-      // ... same error handling as before ...
+      final errorStr = e.toString();
+      
+      // FALLBACK LOGIC: Try different models incrementally or different instruction modes
+      final isPayloadError = errorStr.contains("systemInstruction") || 
+                            errorStr.contains("Invalid JSON payload");
+      
+      if (isPayloadError && !_useLegacySystemInstruction) {
+        debugPrint("AI Tutor: System instruction rejected by API, falling back to legacy mode...");
+        _useLegacySystemInstruction = true;
+        _initializeTutor();
+        _sendMessage(retryText: text, retryImage: image);
+        return;
+      }
+
+      if (errorStr.contains("not found") || 
+          errorStr.contains("404") || 
+          errorStr.contains("not supported") ||
+          errorStr.contains("is not available")) {
+        String? nextModel;
+        if (_modelName == _flashModel) {
+          nextModel = _proModel;
+        } else if (_modelName == _proModel) {
+          nextModel = _pro1Model;
+        }
+
+        if (nextModel != null) {
+          debugPrint("AI Tutor: Model $_modelName failed, trying fallback $nextModel...");
+          _modelName = nextModel;
+          _initializeTutor(); 
+          _sendMessage(retryText: text, retryImage: image); 
+          return;
+        }
+      }
+
       setState(() {
-        final errorStr = e.toString();
         final isAuthError =
             errorStr.contains("API key not valid") ||
             errorStr.contains("invalid API key") ||
@@ -178,6 +241,25 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
     setState(() {
       _selectedImage = null;
     });
+  }
+
+  /// Cross-platform image builder
+  Widget _buildImage(String path, {double? width, double? height, BoxFit fit = BoxFit.cover}) {
+    if (kIsWeb) {
+      return Image.network(
+        path,
+        width: width,
+        height: height,
+        fit: fit,
+      );
+    } else {
+      return Image.file(
+        File(path),
+        width: width,
+        height: height,
+        fit: fit,
+      );
+    }
   }
 
   @override
@@ -241,8 +323,8 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
                                       padding: const EdgeInsets.only(bottom: 8.0),
                                       child: ClipRRect(
                                         borderRadius: BorderRadius.circular(12),
-                                        child: Image.file(
-                                          File(imagePath),
+                                        child: _buildImage(
+                                          imagePath,
                                           width: 200,
                                           height: 200,
                                           fit: BoxFit.cover,
@@ -351,8 +433,8 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
                           children: [
                             ClipRRect(
                               borderRadius: BorderRadius.circular(12),
-                              child: Image.file(
-                                File(_selectedImage!.path),
+                              child: _buildImage(
+                                _selectedImage!.path,
                                 height: 100,
                                 fit: BoxFit.cover,
                               ),

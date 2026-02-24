@@ -469,81 +469,6 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                                     ),
 
                                     const SizedBox(height: 24),
-                                    Row(
-                                      children: [
-                                        const Expanded(child: Divider()),
-                                        Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                            horizontal: 16,
-                                          ),
-                                          child: Text(
-                                            localizations.orContinueWith,
-                                            style: TextStyle(
-                                              color: Colors.grey[500],
-                                              fontSize: 12,
-                                            ),
-                                          ),
-                                        ),
-                                        const Expanded(child: Divider()),
-                                      ],
-                                    ),
-                                    const SizedBox(height: 20),
-
-                                    // Social Login Grid
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                      children: [
-                                        _socialIconTile(
-                                          icon: Icons.g_mobiledata,
-                                          color: Colors.redAccent,
-                                          onTap: () async {
-                                            final cred = await _authRepo.signInWithGoogle();
-                                            if (!mounted) return;
-                                            if (cred != null) {
-                                              ref.read(currentUserNotifierProvider.notifier).refresh();
-                                              showWelcomeNotifier.value = true;
-                                            }
-                                          },
-                                        ),
-                                        _socialIconTile(
-                                          icon: Icons.apple,
-                                          color: isLight ? Colors.black : Colors.white,
-                                          onTap: () async {
-                                            final cred = await _authRepo.signInWithApple();
-                                            if (!mounted) return;
-                                            if (cred != null) {
-                                              ref.read(currentUserNotifierProvider.notifier).refresh();
-                                              showWelcomeNotifier.value = true;
-                                            }
-                                          },
-                                        ),
-                                        _socialIconTile(
-                                          icon: Icons.facebook,
-                                          color: Colors.blueAccent,
-                                          onTap: () async {
-                                            final cred = await _authRepo.signInWithFacebook();
-                                            if (!mounted) return;
-                                            if (cred != null) {
-                                              ref.read(currentUserNotifierProvider.notifier).refresh();
-                                              showWelcomeNotifier.value = true;
-                                            }
-                                          },
-                                        ),
-                                        _socialIconTile(
-                                          icon: Icons.code_rounded, // GitHub icon
-                                          color: Colors.black,
-                                          onTap: () async {
-                                            final cred = await _authRepo.signInWithGitHub();
-                                            if (!mounted) return;
-                                            if (cred != null) {
-                                              ref.read(currentUserNotifierProvider.notifier).refresh();
-                                              showWelcomeNotifier.value = true;
-                                            }
-                                          },
-                                        ),
-                                      ],
-                                    ),
                                   ],
                                 ),
                               ),
@@ -559,48 +484,6 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
               ),
             ),
           ),
-        ],
-      ),
-    );
-  }
-
-  Widget _socialIconTile({
-    required IconData icon,
-    required Color color,
-    required VoidCallback onTap,
-  }) {
-    final isLight = Theme.of(context).brightness == Brightness.light;
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        height: 50,
-        width: 50,
-        decoration: BoxDecoration(
-          color: isLight ? Colors.grey[100] : Colors.white10,
-          borderRadius: BorderRadius.circular(15),
-          border: Border.all(
-            color: isLight ? Colors.grey[300]! : Colors.white10,
-          ),
-        ),
-        child: Icon(icon, color: color, size: 30),
-      ),
-    );
-  }
-
-  Widget socialButton(String text, IconData icon, Color color) {
-    return Container(
-      width: 300,
-      padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
-      decoration: BoxDecoration(
-        border: Border.all(color: Colors.grey.shade300),
-        borderRadius: BorderRadius.circular(15),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(icon, color: color),
-          const SizedBox(width: 10),
-          Text(text, style: const TextStyle(fontWeight: FontWeight.w500)),
         ],
       ),
     );

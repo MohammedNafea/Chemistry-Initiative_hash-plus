@@ -32,7 +32,7 @@ allprojects {
     configurations.all {
         resolutionStrategy.eachDependency {
             if (requested.group == "org.jetbrains.kotlin") {
-                useVersion("1.9.24")
+                useVersion("2.1.0")
             }
         }
     }
@@ -42,7 +42,7 @@ subprojects {
     afterEvaluate {
         if (project.hasProperty("android")) {
             dependencies {
-                add("implementation", "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.24")
+                add("implementation", "org.jetbrains.kotlin:kotlin-stdlib-jdk8:2.1.0")
             }
         }
     }

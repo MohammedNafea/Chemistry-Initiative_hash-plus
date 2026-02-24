@@ -15,6 +15,7 @@ class AuthRepository {
 
   final _db = AppDatabase.instance;
   final _auth = FirebaseAuth.instance;
+  // Initialize without a placeholder to avoid assertion errors if the user hasn't set it yet
   final _googleSignIn = GoogleSignIn();
 
   /// Register new user (Email/Password)
@@ -204,9 +205,38 @@ class AuthRepository {
 
   /// Logout - clear current session
   Future<void> logout() async {
-    await _auth.signOut();
-    await _googleSignIn.signOut();
-    await _db.logout();
+    debugPrint("AuthRepository: Starting logout process...");
+    
+    // 1. Firebase Sign Out (Primary)
+    try {
+      await _auth.signOut();
+      debugPrint("AuthRepository: Firebase signOut completed.");
+    } catch (e) {
+      debugPrint("AuthRepository: Firebase signOut failed: $e");
+    }
+
+    // 2. Google Sign Out (Optional/Social)
+    try {
+      if (!kIsWeb) {
+        // Only attempt on mobile where config is usually valid
+        await _googleSignIn.signOut();
+        debugPrint("AuthRepository: GoogleSignIn signOut completed.");
+      } else {
+        // On Web, only attempt if initialized or skip if prone to assertion errors
+        // For now, we'll try it but it's wrapped in a safe catch
+        await _googleSignIn.signOut(); 
+      }
+    } catch (e) {
+      debugPrint("AuthRepository: GoogleSignIn signOut skipped or failed: $e");
+    }
+
+    // 3. Local DB Session (Essential)
+    try {
+      await _db.logout();
+      debugPrint("AuthRepository: Local database session cleared.");
+    } catch (e) {
+      debugPrint("AuthRepository: Local database logout failed: $e");
+    }
   }
 
   /// Check if user is logged in
