@@ -20,7 +20,7 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
   bool _isLoading = false;
   GenerativeModel? _model;
   ChatSession? _chatSession;
-  bool _isDemoMode = false;
+  bool _isDemoMode = true;
   String _modelName = 'gemini-1.5-flash';
   final String _flashModel = 'gemini-1.5-flash';
   final String _proModel = 'gemini-1.5-pro';
