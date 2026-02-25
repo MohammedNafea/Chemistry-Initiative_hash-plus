@@ -16,9 +16,15 @@ import 'package:firebase_core/firebase_core.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // Initialize Firebase
+  // Load .env if exists (silent fail on web)
   try {
     await dotenv.load(fileName: ".env");
+  } catch (e) {
+    debugPrint("Dotenv load failed: $e");
+  }
+
+  // Initialize Firebase
+  try {
 
     if (identical(0, 0.0)) {
       // Check if running on web

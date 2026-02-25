@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:timezone/data/latest_all.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
@@ -25,6 +26,7 @@ class NotificationService {
   ];
 
   Future<void> init() async {
+    if (kIsWeb) return;
     tz.initializeTimeZones();
 
     const AndroidInitializationSettings initializationSettingsAndroid =
@@ -37,6 +39,7 @@ class NotificationService {
   }
 
   Future<void> scheduleDailyChemFact() async {
+    if (kIsWeb) return;
     final int randomIndex = Random().nextInt(_chemFacts.length);
     final String fact = _chemFacts[randomIndex];
 
