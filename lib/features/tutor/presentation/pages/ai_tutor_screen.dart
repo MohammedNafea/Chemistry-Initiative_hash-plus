@@ -82,7 +82,8 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
   }
 
   void _sendMessage({String? retryText, XFile? retryImage}) async {
-    final localizations = AppLocalizations.of(context)!;
+    final localizations = AppLocalizations.of(context);
+    if (localizations == null) return;
     final text = retryText ?? _controller.text.trim();
     final image = retryImage ?? _selectedImage;
     if (text.isEmpty && image == null) return;
@@ -289,7 +290,8 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final localizations = AppLocalizations.of(context)!;
+    final localizations = AppLocalizations.of(context);
+    if (localizations == null) return const Scaffold(body: Center(child: CircularProgressIndicator()));
     final isAr = Localizations.localeOf(context).languageCode == 'ar';
 
     return Scaffold(
@@ -380,7 +382,7 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
                                       color: isUser
                                           ? theme.colorScheme.primary
                                           : theme.colorScheme.secondaryContainer
-                                                .withValues(alpha: 0.5),
+                                                .withOpacity(0.5),
                                       borderRadius: BorderRadius.only(
                                         topLeft: const Radius.circular(20),
                                         topRight: const Radius.circular(20),
@@ -393,8 +395,8 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
                                       ),
                                       boxShadow: [
                                         BoxShadow(
-                                          color: Colors.black.withValues(
-                                            alpha: 0.03,
+                                          color: Colors.black.withOpacity(
+                                            0.03,
                                           ),
                                           blurRadius: 5,
                                           offset: const Offset(0, 2),
@@ -450,7 +452,7 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
                 },
               ),
             ),
-            if (_isLoading && _messages.last["text"]!.isEmpty)
+            if (_isLoading && _messages.isNotEmpty && _messages.last["text"]!.isEmpty)
               Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: Row(
@@ -478,7 +480,7 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
                 color: theme.colorScheme.surface,
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withValues(alpha: 0.05),
+                    color: Colors.black.withOpacity(0.05),
                     blurRadius: 10,
                     offset: const Offset(0, -2),
                   ),
@@ -533,7 +535,7 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
                           ),
                           style: IconButton.styleFrom(
                             backgroundColor: theme.colorScheme.primaryContainer
-                                .withValues(alpha: 0.4),
+                                .withOpacity(0.4),
                           ),
                         ),
                         const SizedBox(width: 8),
@@ -545,7 +547,7 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
                           ),
                           style: IconButton.styleFrom(
                             backgroundColor: theme.colorScheme.primaryContainer
-                                .withValues(alpha: 0.4),
+                                .withOpacity(0.4),
                           ),
                         ),
                         const SizedBox(width: 8),
@@ -569,7 +571,7 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
                               fillColor: theme
                                   .colorScheme
                                   .surfaceContainerHighest
-                                  .withValues(alpha: 0.4),
+                                  .withOpacity(0.4),
                               contentPadding: const EdgeInsets.symmetric(
                                 horizontal: 20,
                                 vertical: 14,
@@ -587,8 +589,8 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
                               shape: BoxShape.circle,
                               boxShadow: [
                                 BoxShadow(
-                                  color: theme.colorScheme.primary.withValues(
-                                    alpha: 0.3,
+                                  color: theme.colorScheme.primary.withOpacity(
+                                    0.3,
                                   ),
                                   blurRadius: 8,
                                   offset: const Offset(0, 4),

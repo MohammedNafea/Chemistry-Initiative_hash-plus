@@ -89,7 +89,8 @@ class _HomePageState extends ConsumerState<HomePage> {
     final colorScheme = theme.colorScheme;
     final isDark = theme.brightness == Brightness.dark;
     final isWide = MediaQuery.of(context).size.width >= 1200;
-    final localizations = AppLocalizations.of(context)!;
+    final localizations = AppLocalizations.of(context);
+    if (localizations == null) return const Scaffold(body: Center(child: CircularProgressIndicator()));
 
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
@@ -203,7 +204,8 @@ class _HomePageState extends ConsumerState<HomePage> {
   Widget _buildHomeContent() {
     const double progressValue = 0.6;
     final user = ref.watch(currentUserNotifierProvider);
-    final localizations = AppLocalizations.of(context)!;
+    final localizations = AppLocalizations.of(context);
+    if (localizations == null) return const Center(child: CircularProgressIndicator());
     final homeRepository = ref.read(homeRepositoryProvider);
 
     final natureCards = homeRepository.getNatureCards(localizations);
@@ -368,14 +370,14 @@ class _HomePageState extends ConsumerState<HomePage> {
                                   vertical: 4,
                                 ),
                                 decoration: BoxDecoration(
-                                  color: colorScheme.primary.withValues(
-                                    alpha: 0.1,
-                                  ),
+                                   color: colorScheme.primary.withOpacity(
+                                     0.1,
+                                   ),
                                   borderRadius: BorderRadius.circular(20),
                                   border: Border.all(
-                                    color: colorScheme.primary.withValues(
-                                      alpha: 0.2,
-                                    ),
+                                     color: colorScheme.primary.withOpacity(
+                                       0.2,
+                                     ),
                                   ),
                                 ),
                                 child: Row(
@@ -442,7 +444,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                                     },
                                     style: ElevatedButton.styleFrom(
                                       backgroundColor: theme.colorScheme.primary
-                                          .withValues(alpha: 0.1),
+                                          .withOpacity(0.1),
                                       foregroundColor:
                                           theme.colorScheme.primary,
                                       padding: const EdgeInsets.symmetric(
@@ -453,7 +455,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                                         borderRadius: BorderRadius.circular(12),
                                         side: BorderSide(
                                           color: theme.colorScheme.primary
-                                              .withValues(alpha: 0.2),
+                                              .withOpacity(0.2),
                                         ),
                                       ),
                                     ),
@@ -487,7 +489,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                                       backgroundColor: theme
                                           .colorScheme
                                           .secondary
-                                          .withValues(alpha: 0.1),
+                                          .withOpacity(0.1),
                                       foregroundColor:
                                           theme.colorScheme.secondary,
                                       padding: const EdgeInsets.symmetric(
@@ -498,7 +500,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                                         borderRadius: BorderRadius.circular(12),
                                         side: BorderSide(
                                           color: theme.colorScheme.secondary
-                                              .withValues(alpha: 0.2),
+                                              .withOpacity(0.2),
                                         ),
                                       ),
                                     ),
@@ -533,7 +535,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                                   },
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor: theme.colorScheme.primary
-                                        .withValues(alpha: 0.1),
+                                        .withOpacity(0.1),
                                     foregroundColor: theme.colorScheme.primary,
                                     padding: const EdgeInsets.symmetric(
                                       vertical: 16,
@@ -543,7 +545,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                                       borderRadius: BorderRadius.circular(12),
                                       side: BorderSide(
                                         color: theme.colorScheme.primary
-                                            .withValues(alpha: 0.2),
+                                            .withOpacity(0.2),
                                       ),
                                     ),
                                   ),
@@ -574,7 +576,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                                   },
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor: theme.colorScheme.secondary
-                                        .withValues(alpha: 0.1),
+                                        .withOpacity(0.1),
                                     foregroundColor:
                                         theme.colorScheme.secondary,
                                     padding: const EdgeInsets.symmetric(
@@ -585,7 +587,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                                       borderRadius: BorderRadius.circular(12),
                                       side: BorderSide(
                                         color: theme.colorScheme.secondary
-                                            .withValues(alpha: 0.2),
+                                            .withOpacity(0.2),
                                       ),
                                     ),
                                   ),
@@ -631,7 +633,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                                       backgroundColor: theme
                                           .colorScheme
                                           .tertiary
-                                          .withValues(alpha: 0.1),
+                                          .withOpacity(0.1),
                                       foregroundColor:
                                           theme.colorScheme.tertiary,
                                       padding: const EdgeInsets.symmetric(
@@ -642,7 +644,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                                         borderRadius: BorderRadius.circular(12),
                                         side: BorderSide(
                                           color: theme.colorScheme.tertiary
-                                              .withValues(alpha: 0.2),
+                                              .withOpacity(0.2),
                                         ),
                                       ),
                                     ),
@@ -674,7 +676,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                                     },
                                     style: ElevatedButton.styleFrom(
                                       backgroundColor: theme.colorScheme.error
-                                          .withValues(alpha: 0.1),
+                                          .withOpacity(0.1),
                                       foregroundColor: theme.colorScheme.error,
                                       padding: const EdgeInsets.symmetric(
                                         vertical: 16,
@@ -684,7 +686,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                                         borderRadius: BorderRadius.circular(12),
                                         side: BorderSide(
                                           color: theme.colorScheme.error
-                                              .withValues(alpha: 0.2),
+                                              .withOpacity(0.2),
                                         ),
                                       ),
                                     ),
@@ -721,7 +723,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                                   },
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor: theme.colorScheme.tertiary
-                                        .withValues(alpha: 0.1),
+                                        .withOpacity(0.1),
                                     foregroundColor: theme.colorScheme.tertiary,
                                     padding: const EdgeInsets.symmetric(
                                       vertical: 16,
@@ -731,7 +733,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                                       borderRadius: BorderRadius.circular(12),
                                       side: BorderSide(
                                         color: theme.colorScheme.tertiary
-                                            .withValues(alpha: 0.2),
+                                            .withOpacity(0.2),
                                       ),
                                     ),
                                   ),
@@ -762,7 +764,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                                   },
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor: theme.colorScheme.error
-                                        .withValues(alpha: 0.1),
+                                        .withOpacity(0.1),
                                     foregroundColor: theme.colorScheme.error,
                                     padding: const EdgeInsets.symmetric(
                                       vertical: 16,
@@ -772,7 +774,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                                       borderRadius: BorderRadius.circular(12),
                                       side: BorderSide(
                                         color: theme.colorScheme.error
-                                            .withValues(alpha: 0.2),
+                                            .withOpacity(0.2),
                                       ),
                                     ),
                                   ),

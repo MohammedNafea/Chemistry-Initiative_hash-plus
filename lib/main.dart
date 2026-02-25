@@ -85,7 +85,7 @@ class MyApp extends ConsumerWidget {
             return MaterialApp(
               debugShowCheckedModeBanner: false,
               onGenerateTitle: (context) =>
-                  AppLocalizations.of(context)!.appTitle,
+                  AppLocalizations.of(context)?.appTitle ?? "Chemistry Wonders",
               theme: AppTheme.light,
               darkTheme: isHighContrast
                   ? AppTheme.highContrastDark
