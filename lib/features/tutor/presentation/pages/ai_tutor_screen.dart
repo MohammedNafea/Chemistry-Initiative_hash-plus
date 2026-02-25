@@ -34,7 +34,11 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
   void didChangeDependencies() {
     super.didChangeDependencies();
     if (!isInit) {
-      _initializeTutor();
+      try {
+        _initializeTutor();
+      } catch (e) {
+        debugPrint("AI Tutor initialization failed: $e");
+      }
       isInit = true;
     }
   }
@@ -42,7 +46,8 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
   bool isInit = false;
 
   void _initializeTutor() {
-    final localizations = AppLocalizations.of(context)!;
+    final localizations = AppLocalizations.of(context);
+    if (localizations == null) return;
     final apiKey = dotenv.env['GEMINI_API_KEY'];
 
     if (apiKey != null &&

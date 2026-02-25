@@ -14,49 +14,44 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-
-  // Load .env if exists (silent fail on web)
   try {
-    await dotenv.load(fileName: ".env");
-  } catch (e) {
-    debugPrint("Dotenv load failed: $e");
-  }
+    WidgetsFlutterBinding.ensureInitialized();
 
-  // Initialize Firebase
-  try {
+    // Load .env if exists (silent fail on web)
+    try {
+      await dotenv.load(fileName: ".env");
+    } catch (e) {
+      debugPrint("Dotenv load failed: $e");
+    }
 
-    if (identical(0, 0.0)) {
-      // Check if running on web
-      // Use the verified Web API Key consistently
-      const String webApiKey = "AIzaSyCLbyEaFC_oCXwstxmxQITja6WQGHixEX4";
-      debugPrint(
-        "Initializing Firebase on Web with key: ${webApiKey.substring(0, 10)}...",
-      );
-
-      if (Firebase.apps.isEmpty) {
-        await Firebase.initializeApp(
-          options: const FirebaseOptions(
-            apiKey: webApiKey,
-            authDomain: "wonders-of-chemistry.firebaseapp.com",
-            projectId: "wonders-of-chemistry",
-            storageBucket: "wonders-of-chemistry.firebasestorage.app",
-            messagingSenderId: "111827250668",
-            appId: "1:111827250668:web:8336acdae7a5a82497e4c9",
-            measurementId: "G-ERVTPVFW67",
-          ),
-        );
-        debugPrint("Firebase initialized successfully on Web.");
+    // Initialize Firebase
+    try {
+      if (identical(0, 0.0)) {
+        // Check if running on web
+        const String webApiKey = "AIzaSyCLbyEaFC_oCXwstxmxQITja6WQGHixEX4";
+        if (Firebase.apps.isEmpty) {
+          await Firebase.initializeApp(
+            options: const FirebaseOptions(
+              apiKey: webApiKey,
+              authDomain: "wonders-of-chemistry.firebaseapp.com",
+              projectId: "wonders-of-chemistry",
+              storageBucket: "wonders-of-chemistry.firebasestorage.app",
+              messagingSenderId: "111827250668",
+              appId: "1:111827250668:web:8336acdae7a5a82497e4c9",
+              measurementId: "G-ERVTPVFW67",
+            ),
+          );
+        }
       } else {
-        debugPrint("Firebase already initialized on Web.");
+        if (Firebase.apps.isEmpty) {
+          await Firebase.initializeApp();
+        }
       }
-    } else {
-      if (Firebase.apps.isEmpty) {
-        await Firebase.initializeApp();
-      }
+    } catch (e) {
+      debugPrint("Firebase initialization failed: $e");
     }
   } catch (e) {
-    debugPrint("Firebase initialization failed: $e");
+    debugPrint("Critical Pre-App failure: $e");
   }
 
   // Initialize secondary services

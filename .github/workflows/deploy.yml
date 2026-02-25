@@ -21,7 +21,10 @@ jobs:
           channel: 'stable'
 
       - name: Create .env file
-        run: cp .env.example .env
+        run: |
+          cp .env.example .env
+          mkdir -p assets
+          cp .env.example assets/.env
 
       - name: Build Web
         run: |
