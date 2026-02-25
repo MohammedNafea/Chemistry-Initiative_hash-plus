@@ -45,7 +45,8 @@ class _SplashScreenState extends State<SplashScreen>
     )..repeat();
 
     // Initialize "Cinematic" Particles (Depth of Field)
-    for (int i = 0; i < 35; i++) {
+    final particleCount = kIsWeb ? 10 : 35; // Significant reduction for web memory
+    for (int i = 0; i < particleCount; i++) {
       _particles.add(CinematicParticle(_random));
     }
 
@@ -328,7 +329,7 @@ class CinematicParticlePainter extends CustomPainter {
         ..color = const Color(0xFFFFD700).withOpacity(opacity)
         ..style = PaintingStyle.fill;
 
-      if (blurAmount > 0) {
+      if (blurAmount > 0 && !kIsWeb) {
         paint.maskFilter = MaskFilter.blur(BlurStyle.normal, blurAmount);
       }
 
@@ -355,8 +356,12 @@ class UltraPremiumMoleculePainter extends CustomPainter {
 
     // 1. Back Glow
     final glowPaint = Paint()
-      ..color = const Color(0xFFC6A664).withOpacity(0.15)
-      ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 40);
+      ..color = const Color(0xFFC6A664).withOpacity(0.15);
+    
+    if (!kIsWeb) {
+      glowPaint.maskFilter = const MaskFilter.blur(BlurStyle.normal, 40);
+    }
+    
     canvas.drawCircle(center, size.width * 0.5, glowPaint);
 
     // 2. Bond Connections (Golden Lines)
@@ -427,13 +432,16 @@ class UltraPremiumMoleculePainter extends CustomPainter {
         stops: const [0.0, 0.2, 0.6, 1.0],
       ).createShader(Rect.fromCircle(center: center, radius: radius));
 
+    final shadowPaint = Paint()..color = Colors.black.withOpacity(0.4);
+    if (!kIsWeb) {
+      shadowPaint.maskFilter = const MaskFilter.blur(BlurStyle.normal, 8);
+    }
+
     // Drop shadow
     canvas.drawCircle(
       center + const Offset(0, 5),
       radius,
-      Paint()
-        ..color = Colors.black.withOpacity(0.4)
-        ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 8),
+      shadowPaint,
     );
 
     canvas.drawCircle(center, radius, paint);
@@ -442,8 +450,11 @@ class UltraPremiumMoleculePainter extends CustomPainter {
     final rimPaint = Paint()
       ..style = PaintingStyle.stroke
       ..strokeWidth = 1.0
-      ..color = Colors.white.withOpacity(0.3)
-      ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 1);
+      ..color = Colors.white.withOpacity(0.3);
+      
+    if (!kIsWeb) {
+      rimPaint.maskFilter = const MaskFilter.blur(BlurStyle.normal, 1);
+    }
 
     canvas.drawArc(
       Rect.fromCircle(center: center, radius: radius - 1),
@@ -455,8 +466,11 @@ class UltraPremiumMoleculePainter extends CustomPainter {
 
     // Specular Highlight (Hotspot)
     final highlightPaint = Paint()
-      ..color = Colors.white.withOpacity(0.8)
-      ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 2);
+      ..color = Colors.white.withOpacity(0.8);
+
+    if (!kIsWeb) {
+      highlightPaint.maskFilter = const MaskFilter.blur(BlurStyle.normal, 2);
+    }
 
     canvas.drawOval(
       Rect.fromCenter(

@@ -28,7 +28,7 @@ void main() async {
     // Initialize Firebase
     try {
       if (kIsWeb) {
-        // Pure selection in Dart ensures no conflict with index.html
+        debugPrint("Initializing Firebase for Web...");
         if (Firebase.apps.isEmpty) {
           await Firebase.initializeApp(
             options: const FirebaseOptions(
@@ -41,6 +41,7 @@ void main() async {
               measurementId: "G-ERVTPVFW67",
             ),
           );
+          debugPrint("Firebase initialized successfully on Web.");
         }
       } else {
         if (Firebase.apps.isEmpty) {
