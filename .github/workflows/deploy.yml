@@ -20,6 +20,9 @@ jobs:
         with:
           channel: 'stable'
 
+      - name: Create .env file
+        run: cp .env.example .env
+
       - name: Build Web
         run: |
           flutter build web --base-href "/Chemistry-Initiative_hash-plus/"
