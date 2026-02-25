@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <!--
     If you are serving your web app in a path other than the root, change the
@@ -14,25 +15,70 @@
     This is a placeholder for base href that will be replaced by the value of
     the `--base-href` argument provided to `flutter build`.
   -->
-  <base href="/">
+  <base href="/Chemistry-Initiative_hash-plus/">
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="Chemistry Wonders - Interactive Chemistry Playground">
+  <meta name="description" content="عَجَائِبُ الكِيْمِيَاء - مختبر الكيمياء التفاعلي">
 
   <!-- iOS meta tags & icons -->
   <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="Chemistry Wonders">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="عَجَائِبُ الكِيْمِيَاء">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#1a237e"> <!-- scienceIndigo -->
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png"/>
+  <link rel="icon" type="image/png" href="favicon.png" />
 
-  <title>Chemistry Wonders</title>
+  <title>عَجَائِبُ الكِيْمِيَاء</title>
   <link rel="manifest" href="manifest.json">
+
+  <style>
+    body {
+      background-color: #f8f5f2;
+      margin: 0;
+    }
+
+    #loading {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: 'Cairo', sans-serif;
+      color: #1a237e;
+    }
+  </style>
 </head>
+
 <body>
+  <div id="loading">... جاري التحميل 🧪</div>
   <script src="flutter_bootstrap.js" async></script>
+
+  <!-- Model Viewer for 3D Web Rendering -->
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.1.1/model-viewer.min.js"></script>
+
+  <!-- Firebase SDKs (Required for Web Compatibility) -->
+  <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore-compat.js"></script>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyCLbyEaFC_oCXwstxmxQITja6WQGHixEX4",
+      authDomain: "wonders-of-chemistry.firebaseapp.com",
+      projectId: "wonders-of-chemistry",
+      storageBucket: "wonders-of-chemistry.firebasestorage.app",
+      messagingSenderId: "111827250668",
+      appId: "1:111827250668:web:8336acdae7a5a82497e4c9",
+      measurementId: "G-ERVTPVFW67"
+    };
+    // Initialize Firebase
+    if (!firebase.apps.length) {
+      firebase.initializeApp(firebaseConfig);
+    }
+  </script>
 </body>
+
 </html>
