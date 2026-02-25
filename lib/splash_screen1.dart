@@ -122,13 +122,14 @@ class _SplashScreenState extends State<SplashScreen>
                 ),
 
               // 2. Background/Blurred Particles (Far away)
-              CustomPaint(
-                painter: CinematicParticlePainter(
-                  particles: _particles.where((p) => p.z < 0.5).toList(),
-                  animationValue: _loopController.value,
-                  blurAmount: 3.0, // Blurry background
+              if (!kIsWeb)
+                CustomPaint(
+                  painter: CinematicParticlePainter(
+                    particles: _particles.where((p) => p.z < 0.5).toList(),
+                    animationValue: _loopController.value,
+                    blurAmount: 3.0, // Blurry background
+                  ),
                 ),
-              ),
 
               // 3. Main Centerpiece (Molecule)
               Center(
@@ -142,13 +143,15 @@ class _SplashScreenState extends State<SplashScreen>
                           scale +
                           (math.sin(_loopController.value * math.pi * 2) *
                               0.02), // Breathe
-                      child: CustomPaint(
-                        size: const Size(220, 220),
-                        painter: UltraPremiumMoleculePainter(
-                          rotation: _loopController.value * math.pi * 2,
-                          lightAngle: _loopController.value * math.pi * 2,
-                        ),
-                      ),
+                      child: kIsWeb 
+                        ? const Icon(Icons.science, color: Color(0xFFC6A664), size: 100)
+                        : CustomPaint(
+                            size: const Size(220, 220),
+                            painter: UltraPremiumMoleculePainter(
+                              rotation: _loopController.value * math.pi * 2,
+                              lightAngle: _loopController.value * math.pi * 2,
+                            ),
+                          ),
                     );
                   },
                 ),
