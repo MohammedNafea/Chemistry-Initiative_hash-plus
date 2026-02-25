@@ -80,8 +80,7 @@ class _ChemistsNotebookScreenState extends State<ChemistsNotebookScreen>
                   const SizedBox(width: 12),
                   Expanded(
                     child: Text(
-                      localizations
-                          .labManual, // TODO: Update to "Chemist's Notebook"
+                      localizations.chemistsNotebook, // Updated from Lab Manual
                       style: theme.textTheme.titleLarge?.copyWith(
                         fontWeight: FontWeight.bold,
                       ),

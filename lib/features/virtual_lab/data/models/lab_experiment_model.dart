@@ -19,7 +19,9 @@ class LabExperiment {
       userId: map['userId'] ?? '',
       title: map['title'] ?? 'Untitled Experiment',
       data: Map<String, dynamic>.from(map['data'] ?? {}),
-      updatedAt: DateTime.parse(map['updatedAt'] ?? DateTime.now().toIso8601String()),
+      updatedAt: DateTime.parse(
+        map['updatedAt'] ?? DateTime.now().toIso8601String(),
+      ),
     );
   }
 

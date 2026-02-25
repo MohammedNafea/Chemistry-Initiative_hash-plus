@@ -146,6 +146,7 @@
   "factVolcano": "A classic reaction releasing carbon dioxide gas rapidly.",
   "compounds": "Compounds",
   "labManual": "Lab Manual",
+  "chemistsNotebook": "Chemist's Notebook",
   "catalystPanel": "Catalyst Panel",
   "recipes": "Recipes",
   "discovered": "Discovered",
@@ -239,6 +240,16 @@
   "enterEmailPassword": "Enter email and password",
   "verifying": "Verifying...",
   "invalidCredentials": "Invalid credentials",
+  "accountCreatedSuccessfully": "Account created successfully! You can login now.",
+  "unexpectedError": "An unexpected error occurred: {error}",
+  "forgotPasswordComingSoon": "Forgot password? This feature will be available soon.",
+  "@unexpectedError": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
   "continueGoogle": "Continue with Google",
   "continueFacebook": "Continue with Facebook",
   "atomicNumberLabel": "Atomic Number",
@@ -382,7 +393,24 @@
   "guestScore": "Guest Score",
   "aiTutorGreeting": "Hello Young Scientist! I am your AI Chemistry Tutor 🧪. How can I help you today?",
   "aiTutorHint": "Ask about any chemical reaction...",
+  "missingApiKey": "Missing API Key in .env",
+  "demoModeActive": "Demo Mode Active",
+  "demoModeMsg": "**Demo Mode Active** 🧪\n\nWelcome! I am currently running with limited capabilities because the API key is not configured in the project's `.env` file.\n\nTo enable full AI power (Vision, deep conversation, and analysis):\n1. Get a key from [aistudio.google.com](https://aistudio.google.com)\n2. Add it to `.env`: `GEMINI_API_KEY=your_key`\n3. Restart the app.\n\n**In the meantime:** Would you like to learn about the Periodic Table or Chemical Bonds?",
+  "thinking": "Thinking...",
+  "invalidApiKeyError": "❌ Invalid API Key!\\n\\nPlease ensure you have a valid Gemini API key in your .env file.\\n1. Go to aistudio.google.com\\n2. Copy the key\\n3. Put it in .env like this:\\nGEMINI_API_KEY=AIza...\\n4. Restart the app.",
+  "aiErrorPrefix": "An error occurred while connecting to AI (Model: {modelName}): {error}",
+  "aiErrorHint": "\\n\\n(Hint: If the error persists, the model might be unavailable in your region or the package needs an update)",
   "aiTutorSystemInstruction": "You are an expert, friendly AI Chemistry Tutor. You explain chemistry concepts clearly and simply. IMPORTANT: You must respond in the following language: {language}.",
+  "@aiErrorPrefix": {
+    "placeholders": {
+      "modelName": {
+        "type": "String"
+      },
+      "error": {
+        "type": "String"
+      }
+    }
+  },
   "@aiTutorSystemInstruction": {
     "placeholders": {
       "language": {

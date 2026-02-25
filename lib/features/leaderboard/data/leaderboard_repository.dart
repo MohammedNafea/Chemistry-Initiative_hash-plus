@@ -11,16 +11,20 @@ class LeaderboardRepository {
         .limit(limit)
         .snapshots()
         .map((snapshot) {
-      int rank = 1;
-      return snapshot.docs.map((doc) {
-        return LeaderboardEntry.fromMap(doc.data(), rank++);
-      }).toList();
-    });
+          int rank = 1;
+          return snapshot.docs.map((doc) {
+            return LeaderboardEntry.fromMap(doc.data(), rank++);
+          }).toList();
+        });
   }
 
-  Future<void> updateUserPoints(String uid, String name, int pointsToAdd) async {
+  Future<void> updateUserPoints(
+    String uid,
+    String name,
+    int pointsToAdd,
+  ) async {
     final docRef = _firestore.collection('leaderboard').doc(uid);
-    
+
     await _firestore.runTransaction((transaction) async {
       final snapshot = await transaction.get(docRef);
       if (!snapshot.exists) {
@@ -31,9 +35,7 @@ class LeaderboardRepository {
         });
       } else {
         final currentPoints = snapshot.data()?['points'] ?? 0;
-        transaction.update(docRef, {
-          'points': currentPoints + pointsToAdd,
-        });
+        transaction.update(docRef, {'points': currentPoints + pointsToAdd});
       }
     });
   }

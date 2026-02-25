@@ -8,7 +8,8 @@ class MultiplayerQuizScreen extends StatefulWidget {
   State<MultiplayerQuizScreen> createState() => _MultiplayerQuizScreenState();
 }
 
-class _MultiplayerQuizScreenState extends State<MultiplayerQuizScreen> with SingleTickerProviderStateMixin {
+class _MultiplayerQuizScreenState extends State<MultiplayerQuizScreen>
+    with SingleTickerProviderStateMixin {
   late AnimationController _controller;
 
   @override
@@ -69,7 +70,9 @@ class _MultiplayerQuizScreenState extends State<MultiplayerQuizScreen> with Sing
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             border: Border.all(
-                              color: theme.colorScheme.primary.withValues(alpha: 0.5),
+                              color: theme.colorScheme.primary.withValues(
+                                alpha: 0.5,
+                              ),
                               width: 2,
                             ),
                           ),
@@ -100,7 +103,11 @@ class _MultiplayerQuizScreenState extends State<MultiplayerQuizScreen> with Sing
                 CircleAvatar(
                   radius: 40,
                   backgroundColor: theme.colorScheme.primary,
-                  child: const Icon(Icons.people_alt_rounded, size: 40, color: Colors.white),
+                  child: const Icon(
+                    Icons.people_alt_rounded,
+                    size: 40,
+                    color: Colors.white,
+                  ),
                 ),
               ],
             ),
@@ -117,9 +124,9 @@ class _MultiplayerQuizScreenState extends State<MultiplayerQuizScreen> with Sing
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 40),
               child: Text(
-                isAr 
-                  ? "نحن نبحث عن مستخدمين قريبين منك لبدء المنافسة..." 
-                  : "Scanning for nearby chemists to start a friendly challenge...",
+                isAr
+                    ? "نحن نبحث عن مستخدمين قريبين منك لبدء المنافسة..."
+                    : "Scanning for nearby chemists to start a friendly challenge...",
                 style: theme.textTheme.bodyMedium?.copyWith(
                   color: theme.colorScheme.onSurfaceVariant,
                 ),
@@ -139,7 +146,10 @@ class _MultiplayerQuizScreenState extends State<MultiplayerQuizScreen> with Sing
               style: ElevatedButton.styleFrom(
                 backgroundColor: theme.colorScheme.errorContainer,
                 foregroundColor: theme.colorScheme.onErrorContainer,
-                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 24,
+                  vertical: 12,
+                ),
               ),
             ),
           ],

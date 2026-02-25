@@ -34,6 +34,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   }
 
   Future<void> _handleAuth() async {
+    final localizations = AppLocalizations.of(context)!;
     if (!_formKey.currentState!.validate()) return;
 
     final email = _emailCtrl.text.trim();
@@ -51,7 +52,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
         if (pass != _confirmCtrl.text.trim()) {
           Navigator.pop(context);
           ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('كلمات المرور غير متطابقة')),
+            SnackBar(content: Text(localizations.passwordsDoNotMatch)),
           );
           return;
         }
@@ -59,39 +60,39 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
         final error = await _authRepo.registerUser(name, email, pass);
         if (!mounted) return;
         Navigator.pop(context);
-        
+
         if (error == null) {
           ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('تم إنشاء الحساب بنجاح! يمكنك الدخول الآن.')),
+            SnackBar(content: Text(localizations.accountCreatedSuccessfully)),
           );
           setState(() {
             _isSignup = false;
           });
         } else {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(error)),
-          );
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(SnackBar(content: Text(error)));
         }
       } else {
         final success = await _authRepo.loginUser(email, pass);
         if (!mounted) return;
         Navigator.pop(context);
-        
+
         if (success) {
           ref.read(currentUserNotifierProvider.notifier).refresh();
           showWelcomeNotifier.value = true;
         } else {
           ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('خطأ في البريد الإلكتروني أو كلمة المرور')),
+            SnackBar(content: Text(localizations.invalidCredentials)),
           );
         }
       }
     } catch (e) {
       if (!mounted) return;
       Navigator.pop(context);
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('حدث خطأ غير متوقع: $e')),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(localizations.unexpectedError(e.toString()))));
     }
   }
 
@@ -382,7 +383,12 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                                         hintText: localizations.fullName,
                                         controller: _nameCtrl,
                                         prefixIcon: Icons.person_outline,
-                                        validator: (val) => val == null || val.isEmpty ? 'يرجى إدخال الاسم' : null,
+                                        validator: (val) {
+                                          if (val == null || val.isEmpty) {
+                                            return 'يرجى إدخال الاسم';
+                                          }
+                                          return null;
+                                        },
                                       ),
                                       const SizedBox(height: 16),
                                     ],
@@ -392,8 +398,12 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                                       controller: _emailCtrl,
                                       prefixIcon: Icons.email_outlined,
                                       validator: (val) {
-                                        if (val == null || val.isEmpty) return 'يرجى إدخال البريد الإلكتروني';
-                                        if (!val.contains('@')) return 'بريد إلكتروني غير صالح';
+                                        if (val == null || val.isEmpty) {
+                                          return 'يرجى إدخال البريد الإلكتروني';
+                                        }
+                                        if (!val.contains('@')) {
+                                          return 'بريد إلكتروني غير صالح';
+                                        }
                                         return null;
                                       },
                                     ),
@@ -404,7 +414,12 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                                       isPassword: true,
                                       controller: _passCtrl,
                                       prefixIcon: Icons.lock_outline,
-                                      validator: (val) => val == null || val.length < 6 ? 'كلمة المرور يجب أن تكون 6 أحرف على الأقل' : null,
+                                      validator: (val) {
+                                        if (val == null || val.length < 6) {
+                                          return 'كلمة المرور يجب أن تكون 6 أحرف على الأقل';
+                                        }
+                                        return null;
+                                      },
                                     ),
 
                                     if (_isSignup) ...[
@@ -415,8 +430,12 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                                         controller: _confirmCtrl,
                                         prefixIcon: Icons.lock_reset_outlined,
                                         validator: (val) {
-                                          if (val == null || val.isEmpty) return 'يرجى تأكيد كلمة المرور';
-                                          if (val != _passCtrl.text) return 'كلمات المرور غير متطابقة';
+                                          if (val == null || val.isEmpty) {
+                                            return 'يرجى تأكيد كلمة المرور';
+                                          }
+                                          if (val != _passCtrl.text) {
+                                            return 'كلمات المرور غير متطابقة';
+                                          }
                                           return null;
                                         },
                                       ),
@@ -428,8 +447,10 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                                         alignment: Alignment.centerRight,
                                         child: TextButton(
                                           onPressed: () {
-                                            ScaffoldMessenger.of(context).showSnackBar(
-                                              const SnackBar(content: Text('نسيت كلمة المرور؟ هذه الميزة ستتوفر قريباً.')),
+                                            ScaffoldMessenger.of(
+                                              context,
+                                            ).showSnackBar(
+                                              SnackBar(content: Text(localizations.forgotPasswordComingSoon)),
                                             );
                                           },
                                           style: TextButton.styleFrom(
@@ -446,21 +467,31 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                                       const SizedBox(height: 24),
 
                                     const SizedBox(height: 24),
-                                    
+
                                     // Primary Action Button
                                     ElevatedButton(
                                       onPressed: _handleAuth,
                                       style: ElevatedButton.styleFrom(
-                                        backgroundColor: isLight ? Colors.deepPurple : Colors.cyanAccent,
-                                        foregroundColor: isLight ? Colors.white : Colors.black87,
-                                        padding: const EdgeInsets.symmetric(vertical: 16),
+                                        backgroundColor: isLight
+                                            ? Colors.deepPurple
+                                            : Colors.cyanAccent,
+                                        foregroundColor: isLight
+                                            ? Colors.white
+                                            : Colors.black87,
+                                        padding: const EdgeInsets.symmetric(
+                                          vertical: 16,
+                                        ),
                                         shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(15),
+                                          borderRadius: BorderRadius.circular(
+                                            15,
+                                          ),
                                         ),
                                         elevation: 5,
                                       ),
                                       child: Text(
-                                        _isSignup ? localizations.newAccount : localizations.login,
+                                        _isSignup
+                                            ? localizations.newAccount
+                                            : localizations.login,
                                         style: const TextStyle(
                                           fontSize: 18,
                                           fontWeight: FontWeight.bold,

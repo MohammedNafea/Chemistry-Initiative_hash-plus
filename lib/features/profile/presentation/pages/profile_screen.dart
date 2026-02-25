@@ -721,7 +721,9 @@ class _ActionButtons extends ConsumerWidget {
                   actions: [
                     TextButton(
                       onPressed: () => Navigator.pop(context, false),
-                      child: const Text('إلغاء'), // localizations.cancel is missing, using hardcoded Arabic
+                      child: const Text(
+                        'إلغاء',
+                      ), // localizations.cancel is missing, using hardcoded Arabic
                     ),
                     TextButton(
                       onPressed: () => Navigator.pop(context, true),
@@ -735,10 +737,10 @@ class _ActionButtons extends ConsumerWidget {
               if (confirm == true) {
                 // 2. Perform Logout
                 await AuthRepository.instance.logout();
-                
+
                 // 3. Refresh Provider - This will trigger AuthGuard in main.dart
                 ref.read(currentUserNotifierProvider.notifier).refresh();
-                
+
                 // Note: AuthGuard will handle the redirection automatically
               }
             },

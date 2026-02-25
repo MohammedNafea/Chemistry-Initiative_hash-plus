@@ -474,6 +474,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get labManual => 'Lab Manual';
 
   @override
+  String get chemistsNotebook => 'Chemist\'s Notebook';
+
+  @override
   String get catalystPanel => 'Catalyst Panel';
 
   @override
@@ -735,6 +738,19 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get invalidCredentials => 'Invalid credentials';
+
+  @override
+  String get accountCreatedSuccessfully =>
+      'Account created successfully! You can login now.';
+
+  @override
+  String unexpectedError(String error) {
+    return 'An unexpected error occurred: $error';
+  }
+
+  @override
+  String get forgotPasswordComingSoon =>
+      'Forgot password? This feature will be available soon.';
 
   @override
   String get continueGoogle => 'Continue with Google';
@@ -1209,6 +1225,32 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get aiTutorHint => 'Ask about any chemical reaction...';
+
+  @override
+  String get missingApiKey => 'Missing API Key in .env';
+
+  @override
+  String get demoModeActive => 'Demo Mode Active';
+
+  @override
+  String get demoModeMsg =>
+      '**Demo Mode Active** 🧪\n\nWelcome! I am currently running with limited capabilities because the API key is not configured in the project\'s `.env` file.\n\nTo enable full AI power (Vision, deep conversation, and analysis):\n1. Get a key from [aistudio.google.com](https://aistudio.google.com)\n2. Add it to `.env`: `GEMINI_API_KEY=your_key`\n3. Restart the app.\n\n**In the meantime:** Would you like to learn about the Periodic Table or Chemical Bonds?';
+
+  @override
+  String get thinking => 'Thinking...';
+
+  @override
+  String get invalidApiKeyError =>
+      '❌ Invalid API Key!\\n\\nPlease ensure you have a valid Gemini API key in your .env file.\\n1. Go to aistudio.google.com\\n2. Copy the key\\n3. Put it in .env like this:\\nGEMINI_API_KEY=AIza...\\n4. Restart the app.';
+
+  @override
+  String aiErrorPrefix(String modelName, String error) {
+    return 'An error occurred while connecting to AI (Model: $modelName): $error';
+  }
+
+  @override
+  String get aiErrorHint =>
+      '\\n\\n(Hint: If the error persists, the model might be unavailable in your region or the package needs an update)';
 
   @override
   String aiTutorSystemInstruction(String language) {

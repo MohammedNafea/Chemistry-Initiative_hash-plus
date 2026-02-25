@@ -15,16 +15,19 @@ import 'package:firebase_core/firebase_core.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  
+
   // Initialize Firebase
   try {
     await dotenv.load(fileName: ".env");
-    
-    if (identical(0, 0.0)) { // Check if running on web
+
+    if (identical(0, 0.0)) {
+      // Check if running on web
       // Use the verified Web API Key consistently
       const String webApiKey = "AIzaSyCLbyEaFC_oCXwstxmxQITja6WQGHixEX4";
-      debugPrint("Initializing Firebase on Web with key: ${webApiKey.substring(0, 10)}...");
-      
+      debugPrint(
+        "Initializing Firebase on Web with key: ${webApiKey.substring(0, 10)}...",
+      );
+
       if (Firebase.apps.isEmpty) {
         await Firebase.initializeApp(
           options: const FirebaseOptions(
@@ -75,7 +78,8 @@ class MyApp extends ConsumerWidget {
           builder: (context, mode, child) {
             return MaterialApp(
               debugShowCheckedModeBanner: false,
-              onGenerateTitle: (context) => AppLocalizations.of(context)!.appTitle,
+              onGenerateTitle: (context) =>
+                  AppLocalizations.of(context)!.appTitle,
               theme: AppTheme.light,
               darkTheme: isHighContrast
                   ? AppTheme.highContrastDark

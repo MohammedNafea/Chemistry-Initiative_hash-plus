@@ -458,6 +458,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get labManual => 'دليل المختبر';
 
   @override
+  String get chemistsNotebook => 'دفتر الكيميائي';
+
+  @override
   String get catalystPanel => 'لوحة المحفزات';
 
   @override
@@ -718,6 +721,19 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get invalidCredentials => 'بيانات الدخول غير صحيحة';
+
+  @override
+  String get accountCreatedSuccessfully =>
+      'تم إنشاء الحساب بنجاح! يمكنك الدخول الآن.';
+
+  @override
+  String unexpectedError(String error) {
+    return 'حدث خطأ غير متوقع: $error';
+  }
+
+  @override
+  String get forgotPasswordComingSoon =>
+      'نسيت كلمة المرور؟ هذه الميزة ستتوفر قريباً.';
 
   @override
   String get continueGoogle => 'متابعة مع جوجل';
@@ -1182,14 +1198,40 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get aiTutorGreeting =>
-      'مرحباً أيها العالم الشاب! أنا مساعدك الذكي في الكيمياء 🧪. كيف يمكنني مساعدتك اليوم؟';
+      'أهلاً بك أيها العالم الصغير! أنا معلم الكيمياء الذكي الخاص بك 🧪. كيف يمكنني مساعدتك اليوم؟';
 
   @override
   String get aiTutorHint => 'اسأل عن أي تفاعل كيميائي...';
 
   @override
+  String get missingApiKey => 'مفتاح API مفقود في ملف .env';
+
+  @override
+  String get demoModeActive => 'الوضع التجريبي نشط';
+
+  @override
+  String get demoModeMsg =>
+      '**الوضع التجريبي نشط** (Demo Mode) 🧪\\n\\nأهلاً بك! أنا أعمل حالياً بقدرات محدودة لأن مفتاح API غير مفعّل في ملف `.env` الخاص بالمشروع.\\n\\nلتفعيل المعلم الذكي بالكامل (الرؤية، المحادثة العميقة، والتحليل):\\n1. احصل على مفتاح من [aistudio.google.com](https://aistudio.google.com)\\n2. ضعه في ملف `.env` هكذا: `GEMINI_API_KEY=your_key`\\n3. أعد تشغيل التطبيق.\\n\\n**حالياً كنسخة تجريبية:** هل تريد معرفة المزيد عن الجدول الدوري أو الروابط الكيميائية؟';
+
+  @override
+  String get thinking => 'يفكر...';
+
+  @override
+  String get invalidApiKeyError =>
+      '❌ مفتاح API غير صالح!\\n\\nيرجى التأكد من وضع مفتاح Gemini صحيح في ملف .env.\\n1. اذهب إلى aistudio.google.com\\n2. انسخ المفتاح\\n3. ضعه في ملف .env هكذا:\\nGEMINI_API_KEY=AIza...\\n4. أعد تشغيل التطبيق.';
+
+  @override
+  String aiErrorPrefix(String modelName, String error) {
+    return 'حدث خطأ أثناء الاتصال بالذكاء الاصطناعي (Model: $modelName): $error';
+  }
+
+  @override
+  String get aiErrorHint =>
+      '\\n\\n(تلميح: إذا استمر الخطأ، قد يكون النموذج غير متاح حالياً في منطقتك أو يحتاج لتحديث الحزمة)';
+
+  @override
   String aiTutorSystemInstruction(String language) {
-    return 'أنت معلم كيمياء خبير وودود بالذكاء الاصطناعي. تشرح مفاهيم الكيمياء بوضوح وبساطة. هام: يجب أن ترسل ردك باللغة التالية: $language.';
+    return 'أنت معلم كيمياء خبير وودود. تشرح مفاهيم الكيمياء بوضوح وبساطة. هام: يجب أن تجيب باللغة التالية: $language.';
   }
 
   @override

@@ -164,7 +164,9 @@ class _MoleculeViewerScreenState extends State<MoleculeViewerScreen> {
                     width: double.infinity,
                     margin: const EdgeInsets.all(16),
                     decoration: BoxDecoration(
-                      color: isDark ? const Color(0xFF1E1E1E) : Colors.grey[200],
+                      color: isDark
+                          ? const Color(0xFF1E1E1E)
+                          : Colors.grey[200],
                       borderRadius: BorderRadius.circular(24),
                       boxShadow: [
                         BoxShadow(
@@ -180,48 +182,57 @@ class _MoleculeViewerScreenState extends State<MoleculeViewerScreen> {
                         Expanded(
                           child: Hero(
                             tag: _selectedMolecule.id,
-                            child: (_selectedMolecule.id == 'water' || _selectedMolecule.id == 'carbon')
-                              ? ModelViewer(
-                                  key: ValueKey(_selectedMolecule.id),
-                                  src: _get3DModelPath(_selectedMolecule.id),
-                                  alt: 'A 3D model of ${_selectedMolecule.name}',
-                                  ar: true,
-                                  autoRotate: true,
-                                  cameraControls: true,
-                                )
-                              : Center(
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Container(
-                                        width: 150,
-                                        height: 150,
-                                        decoration: BoxDecoration(
-                                          shape: BoxShape.circle,
-                                          color: theme.colorScheme.primaryContainer.withValues(alpha: 0.3),
+                            child:
+                                (_selectedMolecule.id == 'water' ||
+                                    _selectedMolecule.id == 'carbon')
+                                ? ModelViewer(
+                                    key: ValueKey(_selectedMolecule.id),
+                                    src: _get3DModelPath(_selectedMolecule.id),
+                                    alt:
+                                        'A 3D model of ${_selectedMolecule.name}',
+                                    ar: true,
+                                    autoRotate: true,
+                                    cameraControls: true,
+                                  )
+                                : Center(
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Container(
+                                          width: 150,
+                                          height: 150,
+                                          decoration: BoxDecoration(
+                                            shape: BoxShape.circle,
+                                            color: theme
+                                                .colorScheme
+                                                .primaryContainer
+                                                .withValues(alpha: 0.3),
+                                          ),
+                                          child: Icon(
+                                            Icons.architecture_rounded,
+                                            size: 80,
+                                            color: theme.colorScheme.primary,
+                                          ),
                                         ),
-                                        child: Icon(
-                                          Icons.architecture_rounded,
-                                          size: 80,
-                                          color: theme.colorScheme.primary,
+                                        const SizedBox(height: 24),
+                                        Text(
+                                          'Visualizing Structure...',
+                                          style: theme.textTheme.titleLarge
+                                              ?.copyWith(
+                                                fontWeight: FontWeight.bold,
+                                                color:
+                                                    theme.colorScheme.primary,
+                                              ),
                                         ),
-                                      ),
-                                      const SizedBox(height: 24),
-                                      Text(
-                                        'Visualizing Structure...',
-                                        style: theme.textTheme.titleLarge?.copyWith(
-                                          fontWeight: FontWeight.bold,
-                                          color: theme.colorScheme.primary,
+                                        const SizedBox(height: 8),
+                                        Text(
+                                          '3D Model for ${_selectedMolecule.formula} coming soon.',
+                                          style: theme.textTheme.bodySmall,
                                         ),
-                                      ),
-                                      const SizedBox(height: 8),
-                                      Text(
-                                        '3D Model for ${_selectedMolecule.formula} coming soon.',
-                                        style: theme.textTheme.bodySmall,
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
-                                ),
                           ),
                         ),
                         const SizedBox(height: 16),
@@ -268,9 +279,8 @@ class _MoleculeViewerScreenState extends State<MoleculeViewerScreen> {
                                     localizations,
                                     _selectedMolecule.name,
                                   ),
-                                  style: theme.textTheme.headlineMedium?.copyWith(
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                                  style: theme.textTheme.headlineMedium
+                                      ?.copyWith(fontWeight: FontWeight.bold),
                                 ),
                               ),
                               IconButton(
@@ -294,8 +304,9 @@ class _MoleculeViewerScreenState extends State<MoleculeViewerScreen> {
                               vertical: 6,
                             ),
                             decoration: BoxDecoration(
-                              color: theme.colorScheme.secondary
-                                  .withValues(alpha: 0.1),
+                              color: theme.colorScheme.secondary.withValues(
+                                alpha: 0.1,
+                              ),
                               borderRadius: BorderRadius.circular(20),
                             ),
                             child: Text(
@@ -350,7 +361,11 @@ class _MoleculeViewerScreenState extends State<MoleculeViewerScreen> {
                   child: AnimatedContainer(
                     duration: const Duration(milliseconds: 300),
                     height: 70,
-                    margin: const EdgeInsets.only(bottom: 12, left: 12, right: 12),
+                    margin: const EdgeInsets.only(
+                      bottom: 12,
+                      left: 12,
+                      right: 12,
+                    ),
                     decoration: BoxDecoration(
                       color: isSelected
                           ? theme.colorScheme.primary

@@ -96,7 +96,8 @@ class _ElementDetailSheetState extends State<ElementDetailSheet> {
                             Icons.volume_up,
                             color: theme.primaryColor,
                           ),
-                          onPressed: () => _speak(widget.element.name, langCode),
+                          onPressed: () =>
+                              _speak(widget.element.name, langCode),
                         ),
                       ],
                     ),

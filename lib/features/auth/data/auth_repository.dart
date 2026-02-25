@@ -30,10 +30,10 @@ class AuthRepository {
         email: email.trim(),
         password: password,
       );
-      
+
       if (cred.user != null) {
         await cred.user!.updateDisplayName(fullName.trim());
-        
+
         // 2. Sync with local DB
         final key = email.toLowerCase().trim();
         final user = UserModel(
@@ -62,7 +62,9 @@ class AuthRepository {
         email: email.trim(),
         password: password,
       );
-      debugPrint("AuthRepository: Firebase call completed. User: ${cred.user?.uid}");
+      debugPrint(
+        "AuthRepository: Firebase call completed. User: ${cred.user?.uid}",
+      );
       if (cred.user != null) {
         // Sync local session and user profile
         await _syncLocalUserFromFirebase(cred.user!);
@@ -89,7 +91,8 @@ class AuthRepository {
       final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
       if (googleUser == null) return null;
 
-      final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
+      final GoogleSignInAuthentication googleAuth =
+          await googleUser.authentication;
       final OAuthCredential credential = GoogleAuthProvider.credential(
         accessToken: googleAuth.accessToken,
         idToken: googleAuth.idToken,
@@ -111,7 +114,9 @@ class AuthRepository {
     try {
       final LoginResult result = await FacebookAuth.instance.login();
       if (result.status == LoginStatus.success) {
-        final OAuthCredential credential = FacebookAuthProvider.credential(result.accessToken!.tokenString);
+        final OAuthCredential credential = FacebookAuthProvider.credential(
+          result.accessToken!.tokenString,
+        );
         final cred = await _auth.signInWithCredential(credential);
         if (cred.user != null) {
           _syncLocalUserFromFirebase(cred.user!);
@@ -169,7 +174,7 @@ class AuthRepository {
   Future<void> _syncLocalUserFromFirebase(User fbUser) async {
     final email = fbUser.email ?? "";
     if (email.isEmpty) return;
-    
+
     final key = email.toLowerCase().trim();
     if (!_db.userExists(key)) {
       final newUser = UserModel(
@@ -181,7 +186,7 @@ class AuthRepository {
       await _db.createUser(newUser);
     }
     await _db.setCurrentUser(email);
-    
+
     // Trigger Lab Cloud Sync in background - don't block login
     debugPrint("AuthRepository: Triggering lab cloud sync...");
     LabSyncRepository().syncCloudToLocal(fbUser.uid).catchError((e) {
@@ -191,22 +196,26 @@ class AuthRepository {
 
   String _mapFirebaseError(String code) {
     switch (code) {
-      case 'email-already-in-use': return 'الحساب موجود بالفعل لهذا الإيميل';
-      case 'weak-password': return 'كلمة المرور ضعيفة جداً';
-      case 'invalid-email': return 'البريد الإلكتروني غير صحيح';
+      case 'email-already-in-use':
+        return 'الحساب موجود بالفعل لهذا الإيميل';
+      case 'weak-password':
+        return 'كلمة المرور ضعيفة جداً';
+      case 'invalid-email':
+        return 'البريد الإلكتروني غير صحيح';
       case 'configuration-not-found':
         return 'إعدادات Firebase غير مكتملة. يرجى التأكد من تفعيل "Email/Password" في Firebase Console (Build > Authentication > Sign-in method).';
       case 'api-key-not-valid':
-      case 'api-key-not-valid-please-pass-a-valid-api-key': 
+      case 'api-key-not-valid-please-pass-a-valid-api-key':
         return 'مفتاح Firebase غير صالح. يرجى التأكد من ضبط FIREBASE_API_KEY في ملف .env بشكل صحيح.';
-      default: return 'حدث خطأ أثناء التسجيل: $code';
+      default:
+        return 'حدث خطأ أثناء التسجيل: $code';
     }
   }
 
   /// Logout - clear current session
   Future<void> logout() async {
     debugPrint("AuthRepository: Starting logout process...");
-    
+
     // 1. Firebase Sign Out (Primary)
     try {
       await _auth.signOut();
@@ -224,7 +233,7 @@ class AuthRepository {
       } else {
         // On Web, only attempt if initialized or skip if prone to assertion errors
         // For now, we'll try it but it's wrapped in a safe catch
-        await _googleSignIn.signOut(); 
+        await _googleSignIn.signOut();
       }
     } catch (e) {
       debugPrint("AuthRepository: GoogleSignIn signOut skipped or failed: $e");

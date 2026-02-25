@@ -189,9 +189,12 @@ class _HomePageState extends ConsumerState<HomePage> {
         },
         backgroundColor: theme.colorScheme.primaryContainer,
         icon: const Icon(Icons.smart_toy_rounded, color: Colors.white),
-        label: const Text(
-          'المعلم الذكي',
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        label: Text(
+          localizations.aiTutor,
+          style: const TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
     );
@@ -899,12 +902,16 @@ class _HomePageState extends ConsumerState<HomePage> {
                         ),
                         onPressed: () {
                           if (kIsWeb) {
-                            final isAr = Localizations.localeOf(context).languageCode == 'ar';
+                            final isAr =
+                                Localizations.localeOf(context).languageCode ==
+                                'ar';
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
-                                content: Text(isAr
-                                    ? 'هذه الميزة متاحة فقط على أجهزة Android و iOS'
-                                    : 'This feature is only available on Android and iOS devices'),
+                                content: Text(
+                                  isAr
+                                      ? 'هذه الميزة متاحة فقط على أجهزة Android و iOS'
+                                      : 'This feature is only available on Android and iOS devices',
+                                ),
                               ),
                             );
                             return;

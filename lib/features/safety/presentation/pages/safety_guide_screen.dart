@@ -189,9 +189,9 @@ class _SymbolDetailDialog extends StatelessWidget {
                     borderRadius: BorderRadius.circular(12),
                   ),
                 ),
-                child: const Text(
-                  'OK',
-                ), // TODO: Localize 'Close'/'OK' if needed, but 'OK' is universal-ish
+                child: Text(
+                  AppLocalizations.of(context)!.gotIt,
+                ), // Updated from hardcoded 'OK'
               ),
             ),
           ],

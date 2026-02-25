@@ -56,12 +56,16 @@ class _ChemicalScannerScreenState extends State<ChemicalScannerScreen> {
   }
 
   void _startImageStream() {
-    // In a real app, we'd process frames here. 
+    // In a real app, we'd process frames here.
     // For this prototype, we'll use a manual "Scan" button to trigger OCR.
   }
 
   Future<void> _scanLabel() async {
-    if (_controller == null || !_controller!.value.isInitialized || _isProcessing) return;
+    if (_controller == null ||
+        !_controller!.value.isInitialized ||
+        _isProcessing) {
+      return;
+    }
 
     setState(() {
       _isProcessing = true;
@@ -119,7 +123,7 @@ class _ChemicalScannerScreenState extends State<ChemicalScannerScreen> {
             const Center(child: CircularProgressIndicator())
           else
             Positioned.fill(child: CameraPreview(_controller!)),
-          
+
           // Instruction Overlay
           Positioned(
             top: 40,
@@ -133,7 +137,10 @@ class _ChemicalScannerScreenState extends State<ChemicalScannerScreen> {
               ),
               child: Text(
                 localizations.scanInstructions,
-                style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
                 textAlign: TextAlign.center,
               ),
             ),
@@ -148,9 +155,13 @@ class _ChemicalScannerScreenState extends State<ChemicalScannerScreen> {
               child: FloatingActionButton.large(
                 onPressed: _isProcessing ? null : _scanLabel,
                 backgroundColor: theme.colorScheme.primary,
-                child: _isProcessing 
-                  ? const CircularProgressIndicator(color: Colors.white)
-                  : const Icon(Icons.qr_code_scanner, size: 36, color: Colors.white),
+                child: _isProcessing
+                    ? const CircularProgressIndicator(color: Colors.white)
+                    : const Icon(
+                        Icons.qr_code_scanner,
+                        size: 36,
+                        color: Colors.white,
+                      ),
               ),
             ),
           ),
@@ -170,7 +181,9 @@ class _ChemicalScannerScreenState extends State<ChemicalScannerScreen> {
                     children: [
                       Text(
                         _detectedCompound!,
-                        style: theme.textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold),
+                        style: theme.textTheme.headlineSmall?.copyWith(
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                       const SizedBox(height: 8),
                       Text(
@@ -180,7 +193,9 @@ class _ChemicalScannerScreenState extends State<ChemicalScannerScreen> {
                       const SizedBox(height: 8),
                       Wrap(
                         spacing: 8,
-                        children: _elements.map((e) => Chip(label: Text(e))).toList(),
+                        children: _elements
+                            .map((e) => Chip(label: Text(e)))
+                            .toList(),
                       ),
                     ],
                   ),

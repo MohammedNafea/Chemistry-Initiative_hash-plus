@@ -59,9 +59,7 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
         requestOptions: const RequestOptions(apiVersion: 'v1'),
         systemInstruction: _useLegacySystemInstruction
             ? null
-            : Content.system(
-                localizations.aiTutorSystemInstruction(language),
-              ),
+            : Content.system(localizations.aiTutorSystemInstruction(language)),
       );
       _chatSession = _model!.startChat();
       if (_messages.isEmpty) {
@@ -79,6 +77,7 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
   }
 
   void _sendMessage({String? retryText, XFile? retryImage}) async {
+    final localizations = AppLocalizations.of(context)!;
     final text = retryText ?? _controller.text.trim();
     final image = retryImage ?? _selectedImage;
     if (text.isEmpty && image == null) return;
@@ -89,9 +88,9 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
     }
 
     if (_chatSession == null && !_isDemoMode) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Missing API Key in .env')),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(localizations.missingApiKey)));
       return;
     }
 
@@ -101,7 +100,6 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
     }
 
     if (!mounted) return;
-    final localizations = AppLocalizations.of(context)!;
     final currentLocale = Localizations.localeOf(context);
     final isAr = currentLocale.languageCode == 'ar';
     final language = isAr ? 'Arabic' : 'English';
@@ -128,46 +126,55 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
         final bytes = await image.readAsBytes();
         parts.add(DataPart('image/jpeg', bytes));
       }
-      
-      String processedText = text.isEmpty ? "What is this chemical compound or element?" : text;
-      
+
+      String processedText = text.isEmpty
+          ? "What is this chemical compound or element?"
+          : text;
+
       // If using legacy mode and this is the first message beyond greeting, prepend instructions
       if (_useLegacySystemInstruction && _messages.length <= 3) {
         final instruction = localizations.aiTutorSystemInstruction(language);
         processedText = "[$instruction]\n\nUser Question: $processedText";
       }
-      
+
       parts.add(TextPart(processedText));
 
       if (_chatSession == null) throw Exception("Chat session not initialized");
-      final responseStream = _chatSession!.sendMessageStream(Content.multi(parts));
+      final responseStream = _chatSession!.sendMessageStream(
+        Content.multi(parts),
+      );
 
       await for (final chunk in responseStream) {
         if (!mounted) return;
         setState(() {
-          _messages.last["text"] = (_messages.last["text"] ?? "") + (chunk.text ?? "");
+          _messages.last["text"] =
+              (_messages.last["text"] ?? "") + (chunk.text ?? "");
         });
         _scrollToBottom();
       }
     } catch (e) {
       final errorStr = e.toString();
-      
+
       // FALLBACK LOGIC: Try different models incrementally or different instruction modes
-      final isPayloadError = errorStr.contains("systemInstruction") || 
-                            errorStr.contains("Invalid JSON payload");
-      
+      final isPayloadError =
+          errorStr.contains("systemInstruction") ||
+          errorStr.contains("Invalid JSON payload");
+
       if (isPayloadError && !_useLegacySystemInstruction) {
-        debugPrint("AI Tutor: System instruction rejected by API, falling back to legacy mode...");
+        debugPrint(
+          "AI Tutor: System instruction rejected by API, falling back to legacy mode...",
+        );
         _useLegacySystemInstruction = true;
         _initializeTutor();
         _sendMessage(retryText: text, retryImage: image);
         return;
       }
 
-      if (retryText == null && (errorStr.contains("not found") || 
-          errorStr.contains("404") || 
-          errorStr.contains("not supported") ||
-          errorStr.contains("is not available"))) {
+      if (retryText == null &&
+          (errorStr.contains("not found") ||
+              errorStr.contains("404") ||
+              errorStr.contains("not supported") ||
+              errorStr.contains("is not available"))) {
         String? nextModel;
         if (_modelName == _flashModel) {
           nextModel = _proModel;
@@ -176,10 +183,12 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
         }
 
         if (nextModel != null) {
-          debugPrint("AI Tutor: Model $_modelName failed, trying fallback $nextModel...");
+          debugPrint(
+            "AI Tutor: Model $_modelName failed, trying fallback $nextModel...",
+          );
           _modelName = nextModel;
-          _initializeTutor(); 
-          _sendMessage(retryText: text, retryImage: image); 
+          _initializeTutor();
+          _sendMessage(retryText: text, retryImage: image);
           return;
         }
       }
@@ -195,16 +204,10 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
 
         String errorMsg;
         if (isAuthError) {
-          errorMsg = isAr
-              ? "❌ مفتاح API غير صالح!\n\nيرجى التأكد من وضع مفتاح Gemini صحيح في ملف .env.\n1. اذهب إلى aistudio.google.com\n2. انسخ المفتاح\n3. ضعه في ملف .env هكذا:\nGEMINI_API_KEY=AIza...\n4. أعد تشغيل التطبيق."
-              : "❌ Invalid API Key!\n\nPlease ensure you have a valid Gemini API key in your .env file.\n1. Go to aistudio.google.com\n2. Copy the key\n3. Put it in .env like this:\nGEMINI_API_KEY=AIza...\n4. Restart the app.";
+          errorMsg = localizations.invalidApiKeyError;
         } else {
-          final modelHint = isAr
-              ? "\n\n(تلميح: إذا استمر الخطأ، قد يكون النموذج غير متاح حالياً في منطقتك أو يحتاج لتحديث الحزمة)"
-              : "\n\n(Hint: If the error persists, the model might be unavailable in your region or the package needs an update)";
-          errorMsg = isAr
-              ? "حدث خطأ أثناء الاتصال بالذكاء الاصطناعي (Model: $_modelName): $e$modelHint"
-              : "An error occurred while connecting to AI (Model: $_modelName): $e$modelHint";
+          final modelHint = localizations.aiErrorHint;
+          errorMsg = localizations.aiErrorPrefix(_modelName, e.toString()) + modelHint;
         }
         _messages.last["text"] = errorMsg;
       });
@@ -217,8 +220,8 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
   }
 
   void _sendDemoMessage(String userText) async {
-    final isAr = Localizations.localeOf(context).languageCode == 'ar';
-    
+    final localizations = AppLocalizations.of(context)!;
+
     setState(() {
       _messages.add({"role": "user", "text": userText});
       _messages.add({"role": "model", "text": ""});
@@ -228,9 +231,7 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
 
     await Future.delayed(const Duration(seconds: 1));
 
-    String response = isAr 
-      ? "**الوضع التجريبي نشط** (Demo Mode) 🧪\n\nأهلاً بك! أنا أعمل حالياً بقدرات محدودة لأن مفتاح API غير مفعّل في ملف `.env` الخاص بالمشروع.\n\nلتفعيل المعلم الذكي بالكامل (الرؤية، المحادثة العميقة، والتحليل):\n1. احصل على مفتاح من [aistudio.google.com](https://aistudio.google.com)\n2. ضعه في ملف `.env` هكذا: `GEMINI_API_KEY=your_key`\n3. أعد تشغيل التطبيق.\n\n**حالياً كنسخة تجريبية:** هل تريد معرفة المزيد عن الجدول الدوري أو الروابط الكيميائية؟"
-      : "**Demo Mode Active** 🧪\n\nWelcome! I am currently running with limited capabilities because the API key is not configured in the project's `.env` file.\n\nTo enable full AI power (Vision, deep conversation, and analysis):\n1. Get a key from [aistudio.google.com](https://aistudio.google.com)\n2. Add it to `.env`: `GEMINI_API_KEY=your_key`\n3. Restart the app.\n\n**In the meantime:** Would you like to learn about the Periodic Table or Chemical Bonds?";
+    String response = localizations.demoModeMsg;
 
     if (!mounted) return;
     setState(() {
@@ -271,7 +272,12 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
   }
 
   /// Cross-platform image builder
-  Widget _buildImage(String path, {double? width, double? height, BoxFit fit = BoxFit.cover}) {
+  Widget _buildImage(
+    String path, {
+    double? width,
+    double? height,
+    BoxFit fit = BoxFit.cover,
+  }) {
     return buildPlatformImage(path, width: width, height: height, fit: fit);
   }
 
@@ -291,15 +297,16 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
         elevation: 0,
       ),
       body: Container(
-        decoration: BoxDecoration(
-          color: theme.colorScheme.surface,
-        ),
+        decoration: BoxDecoration(color: theme.colorScheme.surface),
         child: Column(
           children: [
             Expanded(
               child: ListView.builder(
                 controller: _scrollController,
-                padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 20.0),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16.0,
+                  vertical: 20.0,
+                ),
                 itemCount: _messages.length,
                 itemBuilder: (context, index) {
                   final msg = _messages[index];
@@ -307,33 +314,48 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
                   final text = msg['text'] ?? '';
                   final imagePath = msg['image'];
 
-                  if (text.isEmpty && !isUser && index == _messages.length - 1 && _isLoading) {
+                  if (text.isEmpty &&
+                      !isUser &&
+                      index == _messages.length - 1 &&
+                      _isLoading) {
                     return const SizedBox.shrink();
                   }
 
                   return Padding(
                     padding: const EdgeInsets.only(bottom: 16.0),
                     child: Column(
-                      crossAxisAlignment: isUser ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+                      crossAxisAlignment: isUser
+                          ? CrossAxisAlignment.end
+                          : CrossAxisAlignment.start,
                       children: [
                         Row(
-                          mainAxisAlignment: isUser ? MainAxisAlignment.end : MainAxisAlignment.start,
+                          mainAxisAlignment: isUser
+                              ? MainAxisAlignment.end
+                              : MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             if (!isUser)
                               CircleAvatar(
                                 radius: 18,
                                 backgroundColor: theme.colorScheme.secondary,
-                                child: const Icon(Icons.psychology, size: 20, color: Colors.white),
+                                child: const Icon(
+                                  Icons.psychology,
+                                  size: 20,
+                                  color: Colors.white,
+                                ),
                               ),
                             const SizedBox(width: 8),
                             Flexible(
                               child: Column(
-                                crossAxisAlignment: isUser ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+                                crossAxisAlignment: isUser
+                                    ? CrossAxisAlignment.end
+                                    : CrossAxisAlignment.start,
                                 children: [
                                   if (imagePath != null)
                                     Padding(
-                                      padding: const EdgeInsets.only(bottom: 8.0),
+                                      padding: const EdgeInsets.only(
+                                        bottom: 8.0,
+                                      ),
                                       child: ClipRRect(
                                         borderRadius: BorderRadius.circular(12),
                                         child: _buildImage(
@@ -345,20 +367,30 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
                                       ),
                                     ),
                                   Container(
-                                    padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 16.0,
+                                      vertical: 12.0,
+                                    ),
                                     decoration: BoxDecoration(
                                       color: isUser
                                           ? theme.colorScheme.primary
-                                          : theme.colorScheme.secondaryContainer.withValues(alpha: 0.5),
+                                          : theme.colorScheme.secondaryContainer
+                                                .withValues(alpha: 0.5),
                                       borderRadius: BorderRadius.only(
                                         topLeft: const Radius.circular(20),
                                         topRight: const Radius.circular(20),
-                                        bottomLeft: Radius.circular(isUser ? 20 : 0),
-                                        bottomRight: Radius.circular(isUser ? 0 : 20),
+                                        bottomLeft: Radius.circular(
+                                          isUser ? 20 : 0,
+                                        ),
+                                        bottomRight: Radius.circular(
+                                          isUser ? 0 : 20,
+                                        ),
                                       ),
                                       boxShadow: [
                                         BoxShadow(
-                                          color: Colors.black.withValues(alpha: 0.03),
+                                          color: Colors.black.withValues(
+                                            alpha: 0.03,
+                                          ),
                                           blurRadius: 5,
                                           offset: const Offset(0, 2),
                                         ),
@@ -369,16 +401,24 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
                                       selectable: true,
                                       styleSheet: MarkdownStyleSheet(
                                         p: TextStyle(
-                                          color: isUser ? Colors.white : theme.colorScheme.onSurfaceVariant,
+                                          color: isUser
+                                              ? Colors.white
+                                              : theme
+                                                    .colorScheme
+                                                    .onSurfaceVariant,
                                           fontSize: 16,
                                           height: 1.5,
                                         ),
                                         strong: TextStyle(
-                                          color: isUser ? Colors.white : theme.colorScheme.primary,
+                                          color: isUser
+                                              ? Colors.white
+                                              : theme.colorScheme.primary,
                                           fontWeight: FontWeight.bold,
                                         ),
                                         listBullet: TextStyle(
-                                          color: isUser ? Colors.white : theme.colorScheme.primary,
+                                          color: isUser
+                                              ? Colors.white
+                                              : theme.colorScheme.primary,
                                         ),
                                       ),
                                     ),
@@ -391,7 +431,11 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
                               CircleAvatar(
                                 radius: 18,
                                 backgroundColor: theme.colorScheme.primary,
-                                child: const Icon(Icons.person, size: 20, color: Colors.white),
+                                child: const Icon(
+                                  Icons.person,
+                                  size: 20,
+                                  color: Colors.white,
+                                ),
                               ),
                           ],
                         ),
@@ -417,7 +461,7 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
                     ),
                     const SizedBox(width: 12),
                     Text(
-                      isAr ? "يفكر..." : "Thinking...",
+                      localizations.thinking,
                       style: TextStyle(color: theme.colorScheme.outline),
                     ),
                   ],
@@ -463,7 +507,11 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
                                     color: Colors.black54,
                                     shape: BoxShape.circle,
                                   ),
-                                  child: const Icon(Icons.close, size: 16, color: Colors.white),
+                                  child: const Icon(
+                                    Icons.close,
+                                    size: 16,
+                                    color: Colors.white,
+                                  ),
                                 ),
                               ),
                             ),
@@ -474,35 +522,53 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
                       children: [
                         IconButton(
                           onPressed: () => _pickImage(ImageSource.camera),
-                          icon: Icon(Icons.camera_alt_rounded, color: theme.colorScheme.primary),
+                          icon: Icon(
+                            Icons.camera_alt_rounded,
+                            color: theme.colorScheme.primary,
+                          ),
                           style: IconButton.styleFrom(
-                            backgroundColor: theme.colorScheme.primaryContainer.withValues(alpha: 0.4),
+                            backgroundColor: theme.colorScheme.primaryContainer
+                                .withValues(alpha: 0.4),
                           ),
                         ),
                         const SizedBox(width: 8),
                         IconButton(
                           onPressed: () => _pickImage(ImageSource.gallery),
-                          icon: Icon(Icons.photo_library_rounded, color: theme.colorScheme.primary),
+                          icon: Icon(
+                            Icons.photo_library_rounded,
+                            color: theme.colorScheme.primary,
+                          ),
                           style: IconButton.styleFrom(
-                            backgroundColor: theme.colorScheme.primaryContainer.withValues(alpha: 0.4),
+                            backgroundColor: theme.colorScheme.primaryContainer
+                                .withValues(alpha: 0.4),
                           ),
                         ),
                         const SizedBox(width: 8),
                         Expanded(
                           child: TextField(
                             controller: _controller,
-                            textDirection: isAr ? TextDirection.rtl : TextDirection.ltr,
+                            textDirection: isAr
+                                ? TextDirection.rtl
+                                : TextDirection.ltr,
                             onSubmitted: (_) => _sendMessage(),
                             decoration: InputDecoration(
                               hintText: localizations.aiTutorHint,
-                              hintStyle: TextStyle(color: theme.colorScheme.outline),
+                              hintStyle: TextStyle(
+                                color: theme.colorScheme.outline,
+                              ),
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(30),
                                 borderSide: BorderSide.none,
                               ),
                               filled: true,
-                              fillColor: theme.colorScheme.surfaceContainerHighest.withValues(alpha: 0.4),
-                              contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
+                              fillColor: theme
+                                  .colorScheme
+                                  .surfaceContainerHighest
+                                  .withValues(alpha: 0.4),
+                              contentPadding: const EdgeInsets.symmetric(
+                                horizontal: 20,
+                                vertical: 14,
+                              ),
                             ),
                           ),
                         ),
@@ -516,7 +582,9 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
                               shape: BoxShape.circle,
                               boxShadow: [
                                 BoxShadow(
-                                  color: theme.colorScheme.primary.withValues(alpha: 0.3),
+                                  color: theme.colorScheme.primary.withValues(
+                                    alpha: 0.3,
+                                  ),
                                   blurRadius: 8,
                                   offset: const Offset(0, 4),
                                 ),

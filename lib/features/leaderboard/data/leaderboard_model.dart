@@ -24,11 +24,6 @@ class LeaderboardEntry {
   }
 
   Map<String, dynamic> toMap() {
-    return {
-      'uid': uid,
-      'name': name,
-      'points': points,
-      'avatarUrl': avatarUrl,
-    };
+    return {'uid': uid, 'name': name, 'points': points, 'avatarUrl': avatarUrl};
   }
 }

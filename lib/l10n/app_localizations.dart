@@ -982,6 +982,12 @@ abstract class AppLocalizations {
   /// **'Lab Manual'**
   String get labManual;
 
+  /// No description provided for @chemistsNotebook.
+  ///
+  /// In en, this message translates to:
+  /// **'Chemist\'s Notebook'**
+  String get chemistsNotebook;
+
   /// No description provided for @catalystPanel.
   ///
   /// In en, this message translates to:
@@ -1497,6 +1503,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Invalid credentials'**
   String get invalidCredentials;
+
+  /// No description provided for @accountCreatedSuccessfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Account created successfully! You can login now.'**
+  String get accountCreatedSuccessfully;
+
+  /// No description provided for @unexpectedError.
+  ///
+  /// In en, this message translates to:
+  /// **'An unexpected error occurred: {error}'**
+  String unexpectedError(String error);
+
+  /// No description provided for @forgotPasswordComingSoon.
+  ///
+  /// In en, this message translates to:
+  /// **'Forgot password? This feature will be available soon.'**
+  String get forgotPasswordComingSoon;
 
   /// No description provided for @continueGoogle.
   ///
@@ -2355,6 +2379,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Ask about any chemical reaction...'**
   String get aiTutorHint;
+
+  /// No description provided for @missingApiKey.
+  ///
+  /// In en, this message translates to:
+  /// **'Missing API Key in .env'**
+  String get missingApiKey;
+
+  /// No description provided for @demoModeActive.
+  ///
+  /// In en, this message translates to:
+  /// **'Demo Mode Active'**
+  String get demoModeActive;
+
+  /// No description provided for @demoModeMsg.
+  ///
+  /// In en, this message translates to:
+  /// **'**Demo Mode Active** 🧪\n\nWelcome! I am currently running with limited capabilities because the API key is not configured in the project\'s `.env` file.\n\nTo enable full AI power (Vision, deep conversation, and analysis):\n1. Get a key from [aistudio.google.com](https://aistudio.google.com)\n2. Add it to `.env`: `GEMINI_API_KEY=your_key`\n3. Restart the app.\n\n**In the meantime:** Would you like to learn about the Periodic Table or Chemical Bonds?'**
+  String get demoModeMsg;
+
+  /// No description provided for @thinking.
+  ///
+  /// In en, this message translates to:
+  /// **'Thinking...'**
+  String get thinking;
+
+  /// No description provided for @invalidApiKeyError.
+  ///
+  /// In en, this message translates to:
+  /// **'❌ Invalid API Key!\\n\\nPlease ensure you have a valid Gemini API key in your .env file.\\n1. Go to aistudio.google.com\\n2. Copy the key\\n3. Put it in .env like this:\\nGEMINI_API_KEY=AIza...\\n4. Restart the app.'**
+  String get invalidApiKeyError;
+
+  /// No description provided for @aiErrorPrefix.
+  ///
+  /// In en, this message translates to:
+  /// **'An error occurred while connecting to AI (Model: {modelName}): {error}'**
+  String aiErrorPrefix(String modelName, String error);
+
+  /// No description provided for @aiErrorHint.
+  ///
+  /// In en, this message translates to:
+  /// **'\\n\\n(Hint: If the error persists, the model might be unavailable in your region or the package needs an update)'**
+  String get aiErrorHint;
 
   /// No description provided for @aiTutorSystemInstruction.
   ///

@@ -14,7 +14,9 @@ class LeaderboardScreen extends StatelessWidget {
     final repo = LeaderboardRepository();
 
     return Scaffold(
-      backgroundColor: isLight ? const Color(0xFFF8FAFC) : const Color(0xFF0F172A),
+      backgroundColor: isLight
+          ? const Color(0xFFF8FAFC)
+          : const Color(0xFF0F172A),
       appBar: AppBar(
         title: Text(
           l10n.leaderboard,
@@ -46,13 +48,11 @@ class LeaderboardScreen extends StatelessWidget {
               SliverPadding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 sliver: SliverList(
-                  delegate: SliverChildBuilderDelegate(
-                    (context, index) {
-                      if (index + 3 >= entries.length) return null;
-                      final entry = entries[index + 3];
-                      return _buildLeaderboardTile(entry, isLight);
-                    },
-                  ),
+                  delegate: SliverChildBuilderDelegate((context, index) {
+                    if (index + 3 >= entries.length) return null;
+                    final entry = entries[index + 3];
+                    return _buildLeaderboardTile(entry, isLight);
+                  }),
                 ),
               ),
             ],
@@ -64,19 +64,27 @@ class LeaderboardScreen extends StatelessWidget {
 
   Widget _buildTopThree(List<LeaderboardEntry> topThree, bool isLight) {
     if (topThree.isEmpty) return const SizedBox();
-    
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-        if (topThree.length >= 2) _podiumItem(topThree[1], 2, 120, Colors.grey, isLight),
+        if (topThree.length >= 2)
+          _podiumItem(topThree[1], 2, 120, Colors.grey, isLight),
         _podiumItem(topThree[0], 1, 160, Colors.amber, isLight),
-        if (topThree.length >= 3) _podiumItem(topThree[2], 3, 100, Colors.brown, isLight),
+        if (topThree.length >= 3)
+          _podiumItem(topThree[2], 3, 100, Colors.brown, isLight),
       ],
     );
   }
 
-  Widget _podiumItem(LeaderboardEntry entry, int rank, double height, Color color, bool isLight) {
+  Widget _podiumItem(
+    LeaderboardEntry entry,
+    int rank,
+    double height,
+    Color color,
+    bool isLight,
+  ) {
     return Column(
       children: [
         CircleAvatar(
@@ -105,7 +113,10 @@ class LeaderboardScreen extends StatelessWidget {
           child: Center(
             child: Text(
               '#$rank',
-              style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+              style: const TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
         ),
@@ -121,7 +132,9 @@ class LeaderboardScreen extends StatelessWidget {
         color: isLight ? Colors.white : Colors.white.withValues(alpha: 0.05),
         borderRadius: BorderRadius.circular(16),
         border: Border.all(
-          color: isLight ? Colors.grey[200]! : Colors.white.withValues(alpha: 0.1),
+          color: isLight
+              ? Colors.grey[200]!
+              : Colors.white.withValues(alpha: 0.1),
         ),
       ),
       child: Row(

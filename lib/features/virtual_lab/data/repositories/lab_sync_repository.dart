@@ -28,7 +28,9 @@ class LabSyncRepository {
   /// Sync all local experiments to cloud (e.g., after login)
   Future<void> syncLocalToCloud(String userId) async {
     final box = await _box;
-    final experiments = box.values.map((e) => LabExperiment.fromMap(Map<String, dynamic>.from(e))).toList();
+    final experiments = box.values
+        .map((e) => LabExperiment.fromMap(Map<String, dynamic>.from(e)))
+        .toList();
 
     for (var exp in experiments) {
       if (exp.userId.isEmpty || exp.userId == userId) {
