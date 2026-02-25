@@ -113,23 +113,21 @@ class _SplashScreenState extends State<SplashScreen>
           return Stack(
             fit: StackFit.expand,
             children: [
-              // 1. Dynamic Moving Background Gradient (Simplified for Web)
-              if (!kIsWeb)
-                Positioned.fill(
-                  child: CustomPaint(
-                    painter: BackgroundLightPainter(_loopController.value),
-                  ),
+              // 1. Dynamic Moving Background Gradient (Simulates shifting light)
+              Positioned.fill(
+                child: CustomPaint(
+                  painter: BackgroundLightPainter(_loopController.value),
                 ),
+              ),
 
               // 2. Background/Blurred Particles (Far away)
-              if (!kIsWeb)
-                CustomPaint(
-                  painter: CinematicParticlePainter(
-                    particles: _particles.where((p) => p.z < 0.5).toList(),
-                    animationValue: _loopController.value,
-                    blurAmount: 3.0, // Blurry background
-                  ),
+              CustomPaint(
+                painter: CinematicParticlePainter(
+                  particles: _particles.where((p) => p.z < 0.5).toList(),
+                  animationValue: _loopController.value,
+                  blurAmount: 3.0, // Blurry background
                 ),
+              ),
 
               // 3. Main Centerpiece (Molecule)
               Center(
@@ -143,15 +141,13 @@ class _SplashScreenState extends State<SplashScreen>
                           scale +
                           (math.sin(_loopController.value * math.pi * 2) *
                               0.02), // Breathe
-                      child: kIsWeb 
-                        ? const Icon(Icons.science, color: Color(0xFFC6A664), size: 100)
-                        : CustomPaint(
-                            size: const Size(220, 220),
-                            painter: UltraPremiumMoleculePainter(
-                              rotation: _loopController.value * math.pi * 2,
-                              lightAngle: _loopController.value * math.pi * 2,
-                            ),
-                          ),
+                      child: CustomPaint(
+                        size: const Size(220, 220),
+                        painter: UltraPremiumMoleculePainter(
+                          rotation: _loopController.value * math.pi * 2,
+                          lightAngle: _loopController.value * math.pi * 2,
+                        ),
+                      ),
                     );
                   },
                 ),
@@ -166,23 +162,22 @@ class _SplashScreenState extends State<SplashScreen>
                 ),
               ),
 
-              // 5. Cinematic Vignette (Simplified for Web)
-              if (!kIsWeb)
-                Positioned.fill(
-                  child: DecoratedBox(
-                    decoration: BoxDecoration(
-                      gradient: RadialGradient(
-                        radius: 1.5,
-                        colors: [
-                          Colors.transparent,
-                          Colors.black.withOpacity(0.3),
-                          Colors.black.withOpacity(0.8),
-                        ],
-                        stops: const [0.5, 0.8, 1.0],
-                      ),
+              // 5. Cinematic Vignette (Dark edges)
+              Positioned.fill(
+                child: DecoratedBox(
+                  decoration: BoxDecoration(
+                    gradient: RadialGradient(
+                      radius: 1.5,
+                      colors: [
+                        Colors.transparent,
+                        Colors.black.withOpacity(0.3),
+                        Colors.black.withOpacity(0.8),
+                      ],
+                      stops: const [0.5, 0.8, 1.0],
                     ),
                   ),
                 ),
+              ),
 
               // 6. Text with "Cinematic Reveal"
               Positioned(
