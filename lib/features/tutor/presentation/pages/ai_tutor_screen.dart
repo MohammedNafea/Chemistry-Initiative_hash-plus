@@ -21,10 +21,10 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
   GenerativeModel? _model;
   ChatSession? _chatSession;
   bool _isDemoMode = false;
-  String _modelName = 'gemini-2.5-flash';
-  final String _flashModel = 'gemini-2.5-flash';
-  final String _proModel = 'gemini-2.0-flash';
-  final String _pro1Model = 'gemini-flash-latest';
+  String _modelName = 'gemini-1.5-flash';
+  final String _flashModel = 'gemini-1.5-flash';
+  final String _proModel = 'gemini-1.5-pro';
+  final String _pro1Model = 'gemini-pro';
   final ScrollController _scrollController = ScrollController();
   final ImagePicker _picker = ImagePicker();
   XFile? _selectedImage;
