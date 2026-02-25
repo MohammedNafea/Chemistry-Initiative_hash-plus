@@ -54,9 +54,14 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
         apiKey.isNotEmpty &&
         apiKey != "YOUR_API_KEY_HERE" &&
         apiKey.length > 10) {
-      final language = Localizations.localeOf(context).languageCode == 'ar'
-          ? 'Arabic'
-          : 'English';
+      String language;
+      try {
+        language = Localizations.localeOf(context).languageCode == 'ar'
+            ? 'Arabic'
+            : 'English';
+      } catch (e) {
+        language = 'Arabic'; // Fallback
+      }
 
       _model = GenerativeModel(
         model: _modelName,
@@ -106,9 +111,11 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
     }
 
     if (!mounted) return;
-    final currentLocale = Localizations.localeOf(context);
-    final isAr = currentLocale.languageCode == 'ar';
-    final language = isAr ? 'Arabic' : 'English';
+    String language = 'Arabic';
+    try {
+      final currentLocale = Localizations.localeOf(context);
+      language = currentLocale.languageCode == 'ar' ? 'Arabic' : 'English';
+    } catch (_) {}
 
     setState(() {
       if (retryText == null && retryImage == null) {

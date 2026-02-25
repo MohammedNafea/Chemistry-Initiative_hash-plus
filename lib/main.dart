@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -26,13 +27,12 @@ void main() async {
 
     // Initialize Firebase
     try {
-      if (identical(0, 0.0)) {
-        // Check if running on web
-        const String webApiKey = "AIzaSyCLbyEaFC_oCXwstxmxQITja6WQGHixEX4";
+      if (kIsWeb) {
+        // Pure selection in Dart ensures no conflict with index.html
         if (Firebase.apps.isEmpty) {
           await Firebase.initializeApp(
             options: const FirebaseOptions(
-              apiKey: webApiKey,
+              apiKey: "AIzaSyCLbyEaFC_oCXwstxmxQITja6WQGHixEX4",
               authDomain: "wonders-of-chemistry.firebaseapp.com",
               projectId: "wonders-of-chemistry",
               storageBucket: "wonders-of-chemistry.firebasestorage.app",
