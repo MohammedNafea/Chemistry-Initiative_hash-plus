@@ -113,12 +113,13 @@ class _SplashScreenState extends State<SplashScreen>
           return Stack(
             fit: StackFit.expand,
             children: [
-              // 1. Dynamic Moving Background Gradient (Simulates shifting light)
-              Positioned.fill(
-                child: CustomPaint(
-                  painter: BackgroundLightPainter(_loopController.value),
+              // 1. Dynamic Moving Background Gradient (Simplified for Web)
+              if (!kIsWeb)
+                Positioned.fill(
+                  child: CustomPaint(
+                    painter: BackgroundLightPainter(_loopController.value),
+                  ),
                 ),
-              ),
 
               // 2. Background/Blurred Particles (Far away)
               CustomPaint(
@@ -162,22 +163,23 @@ class _SplashScreenState extends State<SplashScreen>
                 ),
               ),
 
-              // 5. Cinematic Vignette (Dark edges)
-              Positioned.fill(
-                child: DecoratedBox(
-                  decoration: BoxDecoration(
-                    gradient: RadialGradient(
-                      radius: 1.5,
-                      colors: [
-                        Colors.transparent,
-                        Colors.black.withOpacity(0.3),
-                        Colors.black.withOpacity(0.8),
-                      ],
-                      stops: const [0.5, 0.8, 1.0],
+              // 5. Cinematic Vignette (Simplified for Web)
+              if (!kIsWeb)
+                Positioned.fill(
+                  child: DecoratedBox(
+                    decoration: BoxDecoration(
+                      gradient: RadialGradient(
+                        radius: 1.5,
+                        colors: [
+                          Colors.transparent,
+                          Colors.black.withOpacity(0.3),
+                          Colors.black.withOpacity(0.8),
+                        ],
+                        stops: const [0.5, 0.8, 1.0],
+                      ),
                     ),
                   ),
                 ),
-              ),
 
               // 6. Text with "Cinematic Reveal"
               Positioned(
