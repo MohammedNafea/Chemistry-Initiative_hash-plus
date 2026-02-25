@@ -24,7 +24,8 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
   String _modelName = 'gemini-1.5-flash';
   final String _flashModel = 'gemini-1.5-flash';
   final String _proModel = 'gemini-1.5-pro';
-  final String _pro1Model = 'gemini-pro';
+  final String _pro1Model = 'gemini-1.5-flash-latest';
+  final String _legacyProModel = 'gemini-pro';
   final ScrollController _scrollController = ScrollController();
   final ImagePicker _picker = ImagePicker();
   XFile? _selectedImage;
@@ -66,7 +67,7 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
       _model = GenerativeModel(
         model: _modelName,
         apiKey: apiKey.trim(),
-        requestOptions: const RequestOptions(apiVersion: 'v1'),
+        requestOptions: const RequestOptions(apiVersion: 'v1beta'),
         systemInstruction: _useLegacySystemInstruction
             ? null
             : Content.system(localizations.aiTutorSystemInstruction(language)),
@@ -193,6 +194,8 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
           nextModel = _proModel;
         } else if (_modelName == _proModel) {
           nextModel = _pro1Model;
+        } else if (_modelName == _pro1Model) {
+          nextModel = _legacyProModel;
         }
 
         if (nextModel != null) {
