@@ -59,12 +59,17 @@ void main() async {
     debugPrint("Firebase initialization failed: $e");
   }
 
-  await AppDatabase.instance.init();
+  // Initialize secondary services
+  try {
+    await AppDatabase.instance.init();
 
-  // Initialize and schedule daily notifications
-  final notificationService = NotificationService();
-  await notificationService.init();
-  await notificationService.scheduleDailyChemFact();
+    // Initialize and schedule daily notifications
+    final notificationService = NotificationService();
+    await notificationService.init();
+    await notificationService.scheduleDailyChemFact();
+  } catch (e) {
+    debugPrint("Secondary services initialization failed: $e");
+  }
 
   runApp(const ProviderScope(child: MyApp()));
 }
