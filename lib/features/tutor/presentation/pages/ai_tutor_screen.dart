@@ -15,7 +15,6 @@ class AITutorScreen extends ConsumerStatefulWidget {
 }
 
 class _AITutorScreenState extends ConsumerState<AITutorScreen> {
-  static const String _fallbackApiKey = "AIzaSyAW61zZr_HZIm9M437Zzdd0kiIyOHWzboM";
   final TextEditingController _controller = TextEditingController();
   final List<Map<String, String>> _messages = [];
   bool _isLoading = false;
@@ -56,12 +55,9 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
   void _initializeTutor() {
     final localizations = AppLocalizations.of(context);
     if (localizations == null) return;
-    final envKey = dotenv.env['GEMINI_API_KEY'];
-    final apiKey = (envKey != null && envKey.length > 10 && envKey != "YOUR_API_KEY_HERE")
-        ? envKey
-        : _fallbackApiKey;
-
-    if (apiKey.isNotEmpty && apiKey.length > 10) {
+    final apiKey = dotenv.env['GEMINI_API_KEY'];
+ 
+     if (apiKey != null && apiKey.isNotEmpty && apiKey.length > 10) {
       String language;
       try {
         language = Localizations.localeOf(context).languageCode == 'ar'
