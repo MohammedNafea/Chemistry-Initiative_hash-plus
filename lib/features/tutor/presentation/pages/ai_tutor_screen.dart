@@ -21,8 +21,10 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
   GenerativeModel? _model;
   ChatSession? _chatSession;
   bool _isDemoMode = true;
-  String _modelName = 'gemini-1.5-flash';
-  String _apiVersion = 'v1';
+  String _modelName = 'gemini-2.0-flash-lite';
+  String _apiVersion = 'v1beta';
+  final String _flashLiteModel = 'gemini-2.0-flash-lite';
+  final String _flash25Model = 'gemini-2.5-flash';
   final String _flashModel = 'gemini-1.5-flash';
   final String _flashLatestModel = 'gemini-1.5-flash-latest';
   final String _flash8bModel = 'gemini-1.5-flash-8b';
@@ -71,6 +73,12 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
       _model = GenerativeModel(
         model: _modelName,
         apiKey: apiKey.trim(),
+        generationConfig: GenerationConfig(
+          temperature: 0.7,
+          topK: 40,
+          topP: 0.95,
+          maxOutputTokens: 1024,
+        ),
         requestOptions: RequestOptions(apiVersion: _apiVersion),
         systemInstruction: _useLegacySystemInstruction
             ? null
@@ -207,7 +215,11 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
         } else {
           nextVersion = 'v1';
           // If both versions failed for current model, move to next model
-          if (_modelName == _flashModel) {
+          if (_modelName == _flashLiteModel) {
+            nextModel = _flash25Model;
+          } else if (_modelName == _flash25Model) {
+            nextModel = _flashModel;
+          } else if (_modelName == _flashModel) {
             nextModel = _flashLatestModel;
           } else if (_modelName == _flashLatestModel) {
             nextModel = _flash8bModel;
