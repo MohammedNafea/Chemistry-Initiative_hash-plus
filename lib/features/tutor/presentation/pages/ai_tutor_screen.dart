@@ -15,6 +15,7 @@ class AITutorScreen extends ConsumerStatefulWidget {
 }
 
 class _AITutorScreenState extends ConsumerState<AITutorScreen> {
+  static const String _fallbackApiKey = "AIzaSyAW61zZr_HZIm9M437Zzdd0kiIyOHWzboM";
   final TextEditingController _controller = TextEditingController();
   final List<Map<String, String>> _messages = [];
   bool _isLoading = false;
@@ -50,13 +51,12 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
   void _initializeTutor() {
     final localizations = AppLocalizations.of(context);
     if (localizations == null) return;
-    final apiKey = (dotenv.env['GEMINI_API_KEY'] != null && dotenv.env['GEMINI_API_KEY']!.length > 10)
-        ? dotenv.env['GEMINI_API_KEY']
-        : "AIzaSyAW61zZr_HZIm9M437Zzdd0kiIyOHWzboM";
+    final envKey = dotenv.env['GEMINI_API_KEY'];
+    final apiKey = (envKey != null && envKey.length > 10 && envKey != "YOUR_API_KEY_HERE")
+        ? envKey
+        : _fallbackApiKey;
 
-    if (apiKey != null &&
-        apiKey.isNotEmpty &&
-        apiKey.length > 10) {
+    if (apiKey.isNotEmpty && apiKey.length > 10) {
       String language;
       try {
         language = Localizations.localeOf(context).languageCode == 'ar'
@@ -70,7 +70,7 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
       _model = GenerativeModel(
         model: _modelName,
         apiKey: apiKey.trim(),
-        // Removing explicit RequestOptions to let SDK default to safest version
+        requestOptions: const RequestOptions(apiVersion: 'v1beta'),
         systemInstruction: _useLegacySystemInstruction
             ? null
             : Content.system(localizations.aiTutorSystemInstruction(language)),
@@ -227,13 +227,17 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
             errorStr.contains("supported") || 
             errorStr.contains("available") ||
             errorStr.contains("denied") ||
-            errorStr.contains("404"))) {
+            errorStr.contains("location") ||
+            errorStr.contains("404") ||
+            errorStr.contains("403"))) {
           debugPrint("AI Tutor: Critical failure on model $_modelName. Error: $e. Switching to Demo Mode.");
           _isDemoMode = true;
-          _model = null; // Reset to avoid further crashes
-          _messages.last["text"] = Localizations.localeOf(context).languageCode == 'ar'
-            ? "عذراً يا بطل! يبدو أن خدمة الذكاء الاصطناعي مقيدة في منطقتك حالياً أو أن هناك عطلاً مؤقتاً. سأقوم بالتحويل إلى 'النسخة التجريبية التعليمية' لنتمكن من متابعة رحلتنا بدون انقطاع! 🧪✨"
-            : "Oops! It seems the AI service is restricted in your region or experiencing a temporary issue. I'll switch to 'Educational Demo Mode' so we can continue our journey together! 🧪✨";
+          _model = null; 
+          
+          final arMsg = "عذراً يا بطل! يبدو أن خدمة الذكاء الاصطناعي مقيدة في منطقتك حالياً أو أن هناك عطلاً مؤقتاً.\n\n(Error Detail: ${e.toString().split('\n').first})";
+          final enMsg = "Oops! It seems the AI service is restricted in your region or experiencing a temporary issue.\n\n(Error Detail: ${e.toString().split('\n').first})";
+          
+          _messages.last["text"] = Localizations.localeOf(context).languageCode == 'ar' ? arMsg : enMsg;
           return;
         }
 
