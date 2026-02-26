@@ -23,11 +23,16 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
   ChatSession? _chatSession;
   bool _isDemoMode = true;
   String _modelName = 'gemini-1.5-flash';
+  String _apiVersion = 'v1';
   final String _flashModel = 'gemini-1.5-flash';
-  final String _proModel = 'gemini-1.5-pro';
-  final String _legacyProModel = 'gemini-pro';
+  final String _flashLatestModel = 'gemini-1.5-flash-latest';
   final String _flash8bModel = 'gemini-1.5-flash-8b';
+  final String _proModel = 'gemini-1.5-pro';
   final String _proLatestModel = 'gemini-1.5-pro-latest';
+  final String _proExpModel = 'gemini-2.0-pro-exp-02-05';
+  final String _flash2Model = 'gemini-2.0-flash';
+  final String _legacyProModel = 'gemini-pro';
+  int _fallbackDepth = 0;
   final ScrollController _scrollController = ScrollController();
   final ImagePicker _picker = ImagePicker();
   XFile? _selectedImage;
@@ -66,11 +71,11 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
         language = 'Arabic'; // Fallback
       }
 
-      debugPrint("AI Tutor: Initializing with model $_modelName (API Key check: ${apiKey.substring(0, 8)}...)");
+      debugPrint("AI Tutor: Initializing with model $_modelName (API Key check: ${apiKey.substring(0, 8)}...) - Version: $_apiVersion");
       _model = GenerativeModel(
         model: _modelName,
         apiKey: apiKey.trim(),
-        requestOptions: const RequestOptions(apiVersion: 'v1beta'),
+        requestOptions: RequestOptions(apiVersion: _apiVersion),
         systemInstruction: _useLegacySystemInstruction
             ? null
             : Content.system(localizations.aiTutorSystemInstruction(language)),
@@ -188,32 +193,50 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
         return;
       }
 
-      // FALLBACK LOGIC: Try different models incrementally
+      // FALLBACK LOGIC: Try different models and API versions incrementally
       final isModelError = errorStr.contains("not found") ||
               errorStr.contains("404") ||
               errorStr.contains("not supported") ||
               errorStr.contains("is not available") ||
-              errorStr.contains("400"); // Sometimes 400 is returned for invalid model on some versions
+              errorStr.contains("400");
 
-      if (isModelError) {
-        String? nextModel;
-        if (_modelName == _flashModel) {
-          nextModel = _proModel;
-        } else if (_modelName == _proModel) {
-          nextModel = _legacyProModel;
-        } else if (_modelName == _legacyProModel) {
-          nextModel = _flash8bModel;
-        } else if (_modelName == _flash8bModel) {
-          nextModel = _proLatestModel;
+      if (isModelError && _fallbackDepth < 10) {
+        String? nextModel = _modelName;
+        String nextVersion = _apiVersion;
+        _fallbackDepth++;
+
+        // Rotate versions first for the current model if it fails
+        if (_apiVersion == 'v1') {
+          nextVersion = 'v1beta';
+        } else {
+          nextVersion = 'v1';
+          // If both versions failed for current model, move to next model
+          if (_modelName == _flashModel) {
+            nextModel = _flashLatestModel;
+          } else if (_modelName == _flashLatestModel) {
+            nextModel = _flash8bModel;
+          } else if (_modelName == _flash8bModel) {
+            nextModel = _flash2Model;
+          } else if (_modelName == _flash2Model) {
+            nextModel = _proModel;
+          } else if (_modelName == _proModel) {
+            nextModel = _proLatestModel;
+          } else if (_modelName == _proLatestModel) {
+            nextModel = _proExpModel;
+          } else if (_modelName == _proExpModel) {
+            nextModel = _legacyProModel;
+          } else {
+            nextModel = null; // Out of models
+          }
         }
 
         if (nextModel != null) {
           debugPrint(
-            "AI Tutor: Model $_modelName failed, trying fallback $nextModel...",
+            "AI Tutor: Attempt failed. Retrying with model $nextModel on version $nextVersion...",
           );
           _modelName = nextModel;
+          _apiVersion = nextVersion;
           _initializeTutor();
-          // Fix: Allow recursion to continue by using the original text/image
           _sendMessage(retryText: text, retryImage: image);
           return;
         }
