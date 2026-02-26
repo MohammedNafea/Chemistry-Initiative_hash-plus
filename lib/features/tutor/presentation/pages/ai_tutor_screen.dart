@@ -615,7 +615,7 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
                                       color: isUser
                                           ? theme.colorScheme.primary
                                           : theme.colorScheme.secondaryContainer
-                                                .withOpacity(0.5),
+                                                .withValues(alpha: 0.5),
                                       borderRadius: BorderRadius.only(
                                         topLeft: const Radius.circular(20),
                                         topRight: const Radius.circular(20),
@@ -628,9 +628,7 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
                                       ),
                                       boxShadow: [
                                         BoxShadow(
-                                          color: Colors.black.withOpacity(
-                                            0.03,
-                                          ),
+                                          color: Colors.black.withValues(alpha: 0.03),
                                           blurRadius: 5,
                                           offset: const Offset(0, 2),
                                         ),
@@ -713,7 +711,7 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
                 color: theme.colorScheme.surface,
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.05),
+                    color: Colors.black.withValues(alpha: 0.05),
                     blurRadius: 10,
                     offset: const Offset(0, -2),
                   ),
@@ -768,7 +766,7 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
                           ),
                           style: IconButton.styleFrom(
                             backgroundColor: theme.colorScheme.primaryContainer
-                                .withOpacity(0.4),
+                                .withValues(alpha: 0.4),
                           ),
                         ),
                         const SizedBox(width: 8),
@@ -780,7 +778,7 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
                           ),
                           style: IconButton.styleFrom(
                             backgroundColor: theme.colorScheme.primaryContainer
-                                .withOpacity(0.4),
+                                .withValues(alpha: 0.4),
                           ),
                         ),
                         const SizedBox(width: 8),
@@ -804,7 +802,7 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
                               fillColor: theme
                                   .colorScheme
                                   .surfaceContainerHighest
-                                  .withOpacity(0.4),
+                                  .withValues(alpha: 0.4),
                               contentPadding: const EdgeInsets.symmetric(
                                 horizontal: 20,
                                 vertical: 14,
@@ -822,8 +820,8 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
                               shape: BoxShape.circle,
                               boxShadow: [
                                 BoxShadow(
-                                  color: theme.colorScheme.primary.withOpacity(
-                                    0.3,
+                                  color: theme.colorScheme.primary.withValues(
+                                    alpha: 0.3,
                                   ),
                                   blurRadius: 8,
                                   offset: const Offset(0, 4),
