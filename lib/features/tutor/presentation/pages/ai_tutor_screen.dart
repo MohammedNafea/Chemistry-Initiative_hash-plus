@@ -50,11 +50,12 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
   void _initializeTutor() {
     final localizations = AppLocalizations.of(context);
     if (localizations == null) return;
-    final apiKey = dotenv.env['GEMINI_API_KEY'];
+    final apiKey = (dotenv.env['GEMINI_API_KEY'] != null && dotenv.env['GEMINI_API_KEY']!.length > 10)
+        ? dotenv.env['GEMINI_API_KEY']
+        : "AIzaSyAW61zZr_HZIm9M437Zzdd0kiIyOHWzboM";
 
     if (apiKey != null &&
         apiKey.isNotEmpty &&
-        apiKey != "YOUR_API_KEY_HERE" &&
         apiKey.length > 10) {
       String language;
       try {
