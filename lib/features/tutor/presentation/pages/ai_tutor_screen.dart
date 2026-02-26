@@ -26,6 +26,7 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
   final String _proModel = 'gemini-1.5-pro';
   final String _legacyProModel = 'gemini-pro';
   final String _flash8bModel = 'gemini-1.5-flash-8b';
+  final String _proLatestModel = 'gemini-1.5-pro-latest';
   final ScrollController _scrollController = ScrollController();
   final ImagePicker _picker = ImagePicker();
   XFile? _selectedImage;
@@ -67,7 +68,7 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
       _model = GenerativeModel(
         model: _modelName,
         apiKey: apiKey.trim(),
-        requestOptions: const RequestOptions(apiVersion: 'v1beta'),
+        requestOptions: const RequestOptions(apiVersion: 'v1'),
         systemInstruction: _useLegacySystemInstruction
             ? null
             : Content.system(localizations.aiTutorSystemInstruction(language)),
@@ -191,11 +192,13 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
               errorStr.contains("is not available"))) {
         String? nextModel;
         if (_modelName == _flashModel) {
-          nextModel = _legacyProModel;
-        } else if (_modelName == _legacyProModel) {
           nextModel = _proModel;
         } else if (_modelName == _proModel) {
           nextModel = _flash8bModel;
+        } else if (_modelName == _flash8bModel) {
+          nextModel = _proLatestModel;
+        } else if (_modelName == _proLatestModel) {
+          nextModel = _legacyProModel;
         }
 
         if (nextModel != null) {
@@ -213,12 +216,17 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
       
       setState(() {
         // Final fallback to Demo Mode if all AI attempts fail
-        if (!_isDemoMode && (errorStr.contains("not found") || errorStr.contains("supported") || errorStr.contains("available"))) {
+        if (!_isDemoMode && (errorStr.contains("not found") || 
+            errorStr.contains("supported") || 
+            errorStr.contains("available") ||
+            errorStr.contains("denied") ||
+            errorStr.contains("404"))) {
           debugPrint("AI Tutor: Critical failure on model $_modelName. Error: $e. Switching to Demo Mode.");
           _isDemoMode = true;
+          _model = null; // Reset to avoid further crashes
           _messages.last["text"] = Localizations.localeOf(context).languageCode == 'ar'
-            ? "عذراً يا بطل! يبدو أن هناك عطلاً بسيطاً في الاتصال بالذكاء الاصطناعي حالياً. سأنتقل للوضع التجريبي لنكمل رحلتنا معاً! 🧪✨"
-            : "Oops! It seems there's a small connection issue with the AI right now. I'll switch to Demo Mode so we can keep going! 🧪✨";
+            ? "عذراً يا بطل! يبدو أن خدمة الذكاء الاصطناعي مقيدة في منطقتك حالياً أو أن هناك عطلاً مؤقتاً. سأقوم بالتحويل إلى 'النسخة التجريبية التعليمية' لنتمكن من متابعة رحلتنا بدون انقطاع! 🧪✨"
+            : "Oops! It seems the AI service is restricted in your region or experiencing a temporary issue. I'll switch to 'Educational Demo Mode' so we can continue our journey together! 🧪✨";
           return;
         }
 
