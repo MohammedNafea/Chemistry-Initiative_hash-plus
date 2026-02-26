@@ -159,7 +159,8 @@ class _ExperimentDetailScreenState extends State<ExperimentDetailScreen>
                 animation: _animationController,
                 builder: (context, child) {
                   return Container(
-                    height: 220,
+                    height: MediaQuery.sizeOf(context).height * 0.3,
+                    constraints: const BoxConstraints(minHeight: 200, maxHeight: 400),
                     width: double.infinity,
                     margin: const EdgeInsets.only(bottom: 24),
                     decoration: BoxDecoration(
@@ -276,8 +277,8 @@ class _ExperimentDetailScreenState extends State<ExperimentDetailScreen>
                                 const SizedBox(width: 8),
                                 Text(
                                   _isSimulating
-                                      ? 'Reaction in progress...'
-                                      : 'Tap to simulate reaction',
+                                      ? localizations.reactionInProgress
+                                      : localizations.tapToSimulate,
                                   style: TextStyle(
                                     color: theme.colorScheme.primary,
                                     fontWeight: FontWeight.bold,

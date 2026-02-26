@@ -12,6 +12,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get appTitle => 'عَجَائِبُ الكِيْمِيَاء';
 
   @override
+  String get splashTitle => 'عَجَائِبُ الكِيْمِيَاء';
+
+  @override
   String get leaderboard => 'لوحة المتصدرين';
 
   @override
@@ -1004,6 +1007,56 @@ class AppLocalizationsAr extends AppLocalizations {
   String get elemCaUse => 'يوجد في الحليب والعظام والأسنان والأسمنت.';
 
   @override
+  String get elemScName => 'السكانديوم';
+
+  @override
+  String get elemScSummary => 'السكانديوم عنصر انتقالي خفيف أبيض فضي.';
+
+  @override
+  String get elemScUse =>
+      'يستخدم في سبائك الألومنيوم للطائرات والمعدات الرياضية.';
+
+  @override
+  String get elemTiName => 'التيتانيوم';
+
+  @override
+  String get elemTiSummary =>
+      'التيتانيوم معدن قوي وخفيف الوزن ذو درجة انصهار عالية ومقاومة ممتازة للتآكل.';
+
+  @override
+  String get elemTiUse =>
+      'يستخدم في الطائرات والغرسات السنية والساعات الفاخرة.';
+
+  @override
+  String get elemVName => 'الفاناديوم';
+
+  @override
+  String get elemVSummary => 'الفاناديوم عنصر صلب رمادي فضي، لين وقابل للطرق.';
+
+  @override
+  String get elemVUse => 'يستخدم لتقوية الفولاذ في الأدوات والمحركات.';
+
+  @override
+  String get elemCrName => 'الكروم';
+
+  @override
+  String get elemCrSummary =>
+      'الكروم معدن صلب ولامع شديد المقاومة لفقدان البريق.';
+
+  @override
+  String get elemCrUse => 'يستخدم في الفولاذ المقاوم للصدأ وطلاء الكروم.';
+
+  @override
+  String get elemMnName => 'المنغنيز';
+
+  @override
+  String get elemMnSummary =>
+      'المنغنيز عنصر حيوي لإنتاج الفولاذ المقاوم للصدأ.';
+
+  @override
+  String get elemMnUse => 'يستخدم في البطاريات الجافة وسبائك الألومنيوم.';
+
+  @override
   String get elemFeName => 'الحديد';
 
   @override
@@ -1013,6 +1066,25 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get elemFeUse =>
       'يستخدم في بناء الفولاذ والمركبات ويوجد في خلايا الدم الحمراء.';
+
+  @override
+  String get elemCoName => 'الكوبالت';
+
+  @override
+  String get elemCoSummary => 'الكوبالت فلز صلب ولامع ومغناطيسي.';
+
+  @override
+  String get elemCoUse => 'يستخدم في التوربينات والمغناطيس القوي والبطاريات.';
+
+  @override
+  String get elemNiName => 'النيكل';
+
+  @override
+  String get elemNiSummary => 'النيكل فلز أبيض فضي لامع يقاوم التآكل.';
+
+  @override
+  String get elemNiUse =>
+      'يستخدم في طلاء المعادن والعملات المعدنية وبطاريات اللاب توب.';
 
   @override
   String get elemCuName => 'النحاس';
@@ -1034,6 +1106,166 @@ class AppLocalizationsAr extends AppLocalizations {
   String get elemZnUse => 'يستخدم في جلفنة الفولاذ وفي واقي الشمس.';
 
   @override
+  String get elemGaName => 'الغاليوم';
+
+  @override
+  String get elemGaSummary =>
+      'الغاليوم فلز ينصهر حرفياً في يدك بسبب درجة انصهاره المنخفضة.';
+
+  @override
+  String get elemGaUse =>
+      'أساسي في أشباه الموصلات والدوائر الإلكترونية والليزر.';
+
+  @override
+  String get elemGeName => 'الجرمانيوم';
+
+  @override
+  String get elemGeSummary => 'الجرمانيوم أبيض فضي، شبه فلز صلب وقصف.';
+
+  @override
+  String get elemGeUse =>
+      'يستخدم في أجهزة الرؤية الليلية والألياف البصرية وكابلات الاتصالات.';
+
+  @override
+  String get elemAsName => 'الزرنيخ';
+
+  @override
+  String get elemAsSummary =>
+      'الزرنيخ شبه فلز يشتهر بكونه شديد السمية في مركباته.';
+
+  @override
+  String get elemAsUse =>
+      'يستخدم في حفظ الخشب ومبيدات الحشرات وبعض أشباه الموصلات.';
+
+  @override
+  String get elemSeName => 'السيلينيوم';
+
+  @override
+  String get elemSeSummary =>
+      'السيلينيوم لا فلز ضروري للصحة بكميات ضئيلة جداً.';
+
+  @override
+  String get elemSeUse =>
+      'يستخدم في الخلايا الشمسية وكاميرات التصوير الفوتوغرافي.';
+
+  @override
+  String get elemBrName => 'البروم';
+
+  @override
+  String get elemBrSummary =>
+      'البروم سائل أحمر بني مائل للتبخر في درجة حرارة الغرفة.';
+
+  @override
+  String get elemBrUse => 'يستخدم في مثبطات اللهب، والأدوية، ومعالجة الصور.';
+
+  @override
+  String get elemKrName => 'الكريبتون';
+
+  @override
+  String get elemKrSummary => 'الكريبتون غاز نبيل عديم اللون والمذاق.';
+
+  @override
+  String get elemKrUse =>
+      'يستخدم في الإضاءة عالية الكفاءة وفي ليزر جراحة العين.';
+
+  @override
+  String get elemRbName => 'الروبيديوم';
+
+  @override
+  String get elemRbSummary => 'الروبيديوم فلز قلوي ناعم جداً وشديد التفاعل.';
+
+  @override
+  String get elemRbUse => 'يستخدم في الساعات الذرية وأبحاث الليزر.';
+
+  @override
+  String get elemSrName => 'السترونشيوم';
+
+  @override
+  String get elemSrSummary =>
+      'السترونشيوم فلز فضي مصفر يتفاعل بسرعة مع الهواء.';
+
+  @override
+  String get elemSrUse =>
+      'يستخدم في الألعاب النارية لإعطاء اللون الأحمر الزاهي.';
+
+  @override
+  String get elemYName => 'اليتريوم';
+
+  @override
+  String get elemYSummary => 'اليتريوم فلز انتقالي بلون معدني فضي.';
+
+  @override
+  String get elemYUse => 'يستخدم في الشاشات القديمة وتطبيقات الليزر.';
+
+  @override
+  String get elemZrName => 'الزركونيوم';
+
+  @override
+  String get elemZrSummary => 'الزركونيوم فلز قوي ومقاوم جداً للتآكل.';
+
+  @override
+  String get elemZrUse => 'يستخدم في المفاعلات النووية والمجوهرات (الزركون).';
+
+  @override
+  String get elemNbName => 'النيوبيوم';
+
+  @override
+  String get elemNbSummary =>
+      'النيوبيوم فلز ناعم وقابل للسحب يستخدم في السبائك الفائقة.';
+
+  @override
+  String get elemNbUse =>
+      'يستخدم في الموصلات الفائقة ومحركات الطائرات النفاثة.';
+
+  @override
+  String get elemMoName => 'الموليبدينوم';
+
+  @override
+  String get elemMoSummary =>
+      'الموليبدينوم فلز فضي صلب ذو درجة انصهار عالية جداً.';
+
+  @override
+  String get elemMoUse => 'يستخدم في الفولاذ القوي جداً وأدوات القطع.';
+
+  @override
+  String get elemTcName => 'التكنيشيوم';
+
+  @override
+  String get elemTcSummary => 'التكنيشيوم هو أول عنصر تم إنتاجه صناعياً.';
+
+  @override
+  String get elemTcUse => 'يستخدم بكثافة في التصوير الطبي التشخيصي.';
+
+  @override
+  String get elemRuName => 'الروثينيوم';
+
+  @override
+  String get elemRuSummary =>
+      'الروثينيوم فلز صلب أبيض يقاوم المواد الكيميائية.';
+
+  @override
+  String get elemRuUse => 'يستخدم في الوصلات الكهربائية ومحفزات الكيمياء.';
+
+  @override
+  String get elemRhName => 'الروديوم';
+
+  @override
+  String get elemRhSummary => 'الروديوم هو أحد أندر وأثمن المعادن في العالم.';
+
+  @override
+  String get elemRhUse => 'يستخدم في المحولات الحفازة بالسيارات والمجوهرات.';
+
+  @override
+  String get elemPdName => 'البلاديوم';
+
+  @override
+  String get elemPdSummary =>
+      'البلاديوم فلز فضي نادر وممتاز في امتصاص الهيدروجين.';
+
+  @override
+  String get elemPdUse => 'يستخدم في طب الأسنان والإلكترونيات وتنقية الغازات.';
+
+  @override
   String get elemAgName => 'الفضة';
 
   @override
@@ -1045,6 +1277,25 @@ class AppLocalizationsAr extends AppLocalizations {
       'تستخدم في المجوهرات والعملات المعدنية والإلكترونيات عالية الجودة.';
 
   @override
+  String get elemCdName => 'الكادميوم';
+
+  @override
+  String get elemCdSummary => 'الكادميوم فلز ناعم فضي مزرق، وهو سام جداً.';
+
+  @override
+  String get elemCdUse =>
+      'كان يستخدم في البطاريات القابلة للشحن والأصباغ الصفراء.';
+
+  @override
+  String get elemInName => 'الإنديوم';
+
+  @override
+  String get elemInSummary => 'الإنديوم فلز ناعم جداً ولامع.';
+
+  @override
+  String get elemInUse => 'يستخدم في شاشات اللمس وشاشات LCD.';
+
+  @override
   String get elemSnName => 'القصدير';
 
   @override
@@ -1052,6 +1303,25 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get elemSnUse => 'يستخدم لطلاء الفلزات الأخرى وفي سبيكة اللحام.';
+
+  @override
+  String get elemSbName => 'الأنتيمون';
+
+  @override
+  String get elemSbSummary => 'الأنتيمون شبه فلز رمادي لامع.';
+
+  @override
+  String get elemSbUse => 'يستخدم في بطاريات الرصاص والطلاء المقاوم للحريق.';
+
+  @override
+  String get elemTeName => 'التيلوريوم';
+
+  @override
+  String get elemTeSummary => 'التيلوريوم شبه فلز فضي لامع وقصف.';
+
+  @override
+  String get elemTeUse =>
+      'يستخدم في الألواح الشمسية والأقراص القابلة لإعادة الكتابة.';
 
   @override
   String get elemIName => 'اليود';
@@ -1063,74 +1333,658 @@ class AppLocalizationsAr extends AppLocalizations {
   String get elemIUse => 'يستخدم كمطهر وحيوي لصحة الغدة الدرقية.';
 
   @override
-  String get elemAuName => 'الذهب';
+  String get elemXeName => 'الزينون';
 
   @override
-  String get elemAuSummary => 'الذهب فلز نبيل لا يصدأ وذو قيمة عالية جداً.';
+  String get elemXeSummary => 'الزينون غاز نبيل ثقيل ونادر.';
 
   @override
-  String get elemAuUse => 'يستخدم في المجوهرات والاستثمار وتكنولوجيا الفضاء.';
+  String get elemXeUse => 'يستخدم في مصابيح الفلاش القوية وكشافات السيارات.';
 
   @override
-  String get elemHgName => 'الزئبق';
+  String get elemCsName => 'السيزيوم';
 
   @override
-  String get elemHgSummary =>
-      'الزئبق هو الفلز الوحيد الذي يكون سائلاً في درجة الحرارة القياسية.';
+  String get elemCsSummary => 'السيزيوم هو المعدن الأكثر كهروموجبية وتفاعلية.';
 
   @override
-  String get elemHgUse => 'يستخدم في موازين الحرارة ومصابيح الفلورسنت.';
+  String get elemCsUse => 'يستخدم في أدق الساعات الذرية في العالم.';
 
   @override
-  String get elemPbName => 'الرصاص';
+  String get elemBaName => 'الباريوم';
 
   @override
-  String get elemPbSummary => 'الرصاص فلز ثقيل وكثيف وسام إذا تم تناوله.';
+  String get elemBaSummary => 'الباريوم فلز قلوي ترابي ينفجر في الماء.';
 
   @override
-  String get elemPbUse =>
-      'يستخدم في بطاريات السيارات وترسيم الحماية من الإشعاع.';
+  String get elemBaUse => 'يستخدم في سوائل حفر الآبار وتصوير الأمعاء بالأشعة.';
 
   @override
-  String get elemUName => 'اليورانيوم';
+  String get elemLaName => 'اللانثانوم';
 
   @override
-  String get elemUSummary => 'اليورانيوم فلز ثقيل أبيض فضي مشع.';
+  String get elemLaSummary => 'اللانثانوم هو أول عنصر في مجموعة اللانثانيدات.';
 
   @override
-  String get elemUUse => 'يستخدم كوقود في محطات الطاقة النووية.';
+  String get elemLaUse => 'يستخدم في عدسات الكاميرات العالية الجودة.';
 
   @override
-  String get elemTiName => 'التيتانيوم';
+  String get elemCeName => 'السيريوم';
 
   @override
-  String get elemTiSummary =>
-      'التيتانيوم معدن قوي وخفيف الوزن ذو درجة انصهار عالية ومقاومة ممتازة للتآكل.';
+  String get elemCeSummary =>
+      'السيريوم هو الأكثر وفرة بين العناصر الأرضية النادرة.';
 
   @override
-  String get elemTiUse =>
-      'يستخدم في الطائرات والغرسات السنية والساعات الفاخرة.';
+  String get elemCeUse => 'يستخدم كممحفز في تكرير النفط وولاعات السجائر.';
 
   @override
-  String get elemCrName => 'الكروم';
+  String get elemPrName => 'البراسيوديميوم';
 
   @override
-  String get elemCrSummary =>
-      'الكروم معدن صلب ولامع شديد المقاومة لفقدان البريق.';
+  String get elemPrSummary => 'البراسيوديميوم فلز ناعم وفضي.';
 
   @override
-  String get elemCrUse => 'يستخدم في الفولاذ المقاوم للصدأ وطلاء الكروم.';
+  String get elemPrUse =>
+      'يستخدم في نظارات اللحام لحماية العين من الضوء المكثف.';
+
+  @override
+  String get elemNdName => 'النيوديميوم';
+
+  @override
+  String get elemNdSummary =>
+      'النيوديميوم يشتهر بصنع أقوى المغناطيسات الدائمة.';
+
+  @override
+  String get elemNdUse => 'يستخدم في سماعات الرأس والمحركات والأجهزة الطبية.';
+
+  @override
+  String get elemPmName => 'البروميثيوم';
+
+  @override
+  String get elemPmSummary =>
+      'البروميثيوم هو العنصر الوحيد المشع من اللانثانيدات.';
+
+  @override
+  String get elemPmUse => 'يستخدم في البطاريات الذرية وساعات الغواصات.';
+
+  @override
+  String get elemSmName => 'الساماريوم';
+
+  @override
+  String get elemSmSummary => 'الساماريوم فلز فضي صلب نسبياً.';
+
+  @override
+  String get elemSmUse => 'يستخدم في مغناطيسات الساماريوم-كوبالت القوية جداً.';
+
+  @override
+  String get elemEuName => 'الأوروبيوم';
+
+  @override
+  String get elemEuSummary =>
+      'الأوروبيوم هو الأكثر تفاعلية بين العناصر الأرضية النادرة.';
+
+  @override
+  String get elemEuUse =>
+      'يستخدم الفوسفور الأحمر في شاشات التلفزيون والعملات الورقية لليورو.';
+
+  @override
+  String get elemGdName => 'الجادولينيوم';
+
+  @override
+  String get elemGdSummary => 'الجادولينيوم فلز أبيض فضي لامع وقابل للطرق.';
+
+  @override
+  String get elemGdUse =>
+      'يستخدم كمادة تباين في التصوير بالرنين المغناطيسي (MRI).';
+
+  @override
+  String get elemTbName => 'التربيوم';
+
+  @override
+  String get elemTbSummary => 'التربيوم فلز فضي ناعم يمكن قطعه بالسكين.';
+
+  @override
+  String get elemTbUse =>
+      'يستخدم في المصابيح الموفرة للطاقة والأقراص المغناطيسية البصرية.';
+
+  @override
+  String get elemDyName => 'الديسبروزيوم';
+
+  @override
+  String get elemDySummary => 'الديسبروزيوم فلز لامع له بريق معدني فضي.';
+
+  @override
+  String get elemDyUse => 'يستخدم في محركات السيارات الكهربائية وأقراص الليزر.';
+
+  @override
+  String get elemHoName => 'الهولميوم';
+
+  @override
+  String get elemHoSummary =>
+      'الهولميوم له أعلى عزم مغناطيسي بين جميع العناصر.';
+
+  @override
+  String get elemHoUse =>
+      'يستخدم لإنشاء أقوى الميادين المغناطيسية وفي ليزر جراحة العين.';
+
+  @override
+  String get elemErName => 'الإربيوم';
+
+  @override
+  String get elemErSummary => 'الإربيوم فلز فضي يسهل تشكيله.';
+
+  @override
+  String get elemErUse =>
+      'يستخدم في كابلات الألياف البصرية لتقوية الإشارة والفلترة الزجاجية.';
+
+  @override
+  String get elemTmName => 'الثوليوم';
+
+  @override
+  String get elemTmSummary => 'الثوليوم هو أندر عنصر في مجموعة اللانثانيدات.';
+
+  @override
+  String get elemTmUse =>
+      'يستخدم في أجهزة الأشعة السينية المحمولة ومصادر الإشعاع.';
+
+  @override
+  String get elemYbName => 'اليتيربيوم';
+
+  @override
+  String get elemYbSummary => 'اليتيربيوم فلز ناعم ولامع وقابل للسحب.';
+
+  @override
+  String get elemYbUse =>
+      'يستخدم في الساعات الذرية وفي أجهزة قياس الضغط العالي.';
+
+  @override
+  String get elemLuName => 'اللوتيتيوم';
+
+  @override
+  String get elemLuSummary =>
+      'اللوتيتيوم هو آخر عناصر اللانثانيدات وأصعبها عزلاً.';
+
+  @override
+  String get elemLuUse => 'يستخدم في الطب النووي للكشف عن الأورام.';
+
+  @override
+  String get elemHfName => 'الهافنيوم';
+
+  @override
+  String get elemHfSummary => 'الهافنيوم فلز لامع فضي يقاوم التآكل بشدة.';
+
+  @override
+  String get elemHfUse =>
+      'يستخدم في قضبان التحكم بالمفاعلات النووية وأجهزة الكمبيوتر.';
+
+  @override
+  String get elemTaName => 'التنتالوم';
+
+  @override
+  String get elemTaSummary => 'التنتالوم فلز أزرق رمادي ثقيل وصلب.';
+
+  @override
+  String get elemTaUse =>
+      'يستخدم في المكثفات الإلكترونية للهواتف والأجهزة الطبية.';
+
+  @override
+  String get elemWName => 'التنغستن';
+
+  @override
+  String get elemWSummary => 'التنغستن له أعلى درجة انصهار بين جميع المعادن.';
+
+  @override
+  String get elemWUse =>
+      'يستخدم في أسلاك المصابيح الكهربائية وريش الحفر القوية.';
+
+  @override
+  String get elemReName => 'الرينيوم';
+
+  @override
+  String get elemReSummary => 'الرينيوم هو أحد أندر العناصر في قشرة الأرض.';
+
+  @override
+  String get elemReUse =>
+      'يستخدم في سبائك محركات الطائرات النفاثة ومحفزات النفط.';
+
+  @override
+  String get elemOsName => 'الأوزميوم';
+
+  @override
+  String get elemOsSummary => 'الأوزميوم هو المعدن الأكثر كثافة على وجه الأرض.';
+
+  @override
+  String get elemOsUse =>
+      'يستخدم في رؤوس أقلام الحبر الفاخرة والوصلات الكهربائية.';
+
+  @override
+  String get elemIrName => 'الإريديوم';
+
+  @override
+  String get elemIrSummary =>
+      'الإريديوم هو المعدن الأكثر مقاومة للتآكل في العالم.';
+
+  @override
+  String get elemIrUse =>
+      'يستخدم في شمعات الاحتراق وبواتق الكيمياء عالية الحرارة.';
 
   @override
   String get elemPtName => 'البلاتين';
 
   @override
   String get elemPtSummary =>
-      'البلاتين معدن ثمين كثيف ومستقر ونادر يستخدم في المجوهرات والمحولات الحفازة.';
+      'البلاتين فلز انتقالي ثمين، أبيض فضي، كثيف، وقابل للطرق، وغير نشط كيميائياً بشكل كبير.';
 
   @override
   String get elemPtUse =>
-      'يستخدم في محفزات السيارات والإلكترونيات عالية الجودة.';
+      'يستخدم في المحولات الحفازة، والمجوهرات، والمعدات المختبرية.';
+
+  @override
+  String get elemAuName => 'الذهب';
+
+  @override
+  String get elemAuSummary => 'الذهب فلز نبيل لامع لا يصدأ أبدا.';
+
+  @override
+  String get elemAuUse =>
+      'يستخدم في المجوهرات والاستثمارات والوصلات الإلكترونية الدقيقة.';
+
+  @override
+  String get elemHgName => 'الزئبق';
+
+  @override
+  String get elemHgSummary =>
+      'الزئبق هو المعدن الوحيد الذي يكون سائلاً في درجة حرارة الغرفة.';
+
+  @override
+  String get elemHgUse =>
+      'يستخدم في موازين الحرارة ويدخل في إنتاج مواد كيميائية.';
+
+  @override
+  String get elemTlName => 'الثاليوم';
+
+  @override
+  String get elemTlSummary =>
+      'الثاليوم فلز رمادي ناعم يتحول لونه عند التعرض للهواء.';
+
+  @override
+  String get elemTlUse =>
+      'يستخدم في أجهزة الاستشعار بالأشعة تحت الحمراء والطب النووي.';
+
+  @override
+  String get elemPbName => 'الرصاص';
+
+  @override
+  String get elemPbSummary =>
+      'الرصاص فلز ثقيل وكثيف، وهو سام إذا تم استنشاقه أو بلعه.';
+
+  @override
+  String get elemPbUse => 'يستخدم في بطاريات السيارات وحماية الأشعة السينية.';
+
+  @override
+  String get elemBiName => 'البزموت';
+
+  @override
+  String get elemBiSummary => 'البزموت فلز قصف بلون وردي لامع.';
+
+  @override
+  String get elemBiUse => 'يستخدم في أدوية الهضم وكمبرد للأجهزة الإلكترونية.';
+
+  @override
+  String get elemPoName => 'البولونيوم';
+
+  @override
+  String get elemPoSummary => 'البولونيوم عنصر مشع اكتشفته ماري كوري.';
+
+  @override
+  String get elemPoUse => 'يستخدم كباعث للحرارة في المركبات الفضائية.';
+
+  @override
+  String get elemAtName => 'الأستاتين';
+
+  @override
+  String get elemAtSummary => 'الأستاتين هو أندر عنصر طبيعي على وجه الأرض.';
+
+  @override
+  String get elemAtUse =>
+      'يستخدم في الأبحاث الطبية لعلاج السرطان بالجسيمات الدقيقة.';
+
+  @override
+  String get elemRnName => 'الرادون';
+
+  @override
+  String get elemRnSummary =>
+      'الرادون غاز مشع عديم اللون والرائحة ينبعث من التربة.';
+
+  @override
+  String get elemRnUse => 'يستخدم أحياناً في علاج الأورام تحت رقابة مشددة.';
+
+  @override
+  String get elemFrName => 'الفرانسيوم';
+
+  @override
+  String get elemFrSummary =>
+      'الفرانسيوم هو ثاني أندر عنصر طبيعي وهو شديد النشاط الإشعاعي.';
+
+  @override
+  String get elemFrUse =>
+      'يستخدم فقط في الأبحاث العلمية المتقدمة لندرته الشديدة.';
+
+  @override
+  String get elemRaName => 'الراديوم';
+
+  @override
+  String get elemRaSummary =>
+      'الراديوم عنصر مشع لامع كان يستخدم في الساعات المضيئة.';
+
+  @override
+  String get elemRaUse => 'يستخدم الآن في علاج بعض أنواع السرطان.';
+
+  @override
+  String get elemAcName => 'الأكتينيوم';
+
+  @override
+  String get elemAcSummary =>
+      'الأكتينيوم عنصر مشع قوي يلمع باللون الأزرق في الظلام.';
+
+  @override
+  String get elemAcUse => 'يستخدم كعامل مساعد في الأبحاث النووية والطبية.';
+
+  @override
+  String get elemThName => 'الثوريوم';
+
+  @override
+  String get elemThSummary =>
+      'الثوريوم عنصر مشع يوجد بكثرة في الأرض كبديل لليورانيوم.';
+
+  @override
+  String get elemThUse =>
+      'يستخدم في عدسات الكاميرات العالية الجودة وكوقود نووي محتمل.';
+
+  @override
+  String get elemPaName => 'البروتاكتينيوم';
+
+  @override
+  String get elemPaSummary =>
+      'البروتاكتينيوم عنصر مشع نادر وثمين، وهو شديد السمية.';
+
+  @override
+  String get elemPaUse =>
+      'يستخدم في الأبحاث العلمية المتقدمة ودراسة الترسبات الجيولوجية.';
+
+  @override
+  String get elemUName => 'اليورانيوم';
+
+  @override
+  String get elemUSummary =>
+      'اليورانيوم هو أثقل عنصر طبيعي ويستخدم كوقود أساسي للطاقة النووية.';
+
+  @override
+  String get elemUUse =>
+      'يستخدم في محطات الطاقة النووية وتأريخ الصخور القديمة.';
+
+  @override
+  String get elemNpName => 'النيبتونيوم';
+
+  @override
+  String get elemNpSummary => 'النيبتونيوم أول عنصر صناعي عابر لليورانيوم.';
+
+  @override
+  String get elemNpUse => 'يستخدم كباعث للنبضات في أجهزة الكشف عن النيوترونات.';
+
+  @override
+  String get elemPuName => 'البلوتونيوم';
+
+  @override
+  String get elemPuSummary =>
+      'البلوتونيوم عنصر مشع معروف بدوره في الطاقة والأسلحة النووية.';
+
+  @override
+  String get elemPuUse =>
+      'يستخدم كوقود في المفاعلات النووية والبطاريات طويلة الأمد للمركبات الفضائية.';
+
+  @override
+  String get elemAmName => 'الأمريسيوم';
+
+  @override
+  String get elemAmSummary => 'الأمريسيوم عنصر مشع صناعي يتوهج بلون وردي.';
+
+  @override
+  String get elemAmUse => 'يستخدم بشكل شائع في كاشفات الدخان المنزلية.';
+
+  @override
+  String get elemCmName => 'الكوريوم';
+
+  @override
+  String get elemCmSummary =>
+      'الكوريوم عنصر مشع تم تسميته تيمناً ببيير وماري كوري.';
+
+  @override
+  String get elemCmUse =>
+      'يستخدم كمصدر طاقة في أجهزة قياس الأشعة السينية للمهمات الفضائية.';
+
+  @override
+  String get elemBkName => 'البركيليوم';
+
+  @override
+  String get elemBkSummary => 'البركيليوم عنصر مشع ناعم فضي اللون.';
+
+  @override
+  String get elemBkUse =>
+      'يستخدم لإنتاج عناصر أثقل مثل الكاليفورنيوم في المختبرات.';
+
+  @override
+  String get elemCfName => 'الكاليفورنيوم';
+
+  @override
+  String get elemCfSummary =>
+      'الكاليفورنيوم عنصر مشع قوي جداً يطلق النيوترونات بكثرة.';
+
+  @override
+  String get elemCfUse =>
+      'يستخدم في الكشف عن الذهب والفضة وبدء تشغيل المفاعلات النووية.';
+
+  @override
+  String get elemEsName => 'الأينشتاينيوم';
+
+  @override
+  String get elemEsSummary =>
+      'الأينشتاينيوم عنصر مشع تم اكتشافه في حطام أول قنبلة هيدروجينية.';
+
+  @override
+  String get elemEsUse =>
+      'يستخدم فقط في الأبحاث العلمية الأساسية لدراسة العناصر الثقيلة.';
+
+  @override
+  String get elemFmName => 'الفيرميوم';
+
+  @override
+  String get elemFmSummary =>
+      'الفيرميوم أثقل عنصر يمكن إنتاجه عن طريق قذف النيوترونات.';
+
+  @override
+  String get elemFmUse => 'يستخدم حصراً في الدراسات النووية المتقدمة.';
+
+  @override
+  String get elemMdName => 'المندليفيوم';
+
+  @override
+  String get elemMdSummary =>
+      'المندليفيوم عنصر مشع سمي تيمناً بمؤسس الجدول الدوري ديمتري مندليف.';
+
+  @override
+  String get elemMdUse =>
+      'يستخدم في التجارب المخبرية لفهم الخصائص الكيميائية للعناصر الثقيلة.';
+
+  @override
+  String get elemNoName => 'النوبليوم';
+
+  @override
+  String get elemNoSummary =>
+      'النوبليوم عنصر مشع غير مستقر سمي تيمناً بألفريد نوبل.';
+
+  @override
+  String get elemNoUse => 'استخدامه يقتصر على الأبحاث المختبرية المتخصصة.';
+
+  @override
+  String get elemLrName => 'اللورنسيوم';
+
+  @override
+  String get elemLrSummary => 'اللورنسيوم هو آخر عنصر في سلسلة الأكتينيدات.';
+
+  @override
+  String get elemLrUse => 'يستخدم لدراسة بنية الذرات الثقيلة جداً.';
+
+  @override
+  String get elemRfName => 'الرذرفورديوم';
+
+  @override
+  String get elemRfSummary =>
+      'الرذرفورديوم هو أول عنصر في مجموعة العناصر عابرة الأكتينيدات.';
+
+  @override
+  String get elemRfUse => 'يستخدم فقط في أبحاث الفيزياء والكمياء النووية.';
+
+  @override
+  String get elemDbName => 'الدوبنيوم';
+
+  @override
+  String get elemDbSummary => 'الدوبنيوم عنصر صناعي مشع قصير العمر جداً.';
+
+  @override
+  String get elemDbUse =>
+      'يستخدم في دراسة التفاعلات الكيميائية للعناصر فائقة الثقل.';
+
+  @override
+  String get elemSgName => 'السيبورغيوم';
+
+  @override
+  String get elemSgSummary =>
+      'السيبورغيوم عنصر مشع صناعي من مجموعة العناصر الانتقالية.';
+
+  @override
+  String get elemSgUse =>
+      'يستخدم لاستكشاف حدود الجدول الدوري واستقرار النواة الذرية.';
+
+  @override
+  String get elemBhName => 'البوريوم';
+
+  @override
+  String get elemBhSummary => 'البوريوم عنصر مشع سمي تيمناً بالعالم نيلز بور.';
+
+  @override
+  String get elemBhUse =>
+      'يستخدم في دراسة الخصائص الكيميائية للعناصر في المجموعة السابعة.';
+
+  @override
+  String get elemHsName => 'الحاسيوم';
+
+  @override
+  String get elemHsSummary =>
+      'الحاسيوم عنصر مشع يتوقع أن يكون له خصائص مشابهة للأوزميوم.';
+
+  @override
+  String get elemHsUse => 'يستخدم في تجارب الكيمياء النووية المعقدة.';
+
+  @override
+  String get elemMtName => 'المايتنريوم';
+
+  @override
+  String get elemMtSummary =>
+      'المايتنريوم عنصر مشع سمي تيمناً بالعالمة ليز مايتنر.';
+
+  @override
+  String get elemMtUse => 'يستخدم في الأبحاث لإنتاج ودراسة العناصر الأثقل.';
+
+  @override
+  String get elemDsName => 'الدارمشتاديوم';
+
+  @override
+  String get elemDsSummary => 'الدارمشتاديوم عنصر صناعي تم اكتشافه في ألمانيا.';
+
+  @override
+  String get elemDsUse => 'يستخدم في البحوث العلمية لفحص استقرار المادة.';
+
+  @override
+  String get elemRgName => 'الرونتجينيوم';
+
+  @override
+  String get elemRgSummary =>
+      'الرونتجينيوم عنصر مشع سمي تيمناً بمكتشف الأشعة السينية.';
+
+  @override
+  String get elemRgUse => 'يستخدم في أبحاث الفيزياء الذرية المتقدمة.';
+
+  @override
+  String get elemCnName => 'الكوبرنيسيوم';
+
+  @override
+  String get elemCnSummary =>
+      'الكوبرنيسيوم عنصر مشع سمي تيمناً بالعالم كوبرنيكوس.';
+
+  @override
+  String get elemCnUse =>
+      'يستخدم في دراسة السلوك الكيميائي للعناصر عابرة الثقل.';
+
+  @override
+  String get elemNhName => 'النيهونيوم';
+
+  @override
+  String get elemNhSummary =>
+      'النيهونيوم عنصر مشع تم اكتشافه وتسميته في اليابان.';
+
+  @override
+  String get elemNhUse => 'يستخدم لفهم القوى النووية داخل الذرة.';
+
+  @override
+  String get elemFlName => 'الفليروفيوم';
+
+  @override
+  String get elemFlSummary => 'الفليروفيوم عنصر صناعي مشع ذو استقرار نسبي.';
+
+  @override
+  String get elemFlUse =>
+      'يستخدم في البحث عن \'جزيرة الاستقرار\' في الفيزياء النووية.';
+
+  @override
+  String get elemMcName => 'المسكوفيوم';
+
+  @override
+  String get elemMcSummary => 'المسكوفيوم عنصر مشع صناعي شديد عدم الاستقرار.';
+
+  @override
+  String get elemMcUse => 'يستخدم في تجارب الفيزياء النووية عالية الطاقة.';
+
+  @override
+  String get elemLvName => 'الليفرموريوم';
+
+  @override
+  String get elemLvSummary => 'الليفرموريوم عنصر مشع سمي تيمناً بمختبر أمريكي.';
+
+  @override
+  String get elemLvUse => 'يستخدم في الدراسات المتقدمة لإنتاج نوى ذرية جديدة.';
+
+  @override
+  String get elemTsName => 'التينيسين';
+
+  @override
+  String get elemTsSummary => 'التينيسين عنصر صناعي مشع من مجموعة الهالوجينات.';
+
+  @override
+  String get elemTsUse =>
+      'يستخدم في أبحاث الفيزياء النووية لاختبار النظريات الذرية.';
+
+  @override
+  String get elemOgName => 'أوجانيسون';
+
+  @override
+  String get elemOgSummary =>
+      'الأوجانيسون هو أثقل عنصر تم اكتشافه في الجدول الدوري حتى الآن.';
+
+  @override
+  String get elemOgUse =>
+      'يستخدم لدراسة الخصائص الكيميائية والفيزيائية للذرات فائقة الثقل.';
 
   @override
   String get complete => 'تم الإكمال';
@@ -1155,46 +2009,6 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get alchemist => 'خيميائي';
-
-  @override
-  String get discoveryLabel => 'اكتشافات';
-
-  @override
-  String get increaseHeatCatalyst =>
-      'الاكتشاف يتطلب حرارة أعلى! استخدم موقد بنزن.';
-
-  @override
-  String get multiplayerQuiz => 'تحدي الأسئلة المتعددة';
-
-  @override
-  String get aiTutor => 'المعلم الذكي';
-
-  @override
-  String get viewIn3D => 'عرض ثلاثي الأبعاد';
-
-  @override
-  String get searchCompounds => 'البحث عن المركبات...';
-
-  @override
-  String get scientificInsight => 'نظرة علمية';
-
-  @override
-  String get gotIt => 'حسناً!';
-
-  @override
-  String get challengingPlayers => 'البحث عن متنافسين قريبين...';
-
-  @override
-  String get inviteHost => 'دعوة (مضيف)';
-
-  @override
-  String get connectedTo => 'متصل بـ';
-
-  @override
-  String get hostScore => 'نقاط المضيف';
-
-  @override
-  String get guestScore => 'نقاط الضيف';
 
   @override
   String get aiTutorGreeting =>
@@ -1437,4 +2251,56 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get noCompoundFound =>
       'لم نتمكن من التعرف على هذا المركب. حاول مرة أخرى.';
+
+  @override
+  String get discoveryLabel => 'اكتشافات';
+
+  @override
+  String get increaseHeatCatalyst =>
+      'الاكتشاف يتطلب حرارة أعلى! استخدم موقد بنزن.';
+
+  @override
+  String get multiplayerQuiz => 'تحدي الأسئلة المتعددة';
+
+  @override
+  String get aiTutor => 'المعلم الذكي';
+
+  @override
+  String get viewIn3D => 'عرض ثلاثي الأبعاد';
+
+  @override
+  String get searchCompounds => 'البحث عن المركبات...';
+
+  @override
+  String get scientificInsight => 'نظرة علمية';
+
+  @override
+  String get gotIt => 'حسناً!';
+
+  @override
+  String get challengingPlayers => 'البحث عن متنافسين قريبين...';
+
+  @override
+  String get inviteHost => 'دعوة (مضيف)';
+
+  @override
+  String get connectedTo => 'متصل بـ';
+
+  @override
+  String get hostScore => 'نقاط المضيف';
+
+  @override
+  String get guestScore => 'نقاط الضيف';
+
+  @override
+  String get reactionInProgress => 'تفاعل جارٍ...';
+
+  @override
+  String get tapToSimulate => 'انقر لمحاكاة التفاعل';
+
+  @override
+  String get points => 'نقاط';
+
+  @override
+  String get quizzes => 'اختبارات';
 }

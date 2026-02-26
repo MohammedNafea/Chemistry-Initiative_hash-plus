@@ -191,7 +191,7 @@ class _ProfileSliverAppBar extends StatelessWidget {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return SliverAppBar(
-      expandedHeight: 320,
+      expandedHeight: 380,
       pinned: true,
       stretch: true,
       actions: [
@@ -309,6 +309,25 @@ class _ProfileSliverAppBar extends StatelessWidget {
                           : AppColors.truffle.withAlpha(230),
                     ),
                   ),
+                ),
+                const SizedBox(height: 12),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    _StatCard(
+                      icon: Icons.emoji_events_rounded,
+                      value: '${user.totalPoints}',
+                      label: localizations.points,
+                      isDark: isDark,
+                    ),
+                    const SizedBox(width: 16),
+                    _StatCard(
+                      icon: Icons.quiz_rounded,
+                      value: '${user.quizzesCompleted}',
+                      label: localizations.quizzes,
+                      isDark: isDark,
+                    ),
+                  ],
                 ),
               ],
             ),
@@ -755,6 +774,48 @@ class _ActionButtons extends ConsumerWidget {
           ),
         ),
       ],
+    );
+  }
+}
+
+class _StatCard extends StatelessWidget {
+  final IconData icon;
+  final String value;
+  final String label;
+  final bool isDark;
+
+  const _StatCard({
+    required this.icon,
+    required this.value,
+    required this.label,
+    required this.isDark,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      decoration: BoxDecoration(
+        color: isDark ? Colors.white.withValues(alpha: 0.05) : Colors.white.withValues(alpha: 0.5),
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(
+          color: isDark ? Colors.white10 : Colors.black.withValues(alpha: 0.05),
+        ),
+      ),
+      child: Column(
+        children: [
+          Icon(icon, size: 20, color: Colors.amber),
+          const SizedBox(height: 4),
+          Text(
+            value,
+            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+          ),
+          Text(
+            label,
+            style: TextStyle(fontSize: 10, color: isDark ? Colors.white60 : Colors.grey[600]),
+          ),
+        ],
+      ),
     );
   }
 }

@@ -82,7 +82,7 @@ class SafetyGuideScreen extends StatelessWidget {
               crossAxisCount: crossAxisCount,
               crossAxisSpacing: 16,
               mainAxisSpacing: 16,
-              childAspectRatio: 1.1,
+              childAspectRatio: constraints.maxWidth < 600 ? 1.0 : 1.1,
             ),
             itemCount: symbols.length,
             itemBuilder: (context, index) {
@@ -150,7 +150,8 @@ class _SymbolDetailDialog extends StatelessWidget {
 
     return Dialog(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-      child: Padding(
+      child: Container(
+        constraints: const BoxConstraints(maxWidth: 400),
         padding: const EdgeInsets.all(24.0),
         child: Column(
           mainAxisSize: MainAxisSize.min,

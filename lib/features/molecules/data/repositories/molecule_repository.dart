@@ -8,7 +8,7 @@ class MoleculeRepository {
         name: 'molWater',
         formula: 'H₂O',
         description: 'factWater',
-        imagePath: 'assets/images/molecules/water.png',
+        imagePath: 'assets/images/img.png',
         category: 'Inorganic',
       ),
       const Molecule(
@@ -16,7 +16,7 @@ class MoleculeRepository {
         name: 'molCo2',
         formula: 'CO₂',
         description: 'factCo2',
-        imagePath: 'assets/images/molecules/co2.png',
+        imagePath: 'assets/images/img.png',
         category: 'Inorganic',
       ),
       const Molecule(
@@ -24,7 +24,7 @@ class MoleculeRepository {
         name: 'molMethane',
         formula: 'CH₄',
         description: 'factMethane',
-        imagePath: 'assets/images/molecules/methane.png',
+        imagePath: 'assets/images/img.png',
         category: 'Organic',
       ),
       const Molecule(
@@ -32,7 +32,7 @@ class MoleculeRepository {
         name: 'molSalt',
         formula: 'NaCl',
         description: 'factSalt',
-        imagePath: 'assets/images/molecules/salt.png',
+        imagePath: 'assets/images/img.png',
         category: 'Salt',
       ),
       const Molecule(
@@ -40,7 +40,7 @@ class MoleculeRepository {
         name: 'molAmmonia',
         formula: 'NH₃',
         description: 'factAmmonia',
-        imagePath: 'assets/images/molecules/ammonia.png',
+        imagePath: 'assets/images/img.png',
         category: 'Inorganic',
       ),
       const Molecule(
@@ -48,7 +48,7 @@ class MoleculeRepository {
         name: 'molH2so4',
         formula: 'H₂SO₄',
         description: 'factH2so4',
-        imagePath: 'assets/images/molecules/h2so4.png',
+        imagePath: 'assets/images/img.png',
         category: 'Acid',
       ),
       const Molecule(
@@ -56,7 +56,7 @@ class MoleculeRepository {
         name: 'molHcl',
         formula: 'HCl',
         description: 'factHcl',
-        imagePath: 'assets/images/molecules/hcl.png',
+        imagePath: 'assets/images/img.png',
         category: 'Acid',
       ),
       const Molecule(
@@ -64,7 +64,7 @@ class MoleculeRepository {
         name: 'molNaoh',
         formula: 'NaOH',
         description: 'factNaoh',
-        imagePath: 'assets/images/molecules/naoh.png',
+        imagePath: 'assets/images/img.png',
         category: 'Base',
       ),
       const Molecule(
@@ -72,7 +72,7 @@ class MoleculeRepository {
         name: 'molH2o2',
         formula: 'H₂O₂',
         description: 'factH2o2',
-        imagePath: 'assets/images/molecules/h2o2.png',
+        imagePath: 'assets/images/img.png',
         category: 'Acid',
       ),
       const Molecule(
@@ -80,7 +80,7 @@ class MoleculeRepository {
         name: 'molFe2o3',
         formula: 'Fe₂O₃',
         description: 'factFe2o3',
-        imagePath: 'assets/images/molecules/fe2o3.png',
+        imagePath: 'assets/images/img.png',
         category: 'Oxide',
       ),
       const Molecule(
@@ -88,7 +88,7 @@ class MoleculeRepository {
         name: 'molEthanol',
         formula: 'C₂H₅OH',
         description: 'factEthanol',
-        imagePath: 'assets/images/molecules/ethanol.png',
+        imagePath: 'assets/images/img.png',
         category: 'Organic',
       ),
       const Molecule(
@@ -96,7 +96,7 @@ class MoleculeRepository {
         name: 'molGlucose',
         formula: 'C₆H₁₂O₆',
         description: 'factGlucose',
-        imagePath: 'assets/images/molecules/glucose.png',
+        imagePath: 'assets/images/img.png',
         category: 'Organic',
       ),
       const Molecule(
@@ -104,7 +104,7 @@ class MoleculeRepository {
         name: 'molSio2',
         formula: 'SiO₂',
         description: 'factSio2',
-        imagePath: 'assets/images/molecules/sio2.png',
+        imagePath: 'assets/images/img.png',
         category: 'Geological',
       ),
       const Molecule(
@@ -112,7 +112,7 @@ class MoleculeRepository {
         name: 'molCaco3',
         formula: 'CaCO₃',
         description: 'factCaco3',
-        imagePath: 'assets/images/molecules/caco3.png',
+        imagePath: 'assets/images/img.png',
         category: 'Geological',
       ),
       const Molecule(
@@ -120,7 +120,7 @@ class MoleculeRepository {
         name: 'molAl2o3',
         formula: 'Al₂O₃',
         description: 'factAl2o3',
-        imagePath: 'assets/images/molecules/al2o3.png',
+        imagePath: 'assets/images/img.png',
         category: 'Geological',
       ),
       const Molecule(
@@ -128,7 +128,7 @@ class MoleculeRepository {
         name: 'molAucl3',
         formula: 'AuCl₃',
         description: 'factAucl3',
-        imagePath: 'assets/images/molecules/aucl3.png',
+        imagePath: 'assets/images/img.png',
         category: 'Salt',
       ),
     ];

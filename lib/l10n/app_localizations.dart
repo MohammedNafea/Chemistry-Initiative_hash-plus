@@ -130,6 +130,12 @@ abstract class AppLocalizations {
   /// **'Chemistry Wonders'**
   String get appTitle;
 
+  /// No description provided for @splashTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Chemistry Wonders'**
+  String get splashTitle;
+
   /// No description provided for @leaderboard.
   ///
   /// In en, this message translates to:
@@ -2008,6 +2014,96 @@ abstract class AppLocalizations {
   /// **'Found in milk, bones, teeth, and cement.'**
   String get elemCaUse;
 
+  /// No description provided for @elemScName.
+  ///
+  /// In en, this message translates to:
+  /// **'Scandium'**
+  String get elemScName;
+
+  /// No description provided for @elemScSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Scandium is a silvery-white metallic d-block element.'**
+  String get elemScSummary;
+
+  /// No description provided for @elemScUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used in aluminum-scandium alloys for aerospace and high-end sports equipment.'**
+  String get elemScUse;
+
+  /// No description provided for @elemTiName.
+  ///
+  /// In en, this message translates to:
+  /// **'Titanium'**
+  String get elemTiName;
+
+  /// No description provided for @elemTiSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Titanium is a strong, lightweight metal with a high melting point and excellent corrosion resistance.'**
+  String get elemTiSummary;
+
+  /// No description provided for @elemTiUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used in aircraft, dental implants, and high-end watches.'**
+  String get elemTiUse;
+
+  /// No description provided for @elemVName.
+  ///
+  /// In en, this message translates to:
+  /// **'Vanadium'**
+  String get elemVName;
+
+  /// No description provided for @elemVSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Vanadium is a hard, silvery-grey, malleable transition metal.'**
+  String get elemVSummary;
+
+  /// No description provided for @elemVUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used to create steel alloys for tools, axles, and crankshafts.'**
+  String get elemVUse;
+
+  /// No description provided for @elemCrName.
+  ///
+  /// In en, this message translates to:
+  /// **'Chromium'**
+  String get elemCrName;
+
+  /// No description provided for @elemCrSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Chromium is a hard, shiny metal that is highly resistant to tarnishing.'**
+  String get elemCrSummary;
+
+  /// No description provided for @elemCrUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used in stainless steel and chrome plating.'**
+  String get elemCrUse;
+
+  /// No description provided for @elemMnName.
+  ///
+  /// In en, this message translates to:
+  /// **'Manganese'**
+  String get elemMnName;
+
+  /// No description provided for @elemMnSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Manganese is a transition metal with important industrial alloy uses, particularly in stainless steel.'**
+  String get elemMnSummary;
+
+  /// No description provided for @elemMnUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used in dry cell batteries and to strengthen aluminum cans.'**
+  String get elemMnUse;
+
   /// No description provided for @elemFeName.
   ///
   /// In en, this message translates to:
@@ -2025,6 +2121,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Used in steel construction and found in red blood cells.'**
   String get elemFeUse;
+
+  /// No description provided for @elemCoName.
+  ///
+  /// In en, this message translates to:
+  /// **'Cobalt'**
+  String get elemCoName;
+
+  /// No description provided for @elemCoSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Cobalt is a hard, lustrous, silver-gray metal found in Earth\'s crust only in chemically combined form.'**
+  String get elemCoSummary;
+
+  /// No description provided for @elemCoUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used in jet turbine parts, strong magnets, and rechargeable batteries.'**
+  String get elemCoUse;
+
+  /// No description provided for @elemNiName.
+  ///
+  /// In en, this message translates to:
+  /// **'Nickel'**
+  String get elemNiName;
+
+  /// No description provided for @elemNiSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Nickel is a silvery-white lustrous metal with a slight golden tinge.'**
+  String get elemNiSummary;
+
+  /// No description provided for @elemNiUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used in plating, coins, and laptop batteries.'**
+  String get elemNiUse;
 
   /// No description provided for @elemCuName.
   ///
@@ -2062,6 +2194,294 @@ abstract class AppLocalizations {
   /// **'Used to galvanize steel and in sunscreen.'**
   String get elemZnUse;
 
+  /// No description provided for @elemGaName.
+  ///
+  /// In en, this message translates to:
+  /// **'Gallium'**
+  String get elemGaName;
+
+  /// No description provided for @elemGaSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Gallium is a soft, silvery metal that melts at just 29.7°C, meaning it can melt in your hand.'**
+  String get elemGaSummary;
+
+  /// No description provided for @elemGaUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Essential for semiconductors, blue LEDs, and lasers.'**
+  String get elemGaUse;
+
+  /// No description provided for @elemGeName.
+  ///
+  /// In en, this message translates to:
+  /// **'Germanium'**
+  String get elemGeName;
+
+  /// No description provided for @elemGeSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Germanium is a lustrous, hard-brittle, grayish-white metalloid.'**
+  String get elemGeSummary;
+
+  /// No description provided for @elemGeUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used in fiber optics, night vision equipment, and wide-angle lenses.'**
+  String get elemGeUse;
+
+  /// No description provided for @elemAsName.
+  ///
+  /// In en, this message translates to:
+  /// **'Arsenic'**
+  String get elemAsName;
+
+  /// No description provided for @elemAsSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Arsenic is a metalloid that exists in several allotropic forms, famous for its toxicity.'**
+  String get elemAsSummary;
+
+  /// No description provided for @elemAsUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used in wood preservatives, pesticides, and some semiconductor doping.'**
+  String get elemAsUse;
+
+  /// No description provided for @elemSeName.
+  ///
+  /// In en, this message translates to:
+  /// **'Selenium'**
+  String get elemSeName;
+
+  /// No description provided for @elemSeSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Selenium is a nonmetal with properties that are intermediate between the elements sulfur and tellurium.'**
+  String get elemSeSummary;
+
+  /// No description provided for @elemSeUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used in photocells, solar panels, and anti-dandruff shampoos.'**
+  String get elemSeUse;
+
+  /// No description provided for @elemBrName.
+  ///
+  /// In en, this message translates to:
+  /// **'Bromine'**
+  String get elemBrName;
+
+  /// No description provided for @elemBrSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Bromine is a reddish-brown liquid at room temperature that evaporates easily to form a similarly colored gas.'**
+  String get elemBrSummary;
+
+  /// No description provided for @elemBrUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used in flame retardants, medicines, and photography.'**
+  String get elemBrUse;
+
+  /// No description provided for @elemKrName.
+  ///
+  /// In en, this message translates to:
+  /// **'Krypton'**
+  String get elemKrName;
+
+  /// No description provided for @elemKrSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Krypton is a noble gas that is used with phosphors in energy-saving fluorescent lamps.'**
+  String get elemKrSummary;
+
+  /// No description provided for @elemKrUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used in high-speed photography flashes and laser eye surgery.'**
+  String get elemKrUse;
+
+  /// No description provided for @elemRbName.
+  ///
+  /// In en, this message translates to:
+  /// **'Rubidium'**
+  String get elemRbName;
+
+  /// No description provided for @elemRbSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Rubidium is a soft, silvery-white metallic element of the alkali metal group.'**
+  String get elemRbSummary;
+
+  /// No description provided for @elemRbUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used in atomic clocks and laser research.'**
+  String get elemRbUse;
+
+  /// No description provided for @elemSrName.
+  ///
+  /// In en, this message translates to:
+  /// **'Strontium'**
+  String get elemSrName;
+
+  /// No description provided for @elemSrSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Strontium is an alkaline earth metal that is highly reactive and turns yellow when exposed to air.'**
+  String get elemSrSummary;
+
+  /// No description provided for @elemSrUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used in fireworks and flares to produce a brilliant red color.'**
+  String get elemSrUse;
+
+  /// No description provided for @elemYName.
+  ///
+  /// In en, this message translates to:
+  /// **'Yttrium'**
+  String get elemYName;
+
+  /// No description provided for @elemYSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Yttrium is a silvery-metallic transition metal chemically similar to the lanthanides.'**
+  String get elemYSummary;
+
+  /// No description provided for @elemYUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used in LEDs, phosphors tip for old TVs, and laser applications.'**
+  String get elemYUse;
+
+  /// No description provided for @elemZrName.
+  ///
+  /// In en, this message translates to:
+  /// **'Zirconium'**
+  String get elemZrName;
+
+  /// No description provided for @elemZrSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Zirconium is a lustrous, grey-white, strong transition metal that resembles hafnium.'**
+  String get elemZrSummary;
+
+  /// No description provided for @elemZrUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used in nuclear reactors and high-end jewelry (Cubic Zirconia).'**
+  String get elemZrUse;
+
+  /// No description provided for @elemNbName.
+  ///
+  /// In en, this message translates to:
+  /// **'Niobium'**
+  String get elemNbName;
+
+  /// No description provided for @elemNbSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Niobium is a soft, grey, crystalline, ductile transition metal.'**
+  String get elemNbSummary;
+
+  /// No description provided for @elemNbUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used in superconducting magnets and jet engines.'**
+  String get elemNbUse;
+
+  /// No description provided for @elemMoName.
+  ///
+  /// In en, this message translates to:
+  /// **'Molybdenum'**
+  String get elemMoName;
+
+  /// No description provided for @elemMoSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Molybdenum is a silvery-white metal that has a very high melting point.'**
+  String get elemMoSummary;
+
+  /// No description provided for @elemMoUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used in high-strength steel alloys and cutting tools.'**
+  String get elemMoUse;
+
+  /// No description provided for @elemTcName.
+  ///
+  /// In en, this message translates to:
+  /// **'Technetium'**
+  String get elemTcName;
+
+  /// No description provided for @elemTcSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Technetium is the first element to be produced artificially.'**
+  String get elemTcSummary;
+
+  /// No description provided for @elemTcUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Widely used in medical diagnostic imaging.'**
+  String get elemTcUse;
+
+  /// No description provided for @elemRuName.
+  ///
+  /// In en, this message translates to:
+  /// **'Ruthenium'**
+  String get elemRuName;
+
+  /// No description provided for @elemRuSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Ruthenium is a rare transition metal belonging to the platinum group.'**
+  String get elemRuSummary;
+
+  /// No description provided for @elemRuUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used in electrical contacts and chemical catalysts.'**
+  String get elemRuUse;
+
+  /// No description provided for @elemRhName.
+  ///
+  /// In en, this message translates to:
+  /// **'Rhodium'**
+  String get elemRhName;
+
+  /// No description provided for @elemRhSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Rhodium is an ultra-rare, silvery-white, hard, corrosion-resistant transition metal.'**
+  String get elemRhSummary;
+
+  /// No description provided for @elemRhUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used in catalytic converters and coating expensive jewelry.'**
+  String get elemRhUse;
+
+  /// No description provided for @elemPdName.
+  ///
+  /// In en, this message translates to:
+  /// **'Palladium'**
+  String get elemPdName;
+
+  /// No description provided for @elemPdSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Palladium is a rare silvery-white metal discovered in 1803.'**
+  String get elemPdSummary;
+
+  /// No description provided for @elemPdUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used in electronics, dentistry, and fuel cells.'**
+  String get elemPdUse;
+
   /// No description provided for @elemAgName.
   ///
   /// In en, this message translates to:
@@ -2079,6 +2499,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Used in jewelry, coins, and high-end electronics.'**
   String get elemAgUse;
+
+  /// No description provided for @elemCdName.
+  ///
+  /// In en, this message translates to:
+  /// **'Cadmium'**
+  String get elemCdName;
+
+  /// No description provided for @elemCdSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Cadmium is a soft, silvery-white metal that is highly toxic.'**
+  String get elemCdSummary;
+
+  /// No description provided for @elemCdUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used in rechargeable batteries and yellow pigments.'**
+  String get elemCdUse;
+
+  /// No description provided for @elemInName.
+  ///
+  /// In en, this message translates to:
+  /// **'Indium'**
+  String get elemInName;
+
+  /// No description provided for @elemInSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Indium is a very soft, silvery-white metal that is very shiny.'**
+  String get elemInSummary;
+
+  /// No description provided for @elemInUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used in touchscreens and LCD displays.'**
+  String get elemInUse;
 
   /// No description provided for @elemSnName.
   ///
@@ -2098,6 +2554,42 @@ abstract class AppLocalizations {
   /// **'Used to coat other metals and in solder.'**
   String get elemSnUse;
 
+  /// No description provided for @elemSbName.
+  ///
+  /// In en, this message translates to:
+  /// **'Antimony'**
+  String get elemSbName;
+
+  /// No description provided for @elemSbSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Antimony is a lustrous gray metalloid found in nature mainly as the sulfide mineral stibnite.'**
+  String get elemSbSummary;
+
+  /// No description provided for @elemSbUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used in lead-acid batteries and flame retardants.'**
+  String get elemSbUse;
+
+  /// No description provided for @elemTeName.
+  ///
+  /// In en, this message translates to:
+  /// **'Tellurium'**
+  String get elemTeName;
+
+  /// No description provided for @elemTeSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Tellurium is a chemically related to selenium and sulfur, it\'s a brittle, mildly toxic, rare, silver-white metalloid.'**
+  String get elemTeSummary;
+
+  /// No description provided for @elemTeUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used in solar panels and rewritable optical discs.'**
+  String get elemTeUse;
+
   /// No description provided for @elemIName.
   ///
   /// In en, this message translates to:
@@ -2115,6 +2607,456 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Used as an antiseptic and vital for thyroid health.'**
   String get elemIUse;
+
+  /// No description provided for @elemXeName.
+  ///
+  /// In en, this message translates to:
+  /// **'Xenon'**
+  String get elemXeName;
+
+  /// No description provided for @elemXeSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Xenon is a noble gas that is heavy and stable.'**
+  String get elemXeSummary;
+
+  /// No description provided for @elemXeUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used in high-intensity strobe lights and car headlights.'**
+  String get elemXeUse;
+
+  /// No description provided for @elemCsName.
+  ///
+  /// In en, this message translates to:
+  /// **'Cesium'**
+  String get elemCsName;
+
+  /// No description provided for @elemCsSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Cesium is the most electropositive and most reactive of all metals.'**
+  String get elemCsSummary;
+
+  /// No description provided for @elemCsUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used in the most accurate atomic clocks.'**
+  String get elemCsUse;
+
+  /// No description provided for @elemBaName.
+  ///
+  /// In en, this message translates to:
+  /// **'Barium'**
+  String get elemBaName;
+
+  /// No description provided for @elemBaSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Barium is a soft, silvery alkaline earth metal that is highly reactive.'**
+  String get elemBaSummary;
+
+  /// No description provided for @elemBaUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used in drilling fluids and medical X-ray imaging of the GI tract.'**
+  String get elemBaUse;
+
+  /// No description provided for @elemLaName.
+  ///
+  /// In en, this message translates to:
+  /// **'Lanthanum'**
+  String get elemLaName;
+
+  /// No description provided for @elemLaSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Lanthanum is the first element of the lanthanide series.'**
+  String get elemLaSummary;
+
+  /// No description provided for @elemLaUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used in high-quality camera lenses.'**
+  String get elemLaUse;
+
+  /// No description provided for @elemCeName.
+  ///
+  /// In en, this message translates to:
+  /// **'Cerium'**
+  String get elemCeName;
+
+  /// No description provided for @elemCeSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Cerium is the most abundant of the rare-earth elements.'**
+  String get elemCeSummary;
+
+  /// No description provided for @elemCeUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used as a catalyst in petroleum refining and lighter flints.'**
+  String get elemCeUse;
+
+  /// No description provided for @elemPrName.
+  ///
+  /// In en, this message translates to:
+  /// **'Praseodymium'**
+  String get elemPrName;
+
+  /// No description provided for @elemPrSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Praseodymium is a soft, silvery, malleable and ductile metal.'**
+  String get elemPrSummary;
+
+  /// No description provided for @elemPrUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used in welder\'s goggles to protect eyes from intense light.'**
+  String get elemPrUse;
+
+  /// No description provided for @elemNdName.
+  ///
+  /// In en, this message translates to:
+  /// **'Neodymium'**
+  String get elemNdName;
+
+  /// No description provided for @elemNdSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Neodymium is famous for making the strongest permanent magnets.'**
+  String get elemNdSummary;
+
+  /// No description provided for @elemNdUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used in headphones, hard drives, and hybrid car motors.'**
+  String get elemNdUse;
+
+  /// No description provided for @elemPmName.
+  ///
+  /// In en, this message translates to:
+  /// **'Promethium'**
+  String get elemPmName;
+
+  /// No description provided for @elemPmSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Promethium is the only radioactive rare earth element.'**
+  String get elemPmSummary;
+
+  /// No description provided for @elemPmUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used in atomic batteries and diver watches.'**
+  String get elemPmUse;
+
+  /// No description provided for @elemSmName.
+  ///
+  /// In en, this message translates to:
+  /// **'Samarium'**
+  String get elemSmName;
+
+  /// No description provided for @elemSmSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Samarium is a relatively hard silvery metal.'**
+  String get elemSmSummary;
+
+  /// No description provided for @elemSmUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used in very strong samarium-cobalt magnets.'**
+  String get elemSmUse;
+
+  /// No description provided for @elemEuName.
+  ///
+  /// In en, this message translates to:
+  /// **'Europium'**
+  String get elemEuName;
+
+  /// No description provided for @elemEuSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Europium is the most reactive of the rare-earth elements.'**
+  String get elemEuSummary;
+
+  /// No description provided for @elemEuUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used as the red phosphor in TV screens and Euro banknotes.'**
+  String get elemEuUse;
+
+  /// No description provided for @elemGdName.
+  ///
+  /// In en, this message translates to:
+  /// **'Gadolinium'**
+  String get elemGdName;
+
+  /// No description provided for @elemGdSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Gadolinium is a silvery-white, malleable, and ductile rare-earth metal.'**
+  String get elemGdSummary;
+
+  /// No description provided for @elemGdUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used as a contrast agent in MRI scans.'**
+  String get elemGdUse;
+
+  /// No description provided for @elemTbName.
+  ///
+  /// In en, this message translates to:
+  /// **'Terbium'**
+  String get elemTbName;
+
+  /// No description provided for @elemTbSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Terbium is a silvery-white rare earth metal that is malleable and ductile.'**
+  String get elemTbSummary;
+
+  /// No description provided for @elemTbUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used in energy-saving lamps and magneto-optical discs.'**
+  String get elemTbUse;
+
+  /// No description provided for @elemDyName.
+  ///
+  /// In en, this message translates to:
+  /// **'Dysprosium'**
+  String get elemDyName;
+
+  /// No description provided for @elemDySummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Dysprosium is a rare earth element with a metallic, bright silver luster.'**
+  String get elemDySummary;
+
+  /// No description provided for @elemDyUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used in electric vehicle motors and laser materials.'**
+  String get elemDyUse;
+
+  /// No description provided for @elemHoName.
+  ///
+  /// In en, this message translates to:
+  /// **'Holmium'**
+  String get elemHoName;
+
+  /// No description provided for @elemHoSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Holmium has the highest magnetic strength of any element.'**
+  String get elemHoSummary;
+
+  /// No description provided for @elemHoUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used to create the strongest generated magnetic fields.'**
+  String get elemHoUse;
+
+  /// No description provided for @elemErName.
+  ///
+  /// In en, this message translates to:
+  /// **'Erbium'**
+  String get elemErName;
+
+  /// No description provided for @elemErSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Erbium is a silvery-white solid metal that is easily shaped.'**
+  String get elemErSummary;
+
+  /// No description provided for @elemErUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used in fiber optic cables and glass filters.'**
+  String get elemErUse;
+
+  /// No description provided for @elemTmName.
+  ///
+  /// In en, this message translates to:
+  /// **'Thulium'**
+  String get elemTmName;
+
+  /// No description provided for @elemTmSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Thulium is the rarest of the lanthanide elements.'**
+  String get elemTmSummary;
+
+  /// No description provided for @elemTmUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used in portable X-ray devices and radiation sources.'**
+  String get elemTmUse;
+
+  /// No description provided for @elemYbName.
+  ///
+  /// In en, this message translates to:
+  /// **'Ytterbium'**
+  String get elemYbName;
+
+  /// No description provided for @elemYbSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Ytterbium is a soft, malleable and ductile rare-earth element.'**
+  String get elemYbSummary;
+
+  /// No description provided for @elemYbUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used in atomic clocks and high-pressure sensors.'**
+  String get elemYbUse;
+
+  /// No description provided for @elemLuName.
+  ///
+  /// In en, this message translates to:
+  /// **'Lutetium'**
+  String get elemLuName;
+
+  /// No description provided for @elemLuSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Lutetium is the last member of the lanthanide series and the hardest to isolate.'**
+  String get elemLuSummary;
+
+  /// No description provided for @elemLuUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used in nuclear medicine for cancer therapy.'**
+  String get elemLuUse;
+
+  /// No description provided for @elemHfName.
+  ///
+  /// In en, this message translates to:
+  /// **'Hafnium'**
+  String get elemHfName;
+
+  /// No description provided for @elemHfSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Hafnium is a lustrous, silvery gray, tetravalent transition metal.'**
+  String get elemHfSummary;
+
+  /// No description provided for @elemHfUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used in nuclear reactor control rods and computer microprocessors.'**
+  String get elemHfUse;
+
+  /// No description provided for @elemTaName.
+  ///
+  /// In en, this message translates to:
+  /// **'Tantalum'**
+  String get elemTaName;
+
+  /// No description provided for @elemTaSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Tantalum is a rare, hard, blue-gray, lustrous transition metal.'**
+  String get elemTaSummary;
+
+  /// No description provided for @elemTaUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used in capacitors for smartphones and medical implants.'**
+  String get elemTaUse;
+
+  /// No description provided for @elemWName.
+  ///
+  /// In en, this message translates to:
+  /// **'Tungsten'**
+  String get elemWName;
+
+  /// No description provided for @elemWSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Tungsten has the highest melting point of all elements discovered.'**
+  String get elemWSummary;
+
+  /// No description provided for @elemWUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used in light bulb filaments and heavy metal alloys.'**
+  String get elemWUse;
+
+  /// No description provided for @elemReName.
+  ///
+  /// In en, this message translates to:
+  /// **'Rhenium'**
+  String get elemReName;
+
+  /// No description provided for @elemReSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Rhenium is one of the rarest elements in the Earth\'s crust.'**
+  String get elemReSummary;
+
+  /// No description provided for @elemReUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used in jet engine superalloys and petroleum catalysts.'**
+  String get elemReUse;
+
+  /// No description provided for @elemOsName.
+  ///
+  /// In en, this message translates to:
+  /// **'Osmium'**
+  String get elemOsName;
+
+  /// No description provided for @elemOsSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Osmium is the densest naturally occurring element.'**
+  String get elemOsSummary;
+
+  /// No description provided for @elemOsUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used in fountain pen nibs and electrical contacts.'**
+  String get elemOsUse;
+
+  /// No description provided for @elemIrName.
+  ///
+  /// In en, this message translates to:
+  /// **'Iridium'**
+  String get elemIrName;
+
+  /// No description provided for @elemIrSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Iridium is the most corrosion-resistant metal known.'**
+  String get elemIrSummary;
+
+  /// No description provided for @elemIrUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used in spark plugs and high-temperature crucibles.'**
+  String get elemIrUse;
+
+  /// No description provided for @elemPtName.
+  ///
+  /// In en, this message translates to:
+  /// **'Platinum'**
+  String get elemPtName;
+
+  /// No description provided for @elemPtSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Platinum is a dense, malleable, highly unreactive, precious, silver-white transition metal.'**
+  String get elemPtSummary;
+
+  /// No description provided for @elemPtUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used in catalytic converters, jewelry, and laboratory equipment.'**
+  String get elemPtUse;
 
   /// No description provided for @elemAuName.
   ///
@@ -2152,6 +3094,24 @@ abstract class AppLocalizations {
   /// **'Used in thermometers and fluorescent lights.'**
   String get elemHgUse;
 
+  /// No description provided for @elemTlName.
+  ///
+  /// In en, this message translates to:
+  /// **'Thallium'**
+  String get elemTlName;
+
+  /// No description provided for @elemTlSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Thallium is a soft gray post-transition metal that discolors on exposure to air.'**
+  String get elemTlSummary;
+
+  /// No description provided for @elemTlUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used in infrared sensors and specialized glass.'**
+  String get elemTlUse;
+
   /// No description provided for @elemPbName.
   ///
   /// In en, this message translates to:
@@ -2170,6 +3130,168 @@ abstract class AppLocalizations {
   /// **'Used in car batteries and radiation shielding.'**
   String get elemPbUse;
 
+  /// No description provided for @elemBiName.
+  ///
+  /// In en, this message translates to:
+  /// **'Bismuth'**
+  String get elemBiName;
+
+  /// No description provided for @elemBiSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Bismuth is a brittle metal with a white, silver-pink hue.'**
+  String get elemBiSummary;
+
+  /// No description provided for @elemBiUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used in digestive medicine and fire detection systems.'**
+  String get elemBiUse;
+
+  /// No description provided for @elemPoName.
+  ///
+  /// In en, this message translates to:
+  /// **'Polonium'**
+  String get elemPoName;
+
+  /// No description provided for @elemPoSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Polonium is a highly radioactive and toxic element discovered by Marie Curie.'**
+  String get elemPoSummary;
+
+  /// No description provided for @elemPoUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used as a heat source for space vehicles.'**
+  String get elemPoUse;
+
+  /// No description provided for @elemAtName.
+  ///
+  /// In en, this message translates to:
+  /// **'Astatine'**
+  String get elemAtName;
+
+  /// No description provided for @elemAtSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Astatine is the rarest naturally occurring element on Earth.'**
+  String get elemAtSummary;
+
+  /// No description provided for @elemAtUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used in medical research for targeted alpha-particle therapy.'**
+  String get elemAtUse;
+
+  /// No description provided for @elemRnName.
+  ///
+  /// In en, this message translates to:
+  /// **'Radon'**
+  String get elemRnName;
+
+  /// No description provided for @elemRnSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Radon is a radioactive, colorless, odorless noble gas.'**
+  String get elemRnSummary;
+
+  /// No description provided for @elemRnUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Sometimes used in cancer radiotherapy under strict control.'**
+  String get elemRnUse;
+
+  /// No description provided for @elemFrName.
+  ///
+  /// In en, this message translates to:
+  /// **'Francium'**
+  String get elemFrName;
+
+  /// No description provided for @elemFrSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Francium is the second rarest naturally occurring element.'**
+  String get elemFrSummary;
+
+  /// No description provided for @elemFrUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used exclusively for scientific research due to its rarity.'**
+  String get elemFrUse;
+
+  /// No description provided for @elemRaName.
+  ///
+  /// In en, this message translates to:
+  /// **'Radium'**
+  String get elemRaName;
+
+  /// No description provided for @elemRaSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Radium is a radioactive element that was famously used in glow-in-the-dark watches.'**
+  String get elemRaSummary;
+
+  /// No description provided for @elemRaUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used in cancer treatment and as a neutron source.'**
+  String get elemRaUse;
+
+  /// No description provided for @elemAcName.
+  ///
+  /// In en, this message translates to:
+  /// **'Actinium'**
+  String get elemAcName;
+
+  /// No description provided for @elemAcSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Actinium is a soft, silvery-white radioactive metallic element.'**
+  String get elemAcSummary;
+
+  /// No description provided for @elemAcUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used as a precursor for medical radioisotopes.'**
+  String get elemAcUse;
+
+  /// No description provided for @elemThName.
+  ///
+  /// In en, this message translates to:
+  /// **'Thorium'**
+  String get elemThName;
+
+  /// No description provided for @elemThSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Thorium is a weakly radioactive metallic chemical element.'**
+  String get elemThSummary;
+
+  /// No description provided for @elemThUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used in gas mantles and as a potential nuclear fuel.'**
+  String get elemThUse;
+
+  /// No description provided for @elemPaName.
+  ///
+  /// In en, this message translates to:
+  /// **'Protactinium'**
+  String get elemPaName;
+
+  /// No description provided for @elemPaSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Protactinium is a dense, silvery-gray radioactive metal that is highly toxic.'**
+  String get elemPaSummary;
+
+  /// No description provided for @elemPaUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used in scientific research and geological dating.'**
+  String get elemPaUse;
+
   /// No description provided for @elemUName.
   ///
   /// In en, this message translates to:
@@ -2179,68 +3301,482 @@ abstract class AppLocalizations {
   /// No description provided for @elemUSummary.
   ///
   /// In en, this message translates to:
-  /// **'Uranium is a heavy, silvery-white, radioactive metal.'**
+  /// **'Uranium is the heaviest naturally occurring element, used as a primary nuclear fuel.'**
   String get elemUSummary;
 
   /// No description provided for @elemUUse.
   ///
   /// In en, this message translates to:
-  /// **'Used as fuel in nuclear power plants.'**
+  /// **'Used in nuclear power plants and dating ancient rocks.'**
   String get elemUUse;
 
-  /// No description provided for @elemTiName.
+  /// No description provided for @elemNpName.
   ///
   /// In en, this message translates to:
-  /// **'Titanium'**
-  String get elemTiName;
+  /// **'Neptunium'**
+  String get elemNpName;
 
-  /// No description provided for @elemTiSummary.
+  /// No description provided for @elemNpSummary.
   ///
   /// In en, this message translates to:
-  /// **'Titanium is a strong, lightweight metal with a high melting point and excellent corrosion resistance.'**
-  String get elemTiSummary;
+  /// **'Neptunium is the first transuranic element to be produced artificially.'**
+  String get elemNpSummary;
 
-  /// No description provided for @elemTiUse.
+  /// No description provided for @elemNpUse.
   ///
   /// In en, this message translates to:
-  /// **'Used in aircraft, dental implants, and high-end watches.'**
-  String get elemTiUse;
+  /// **'Used in neutron detection equipment.'**
+  String get elemNpUse;
 
-  /// No description provided for @elemCrName.
+  /// No description provided for @elemPuName.
   ///
   /// In en, this message translates to:
-  /// **'Chromium'**
-  String get elemCrName;
+  /// **'Plutonium'**
+  String get elemPuName;
 
-  /// No description provided for @elemCrSummary.
+  /// No description provided for @elemPuSummary.
   ///
   /// In en, this message translates to:
-  /// **'Chromium is a hard, shiny metal that is highly resistant to tarnishing.'**
-  String get elemCrSummary;
+  /// **'Plutonium is a radioactive element known for its role in nuclear power and weapons.'**
+  String get elemPuSummary;
 
-  /// No description provided for @elemCrUse.
+  /// No description provided for @elemPuUse.
   ///
   /// In en, this message translates to:
-  /// **'Used in stainless steel and chrome plating.'**
-  String get elemCrUse;
+  /// **'Used as fuel in nuclear reactors and long-life batteries for space vehicles.'**
+  String get elemPuUse;
 
-  /// No description provided for @elemPtName.
+  /// No description provided for @elemAmName.
   ///
   /// In en, this message translates to:
-  /// **'Platinum'**
-  String get elemPtName;
+  /// **'Americium'**
+  String get elemAmName;
 
-  /// No description provided for @elemPtSummary.
+  /// No description provided for @elemAmSummary.
   ///
   /// In en, this message translates to:
-  /// **'Platinum is a dense, stable, and rare precious metal used in jewelry and catalytic converters.'**
-  String get elemPtSummary;
+  /// **'Americium is a synthetic radioactive element that glows with a pinkish hue.'**
+  String get elemAmSummary;
 
-  /// No description provided for @elemPtUse.
+  /// No description provided for @elemAmUse.
   ///
   /// In en, this message translates to:
-  /// **'Used in vehicle catalysts and high-end electronics.'**
-  String get elemPtUse;
+  /// **'Commonly used in household smoke detectors.'**
+  String get elemAmUse;
+
+  /// No description provided for @elemCmName.
+  ///
+  /// In en, this message translates to:
+  /// **'Curium'**
+  String get elemCmName;
+
+  /// No description provided for @elemCmSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Curium is a radioactive element named after Pierre and Marie Curie.'**
+  String get elemCmSummary;
+
+  /// No description provided for @elemCmUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used as a power source for X-ray devices on space missions.'**
+  String get elemCmUse;
+
+  /// No description provided for @elemBkName.
+  ///
+  /// In en, this message translates to:
+  /// **'Berkelium'**
+  String get elemBkName;
+
+  /// No description provided for @elemBkSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Berkelium is a soft, silvery-white radioactive metal.'**
+  String get elemBkSummary;
+
+  /// No description provided for @elemBkUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used to produce heavier elements like californium in laboratories.'**
+  String get elemBkUse;
+
+  /// No description provided for @elemCfName.
+  ///
+  /// In en, this message translates to:
+  /// **'Californium'**
+  String get elemCfName;
+
+  /// No description provided for @elemCfSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Californium is a very strong neutron emitter.'**
+  String get elemCfSummary;
+
+  /// No description provided for @elemCfUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used in gold and silver detection and starting nuclear reactors.'**
+  String get elemCfUse;
+
+  /// No description provided for @elemEsName.
+  ///
+  /// In en, this message translates to:
+  /// **'Einsteinium'**
+  String get elemEsName;
+
+  /// No description provided for @elemEsSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Einsteinium is a radioactive element discovered in the debris of the first hydrogen bomb.'**
+  String get elemEsSummary;
+
+  /// No description provided for @elemEsUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used for basic scientific research to study heavy elements.'**
+  String get elemEsUse;
+
+  /// No description provided for @elemFmName.
+  ///
+  /// In en, this message translates to:
+  /// **'Fermium'**
+  String get elemFmName;
+
+  /// No description provided for @elemFmSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Fermium is the heaviest element that can be produced by neutron bombardment.'**
+  String get elemFmSummary;
+
+  /// No description provided for @elemFmUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used exclusively in advanced nuclear studies.'**
+  String get elemFmUse;
+
+  /// No description provided for @elemMdName.
+  ///
+  /// In en, this message translates to:
+  /// **'Mendelevium'**
+  String get elemMdName;
+
+  /// No description provided for @elemMdSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Mendelevium is a radioactive element named after the father of the periodic table.'**
+  String get elemMdSummary;
+
+  /// No description provided for @elemMdUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used in laboratory experiments to understand heavy element chemistry.'**
+  String get elemMdUse;
+
+  /// No description provided for @elemNoName.
+  ///
+  /// In en, this message translates to:
+  /// **'Nobelium'**
+  String get elemNoName;
+
+  /// No description provided for @elemNoSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Nobelium is an unstable radioactive element named after Alfred Nobel.'**
+  String get elemNoSummary;
+
+  /// No description provided for @elemNoUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used in specialized laboratory research.'**
+  String get elemNoUse;
+
+  /// No description provided for @elemLrName.
+  ///
+  /// In en, this message translates to:
+  /// **'Lawrencium'**
+  String get elemLrName;
+
+  /// No description provided for @elemLrSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Lawrencium is the final member of the actinide series.'**
+  String get elemLrSummary;
+
+  /// No description provided for @elemLrUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used to study the structure of very heavy atoms.'**
+  String get elemLrUse;
+
+  /// No description provided for @elemRfName.
+  ///
+  /// In en, this message translates to:
+  /// **'Rutherfordium'**
+  String get elemRfName;
+
+  /// No description provided for @elemRfSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Rutherfordium is the first member of the transactinide elements.'**
+  String get elemRfSummary;
+
+  /// No description provided for @elemRfUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used only in physics and nuclear chemistry research.'**
+  String get elemRfUse;
+
+  /// No description provided for @elemDbName.
+  ///
+  /// In en, this message translates to:
+  /// **'Dubnium'**
+  String get elemDbName;
+
+  /// No description provided for @elemDbSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Dubnium is a synthetic radioactive element with a very short half-life.'**
+  String get elemDbSummary;
+
+  /// No description provided for @elemDbUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used in studying chemical reactions of superheavy elements.'**
+  String get elemDbUse;
+
+  /// No description provided for @elemSgName.
+  ///
+  /// In en, this message translates to:
+  /// **'Seaborgium'**
+  String get elemSgName;
+
+  /// No description provided for @elemSgSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Seaborgium is a synthetic radioactive transition metal element.'**
+  String get elemSgSummary;
+
+  /// No description provided for @elemSgUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used to explore the limits of the periodic table.'**
+  String get elemSgUse;
+
+  /// No description provided for @elemBhName.
+  ///
+  /// In en, this message translates to:
+  /// **'Bohrium'**
+  String get elemBhName;
+
+  /// No description provided for @elemBhSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Bohrium is a radioactive element named after Niels Bohr.'**
+  String get elemBhSummary;
+
+  /// No description provided for @elemBhUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used in studying chemical properties of Group 7 elements.'**
+  String get elemBhUse;
+
+  /// No description provided for @elemHsName.
+  ///
+  /// In en, this message translates to:
+  /// **'Hassium'**
+  String get elemHsName;
+
+  /// No description provided for @elemHsSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Hassium is a radioactive element expected to have properties similar to osmium.'**
+  String get elemHsSummary;
+
+  /// No description provided for @elemHsUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used in complex nuclear chemistry experiments.'**
+  String get elemHsUse;
+
+  /// No description provided for @elemMtName.
+  ///
+  /// In en, this message translates to:
+  /// **'Meitnerium'**
+  String get elemMtName;
+
+  /// No description provided for @elemMtSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Meitnerium is a radioactive element named after physicist Lise Meitner.'**
+  String get elemMtSummary;
+
+  /// No description provided for @elemMtUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used in research to produce and study heavier elements.'**
+  String get elemMtUse;
+
+  /// No description provided for @elemDsName.
+  ///
+  /// In en, this message translates to:
+  /// **'Darmstadtium'**
+  String get elemDsName;
+
+  /// No description provided for @elemDsSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Darmstadtium is a synthetic element first discovered in Germany.'**
+  String get elemDsSummary;
+
+  /// No description provided for @elemDsUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used in scientific research to examine matter stability.'**
+  String get elemDsUse;
+
+  /// No description provided for @elemRgName.
+  ///
+  /// In en, this message translates to:
+  /// **'Roentgenium'**
+  String get elemRgName;
+
+  /// No description provided for @elemRgSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Roentgenium is a radioactive element named after the discoverer of X-rays.'**
+  String get elemRgSummary;
+
+  /// No description provided for @elemRgUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used in advanced atomic physics research.'**
+  String get elemRgUse;
+
+  /// No description provided for @elemCnName.
+  ///
+  /// In en, this message translates to:
+  /// **'Copernicium'**
+  String get elemCnName;
+
+  /// No description provided for @elemCnSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Copernicium is a radioactive element named after Nicolaus Copernicus.'**
+  String get elemCnSummary;
+
+  /// No description provided for @elemCnUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used in studying chemical behavior of trans-heavy elements.'**
+  String get elemCnUse;
+
+  /// No description provided for @elemNhName.
+  ///
+  /// In en, this message translates to:
+  /// **'Nihonium'**
+  String get elemNhName;
+
+  /// No description provided for @elemNhSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Nihonium is a radioactive element discovered and named in Japan.'**
+  String get elemNhSummary;
+
+  /// No description provided for @elemNhUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used to understand nuclear forces within the atom.'**
+  String get elemNhUse;
+
+  /// No description provided for @elemFlName.
+  ///
+  /// In en, this message translates to:
+  /// **'Flerovium'**
+  String get elemFlName;
+
+  /// No description provided for @elemFlSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Flerovium is a synthetic radioactive element with relative stability.'**
+  String get elemFlSummary;
+
+  /// No description provided for @elemFlUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used in search of the \'island of stability\' in nuclear physics.'**
+  String get elemFlUse;
+
+  /// No description provided for @elemMcName.
+  ///
+  /// In en, this message translates to:
+  /// **'Moscovium'**
+  String get elemMcName;
+
+  /// No description provided for @elemMcSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Moscovium is a highly unstable synthetic radioactive element.'**
+  String get elemMcSummary;
+
+  /// No description provided for @elemMcUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used in high-energy nuclear physics experiments.'**
+  String get elemMcUse;
+
+  /// No description provided for @elemLvName.
+  ///
+  /// In en, this message translates to:
+  /// **'Livermorium'**
+  String get elemLvName;
+
+  /// No description provided for @elemLvSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Livermorium is a radioactive element named after an American laboratory.'**
+  String get elemLvSummary;
+
+  /// No description provided for @elemLvUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used in advanced studies to produce new atomic nuclei.'**
+  String get elemLvUse;
+
+  /// No description provided for @elemTsName.
+  ///
+  /// In en, this message translates to:
+  /// **'Tennessine'**
+  String get elemTsName;
+
+  /// No description provided for @elemTsSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Tennessine is a synthetic radioactive element in the halogen group.'**
+  String get elemTsSummary;
+
+  /// No description provided for @elemTsUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used in nuclear physics research to test atomic theories.'**
+  String get elemTsUse;
+
+  /// No description provided for @elemOgName.
+  ///
+  /// In en, this message translates to:
+  /// **'Oganesson'**
+  String get elemOgName;
+
+  /// No description provided for @elemOgSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Oganesson is the heaviest element discovered in the periodic table to date.'**
+  String get elemOgSummary;
+
+  /// No description provided for @elemOgUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Used to study the chemical and physical properties of superheavy atoms.'**
+  String get elemOgUse;
 
   /// No description provided for @complete.
   ///
@@ -2289,84 +3825,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Alchemist'**
   String get alchemist;
-
-  /// No description provided for @discoveryLabel.
-  ///
-  /// In en, this message translates to:
-  /// **'Discovery'**
-  String get discoveryLabel;
-
-  /// No description provided for @increaseHeatCatalyst.
-  ///
-  /// In en, this message translates to:
-  /// **'Discovery requires more heat! Use the Bunsen burner.'**
-  String get increaseHeatCatalyst;
-
-  /// No description provided for @multiplayerQuiz.
-  ///
-  /// In en, this message translates to:
-  /// **'Multiplayer Quiz'**
-  String get multiplayerQuiz;
-
-  /// No description provided for @aiTutor.
-  ///
-  /// In en, this message translates to:
-  /// **'AI Tutor'**
-  String get aiTutor;
-
-  /// No description provided for @viewIn3D.
-  ///
-  /// In en, this message translates to:
-  /// **'View in 3D'**
-  String get viewIn3D;
-
-  /// No description provided for @searchCompounds.
-  ///
-  /// In en, this message translates to:
-  /// **'Search compounds...'**
-  String get searchCompounds;
-
-  /// No description provided for @scientificInsight.
-  ///
-  /// In en, this message translates to:
-  /// **'Scientific Insight'**
-  String get scientificInsight;
-
-  /// No description provided for @gotIt.
-  ///
-  /// In en, this message translates to:
-  /// **'Got it!'**
-  String get gotIt;
-
-  /// No description provided for @challengingPlayers.
-  ///
-  /// In en, this message translates to:
-  /// **'Looking for nearby challengers...'**
-  String get challengingPlayers;
-
-  /// No description provided for @inviteHost.
-  ///
-  /// In en, this message translates to:
-  /// **'Invite (Host)'**
-  String get inviteHost;
-
-  /// No description provided for @connectedTo.
-  ///
-  /// In en, this message translates to:
-  /// **'Connected to'**
-  String get connectedTo;
-
-  /// No description provided for @hostScore.
-  ///
-  /// In en, this message translates to:
-  /// **'Host Score'**
-  String get hostScore;
-
-  /// No description provided for @guestScore.
-  ///
-  /// In en, this message translates to:
-  /// **'Guest Score'**
-  String get guestScore;
 
   /// No description provided for @aiTutorGreeting.
   ///
@@ -2817,6 +4275,108 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Could not identify compound. Try again.'**
   String get noCompoundFound;
+
+  /// No description provided for @discoveryLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Discoveries'**
+  String get discoveryLabel;
+
+  /// No description provided for @increaseHeatCatalyst.
+  ///
+  /// In en, this message translates to:
+  /// **'Discovery requires higher heat! Use a Bunsen burner.'**
+  String get increaseHeatCatalyst;
+
+  /// No description provided for @multiplayerQuiz.
+  ///
+  /// In en, this message translates to:
+  /// **'Multiplayer Quiz'**
+  String get multiplayerQuiz;
+
+  /// No description provided for @aiTutor.
+  ///
+  /// In en, this message translates to:
+  /// **'AI Tutor'**
+  String get aiTutor;
+
+  /// No description provided for @viewIn3D.
+  ///
+  /// In en, this message translates to:
+  /// **'View in 3D'**
+  String get viewIn3D;
+
+  /// No description provided for @searchCompounds.
+  ///
+  /// In en, this message translates to:
+  /// **'Search for compounds...'**
+  String get searchCompounds;
+
+  /// No description provided for @scientificInsight.
+  ///
+  /// In en, this message translates to:
+  /// **'Scientific Insight'**
+  String get scientificInsight;
+
+  /// No description provided for @gotIt.
+  ///
+  /// In en, this message translates to:
+  /// **'Got it!'**
+  String get gotIt;
+
+  /// No description provided for @challengingPlayers.
+  ///
+  /// In en, this message translates to:
+  /// **'Finding nearby challengers...'**
+  String get challengingPlayers;
+
+  /// No description provided for @inviteHost.
+  ///
+  /// In en, this message translates to:
+  /// **'Invite (Host)'**
+  String get inviteHost;
+
+  /// No description provided for @connectedTo.
+  ///
+  /// In en, this message translates to:
+  /// **'Connected to'**
+  String get connectedTo;
+
+  /// No description provided for @hostScore.
+  ///
+  /// In en, this message translates to:
+  /// **'Host Score'**
+  String get hostScore;
+
+  /// No description provided for @guestScore.
+  ///
+  /// In en, this message translates to:
+  /// **'Guest Score'**
+  String get guestScore;
+
+  /// No description provided for @reactionInProgress.
+  ///
+  /// In en, this message translates to:
+  /// **'Reaction in progress...'**
+  String get reactionInProgress;
+
+  /// No description provided for @tapToSimulate.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap to simulate reaction'**
+  String get tapToSimulate;
+
+  /// No description provided for @points.
+  ///
+  /// In en, this message translates to:
+  /// **'Points'**
+  String get points;
+
+  /// No description provided for @quizzes.
+  ///
+  /// In en, this message translates to:
+  /// **'Quizzes'**
+  String get quizzes;
 }
 
 class _AppLocalizationsDelegate

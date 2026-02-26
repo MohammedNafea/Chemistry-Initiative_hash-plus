@@ -37,7 +37,9 @@ final scientistRankProvider = Provider<ScientistRank>((ref) {
 
   final badgeCount = user.badges.length;
   final journalCount = user.researchJournal.length;
-  final totalScore = badgeCount + (journalCount / 2).floor();
+  final totalPoints = user.totalPoints;
+  // New weighted score: Badges (1.0), Discoveries (0.5), Points (0.02 per point)
+  final totalScore = badgeCount + (journalCount / 2).floor() + (totalPoints / 50).floor();
 
   if (totalScore >= 15) return ScientistRank.alchemist;
   if (totalScore >= 10) return ScientistRank.seniorChemist;

@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:chemistry_initiative/l10n/app_localizations.dart';
 
 import 'package:chemistry_initiative/features/auth/presentation/widgets/auth_guard.dart';
 
@@ -202,10 +203,10 @@ class _SplashScreenState extends State<SplashScreen>
                             end: Alignment(1.0, 1.0),
                             stops: [0.0, 0.5, 1.0],
                           ).createShader(bounds),
-                          child: const Text(
-                            'عجائب الكيمياء',
+                          child: Text(
+                            AppLocalizations.of(context)!.splashTitle,
                             textAlign: TextAlign.center,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 42,
                               fontWeight: FontWeight.bold,
                               letterSpacing: 0.0,

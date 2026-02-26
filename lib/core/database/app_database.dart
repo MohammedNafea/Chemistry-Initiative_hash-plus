@@ -9,6 +9,7 @@ class _Keys {
   static const String appBox = 'app_box';
   static const String currentUserEmail = 'current_user_email';
   static const String cacheBox = 'offline_cache_box'; // Added for offline data
+  static const String aiHistoryBox = 'ai_history_box';
 }
 
 /// Local database service using Hive - provides CRUD operations.
@@ -20,6 +21,7 @@ class AppDatabase {
   Box<dynamic>? _usersBox;
   Box<dynamic>? _appBox;
   Box<dynamic>? _cacheBox;
+  Box<dynamic>? _aiHistoryBox;
 
   Future<void> init() async {
     await Hive.initFlutter();
@@ -28,9 +30,11 @@ class AppDatabase {
     _usersBox = await Hive.openBox(_Keys.usersBox);
     _appBox = await Hive.openBox(_Keys.appBox);
     _cacheBox = await Hive.openBox(_Keys.cacheBox);
+    _aiHistoryBox = await Hive.openBox(_Keys.aiHistoryBox);
   }
 
   Box<dynamic> get cache => _cacheBox!;
+  Box<dynamic> get aiHistory => _aiHistoryBox!;
 
   Box<dynamic> get _users {
     final box = _usersBox;

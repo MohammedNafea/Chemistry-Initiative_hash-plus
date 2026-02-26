@@ -180,59 +180,14 @@ class _MoleculeViewerScreenState extends State<MoleculeViewerScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Expanded(
-                          child: Hero(
-                            tag: _selectedMolecule.id,
-                            child:
-                                (_selectedMolecule.id == 'water' ||
-                                    _selectedMolecule.id == 'carbon')
-                                ? ModelViewer(
-                                    key: ValueKey(_selectedMolecule.id),
-                                    src: _get3DModelPath(_selectedMolecule.id),
-                                    alt:
-                                        'A 3D model of ${_selectedMolecule.name}',
-                                    ar: true,
-                                    autoRotate: true,
-                                    cameraControls: true,
-                                  )
-                                : Center(
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Container(
-                                          width: 150,
-                                          height: 150,
-                                          decoration: BoxDecoration(
-                                            shape: BoxShape.circle,
-                                            color: theme
-                                                .colorScheme
-                                                .primaryContainer
-                                                .withValues(alpha: 0.3),
-                                          ),
-                                          child: Icon(
-                                            Icons.architecture_rounded,
-                                            size: 80,
-                                            color: theme.colorScheme.primary,
-                                          ),
-                                        ),
-                                        const SizedBox(height: 24),
-                                        Text(
-                                          'Visualizing Structure...',
-                                          style: theme.textTheme.titleLarge
-                                              ?.copyWith(
-                                                fontWeight: FontWeight.bold,
-                                                color:
-                                                    theme.colorScheme.primary,
-                                              ),
-                                        ),
-                                        const SizedBox(height: 8),
-                                        Text(
-                                          '3D Model for ${_selectedMolecule.formula} coming soon.',
-                                          style: theme.textTheme.bodySmall,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
+                          child: ModelViewer(
+                            key: ValueKey(_selectedMolecule.id),
+                            src: _get3DModelPath(_selectedMolecule.id),
+                            alt: 'A 3D model of ${_selectedMolecule.name}',
+                            ar: true,
+                            autoRotate: true,
+                            cameraControls: true,
+                            backgroundColor: Colors.transparent,
                           ),
                         ),
                         const SizedBox(height: 16),

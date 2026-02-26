@@ -11,8 +11,9 @@ class UserModel {
   final List<String> badges;
   final int quizzesCompleted;
   final int experimentsViewed;
-  final Map<String, String>
-  researchJournal; // Compound ID -> Discovery Date/Notes
+  final int totalPoints;
+  final List<int> pointsHistory; // Store scores from each quiz
+  final Map<String, String> researchJournal; // Compound ID -> Discovery Date/Notes
 
   UserModel({
     required this.id,
@@ -26,6 +27,8 @@ class UserModel {
     this.badges = const [],
     this.quizzesCompleted = 0,
     this.experimentsViewed = 0,
+    this.totalPoints = 0,
+    this.pointsHistory = const [],
     this.researchJournal = const {},
   });
 
@@ -41,6 +44,8 @@ class UserModel {
     List<String>? badges,
     int? quizzesCompleted,
     int? experimentsViewed,
+    int? totalPoints,
+    List<int>? pointsHistory,
     Map<String, String>? researchJournal,
   }) {
     return UserModel(
@@ -55,6 +60,8 @@ class UserModel {
       badges: badges ?? this.badges,
       quizzesCompleted: quizzesCompleted ?? this.quizzesCompleted,
       experimentsViewed: experimentsViewed ?? this.experimentsViewed,
+      totalPoints: totalPoints ?? this.totalPoints,
+      pointsHistory: pointsHistory ?? this.pointsHistory,
       researchJournal: researchJournal ?? this.researchJournal,
     );
   }
@@ -71,6 +78,8 @@ class UserModel {
     'badges': badges,
     'quizzesCompleted': quizzesCompleted,
     'experimentsViewed': experimentsViewed,
+    'totalPoints': totalPoints,
+    'pointsHistory': pointsHistory,
     'researchJournal': researchJournal,
   };
 
@@ -88,6 +97,8 @@ class UserModel {
         [],
     quizzesCompleted: json['quizzesCompleted'] as int? ?? 0,
     experimentsViewed: json['experimentsViewed'] as int? ?? 0,
+    totalPoints: json['totalPoints'] as int? ?? 0,
+    pointsHistory: (json['pointsHistory'] as List<dynamic>?)?.map((e) => e as int).toList() ?? [],
     researchJournal: Map<String, String>.from(json['researchJournal'] ?? {}),
   );
 }

@@ -36,7 +36,7 @@ class _ElementDetailSheetState extends State<ElementDetailSheet> {
         color: isDark ? const Color(0xFF1E1E1E) : Colors.white,
         borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
       ),
-      padding: const EdgeInsets.all(24),
+      padding: EdgeInsets.all(MediaQuery.sizeOf(context).width < 600 ? 16 : 24),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -83,18 +83,25 @@ class _ElementDetailSheetState extends State<ElementDetailSheet> {
                     Row(
                       children: [
                         Expanded(
-                          child: Text(
-                            widget.element.name,
-                            style: const TextStyle(
-                              fontSize: 24,
-                              fontWeight: FontWeight.bold,
+                          child: FittedBox(
+                            alignment: Alignment.centerLeft,
+                            fit: BoxFit.scaleDown,
+                            child: Text(
+                              widget.element.name,
+                              style: TextStyle(
+                                fontSize: MediaQuery.sizeOf(context).width < 600 ? 20 : 24,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
                         ),
                         IconButton(
+                          padding: EdgeInsets.zero,
+                          constraints: const BoxConstraints(),
                           icon: Icon(
                             Icons.volume_up,
                             color: theme.primaryColor,
+                            size: MediaQuery.sizeOf(context).width < 600 ? 20 : 24,
                           ),
                           onPressed: () =>
                               _speak(widget.element.name, langCode),
@@ -105,7 +112,7 @@ class _ElementDetailSheetState extends State<ElementDetailSheet> {
                       '${localizations.atomicNumberLabel}: ${widget.element.atomicNumber}',
                       style: TextStyle(
                         color: isDark ? Colors.grey[400] : Colors.grey[600],
-                        fontSize: 14,
+                        fontSize: MediaQuery.sizeOf(context).width < 600 ? 12 : 14,
                       ),
                     ),
                   ],

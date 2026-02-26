@@ -12,6 +12,9 @@ class AppLocalizationsEs extends AppLocalizations {
   String get appTitle => 'Iniciativa Qu?mica';
 
   @override
+  String get splashTitle => 'Chemistry Wonders';
+
+  @override
   String get leaderboard => 'Leaderboard';
 
   @override
@@ -278,7 +281,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get factWater =>
-      '?La vida tal como la conocemos no existir?a بدون este compuesto!';
+      'Life as we know it would not exist without this compound!';
 
   @override
   String get molH2 => 'Hydrogen Gas';
@@ -311,7 +314,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get factCo2 =>
-      'Un gas incoloro vital para la vida en la Tierra. Las plantas lo respiran para producir ox?geno.';
+      'A colorless gas vital to life on Earth. Plants breathe this in to produce oxygen.';
 
   @override
   String get molMethane => 'Metano';
@@ -816,7 +819,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get catActinide => 'Actinide';
 
   @override
-  String get elemHName => 'Hydrogen';
+  String get elemHName => 'Hidrógeno';
 
   @override
   String get elemHSummary =>
@@ -826,7 +829,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get elemHUse => 'Found in Water (H2O), rocket fuel, and stars.';
 
   @override
-  String get elemHeName => 'Helium';
+  String get elemHeName => 'Helio';
 
   @override
   String get elemHeSummary =>
@@ -837,7 +840,7 @@ class AppLocalizationsEs extends AppLocalizations {
       'Used in party balloons, MRI machines, and deep-sea diving.';
 
   @override
-  String get elemLiName => 'Lithium';
+  String get elemLiName => 'Litio';
 
   @override
   String get elemLiSummary =>
@@ -848,7 +851,7 @@ class AppLocalizationsEs extends AppLocalizations {
       'Essential for rechargeable batteries in phones and laptops.';
 
   @override
-  String get elemBeName => 'Beryllium';
+  String get elemBeName => 'Berilio';
 
   @override
   String get elemBeSummary =>
@@ -858,7 +861,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get elemBeUse => 'Used in aerospace material and X-ray windows.';
 
   @override
-  String get elemBName => 'Boron';
+  String get elemBName => 'Boro';
 
   @override
   String get elemBSummary =>
@@ -868,7 +871,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get elemBUse => 'Used in fiberglass, pyrotechnics, and eye drops.';
 
   @override
-  String get elemCName => 'Carbon';
+  String get elemCName => 'Carbono';
 
   @override
   String get elemCSummary =>
@@ -879,7 +882,7 @@ class AppLocalizationsEs extends AppLocalizations {
       'Found in pencils, diamonds, and all living organisms.';
 
   @override
-  String get elemNName => 'Nitrogen';
+  String get elemNName => 'Nitrógeno';
 
   @override
   String get elemNSummary =>
@@ -890,7 +893,7 @@ class AppLocalizationsEs extends AppLocalizations {
       'Used in fertilizers, food packaging, and liquid nitrogen.';
 
   @override
-  String get elemOName => 'Oxygen';
+  String get elemOName => 'Oxígeno';
 
   @override
   String get elemOSummary =>
@@ -900,7 +903,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get elemOUse => 'Essential for breathing, combustion, and water.';
 
   @override
-  String get elemFName => 'Fluorine';
+  String get elemFName => 'Flúor';
 
   @override
   String get elemFSummary =>
@@ -910,7 +913,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get elemFUse => 'Used in toothpaste and refrigeration (Freon).';
 
   @override
-  String get elemNeName => 'Neon';
+  String get elemNeName => 'Neón';
 
   @override
   String get elemNeSummary =>
@@ -920,7 +923,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get elemNeUse => 'Used in advertising signs and laser technology.';
 
   @override
-  String get elemNaName => 'Sodium';
+  String get elemNaName => 'Sodio';
 
   @override
   String get elemNaSummary =>
@@ -931,7 +934,7 @@ class AppLocalizationsEs extends AppLocalizations {
       'Main component of table salt (NaCl) and street lights.';
 
   @override
-  String get elemMgName => 'Magnesium';
+  String get elemMgName => 'Magnesio';
 
   @override
   String get elemMgSummary =>
@@ -941,7 +944,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get elemMgUse => 'Used in flares, laptops, and human muscle function.';
 
   @override
-  String get elemAlName => 'Aluminum';
+  String get elemAlName => 'Aluminio';
 
   @override
   String get elemAlSummary =>
@@ -952,7 +955,7 @@ class AppLocalizationsEs extends AppLocalizations {
       'Used in soda cans, foil, airplanes, and window frames.';
 
   @override
-  String get elemSiName => 'Silicon';
+  String get elemSiName => 'Silicio';
 
   @override
   String get elemSiSummary =>
@@ -962,7 +965,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get elemSiUse => 'The heart of computer chips and glass production.';
 
   @override
-  String get elemPName => 'Phosphorus';
+  String get elemPName => 'Fósforo';
 
   @override
   String get elemPSummary =>
@@ -973,7 +976,7 @@ class AppLocalizationsEs extends AppLocalizations {
       'Used in fertilizers, match heads, and cleaning agents.';
 
   @override
-  String get elemSName => 'Sulfur';
+  String get elemSName => 'Azufre';
 
   @override
   String get elemSSummary =>
@@ -984,7 +987,7 @@ class AppLocalizationsEs extends AppLocalizations {
       'Used in gunpowder, batteries, and vulcanizing rubber.';
 
   @override
-  String get elemClName => 'Chlorine';
+  String get elemClName => 'Cloro';
 
   @override
   String get elemClSummary =>
@@ -994,7 +997,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get elemClUse => 'Used to disinfect swimming pools and in bleach.';
 
   @override
-  String get elemArName => 'Argon';
+  String get elemArName => 'Argón';
 
   @override
   String get elemArSummary =>
@@ -1004,7 +1007,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get elemArUse => 'Used in light bulbs and high-temperature welding.';
 
   @override
-  String get elemKName => 'Potassium';
+  String get elemKName => 'Potasio';
 
   @override
   String get elemKSummary =>
@@ -1014,7 +1017,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get elemKUse => 'Found in bananas and essential for heart function.';
 
   @override
-  String get elemCaName => 'Calcium';
+  String get elemCaName => 'Calcio';
 
   @override
   String get elemCaSummary =>
@@ -1024,7 +1027,61 @@ class AppLocalizationsEs extends AppLocalizations {
   String get elemCaUse => 'Found in milk, bones, teeth, and cement.';
 
   @override
-  String get elemFeName => 'Iron';
+  String get elemScName => 'Escandio';
+
+  @override
+  String get elemScSummary =>
+      'Scandium is a silvery-white metallic d-block element.';
+
+  @override
+  String get elemScUse =>
+      'Used in aluminum-scandium alloys for aerospace and high-end sports equipment.';
+
+  @override
+  String get elemTiName => 'Titanio';
+
+  @override
+  String get elemTiSummary =>
+      'Titanium is a strong, lightweight metal with a high melting point and excellent corrosion resistance.';
+
+  @override
+  String get elemTiUse =>
+      'Used in aircraft, dental implants, and high-end watches.';
+
+  @override
+  String get elemVName => 'Vanadio';
+
+  @override
+  String get elemVSummary =>
+      'Vanadium is a hard, silvery-grey, malleable transition metal.';
+
+  @override
+  String get elemVUse =>
+      'Used to create steel alloys for tools, axles, and crankshafts.';
+
+  @override
+  String get elemCrName => 'Cromo';
+
+  @override
+  String get elemCrSummary =>
+      'Chromium is a hard, shiny metal that is highly resistant to tarnishing.';
+
+  @override
+  String get elemCrUse => 'Used in stainless steel and chrome plating.';
+
+  @override
+  String get elemMnName => 'Manganeso';
+
+  @override
+  String get elemMnSummary =>
+      'Manganese is a transition metal with important industrial alloy uses, particularly in stainless steel.';
+
+  @override
+  String get elemMnUse =>
+      'Used in dry cell batteries and to strengthen aluminum cans.';
+
+  @override
+  String get elemFeName => 'Hierro';
 
   @override
   String get elemFeSummary =>
@@ -1035,7 +1092,28 @@ class AppLocalizationsEs extends AppLocalizations {
       'Used in steel construction and found in red blood cells.';
 
   @override
-  String get elemCuName => 'Copper';
+  String get elemCoName => 'Cobalto';
+
+  @override
+  String get elemCoSummary =>
+      'Cobalt is a hard, lustrous, silver-gray metal found in Earth\'s crust only in chemically combined form.';
+
+  @override
+  String get elemCoUse =>
+      'Used in jet turbine parts, strong magnets, and rechargeable batteries.';
+
+  @override
+  String get elemNiName => 'Níquel';
+
+  @override
+  String get elemNiSummary =>
+      'Nickel is a silvery-white lustrous metal with a slight golden tinge.';
+
+  @override
+  String get elemNiUse => 'Used in plating, coins, and laptop batteries.';
+
+  @override
+  String get elemCuName => 'Cobre';
 
   @override
   String get elemCuSummary =>
@@ -1055,7 +1133,178 @@ class AppLocalizationsEs extends AppLocalizations {
   String get elemZnUse => 'Used to galvanize steel and in sunscreen.';
 
   @override
-  String get elemAgName => 'Silver';
+  String get elemGaName => 'Galio';
+
+  @override
+  String get elemGaSummary =>
+      'Gallium is a soft, silvery metal that melts at just 29.7°C, meaning it can melt in your hand.';
+
+  @override
+  String get elemGaUse =>
+      'Essential for semiconductors, blue LEDs, and lasers.';
+
+  @override
+  String get elemGeName => 'Germanio';
+
+  @override
+  String get elemGeSummary =>
+      'Germanium is a lustrous, hard-brittle, grayish-white metalloid.';
+
+  @override
+  String get elemGeUse =>
+      'Used in fiber optics, night vision equipment, and wide-angle lenses.';
+
+  @override
+  String get elemAsName => 'Arsénico';
+
+  @override
+  String get elemAsSummary =>
+      'Arsenic is a metalloid that exists in several allotropic forms, famous for its toxicity.';
+
+  @override
+  String get elemAsUse =>
+      'Used in wood preservatives, pesticides, and some semiconductor doping.';
+
+  @override
+  String get elemSeName => 'Selenio';
+
+  @override
+  String get elemSeSummary =>
+      'Selenium is a nonmetal with properties that are intermediate between the elements sulfur and tellurium.';
+
+  @override
+  String get elemSeUse =>
+      'Used in photocells, solar panels, and anti-dandruff shampoos.';
+
+  @override
+  String get elemBrName => 'Bromo';
+
+  @override
+  String get elemBrSummary =>
+      'Bromine is a reddish-brown liquid at room temperature that evaporates easily to form a similarly colored gas.';
+
+  @override
+  String get elemBrUse =>
+      'Used in flame retardants, medicines, and photography.';
+
+  @override
+  String get elemKrName => 'Kriptón';
+
+  @override
+  String get elemKrSummary =>
+      'Krypton is a noble gas that is used with phosphors in energy-saving fluorescent lamps.';
+
+  @override
+  String get elemKrUse =>
+      'Used in high-speed photography flashes and laser eye surgery.';
+
+  @override
+  String get elemRbName => 'Rubidio';
+
+  @override
+  String get elemRbSummary =>
+      'Rubidium is a soft, silvery-white metallic element of the alkali metal group.';
+
+  @override
+  String get elemRbUse => 'Used in atomic clocks and laser research.';
+
+  @override
+  String get elemSrName => 'Estroncio';
+
+  @override
+  String get elemSrSummary =>
+      'Strontium is an alkaline earth metal that is highly reactive and turns yellow when exposed to air.';
+
+  @override
+  String get elemSrUse =>
+      'Used in fireworks and flares to produce a brilliant red color.';
+
+  @override
+  String get elemYName => 'Itrio';
+
+  @override
+  String get elemYSummary =>
+      'Yttrium is a silvery-metallic transition metal chemically similar to the lanthanides.';
+
+  @override
+  String get elemYUse =>
+      'Used in LEDs, phosphors tip for old TVs, and laser applications.';
+
+  @override
+  String get elemZrName => 'Zirconio';
+
+  @override
+  String get elemZrSummary =>
+      'Zirconium is a lustrous, grey-white, strong transition metal that resembles hafnium.';
+
+  @override
+  String get elemZrUse =>
+      'Used in nuclear reactors and high-end jewelry (Cubic Zirconia).';
+
+  @override
+  String get elemNbName => 'Niobio';
+
+  @override
+  String get elemNbSummary =>
+      'Niobium is a soft, grey, crystalline, ductile transition metal.';
+
+  @override
+  String get elemNbUse => 'Used in superconducting magnets and jet engines.';
+
+  @override
+  String get elemMoName => 'Molibdeno';
+
+  @override
+  String get elemMoSummary =>
+      'Molybdenum is a silvery-white metal that has a very high melting point.';
+
+  @override
+  String get elemMoUse =>
+      'Used in high-strength steel alloys and cutting tools.';
+
+  @override
+  String get elemTcName => 'Tecnecio';
+
+  @override
+  String get elemTcSummary =>
+      'Technetium is the first element to be produced artificially.';
+
+  @override
+  String get elemTcUse => 'Widely used in medical diagnostic imaging.';
+
+  @override
+  String get elemRuName => 'Rutenio';
+
+  @override
+  String get elemRuSummary =>
+      'Ruthenium is a rare transition metal belonging to the platinum group.';
+
+  @override
+  String get elemRuUse => 'Used in electrical contacts and chemical catalysts.';
+
+  @override
+  String get elemRhName => 'Rodio';
+
+  @override
+  String get elemRhSummary =>
+      'Rhodium is an ultra-rare, silvery-white, hard, corrosion-resistant transition metal.';
+
+  @override
+  String get elemRhUse =>
+      'Used in catalytic converters and coating expensive jewelry.';
+
+  @override
+  String get elemPdName => 'Paladio';
+
+  @override
+  String get elemPdSummary =>
+      'Palladium is a rare silvery-white metal discovered in 1803.';
+
+  @override
+  String get elemPdUse => 'Used in electronics, dentistry, and fuel cells.';
+
+  @override
+  String get elemAgName => 'Plata';
 
   @override
   String get elemAgSummary =>
@@ -1065,7 +1314,27 @@ class AppLocalizationsEs extends AppLocalizations {
   String get elemAgUse => 'Used in jewelry, coins, and high-end electronics.';
 
   @override
-  String get elemSnName => 'Tin';
+  String get elemCdName => 'Cadmio';
+
+  @override
+  String get elemCdSummary =>
+      'Cadmium is a soft, silvery-white metal that is highly toxic.';
+
+  @override
+  String get elemCdUse => 'Used in rechargeable batteries and yellow pigments.';
+
+  @override
+  String get elemInName => 'Indio';
+
+  @override
+  String get elemInSummary =>
+      'Indium is a very soft, silvery-white metal that is very shiny.';
+
+  @override
+  String get elemInUse => 'Used in touchscreens and LCD displays.';
+
+  @override
+  String get elemSnName => 'Estaño';
 
   @override
   String get elemSnSummary =>
@@ -1075,7 +1344,27 @@ class AppLocalizationsEs extends AppLocalizations {
   String get elemSnUse => 'Used to coat other metals and in solder.';
 
   @override
-  String get elemIName => 'Iodine';
+  String get elemSbName => 'Antimonio';
+
+  @override
+  String get elemSbSummary =>
+      'Antimony is a lustrous gray metalloid found in nature mainly as the sulfide mineral stibnite.';
+
+  @override
+  String get elemSbUse => 'Used in lead-acid batteries and flame retardants.';
+
+  @override
+  String get elemTeName => 'Telurio';
+
+  @override
+  String get elemTeSummary =>
+      'Tellurium is a chemically related to selenium and sulfur, it\'s a brittle, mildly toxic, rare, silver-white metalloid.';
+
+  @override
+  String get elemTeUse => 'Used in solar panels and rewritable optical discs.';
+
+  @override
+  String get elemIName => 'Yodo';
 
   @override
   String get elemISummary =>
@@ -1085,7 +1374,269 @@ class AppLocalizationsEs extends AppLocalizations {
   String get elemIUse => 'Used as an antiseptic and vital for thyroid health.';
 
   @override
-  String get elemAuName => 'Gold';
+  String get elemXeName => 'Xenón';
+
+  @override
+  String get elemXeSummary => 'Xenon is a noble gas that is heavy and stable.';
+
+  @override
+  String get elemXeUse =>
+      'Used in high-intensity strobe lights and car headlights.';
+
+  @override
+  String get elemCsName => 'Cesio';
+
+  @override
+  String get elemCsSummary =>
+      'Cesium is the most electropositive and most reactive of all metals.';
+
+  @override
+  String get elemCsUse => 'Used in the most accurate atomic clocks.';
+
+  @override
+  String get elemBaName => 'Bario';
+
+  @override
+  String get elemBaSummary =>
+      'Barium is a soft, silvery alkaline earth metal that is highly reactive.';
+
+  @override
+  String get elemBaUse =>
+      'Used in drilling fluids and medical X-ray imaging of the GI tract.';
+
+  @override
+  String get elemLaName => 'Lantano';
+
+  @override
+  String get elemLaSummary =>
+      'Lanthanum is the first element of the lanthanide series.';
+
+  @override
+  String get elemLaUse => 'Used in high-quality camera lenses.';
+
+  @override
+  String get elemCeName => 'Cerio';
+
+  @override
+  String get elemCeSummary =>
+      'Cerium is the most abundant of the rare-earth elements.';
+
+  @override
+  String get elemCeUse =>
+      'Used as a catalyst in petroleum refining and lighter flints.';
+
+  @override
+  String get elemPrName => 'Praseodimio';
+
+  @override
+  String get elemPrSummary =>
+      'Praseodymium is a soft, silvery, malleable and ductile metal.';
+
+  @override
+  String get elemPrUse =>
+      'Used in welder\'s goggles to protect eyes from intense light.';
+
+  @override
+  String get elemNdName => 'Neodimio';
+
+  @override
+  String get elemNdSummary =>
+      'Neodymium is famous for making the strongest permanent magnets.';
+
+  @override
+  String get elemNdUse =>
+      'Used in headphones, hard drives, and hybrid car motors.';
+
+  @override
+  String get elemPmName => 'Prometio';
+
+  @override
+  String get elemPmSummary =>
+      'Promethium is the only radioactive rare earth element.';
+
+  @override
+  String get elemPmUse => 'Used in atomic batteries and diver watches.';
+
+  @override
+  String get elemSmName => 'Samario';
+
+  @override
+  String get elemSmSummary => 'Samarium is a relatively hard silvery metal.';
+
+  @override
+  String get elemSmUse => 'Used in very strong samarium-cobalt magnets.';
+
+  @override
+  String get elemEuName => 'Europio';
+
+  @override
+  String get elemEuSummary =>
+      'Europium is the most reactive of the rare-earth elements.';
+
+  @override
+  String get elemEuUse =>
+      'Used as the red phosphor in TV screens and Euro banknotes.';
+
+  @override
+  String get elemGdName => 'Gadolinio';
+
+  @override
+  String get elemGdSummary =>
+      'Gadolinium is a silvery-white, malleable, and ductile rare-earth metal.';
+
+  @override
+  String get elemGdUse => 'Used as a contrast agent in MRI scans.';
+
+  @override
+  String get elemTbName => 'Terbio';
+
+  @override
+  String get elemTbSummary =>
+      'Terbium is a silvery-white rare earth metal that is malleable and ductile.';
+
+  @override
+  String get elemTbUse =>
+      'Used in energy-saving lamps and magneto-optical discs.';
+
+  @override
+  String get elemDyName => 'Disprosio';
+
+  @override
+  String get elemDySummary =>
+      'Dysprosium is a rare earth element with a metallic, bright silver luster.';
+
+  @override
+  String get elemDyUse =>
+      'Used in electric vehicle motors and laser materials.';
+
+  @override
+  String get elemHoName => 'Holmio';
+
+  @override
+  String get elemHoSummary =>
+      'Holmium has the highest magnetic strength of any element.';
+
+  @override
+  String get elemHoUse =>
+      'Used to create the strongest generated magnetic fields.';
+
+  @override
+  String get elemErName => 'Erbio';
+
+  @override
+  String get elemErSummary =>
+      'Erbium is a silvery-white solid metal that is easily shaped.';
+
+  @override
+  String get elemErUse => 'Used in fiber optic cables and glass filters.';
+
+  @override
+  String get elemTmName => 'Tulio';
+
+  @override
+  String get elemTmSummary =>
+      'Thulium is the rarest of the lanthanide elements.';
+
+  @override
+  String get elemTmUse =>
+      'Used in portable X-ray devices and radiation sources.';
+
+  @override
+  String get elemYbName => 'Iterbio';
+
+  @override
+  String get elemYbSummary =>
+      'Ytterbium is a soft, malleable and ductile rare-earth element.';
+
+  @override
+  String get elemYbUse => 'Used in atomic clocks and high-pressure sensors.';
+
+  @override
+  String get elemLuName => 'Lutecio';
+
+  @override
+  String get elemLuSummary =>
+      'Lutetium is the last member of the lanthanide series and the hardest to isolate.';
+
+  @override
+  String get elemLuUse => 'Used in nuclear medicine for cancer therapy.';
+
+  @override
+  String get elemHfName => 'Hafnio';
+
+  @override
+  String get elemHfSummary =>
+      'Hafnium is a lustrous, silvery gray, tetravalent transition metal.';
+
+  @override
+  String get elemHfUse =>
+      'Used in nuclear reactor control rods and computer microprocessors.';
+
+  @override
+  String get elemTaName => 'Tantalio';
+
+  @override
+  String get elemTaSummary =>
+      'Tantalum is a rare, hard, blue-gray, lustrous transition metal.';
+
+  @override
+  String get elemTaUse =>
+      'Used in capacitors for smartphones and medical implants.';
+
+  @override
+  String get elemWName => 'Wolframio';
+
+  @override
+  String get elemWSummary =>
+      'Tungsten has the highest melting point of all elements discovered.';
+
+  @override
+  String get elemWUse => 'Used in light bulb filaments and heavy metal alloys.';
+
+  @override
+  String get elemReName => 'Renio';
+
+  @override
+  String get elemReSummary =>
+      'Rhenium is one of the rarest elements in the Earth\'s crust.';
+
+  @override
+  String get elemReUse =>
+      'Used in jet engine superalloys and petroleum catalysts.';
+
+  @override
+  String get elemOsName => 'Osmio';
+
+  @override
+  String get elemOsSummary =>
+      'Osmium is the densest naturally occurring element.';
+
+  @override
+  String get elemOsUse => 'Used in fountain pen nibs and electrical contacts.';
+
+  @override
+  String get elemIrName => 'Iridio';
+
+  @override
+  String get elemIrSummary =>
+      'Iridium is the most corrosion-resistant metal known.';
+
+  @override
+  String get elemIrUse => 'Used in spark plugs and high-temperature crucibles.';
+
+  @override
+  String get elemPtName => 'Platino';
+
+  @override
+  String get elemPtSummary =>
+      'Platinum is a dense, malleable, highly unreactive, precious, silver-white transition metal.';
+
+  @override
+  String get elemPtUse =>
+      'Used in catalytic converters, jewelry, and laboratory equipment.';
+
+  @override
+  String get elemAuName => 'Oro';
 
   @override
   String get elemAuSummary =>
@@ -1095,7 +1646,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get elemAuUse => 'Used in jewelry, investment, and space tech.';
 
   @override
-  String get elemHgName => 'Mercury';
+  String get elemHgName => 'Mercurio';
 
   @override
   String get elemHgSummary =>
@@ -1105,7 +1656,17 @@ class AppLocalizationsEs extends AppLocalizations {
   String get elemHgUse => 'Used in thermometers and fluorescent lights.';
 
   @override
-  String get elemPbName => 'Lead';
+  String get elemTlName => 'Talio';
+
+  @override
+  String get elemTlSummary =>
+      'Thallium is a soft gray post-transition metal that discolors on exposure to air.';
+
+  @override
+  String get elemTlUse => 'Used in infrared sensors and specialized glass.';
+
+  @override
+  String get elemPbName => 'Plomo';
 
   @override
   String get elemPbSummary =>
@@ -1115,45 +1676,385 @@ class AppLocalizationsEs extends AppLocalizations {
   String get elemPbUse => 'Used in car batteries and radiation shielding.';
 
   @override
-  String get elemUName => 'Uranium';
+  String get elemBiName => 'Bismuto';
+
+  @override
+  String get elemBiSummary =>
+      'Bismuth is a brittle metal with a white, silver-pink hue.';
+
+  @override
+  String get elemBiUse =>
+      'Used in digestive medicine and fire detection systems.';
+
+  @override
+  String get elemPoName => 'Polonio';
+
+  @override
+  String get elemPoSummary =>
+      'Polonium is a highly radioactive and toxic element discovered by Marie Curie.';
+
+  @override
+  String get elemPoUse => 'Used as a heat source for space vehicles.';
+
+  @override
+  String get elemAtName => 'Astato';
+
+  @override
+  String get elemAtSummary =>
+      'Astatine is the rarest naturally occurring element on Earth.';
+
+  @override
+  String get elemAtUse =>
+      'Used in medical research for targeted alpha-particle therapy.';
+
+  @override
+  String get elemRnName => 'Radón';
+
+  @override
+  String get elemRnSummary =>
+      'Radon is a radioactive, colorless, odorless noble gas.';
+
+  @override
+  String get elemRnUse =>
+      'Sometimes used in cancer radiotherapy under strict control.';
+
+  @override
+  String get elemFrName => 'Francio';
+
+  @override
+  String get elemFrSummary =>
+      'Francium is the second rarest naturally occurring element.';
+
+  @override
+  String get elemFrUse =>
+      'Used exclusively for scientific research due to its rarity.';
+
+  @override
+  String get elemRaName => 'Radio';
+
+  @override
+  String get elemRaSummary =>
+      'Radium is a radioactive element that was famously used in glow-in-the-dark watches.';
+
+  @override
+  String get elemRaUse => 'Used in cancer treatment and as a neutron source.';
+
+  @override
+  String get elemAcName => 'Actinio';
+
+  @override
+  String get elemAcSummary =>
+      'Actinium is a soft, silvery-white radioactive metallic element.';
+
+  @override
+  String get elemAcUse => 'Used as a precursor for medical radioisotopes.';
+
+  @override
+  String get elemThName => 'Torio';
+
+  @override
+  String get elemThSummary =>
+      'Thorium is a weakly radioactive metallic chemical element.';
+
+  @override
+  String get elemThUse =>
+      'Used in gas mantles and as a potential nuclear fuel.';
+
+  @override
+  String get elemPaName => 'Protactinio';
+
+  @override
+  String get elemPaSummary =>
+      'Protactinium is a dense, silvery-gray radioactive metal that is highly toxic.';
+
+  @override
+  String get elemPaUse => 'Used in scientific research and geological dating.';
+
+  @override
+  String get elemUName => 'Uranio';
 
   @override
   String get elemUSummary =>
-      'Uranium is a heavy, silvery-white, radioactive metal.';
+      'Uranium is the heaviest naturally occurring element, used as a primary nuclear fuel.';
 
   @override
-  String get elemUUse => 'Used as fuel in nuclear power plants.';
+  String get elemUUse =>
+      'Used in nuclear power plants and dating ancient rocks.';
 
   @override
-  String get elemTiName => 'Titanium';
+  String get elemNpName => 'Neptunio';
 
   @override
-  String get elemTiSummary =>
-      'Titanium is a strong, lightweight metal with a high melting point and excellent corrosion resistance.';
+  String get elemNpSummary =>
+      'Neptunium is the first transuranic element to be produced artificially.';
 
   @override
-  String get elemTiUse =>
-      'Used in aircraft, dental implants, and high-end watches.';
+  String get elemNpUse => 'Used in neutron detection equipment.';
 
   @override
-  String get elemCrName => 'Chromium';
+  String get elemPuName => 'Plutonio';
 
   @override
-  String get elemCrSummary =>
-      'Chromium is a hard, shiny metal that is highly resistant to tarnishing.';
+  String get elemPuSummary =>
+      'Plutonium is a radioactive element known for its role in nuclear power and weapons.';
 
   @override
-  String get elemCrUse => 'Used in stainless steel and chrome plating.';
+  String get elemPuUse =>
+      'Used as fuel in nuclear reactors and long-life batteries for space vehicles.';
 
   @override
-  String get elemPtName => 'Platinum';
+  String get elemAmName => 'Americio';
 
   @override
-  String get elemPtSummary =>
-      'Platinum is a dense, stable, and rare precious metal used in jewelry and catalytic converters.';
+  String get elemAmSummary =>
+      'Americium is a synthetic radioactive element that glows with a pinkish hue.';
 
   @override
-  String get elemPtUse => 'Used in vehicle catalysts and high-end electronics.';
+  String get elemAmUse => 'Commonly used in household smoke detectors.';
+
+  @override
+  String get elemCmName => 'Curio';
+
+  @override
+  String get elemCmSummary =>
+      'Curium is a radioactive element named after Pierre and Marie Curie.';
+
+  @override
+  String get elemCmUse =>
+      'Used as a power source for X-ray devices on space missions.';
+
+  @override
+  String get elemBkName => 'Berquelio';
+
+  @override
+  String get elemBkSummary =>
+      'Berkelium is a soft, silvery-white radioactive metal.';
+
+  @override
+  String get elemBkUse =>
+      'Used to produce heavier elements like californium in laboratories.';
+
+  @override
+  String get elemCfName => 'Californio';
+
+  @override
+  String get elemCfSummary => 'Californium is a very strong neutron emitter.';
+
+  @override
+  String get elemCfUse =>
+      'Used in gold and silver detection and starting nuclear reactors.';
+
+  @override
+  String get elemEsName => 'Einsteinio';
+
+  @override
+  String get elemEsSummary =>
+      'Einsteinium is a radioactive element discovered in the debris of the first hydrogen bomb.';
+
+  @override
+  String get elemEsUse =>
+      'Used for basic scientific research to study heavy elements.';
+
+  @override
+  String get elemFmName => 'Fermio';
+
+  @override
+  String get elemFmSummary =>
+      'Fermium is the heaviest element that can be produced by neutron bombardment.';
+
+  @override
+  String get elemFmUse => 'Used exclusively in advanced nuclear studies.';
+
+  @override
+  String get elemMdName => 'Mendelevio';
+
+  @override
+  String get elemMdSummary =>
+      'Mendelevium is a radioactive element named after the father of the periodic table.';
+
+  @override
+  String get elemMdUse =>
+      'Used in laboratory experiments to understand heavy element chemistry.';
+
+  @override
+  String get elemNoName => 'Nobelio';
+
+  @override
+  String get elemNoSummary =>
+      'Nobelium is an unstable radioactive element named after Alfred Nobel.';
+
+  @override
+  String get elemNoUse => 'Used in specialized laboratory research.';
+
+  @override
+  String get elemLrName => 'Laurencio';
+
+  @override
+  String get elemLrSummary =>
+      'Lawrencium is the final member of the actinide series.';
+
+  @override
+  String get elemLrUse => 'Used to study the structure of very heavy atoms.';
+
+  @override
+  String get elemRfName => 'Rutherfordio';
+
+  @override
+  String get elemRfSummary =>
+      'Rutherfordium is the first member of the transactinide elements.';
+
+  @override
+  String get elemRfUse =>
+      'Used only in physics and nuclear chemistry research.';
+
+  @override
+  String get elemDbName => 'Dubnio';
+
+  @override
+  String get elemDbSummary =>
+      'Dubnium is a synthetic radioactive element with a very short half-life.';
+
+  @override
+  String get elemDbUse =>
+      'Used in studying chemical reactions of superheavy elements.';
+
+  @override
+  String get elemSgName => 'Seaborgio';
+
+  @override
+  String get elemSgSummary =>
+      'Seaborgium is a synthetic radioactive transition metal element.';
+
+  @override
+  String get elemSgUse => 'Used to explore the limits of the periodic table.';
+
+  @override
+  String get elemBhName => 'Bohrio';
+
+  @override
+  String get elemBhSummary =>
+      'Bohrium is a radioactive element named after Niels Bohr.';
+
+  @override
+  String get elemBhUse =>
+      'Used in studying chemical properties of Group 7 elements.';
+
+  @override
+  String get elemHsName => 'Hassio';
+
+  @override
+  String get elemHsSummary =>
+      'Hassium is a radioactive element expected to have properties similar to osmium.';
+
+  @override
+  String get elemHsUse => 'Used in complex nuclear chemistry experiments.';
+
+  @override
+  String get elemMtName => 'Meitnerio';
+
+  @override
+  String get elemMtSummary =>
+      'Meitnerium is a radioactive element named after physicist Lise Meitner.';
+
+  @override
+  String get elemMtUse =>
+      'Used in research to produce and study heavier elements.';
+
+  @override
+  String get elemDsName => 'Darmstadtio';
+
+  @override
+  String get elemDsSummary =>
+      'Darmstadtium is a synthetic element first discovered in Germany.';
+
+  @override
+  String get elemDsUse =>
+      'Used in scientific research to examine matter stability.';
+
+  @override
+  String get elemRgName => 'Roentgenio';
+
+  @override
+  String get elemRgSummary =>
+      'Roentgenium is a radioactive element named after the discoverer of X-rays.';
+
+  @override
+  String get elemRgUse => 'Used in advanced atomic physics research.';
+
+  @override
+  String get elemCnName => 'Copernicio';
+
+  @override
+  String get elemCnSummary =>
+      'Copernicium is a radioactive element named after Nicolaus Copernicus.';
+
+  @override
+  String get elemCnUse =>
+      'Used in studying chemical behavior of trans-heavy elements.';
+
+  @override
+  String get elemNhName => 'Nihonio';
+
+  @override
+  String get elemNhSummary =>
+      'Nihonium is a radioactive element discovered and named in Japan.';
+
+  @override
+  String get elemNhUse => 'Used to understand nuclear forces within the atom.';
+
+  @override
+  String get elemFlName => 'Flerovio';
+
+  @override
+  String get elemFlSummary =>
+      'Flerovium is a synthetic radioactive element with relative stability.';
+
+  @override
+  String get elemFlUse =>
+      'Used in search of the \'island of stability\' in nuclear physics.';
+
+  @override
+  String get elemMcName => 'Moscovio';
+
+  @override
+  String get elemMcSummary =>
+      'Moscovium is a highly unstable synthetic radioactive element.';
+
+  @override
+  String get elemMcUse => 'Used in high-energy nuclear physics experiments.';
+
+  @override
+  String get elemLvName => 'Livermorio';
+
+  @override
+  String get elemLvSummary =>
+      'Livermorium is a radioactive element named after an American laboratory.';
+
+  @override
+  String get elemLvUse =>
+      'Used in advanced studies to produce new atomic nuclei.';
+
+  @override
+  String get elemTsName => 'Teneso';
+
+  @override
+  String get elemTsSummary =>
+      'Tennessine is a synthetic radioactive element in the halogen group.';
+
+  @override
+  String get elemTsUse =>
+      'Used in nuclear physics research to test atomic theories.';
+
+  @override
+  String get elemOgName => 'Oganesón';
+
+  @override
+  String get elemOgSummary =>
+      'Oganesson is the heaviest element discovered in the periodic table to date.';
+
+  @override
+  String get elemOgUse =>
+      'Used to study the chemical and physical properties of superheavy atoms.';
 
   @override
   String get complete => 'Completado';
@@ -1178,46 +2079,6 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get alchemist => 'Alquimista';
-
-  @override
-  String get discoveryLabel => 'Descubrimiento';
-
-  @override
-  String get increaseHeatCatalyst =>
-      'Discovery requires more heat! Use the Bunsen burner.';
-
-  @override
-  String get multiplayerQuiz => 'Cuestionario Multijugador';
-
-  @override
-  String get aiTutor => 'AI Tutor';
-
-  @override
-  String get viewIn3D => 'View in 3D';
-
-  @override
-  String get searchCompounds => 'Search compounds...';
-
-  @override
-  String get scientificInsight => 'Scientific Insight';
-
-  @override
-  String get gotIt => 'Got it!';
-
-  @override
-  String get challengingPlayers => 'Looking for nearby challengers...';
-
-  @override
-  String get inviteHost => 'Invite (Host)';
-
-  @override
-  String get connectedTo => 'Connected to';
-
-  @override
-  String get hostScore => 'Host Score';
-
-  @override
-  String get guestScore => 'Guest Score';
 
   @override
   String get aiTutorGreeting =>
@@ -1258,7 +2119,7 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
-  String get forgotPassword => '?Has olvidado tu contrase?a?';
+  String get forgotPassword => 'Olvidaste tu contraseña?';
 
   @override
   String get orContinueWith => 'Or continue with';
@@ -1463,4 +2324,56 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get noCompoundFound => 'Could not identify compound. Try again.';
+
+  @override
+  String get discoveryLabel => 'Descubrimiento';
+
+  @override
+  String get increaseHeatCatalyst =>
+      'Discovery requires higher heat! Use a Bunsen burner.';
+
+  @override
+  String get multiplayerQuiz => 'Cuestionario Multijugador';
+
+  @override
+  String get aiTutor => 'AI Tutor';
+
+  @override
+  String get viewIn3D => 'View in 3D';
+
+  @override
+  String get searchCompounds => 'Search for compounds...';
+
+  @override
+  String get scientificInsight => 'Scientific Insight';
+
+  @override
+  String get gotIt => 'Got it!';
+
+  @override
+  String get challengingPlayers => 'Finding nearby challengers...';
+
+  @override
+  String get inviteHost => 'Invite (Host)';
+
+  @override
+  String get connectedTo => 'Connected to';
+
+  @override
+  String get hostScore => 'Host Score';
+
+  @override
+  String get guestScore => 'Guest Score';
+
+  @override
+  String get reactionInProgress => 'Reaction in progress...';
+
+  @override
+  String get tapToSimulate => 'Tap to simulate reaction';
+
+  @override
+  String get points => 'Points';
+
+  @override
+  String get quizzes => 'Quizzes';
 }

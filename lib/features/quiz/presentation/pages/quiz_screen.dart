@@ -22,8 +22,19 @@ class _QuizScreenState extends State<QuizScreen> {
   void didChangeDependencies() {
     super.didChangeDependencies();
     final localizations = AppLocalizations.of(context)!;
-    // TODO: Ideally fetch random 5 if we have a larger bank
-    _questions = QuizRepository.getQuestions(localizations);
+    
+    // Per-session randomization: Use current time as seed to change every entry
+    final sessionSeed = DateTime.now().millisecondsSinceEpoch;
+    
+    // Get all questions shuffled with the session seed
+    final allQuestions = QuizRepository.getQuestions(
+      localizations, 
+      shuffle: true,
+      seed: sessionSeed,
+    );
+    
+    // Take a subset of 10
+    _questions = allQuestions.take(10).toList();
   }
 
   void _submitAnswer(int optionIndex) {
@@ -106,8 +117,8 @@ class _QuizScreenState extends State<QuizScreen> {
             // Question
             Text(
               question.question,
-              style: const TextStyle(
-                fontSize: 22,
+              style: TextStyle(
+                fontSize: MediaQuery.sizeOf(context).width < 600 ? 18 : 22,
                 fontWeight: FontWeight.bold,
                 height: 1.3,
               ),

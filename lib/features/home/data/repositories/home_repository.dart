@@ -5,19 +5,19 @@ class HomeRepository {
   List<HomeCardModel> getNatureCards(AppLocalizations localizations) {
     return [
       HomeCardModel(
-        image: 'assets/images/download (4).jpg',
+        image: 'assets/images/burning_gas.jpg',
         title: localizations.burningGas,
       ),
       HomeCardModel(
-        image: 'assets/images/Ancient Forest.jpg',
+        image: 'assets/images/ancient_forest.jpg',
         title: localizations.forests,
       ),
       HomeCardModel(
-        image: 'assets/images/A bowl of coal.jpg',
+        image: 'assets/images/bowl_of_coal.jpg',
         title: localizations.coalBurning,
       ),
       HomeCardModel(
-        image: 'assets/images/جبل الفيل -  العلاء.jpg',
+        image: 'assets/images/elephant_mountain.jpg',
         title: localizations.rocks,
       ),
     ];
@@ -26,20 +26,20 @@ class HomeRepository {
   List<HomeCardModel> getWaterCards(AppLocalizations localizations) {
     return [
       HomeCardModel(
-        image: 'assets/images/Enchanting Nature and Art.jpg',
+        image: 'assets/images/enchanting_nature.jpg',
         title: localizations.solutionAbsorption,
       ),
       HomeCardModel(
-        image: 'assets/images/#nature #rain #aesthetics #overcast.jpg',
+        image: 'assets/images/nature_rain.jpg',
         title: localizations.rainDrops,
       ),
       HomeCardModel(
-        image: 'assets/images/contaminación.jpg',
+        image: 'assets/images/contaminacion.jpg',
         title: localizations.factorySmoke,
       ),
       HomeCardModel(
         image:
-            'assets/images/Discover Top Vacation Spots Across the Planet.jpg',
+            'assets/images/vacation_spots.jpg',
         title: localizations.crystal,
       ),
     ];
@@ -48,19 +48,19 @@ class HomeRepository {
   List<HomeCardModel> getDailyCards(AppLocalizations localizations) {
     return [
       HomeCardModel(
-        image: 'assets/images/欧包 by vcg-ailsapan.jpg',
+        image: 'assets/images/bread_vcg.jpg',
         title: localizations.breadFermentation,
       ),
       HomeCardModel(
-        image: 'assets/images/Carbon Quantum Dots.jpg',
+        image: 'assets/images/carbon_quantum_dots.jpg',
         title: localizations.medicalLabs,
       ),
       HomeCardModel(
-        image: 'assets/images/Handmade.jpg',
+        image: 'assets/images/handmade.jpg',
         title: localizations.medicines,
       ),
       HomeCardModel(
-        image: 'assets/images/michael-glazier-5q5K8Q3x6e4-unsplash.jpg',
+        image: 'assets/images/combustion_unsplash.jpg',
         title: localizations.combustion,
       ),
     ];

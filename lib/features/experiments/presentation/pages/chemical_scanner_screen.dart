@@ -137,9 +137,10 @@ class _ChemicalScannerScreenState extends State<ChemicalScannerScreen> {
               ),
               child: Text(
                 localizations.scanInstructions,
-                style: const TextStyle(
+                style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
+                  fontSize: MediaQuery.sizeOf(context).width < 600 ? 14 : 16,
                 ),
                 textAlign: TextAlign.center,
               ),
@@ -173,7 +174,11 @@ class _ChemicalScannerScreenState extends State<ChemicalScannerScreen> {
               left: 20,
               right: 20,
               child: Card(
-                color: theme.colorScheme.surface.withValues(alpha: 0.9),
+                color: theme.colorScheme.surface.withValues(alpha: 0.92),
+                elevation: 8,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
                 child: Padding(
                   padding: const EdgeInsets.all(16),
                   child: Column(

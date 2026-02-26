@@ -2,9 +2,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:chemistry_initiative/features/virtual_lab/data/repositories/lab_sync_repository.dart';
+import 'package:chemistry_initiative/features/tutor/data/repositories/ai_sync_repository.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 import 'package:chemistry_initiative/core/database/app_database.dart';
 import 'package:chemistry_initiative/core/database/models/user_model.dart';
+import 'package:chemistry_initiative/features/auth/data/user_sync_repository.dart';
 import 'package:flutter/foundation.dart';
 
 /// Auth repository - handles user registration and login using Firebase & local database.
@@ -191,6 +193,34 @@ class AuthRepository {
     debugPrint("AuthRepository: Triggering lab cloud sync...");
     LabSyncRepository().syncCloudToLocal(fbUser.uid).catchError((e) {
       debugPrint("AuthRepository: Lab cloud sync failed (non-critical): $e");
+    });
+
+    // New: Trigger User Profile Cloud Sync (Points/Progress)
+    debugPrint("AuthRepository: Triggering user profile cloud sync...");
+    UserSyncRepository().fetchFromCloud(fbUser.uid).then((cloudUser) {
+      if (cloudUser != null) {
+        _db.updateUser(cloudUser);
+        debugPrint("AuthRepository: User profile restored from cloud.");
+      }
+    }).catchError((e) {
+      debugPrint("AuthRepository: User profile sync failed: $e");
+    });
+
+    // New: Trigger AI History Cloud Sync (Restore sessions)
+    debugPrint("AuthRepository: Triggering AI history cloud sync...");
+    AIHistorySyncRepository().fetchAllHistoryFromCloud(fbUser.uid).then((history) {
+      if (history.isNotEmpty) {
+        final hiveMap = <String, Map<String, dynamic>>{};
+        for (var session in history) {
+          if (session['id'] != null) {
+            hiveMap[session['id'] as String] = session;
+          }
+        }
+        _db.aiHistory.putAll(hiveMap);
+        debugPrint("AuthRepository: AI history restored from cloud.");
+      }
+    }).catchError((e) {
+      debugPrint("AuthRepository: AI history sync failed: $e");
     });
   }
 

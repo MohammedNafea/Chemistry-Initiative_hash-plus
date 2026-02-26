@@ -72,27 +72,30 @@ class ElementCard extends StatelessWidget {
             Text(
               '${element.atomicNumber}',
               style: TextStyle(
-                fontSize: 10,
+                fontSize: MediaQuery.sizeOf(context).width < 600 ? 9 : 10,
                 fontWeight: FontWeight.bold,
                 color: isDark ? Colors.white70 : Colors.black54,
               ),
             ),
             Center(
-              child: Text(
-                element.symbol,
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                  color: isDark
-                      ? Colors.white
-                      : categoryColor.withValues(alpha: 0.8),
-                  shadows: [
-                    if (isDark)
-                      Shadow(
-                        color: categoryColor.withValues(alpha: 0.5),
-                        blurRadius: 8,
-                      ),
-                  ],
+              child: FittedBox(
+                fit: BoxFit.scaleDown,
+                child: Text(
+                  element.symbol,
+                  style: TextStyle(
+                    fontSize: MediaQuery.sizeOf(context).width < 600 ? 20 : 24,
+                    fontWeight: FontWeight.bold,
+                    color: isDark
+                        ? Colors.white
+                        : categoryColor.withValues(alpha: 0.8),
+                    shadows: [
+                      if (isDark)
+                        Shadow(
+                          color: categoryColor.withValues(alpha: 0.5),
+                          blurRadius: 8,
+                        ),
+                    ],
+                  ),
                 ),
               ),
             ),

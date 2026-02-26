@@ -21,10 +21,15 @@ class QuizResultScreen extends ConsumerWidget {
     final percentage = score / totalQuestions;
     final isAr = Localizations.localeOf(context).languageCode == 'ar';
 
-    // Report to Leaderboard if logged in
+    // Report to Leaderboard and update local points if logged in
     final user = ref.watch(currentUserNotifierProvider);
     if (user != null) {
       LeaderboardRepository().updateUserPoints(user.id, user.name, score);
+      
+      // Save points to user profile
+      Future.microtask(() {
+        ref.read(currentUserNotifierProvider.notifier).updatePoints(score);
+      });
     }
 
     String message;
@@ -52,11 +57,21 @@ class QuizResultScreen extends ConsumerWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(icon, size: 100, color: color),
+            Icon(
+              icon,
+              size: MediaQuery.sizeOf(context).width < 600 ? 80 : 100,
+              color: color,
+            ),
             const SizedBox(height: 24),
-            Text(
-              message,
-              style: const TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+            FittedBox(
+              fit: BoxFit.scaleDown,
+              child: Text(
+                message,
+                style: TextStyle(
+                  fontSize: MediaQuery.sizeOf(context).width < 600 ? 28 : 32,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ),
             const SizedBox(height: 16),
             Text(
@@ -64,7 +79,7 @@ class QuizResultScreen extends ConsumerWidget {
                   ? 'حصلت على $score من $totalQuestions'
                   : 'You scored $score out of $totalQuestions',
               style: TextStyle(
-                fontSize: 20,
+                fontSize: MediaQuery.sizeOf(context).width < 600 ? 18 : 20,
                 color: theme.textTheme.bodyMedium?.color?.withValues(
                   alpha: 0.7,
                 ),

@@ -202,8 +202,13 @@ class _HomePageState extends ConsumerState<HomePage> {
   }
 
   Widget _buildHomeContent() {
-    const double progressValue = 0.6;
     final user = ref.watch(currentUserNotifierProvider);
+    
+    // Progress calculation: Based on total points, capped at 1000 for the first milestone
+    const double goalPoints = 1000;
+    final double rawProgress = (user?.totalPoints ?? 0) / goalPoints;
+    final double progressValue = rawProgress.clamp(0.0, 1.0);
+
     final localizations = AppLocalizations.of(context);
     if (localizations == null) return const Center(child: CircularProgressIndicator());
     final homeRepository = ref.read(homeRepositoryProvider);
@@ -230,6 +235,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    const SizedBox(height: 8),
                     Row(
                       children: [
                         CircleAvatar(
@@ -257,17 +263,17 @@ class _HomePageState extends ConsumerState<HomePage> {
                       ],
                     ),
 
-                    const SizedBox(height: 35),
+                    SizedBox(height: MediaQuery.sizeOf(context).height * 0.04), // Dynamic spacing
                     Stack(
                       children: [
                         ClipRRect(
                           borderRadius: BorderRadius.circular(12),
                           child: Hero(
                             tag:
-                                'assets/images/Aurora Boreal Aesthetic _ Travel Inspo & Dream Destinations.jpg',
+                                'assets/images/aurora_boreal.jpg',
                             child: Image.asset(
-                              'assets/images/Aurora Boreal Aesthetic _ Travel Inspo & Dream Destinations.jpg',
-                              height: 180,
+                              'assets/images/aurora_boreal.jpg',
+                              height: MediaQuery.sizeOf(context).height * 0.22, // Dynamic height
                               width: double.infinity,
                               fit: BoxFit.cover,
                             ),
@@ -279,21 +285,24 @@ class _HomePageState extends ConsumerState<HomePage> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                localizations.auroraTitle,
-                                style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 30,
-                                  fontWeight: FontWeight.bold,
-                                  shadows: [
-                                    Shadow(
-                                      blurRadius: 4,
-                                      color: Colors.black54,
-                                      offset: Offset(1, 1),
+                                FittedBox(
+                                  fit: BoxFit.scaleDown,
+                                  child: Text(
+                                    localizations.auroraTitle,
+                                    style: const TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 30,
+                                      fontWeight: FontWeight.bold,
+                                      shadows: [
+                                        Shadow(
+                                          blurRadius: 4,
+                                          color: Colors.black54,
+                                          offset: Offset(1, 1),
+                                        ),
+                                      ],
                                     ),
-                                  ],
+                                  ),
                                 ),
-                              ),
                               const SizedBox(height: 6),
                               ElevatedButton(
                                 onPressed: () {
@@ -302,7 +311,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                                     MaterialPageRoute(
                                       builder: (context) => QuestionPage(
                                         image:
-                                            'assets/images/Aurora Boreal Aesthetic _ Travel Inspo & Dream Destinations.jpg',
+                                            'assets/images/aurora_boreal.jpg',
                                         title: localizations.auroraTitle,
                                       ),
                                     ),
@@ -345,7 +354,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                     const SizedBox(height: 12),
                     Row(
                       children: [
-                        const BeakerProgressIndicator(
+                        BeakerProgressIndicator(
                           value: progressValue,
                           height: 80,
                           width: 50,

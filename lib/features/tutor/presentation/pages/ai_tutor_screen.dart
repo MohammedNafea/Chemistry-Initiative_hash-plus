@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:chemistry_initiative/features/tutor/data/repositories/ai_sync_repository.dart';
 import 'package:google_generative_ai/google_generative_ai.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_markdown_plus/flutter_markdown_plus.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:chemistry_initiative/core/utils/platform_image_loader.dart';
 import 'package:chemistry_initiative/l10n/app_localizations.dart';
+import 'package:chemistry_initiative/core/database/app_database.dart';
 
 class AITutorScreen extends ConsumerStatefulWidget {
   const AITutorScreen({super.key});
@@ -38,6 +40,13 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
   final ImagePicker _picker = ImagePicker();
   XFile? _selectedImage;
   bool _useLegacySystemInstruction = true;
+  String? _currentSessionId;
+
+  @override
+  void initState() {
+    super.initState();
+    _currentSessionId = DateTime.now().millisecondsSinceEpoch.toString();
+  }
 
   @override
   void didChangeDependencies() {
@@ -99,6 +108,103 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
     }
   }
 
+  void _saveChat() {
+    if (_messages.length <= 1) return;
+    final db = AppDatabase.instance;
+    final history = Map<String, dynamic>.from(db.aiHistory.toMap());
+    
+    // Create a title from the first user message
+    String title = "محادثة جديدة";
+    for (var m in _messages) {
+      if (m["role"] == "user") {
+        title = m["text"]!.length > 30 ? "${m["text"]!.substring(0, 30)}..." : m["text"]!;
+        break;
+      }
+    }
+
+    history[_currentSessionId!] = {
+      "id": _currentSessionId,
+      "title": title,
+      "timestamp": DateTime.now().toIso8601String(),
+      "messages": _messages,
+    };
+    db.aiHistory.putAll(history);
+
+    // New: Sync to cloud if user is logged in
+    final currentUser = db.currentUser;
+    if (currentUser != null) {
+      AIHistorySyncRepository().syncSessionToCloud(
+        currentUser.id,
+        Map<String, dynamic>.from(history[_currentSessionId!] as Map),
+      );
+    }
+  }
+
+  void _showHistory() {
+    final db = AppDatabase.instance;
+    final sessions = db.aiHistory.values.toList().cast<Map>();
+    sessions.sort((a, b) => (b["timestamp"] as String).compareTo(a["timestamp"] as String));
+
+    final isAr = Localizations.localeOf(context).languageCode == 'ar';
+
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      ),
+      builder: (context) => Container(
+        padding: const EdgeInsets.all(20),
+        height: MediaQuery.of(context).size.height * 0.6,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  isAr ? "المحادثات السابقة" : "Previous Chats",
+                  style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                IconButton(
+                  icon: const Icon(Icons.delete_sweep_rounded, color: Colors.red),
+                  onPressed: () async {
+                    await db.aiHistory.clear();
+                    if (context.mounted) Navigator.pop(context);
+                  },
+                ),
+              ],
+            ),
+            const Divider(),
+            Expanded(
+              child: sessions.isEmpty
+                  ? Center(child: Text(isAr ? "لا يوجد تاريخ محادثات" : "No chat history"))
+                  : ListView.builder(
+                      itemCount: sessions.length,
+                      itemBuilder: (context, index) {
+                        final s = sessions[index];
+                        return ListTile(
+                          leading: const Icon(Icons.chat_bubble_outline_rounded),
+                          title: Text(s["title"] ?? "Chat"),
+                          subtitle: Text(s["timestamp"].toString().substring(0, 10)),
+                          onTap: () {
+                            setState(() {
+                              _messages.clear();
+                              _messages.addAll((s["messages"] as List).map((m) => Map<String, String>.from(m as Map)));
+                              _currentSessionId = s["id"];
+                            });
+                            Navigator.pop(context);
+                          },
+                        );
+                      },
+                    ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
   void _sendMessage({String? retryText, XFile? retryImage}) async {
     final localizations = AppLocalizations.of(context);
     if (localizations == null) return;
@@ -144,6 +250,7 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
       _isLoading = true;
       _selectedImage = null;
     });
+    _saveChat();
     _scrollToBottom();
 
     try {
@@ -178,6 +285,7 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
         });
         _scrollToBottom();
       }
+      _saveChat();
     } catch (e) {
       final errorStr = e.toString();
       debugPrint("AI Tutor Error (Model: $_modelName): $errorStr");
@@ -253,20 +361,37 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
       if (!mounted) return;
       
       setState(() {
-        // Final fallback to Demo Mode if all AI attempts fail
-        if (!_isDemoMode && (errorStr.contains("not found") || 
+        // Explicit check for leaked key or quota issues
+        final isCriticalKeyError = errorStr.contains("leaked") || 
+                                   errorStr.contains("quota") ||
+                                   errorStr.contains("PERMISSION_DENIED") ||
+                                   errorStr.contains("403");
+
+        // Final fallback to Demo Mode if all AI attempts fail or critical key error occurs
+        if (!_isDemoMode && (isCriticalKeyError || 
+            errorStr.contains("not found") || 
             errorStr.contains("supported") || 
             errorStr.contains("available") ||
-            errorStr.contains("denied") ||
             errorStr.contains("location") ||
-            errorStr.contains("404") ||
-            errorStr.contains("403"))) {
+            errorStr.contains("404"))) {
+          
           debugPrint("AI Tutor: Critical failure on model $_modelName. Error: $e. Switching to Demo Mode.");
           _isDemoMode = true;
           _model = null; 
           
-          final arMsg = "عذراً يا بطل! يبدو أن خدمة الذكاء الاصطناعي مقيدة في منطقتك حالياً أو أن هناك عطلاً مؤقتاً.\n\n(Error Detail: ${e.toString().split('\n').first})";
-          final enMsg = "Oops! It seems the AI service is restricted in your region or experiencing a temporary issue.\n\n(Error Detail: ${e.toString().split('\n').first})";
+          String arMsg = "عذراً يا بطل! يبدو أن مفتاح الوصول (API Key) غير صالح أو تم تسريبه.\n\n"
+              "لقد تم تحويلك إلى 'وضع المعرفة الكيميائية' (Demo Mode) حالياً.\n"
+              "يمكنك الاستمرار في سؤالي وسأجيبك من قاعدة بياناتي المحلية!";
+          
+          String enMsg = "Oops! It seems the API key is invalid or has been leaked.\n\n"
+              "I've switched to 'Chemistry Knowledge Mode' (Demo Mode) for now.\n"
+              "You can still ask me questions, and I'll answer from my local database!";
+
+          if (errorStr.contains("quota")) {
+              arMsg = "عذراً! لقد تجاوزت الحصّة المسموح بها (Quota Exceeded).\n\n"
+                  "سأنتقل لوضع المعرفة المحلية حالياً حتى يتوفر الوصول مرة أخرى.";
+              enMsg = "Quota exceeded! I've switched to local knowledge mode until access is restored.";
+          }
           
           _messages.last["text"] = Localizations.localeOf(context).languageCode == 'ar' ? arMsg : enMsg;
           return;
@@ -297,23 +422,43 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
 
   void _sendDemoMessage(String userText) async {
     final localizations = AppLocalizations.of(context)!;
+    final query = userText.toLowerCase();
 
     setState(() {
       _messages.add({"role": "user", "text": userText});
       _messages.add({"role": "model", "text": ""});
       _isLoading = true;
     });
+    _saveChat();
     _scrollToBottom();
 
     await Future.delayed(const Duration(seconds: 1));
 
-    String response = localizations.demoModeMsg;
+    String response = "";
+
+    // Local Chemistry Brain - Keyword Matching
+    if (query.contains("ماء") || query.contains("water") || query.contains("h2o")) {
+      response = localizations.factWater;
+    } else if (query.contains("ملح") || query.contains("salt") || query.contains("nacl")) {
+      response = localizations.factSalt;
+    } else if (query.contains("شفق") || query.contains("aurora")) {
+      response = localizations.auroraDescription;
+    } else if (query.contains("جدول") || query.contains("روري") || query.contains("periodic") || query.contains("element")) {
+      response = "الجدول الدوري هو ترتيب للعناصر الكيميائية حسب عددها الذري. وهو حجر الأساس في علم الكيمياء الحديث.\n\nThe Periodic Table is an arrangement of chemical elements organized by atomic number. It is the cornerstone of modern chemistry.";
+    } else if (query.contains("خل") || query.contains("vinegar") || query.contains("soda") || query.contains("صودا")) {
+      response = localizations.volcanoExplanation;
+    } else if (query.contains("كيمياء") || query.contains("chemistry")) {
+      response = "الكيمياء هي علم المادة، وتحديدا خصائصها، وبنيتها، وتكوينها، وسلوكها، وتفاعلاتها وما يحدثه ذلك من تغييرات.\n\nChemistry is the scientific study of the properties and behavior of matter.";
+    } else {
+      response = localizations.demoModeMsg;
+    }
 
     if (!mounted) return;
     setState(() {
       _messages.last["text"] = response;
       _isLoading = false;
     });
+    _saveChat();
     _scrollToBottom();
   }
 
@@ -372,6 +517,24 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
         ),
         backgroundColor: theme.colorScheme.primaryContainer,
         elevation: 0,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.history_rounded),
+            onPressed: _showHistory,
+            tooltip: isAr ? "السجل" : "History",
+          ),
+          IconButton(
+            onPressed: () {
+              setState(() {
+                _messages.clear();
+                _messages.add({"role": "model", "text": localizations.aiTutorGreeting});
+                _currentSessionId = DateTime.now().millisecondsSinceEpoch.toString();
+              });
+            },
+            icon: const Icon(Icons.refresh_rounded),
+            tooltip: isAr ? 'إعادة تعيين' : 'Reset',
+          ),
+        ],
       ),
       body: Container(
         decoration: BoxDecoration(color: theme.colorScheme.surface),
@@ -437,8 +600,8 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
                                         borderRadius: BorderRadius.circular(12),
                                         child: _buildImage(
                                           imagePath,
-                                          width: 200,
-                                          height: 200,
+                                          width: MediaQuery.sizeOf(context).width * 0.6,
+                                          height: MediaQuery.sizeOf(context).width * 0.6 > 300 ? 300 : MediaQuery.sizeOf(context).width * 0.6,
                                           fit: BoxFit.cover,
                                         ),
                                       ),
