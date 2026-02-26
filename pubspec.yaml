@@ -28,7 +28,7 @@ dependencies:
   flutter_tts: ^4.2.5
   flutter_local_notifications: ^20.1.0
   timezone: ^0.10.1
-  google_generative_ai: ^0.4.15
+  google_generative_ai: ^0.4.7
   flutter_dotenv: ^6.0.0
   model_viewer_plus: ^1.10.0
   flutter_markdown_plus: ^1.0.7
