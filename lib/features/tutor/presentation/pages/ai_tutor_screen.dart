@@ -23,9 +23,9 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
   bool _isDemoMode = true;
   String _modelName = 'gemini-1.5-flash';
   final String _flashModel = 'gemini-1.5-flash';
-  final String _proModel = 'gemini-pro';
   final String _flashLatestModel = 'gemini-1.5-flash-latest';
-  final String _pro15Model = 'gemini-1.5-pro';
+  final String _proModel = 'gemini-1.5-pro';
+  final String _legacyProModel = 'gemini-pro';
   final ScrollController _scrollController = ScrollController();
   final ImagePicker _picker = ImagePicker();
   XFile? _selectedImage;
@@ -67,7 +67,7 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
       _model = GenerativeModel(
         model: _modelName,
         apiKey: apiKey.trim(),
-        requestOptions: const RequestOptions(apiVersion: 'v1'),
+        requestOptions: const RequestOptions(apiVersion: 'v1beta'),
         systemInstruction: _useLegacySystemInstruction
             ? null
             : Content.system(localizations.aiTutorSystemInstruction(language)),
@@ -191,11 +191,11 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
               errorStr.contains("is not available"))) {
         String? nextModel;
         if (_modelName == _flashModel) {
-          nextModel = _proModel;
-        } else if (_modelName == _proModel) {
           nextModel = _flashLatestModel;
         } else if (_modelName == _flashLatestModel) {
-          nextModel = _pro15Model;
+          nextModel = _proModel;
+        } else if (_modelName == _proModel) {
+          nextModel = _legacyProModel;
         }
 
         if (nextModel != null) {
