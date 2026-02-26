@@ -23,9 +23,9 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
   bool _isDemoMode = true;
   String _modelName = 'gemini-1.5-flash';
   final String _flashModel = 'gemini-1.5-flash';
-  final String _flashLatestModel = 'gemini-1.5-flash-latest';
   final String _proModel = 'gemini-1.5-pro';
   final String _legacyProModel = 'gemini-pro';
+  final String _flash8bModel = 'gemini-1.5-flash-8b';
   final ScrollController _scrollController = ScrollController();
   final ImagePicker _picker = ImagePicker();
   XFile? _selectedImage;
@@ -191,11 +191,11 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
               errorStr.contains("is not available"))) {
         String? nextModel;
         if (_modelName == _flashModel) {
-          nextModel = _flashLatestModel;
-        } else if (_modelName == _flashLatestModel) {
+          nextModel = _legacyProModel;
+        } else if (_modelName == _legacyProModel) {
           nextModel = _proModel;
         } else if (_modelName == _proModel) {
-          nextModel = _legacyProModel;
+          nextModel = _flash8bModel;
         }
 
         if (nextModel != null) {
@@ -209,14 +209,24 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
         }
       }
 
+      if (!mounted) return;
+      
       setState(() {
+        // Final fallback to Demo Mode if all AI attempts fail
+        if (!_isDemoMode && (errorStr.contains("not found") || errorStr.contains("supported") || errorStr.contains("available"))) {
+          debugPrint("AI Tutor: Critical failure on model $_modelName. Error: $e. Switching to Demo Mode.");
+          _isDemoMode = true;
+          _messages.last["text"] = Localizations.localeOf(context).languageCode == 'ar'
+            ? "عذراً يا بطل! يبدو أن هناك عطلاً بسيطاً في الاتصال بالذكاء الاصطناعي حالياً. سأنتقل للوضع التجريبي لنكمل رحلتنا معاً! 🧪✨"
+            : "Oops! It seems there's a small connection issue with the AI right now. I'll switch to Demo Mode so we can keep going! 🧪✨";
+          return;
+        }
+
         final isAuthError =
             errorStr.contains("API key not valid") ||
             errorStr.contains("invalid API key") ||
             errorStr.contains("403") ||
             errorStr.contains("401");
-
-        if (!mounted) return;
 
         String errorMsg;
         if (isAuthError) {
