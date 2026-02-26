@@ -65,10 +65,11 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
         language = 'Arabic'; // Fallback
       }
 
+      debugPrint("AI Tutor: Initializing with model $_modelName (API Key check: ${apiKey.substring(0, 8)}...)");
       _model = GenerativeModel(
         model: _modelName,
         apiKey: apiKey.trim(),
-        requestOptions: const RequestOptions(apiVersion: 'v1'),
+        // Removing explicit RequestOptions to let SDK default to safest version
         systemInstruction: _useLegacySystemInstruction
             ? null
             : Content.system(localizations.aiTutorSystemInstruction(language)),
@@ -169,6 +170,7 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
       }
     } catch (e) {
       final errorStr = e.toString();
+      debugPrint("AI Tutor Error (Model: $_modelName): $errorStr");
 
       // FALLBACK LOGIC: Try different models incrementally or different instruction modes
       final isPayloadError =
@@ -185,20 +187,23 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
         return;
       }
 
-      if (retryText == null &&
-          (errorStr.contains("not found") ||
+      // FALLBACK LOGIC: Try different models incrementally
+      final isModelError = errorStr.contains("not found") ||
               errorStr.contains("404") ||
               errorStr.contains("not supported") ||
-              errorStr.contains("is not available"))) {
+              errorStr.contains("is not available") ||
+              errorStr.contains("400"); // Sometimes 400 is returned for invalid model on some versions
+
+      if (isModelError) {
         String? nextModel;
         if (_modelName == _flashModel) {
           nextModel = _proModel;
         } else if (_modelName == _proModel) {
+          nextModel = _legacyProModel;
+        } else if (_modelName == _legacyProModel) {
           nextModel = _flash8bModel;
         } else if (_modelName == _flash8bModel) {
           nextModel = _proLatestModel;
-        } else if (_modelName == _proLatestModel) {
-          nextModel = _legacyProModel;
         }
 
         if (nextModel != null) {
@@ -207,6 +212,7 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
           );
           _modelName = nextModel;
           _initializeTutor();
+          // Fix: Allow recursion to continue by using the original text/image
           _sendMessage(retryText: text, retryImage: image);
           return;
         }
