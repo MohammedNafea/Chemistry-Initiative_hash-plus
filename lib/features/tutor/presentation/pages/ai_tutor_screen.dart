@@ -21,10 +21,10 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
   GenerativeModel? _model;
   ChatSession? _chatSession;
   bool _isDemoMode = true;
-  String _modelName = 'gemini-2.0-flash-lite';
-  String _apiVersion = 'v1beta';
-  final String _flashLiteModel = 'gemini-2.0-flash-lite';
+  String _modelName = 'gemini-2.5-flash';
+  String _apiVersion = 'v1';
   final String _flash25Model = 'gemini-2.5-flash';
+  final String _flashLiteModel = 'gemini-2.0-flash-lite';
   final String _flashModel = 'gemini-1.5-flash';
   final String _flashLatestModel = 'gemini-1.5-flash-latest';
   final String _flash8bModel = 'gemini-1.5-flash-8b';
@@ -215,9 +215,7 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
         } else {
           nextVersion = 'v1';
           // If both versions failed for current model, move to next model
-          if (_modelName == _flashLiteModel) {
-            nextModel = _flash25Model;
-          } else if (_modelName == _flash25Model) {
+          if (_modelName == _flash25Model) {
             nextModel = _flashModel;
           } else if (_modelName == _flashModel) {
             nextModel = _flashLatestModel;
@@ -233,6 +231,8 @@ class _AITutorScreenState extends ConsumerState<AITutorScreen> {
             nextModel = _proExpModel;
           } else if (_modelName == _proExpModel) {
             nextModel = _legacyProModel;
+          } else if (_modelName == _legacyProModel) {
+            nextModel = _flashLiteModel;
           } else {
             nextModel = null; // Out of models
           }
