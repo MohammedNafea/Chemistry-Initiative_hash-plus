@@ -1,4 +1,4 @@
-package com.example.chemistry_initiative;
+package com.mkm.chemistry_wonders;
 
 import io.flutter.embedding.android.FlutterActivity;
 

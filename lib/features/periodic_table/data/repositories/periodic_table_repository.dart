@@ -10,10 +10,14 @@ class PeriodicTableRepository {
   ) async {
     final cacheBox = AppDatabase.instance.cache;
 
-    // Check if we have cached data
+    // Check if we have cached data and it's complete
     if (cacheBox.containsKey(_cacheKey)) {
       final cachedList = cacheBox.get(_cacheKey) as List;
-      return cachedList.cast<ElementModel>();
+      if (cachedList.length >= 118) {
+        return cachedList.cast<ElementModel>();
+      }
+      // If incomplete, clear it and proceed to load defaults
+      await cacheBox.delete(_cacheKey);
     }
 
     // If no cache, load default data and save to cache
